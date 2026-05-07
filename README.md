@@ -70,7 +70,7 @@ It remains faithful to the original, but with updated accessibility features and
 
 ### Comet Zap
 
-![Fish Cascade Gameplay](doc/images/cometgame.png)
+![Comet Zap Gameplay](doc/images/cometgame.png)
 
 Oh no! A barrage of comets is coming! Help Tux defend the Earth by zapping away all the comets!
 Also returning from the original!
@@ -97,7 +97,7 @@ Proper Rhythm features an all-new modern UI, complete with an extensive Modifier
 The gameplay is derived from the aforementioned Comet Zap, where letters fall from the top, but instead in Proper Rhythm you must type the letters to the music!
 Select from any given set of words, and type away! This gamemode can get very difficult, but it's great for practicing memorizing the location of the keys!
 
-![Proper Rhythm Modifier Menu](doc/images/properrhythmgame.png)
+![Proper Rhythm Gameplay](doc/images/properrhythmgame.png)
 
 Proper Rhythm features several mod options to the gameplay, some making it easier and some more difficult!
 

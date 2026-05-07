@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0.1
+Type=Application
+
+Name=Tux Typing+
+Comment=A modern reimagining of the educational classic Tux Typing by Tux4Kids, made in Godot by siembra & Cosm0s
+Categories=Game;ActionGame;
+
+Icon=lol.siembra.tuxtypeplus
+Exec=godot-runner
+Terminal=false
