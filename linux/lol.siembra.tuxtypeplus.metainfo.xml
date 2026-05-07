@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<component type="desktop-application">
+  <id>lol.siembra.tuxtypeplus</id>
+
+  <name>Tux Typing+</name>
+  <summary
+    >A modern reimagining of the educational classic Tux Typing by Tux4Kids, made in Godot by siembra &amp; Cosm0s</summary>
+
+    <developer id="lol.siembra">
+        <name translatable="no">siembra &amp; Cosm0s</name>
+    </developer>
+
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-only</project_license>
+
+  <description>
+    <p>
+      The GNU Classic, Reborn!
+    </p>
+    <p>
+      Tux Typing+ is a typing challenge for all ages.
+    </p>
+    <p>
+      Fish Cascade Tux is hungry! Type to turn the words into fish and keep Tux fed! Do you have what it takes?
+    </p>
+    <p>
+      Comet Zap Oh no! A barrage of comets is coming! Help Tux defend the Earth by zapping away all the comets!
+    </p>
+    <p>
+      Proper Rhythm Type the letters to the beat! Practice utilizing proper rhythm in your typing with this all-new rhythm game!
+    </p>
+    <p>
+      Sandbox Type to your heart&apos;s content. Just ignore the psychedelic background... or enable Minimize Effects in Accessibility Settings!
+    </p>
+    <p>
+      Phrase Typing Challenge your typing skills with the PenguinType word sets or a selection of poems filled with intricate patterns, capitalization, and symbols!
+    </p>
+  </description>
+
+  <content_rating type="oars-1.1">
+  <content_attribute id="violence-cartoon">mild</content_attribute>
+  </content_rating>
+
+  <url type="homepage">https://siembra.lol</url>
+  <url
+        type="bugtracker"
+    >https://github.com/siembra1978/tux-typing-plus/issues</url>
+
+  <launchable type="desktop-id">lol.siembra.tuxtypeplus.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image
+            >https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/fishgame.png</image>
+      <caption>Fish Cascade Gameplay</caption>
+    </screenshot>
+    <screenshot>
+      <image
+            >https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/cometgame.png</image>
+      <caption>Comet Zap Gameplay</caption>
+    </screenshot>
+    <screenshot>
+      <image
+            >https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/properrhythmgame.png</image>
+      <caption>Proper Rhythm Gameplay</caption>
+    </screenshot>
+    <screenshot>
+      <image
+            >https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/properrhythmmenu.png</image>
+      <caption>Proper Rhythm Menu</caption>
+    </screenshot>
+    <screenshot>
+      <image
+            >https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/properrhythmmod.png</image>
+      <caption>Proper Rhythm Mod Menu</caption>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+    <release version="1.0.1" date="2026-05-07">
+      <description>
+        <p>I am Tux and I like to Type Plus</p>
+      </description>
+    </release>
+  </releases>
+</component>
