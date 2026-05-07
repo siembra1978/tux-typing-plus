@@ -1,9 +1,9 @@
 id: lol.siembra.tuxtypeplus
 runtime: org.gnome.Platform
-runtime-version: "48"
+runtime-version: "49"
 base: org.godotengine.godot.BaseApp
 base-version: "4.6"
-sdk: org.freedesktop.Sdk
+sdk: org.gnome.Sdk
 command: godot-runner
 
 finish-args:
