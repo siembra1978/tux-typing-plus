@@ -49,6 +49,9 @@ func resume():
 	if get_tree().current_scene.name == "CometZap":
 		scene.get_node("BackgroundMusic").volume_db = 5
 		
+	if get_tree().current_scene.name == "Lessons":
+		scene.get_node("BackgroundMusic").volume_db = -15.0
+		
 	#position = Vector2(0, get_viewport_rect().size.y)
 	#await close_menu(optionsmenu.get_node("BoxContainer"))
 	

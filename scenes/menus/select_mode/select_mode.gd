@@ -274,6 +274,7 @@ func close_menu(menut):
 	return true
 
 func go_back():
+	back_button.disabled = true
 	if stage == 1:
 		$Back.play()
 		stage = 0
@@ -294,6 +295,7 @@ func go_back():
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(menu, "position", Vector2(menu.position.x, 150.219), 1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 		await tween.finished
+		back_button.disabled = false
 		#audio_phase = false
 	if stage == 2:
 		$Back.play()
@@ -339,11 +341,14 @@ func go_back():
 
 		difficulty_buttons.visible = true
 		word_select.visible = false
+		back_button.disabled = false
+		
 	
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_ESCAPE:
-			go_back()
+			if not back_button.disabled:
+				go_back()
 
 func _on_extreme_pressed() -> void:
 	set_difficulty(5)

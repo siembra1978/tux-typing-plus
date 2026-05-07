@@ -27,22 +27,22 @@ var scale_factor_y
 	
 #Sets random background + music
 var backgrounds = [
-		'res://original data/images/kcas0.jpg',
-		'res://original data/images/kcas1.jpg',
-		'res://original data/images/kcas2.jpg',
-		'res://original data/images/kcas3.jpg',
-		'res://original data/images/kcas4.jpg',
-		'res://original data/images/kcas5.jpg',
-		'res://original data/images/kcas6.jpg',
-		'res://original data/images/kcas7.jpg',
-		'res://original data/images/kcas8.jpg',
-		'res://original data/images/kcas9.jpg',
-		'res://original data/images/kcas10.jpg',
-		'res://original data/images/kcas11.jpg'
+		'res://assets/tux4kids/images/kcas0.jpg',
+		'res://assets/tux4kids/images/kcas1.jpg',
+		'res://assets/tux4kids/images/kcas2.jpg',
+		'res://assets/tux4kids/images/kcas3.jpg',
+		'res://assets/tux4kids/images/kcas4.jpg',
+		'res://assets/tux4kids/images/kcas5.jpg',
+		'res://assets/tux4kids/images/kcas6.jpg',
+		'res://assets/tux4kids/images/kcas7.jpg',
+		'res://assets/tux4kids/images/kcas8.jpg',
+		'res://assets/tux4kids/images/kcas9.jpg',
+		'res://assets/tux4kids/images/kcas10.jpg',
+		'res://assets/tux4kids/images/kcas11.jpg'
 	]
 var music = [
-		'res://original data/sounds/amidst_the_raindrops.ogg',
-		'res://original data/sounds/chiptune2.ogg'
+		'res://assets/tux4kids/sounds/amidst_the_raindrops.ogg',
+		'res://assets/tux4kids/sounds/chiptune2.ogg'
 	]
 
 # ui init

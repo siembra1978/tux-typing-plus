@@ -61,11 +61,11 @@ var fade
 var pause_menu
 
 var backgrounds = [
-	'res://original data/images/backgrounds/0.jpg',
-	'res://original data/images/backgrounds/1.jpg',
-	'res://original data/images/backgrounds/2.jpg',
-	'res://original data/images/backgrounds/3.jpg',
-	'res://original data/images/backgrounds/4.jpg'
+	'res://assets/tux4kids/images/backgrounds/0.jpg',
+	'res://assets/tux4kids/images/backgrounds/1.jpg',
+	'res://assets/tux4kids/images/backgrounds/2.jpg',
+	'res://assets/tux4kids/images/backgrounds/3.jpg',
+	'res://assets/tux4kids/images/backgrounds/4.jpg'
 ]
 var music = [
 	'res://assets/audio/music/game/comet_zap/game.mp3',

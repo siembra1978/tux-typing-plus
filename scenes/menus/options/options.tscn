@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="3_e80a3"]
 [ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="3_p4pyc"]
 [ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="4_8ubju"]
-[ext_resource type="Texture2D" uid="uid://cabhmu6316u6k" path="res://assets/visual/logos/tux typing + options.png" id="4_cw13b"]
 [ext_resource type="Script" uid="uid://x0gg034vhsfq" path="res://scenes/menus/options/label_pivot.gd" id="4_rwm32"]
 [ext_resource type="Script" uid="uid://bdc1ucu6ctn75" path="res://scenes/menus/options/slider_pivot.gd" id="5_4dyhk"]
 [ext_resource type="AudioStream" uid="uid://bcrf10md6pmlj" path="res://assets/tux4kids/sounds/harp.wav" id="5_8ubju"]
@@ -217,7 +216,6 @@ offset_top = -332.0
 offset_right = 514.0
 offset_bottom = 200.0
 grow_vertical = 0
-texture = ExtResource("4_cw13b")
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("6_e80a3")
