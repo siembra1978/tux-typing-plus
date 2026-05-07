@@ -21,19 +21,19 @@
       Tux Typing+ is a typing challenge for all ages.
     </p>
     <p>
-      Fish Cascade Tux is hungry! Type to turn the words into fish and keep Tux fed! Do you have what it takes?
+      Fish Cascade: Tux is hungry! Type to turn the words into fish and keep Tux fed! Do you have what it takes?
     </p>
     <p>
-      Comet Zap Oh no! A barrage of comets is coming! Help Tux defend the Earth by zapping away all the comets!
+      Comet Zap: Oh no! A barrage of comets is coming! Help Tux defend the Earth by zapping away all the comets!
     </p>
     <p>
-      Proper Rhythm Type the letters to the beat! Practice utilizing proper rhythm in your typing with this all-new rhythm game!
+      Proper Rhythm: Type the letters to the beat! Practice utilizing proper rhythm in your typing with this all-new rhythm game!
     </p>
     <p>
-      Sandbox Type to your heart&apos;s content. Just ignore the psychedelic background... or enable Minimize Effects in Accessibility Settings!
+      Sandbox: Type to your heart&apos;s content. Just ignore the psychedelic background... or enable Minimize Effects in Accessibility Settings!
     </p>
     <p>
-      Phrase Typing Challenge your typing skills with the PenguinType word sets or a selection of poems filled with intricate patterns, capitalization, and symbols!
+      Phrase Typing: Challenge your typing skills with the PenguinType word sets or a selection of poems filled with intricate patterns, capitalization, and symbols!
     </p>
   </description>
 
@@ -41,7 +41,7 @@
   <content_attribute id="violence-cartoon">mild</content_attribute>
   </content_rating>
 
-  <url type="homepage">https://siembra.lol</url>
+  <url type="homepage">https://siembra.lol/games/tuxtypingplus/home</url>
   <url
         type="bugtracker"
     >https://github.com/siembra1978/tux-typing-plus/issues</url>
@@ -72,6 +72,16 @@
       <image
             >https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/properrhythmmod.png</image>
       <caption>Proper Rhythm Mod Menu</caption>
+    </screenshot>
+    <screenshot>
+      <image
+            >https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/sandboxgame.png</image>
+      <caption>Sandbox Gameplay</caption>
+    </screenshot>
+    <screenshot>
+      <image
+            >https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/phrasegame.png</image>
+      <caption>Phrase Typing Gameplay</caption>
     </screenshot>
   </screenshots>
 
