@@ -10,17 +10,16 @@
 [ext_resource type="AudioStream" uid="uid://ddwdpcgxtg8rx" path="res://assets/tux4kids/sounds/buzz.wav" id="6_olhbj"]
 [ext_resource type="AudioStream" uid="uid://cvbqgeqsi3vjd" path="res://assets/tux4kids/sounds/cheer.wav" id="8_3lvtx"]
 [ext_resource type="Texture2D" uid="uid://dtqwvpw3uoj1m" path="res://assets/visual/backgrounds/misc/tuxbg.png" id="8_olhbj"]
-[ext_resource type="Texture2D" uid="uid://dwlobaiaqj6jy" path="res://assets/visual/sprites/icon.png" id="8_ue134"]
 [ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="9_3sajq"]
 [ext_resource type="Theme" uid="uid://scdoto1172tt" path="res://assets/visual/themes/editor_theme.tres" id="9_oyte0"]
 [ext_resource type="Texture2D" uid="uid://c7jw1vlhj7bxo" path="res://assets/visual/sprites/lastrack.png" id="11_y32iy"]
 [ext_resource type="Texture2D" uid="uid://cu2k60r5e7uwl" path="res://assets/visual/sprites/play.png" id="12_3lvtx"]
 [ext_resource type="Script" uid="uid://cx1xc8pye752r" path="res://scenes/menus/select_mode/background.gd" id="12_p7we2"]
 [ext_resource type="Texture2D" uid="uid://by8eamf7bqrut" path="res://assets/visual/sprites/nexttrack.png" id="13_efp3n"]
-[ext_resource type="StyleBox" path="res://new_style_box_flat.tres" id="14_n6a1k"]
 [ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="15_efp3n"]
 [ext_resource type="Script" uid="uid://s5l015ddfelw" path="res://scenes/beat/popup_pivot.gd" id="18_lybr3"]
 [ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="18_o8plc"]
+[ext_resource type="Texture2D" uid="uid://4qkhkso7fbah" path="res://assets/visual/sprites/iconhires.png" id="20_p7we2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxt15"]
 shader = ExtResource("2_jk6fb")
@@ -267,7 +266,6 @@ offset_left = 5.0
 offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="Playback" type="Control" parent="Top/Control/Media" unique_id=691030448]
 layout_mode = 1
@@ -403,7 +401,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="Container" type="BoxContainer" parent="Top/Control/Quit" unique_id=21401938]
 layout_mode = 1
@@ -500,7 +497,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="MapInfo" type="BoxContainer" parent="Top/Control/MapInfoPopUp" unique_id=553895535]
 layout_mode = 1
@@ -589,7 +585,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="MapInfo" type="BoxContainer" parent="Top/Control/DifficultyPopUp" unique_id=229752033]
 layout_mode = 1
@@ -699,7 +694,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="MapInfo" type="BoxContainer" parent="Top/Control/TempoPopUp" unique_id=1245296768]
 layout_mode = 1
@@ -781,7 +775,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="DiffStack" type="BoxContainer" parent="Top/Control/OSZPopUp" unique_id=1400718421]
 layout_mode = 1
@@ -864,7 +857,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="MapInfo" type="BoxContainer" parent="Top/Control/ClearWarning" unique_id=725584421]
 layout_mode = 1
@@ -945,7 +937,7 @@ offset_bottom = 61.0
 
 [node name="Icon" type="TextureRect" parent="Top/Control/TopBar/MenuBar" unique_id=1033834100]
 layout_mode = 2
-texture = ExtResource("8_ue134")
+texture = ExtResource("20_p7we2")
 expand_mode = 2
 stretch_mode = 5
 
