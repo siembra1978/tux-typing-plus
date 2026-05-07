@@ -29,4 +29,4 @@ modules:
       - install -Dm644 tuxtypeplus-1.0.1.pck ${FLATPAK_DEST}/bin/godot-runner.pck
       - install -Dm644 linux/${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       - install -Dm644 linux/${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
-      - install -Dm644 media/image/icon/icon256.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
+      - install -Dm644 linux/${FLATPAK_ID}.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
