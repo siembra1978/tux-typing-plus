@@ -1,0 +1,76 @@
+[gd_resource type="Theme" format=3 uid="uid://bryxi4x6uhnqm"]
+
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="1_rve67"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xl53h"]
+bg_color = Color(0.052789412, 0.22081918, 0.3411274, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ew2r"]
+bg_color = Color(0.3499866, 0.6632652, 0.9107553, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ii3nb"]
+bg_color = Color(0.17721787, 0.49395865, 0.72611177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35xk8"]
+bg_color = Color(0.27450982, 0.60784316, 0.8627451, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rve67"]
+color = Color(0.27450982, 0.60784316, 0.8627451, 1)
+grow_end = -4.0
+thickness = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rve67"]
+bg_color = Color(0.007843138, 0.5176471, 0.75686276, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[resource]
+Button/colors/font_focus_color = Color(0.9490196, 0.9490196, 0.019607844, 1)
+Button/colors/font_hover_color = Color(0.9490196, 0.9490196, 0.019607844, 1)
+Button/colors/font_hover_pressed_color = Color(0.9490196, 0.9490196, 0.019607844, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.9490196, 0.9490196, 0.019607844, 1)
+Button/constants/outline_size = 6
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_rve67")
+Button/styles/disabled = SubResource("StyleBoxFlat_xl53h")
+Button/styles/hover = SubResource("StyleBoxFlat_0ew2r")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_ii3nb")
+Button/styles/normal = SubResource("StyleBoxFlat_35xk8")
+Button/styles/pressed = SubResource("StyleBoxFlat_ii3nb")
+HSlider/styles/slider = SubResource("StyleBoxLine_rve67")
+Panel/styles/panel = SubResource("StyleBoxFlat_rve67")
+PopupMenu/colors/font_hover_color = Color(0.8745098, 0.8745098, 0, 1)
+PopupMenu/constants/h_separation = 4
+PopupMenu/constants/outline_size = 6
+PopupMenu/font_sizes/font_size = 24
+PopupMenu/fonts/font = ExtResource("1_rve67")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_ii3nb")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_35xk8")

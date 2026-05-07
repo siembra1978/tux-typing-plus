@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b4quw08dt7bvj"]
+
+[ext_resource type="AudioStream" uid="uid://bc8puf4u8rdam" path="res://assets/audio/clicks/pop/click3_1.ogg" id="1_7dhrp"]
+
+[node name="Pop" type="AudioStreamPlayer" unique_id=753792664]
+stream = ExtResource("1_7dhrp")

@@ -1,0 +1,386 @@
+[gd_scene format=3 uid="uid://cylk271eo0sxu"]
+
+[ext_resource type="Texture2D" uid="uid://cwypumqx8itup" path="res://assets/tux4kids/images/kcas0.jpg" id="1_lx3ow"]
+[ext_resource type="Script" uid="uid://bcxlia8u8tjm7" path="res://scenes/game/fish_cascade.gd" id="1_tj4tg"]
+[ext_resource type="Texture2D" uid="uid://dd2yqhqic7acs" path="res://assets/tux4kids/images/tux/gulp0.png" id="2_04abn"]
+[ext_resource type="AudioStream" uid="uid://md4btrk2rqsk" path="res://assets/tux4kids/sounds/amidst_the_raindrops.ogg" id="3_jdxlc"]
+[ext_resource type="Texture2D" uid="uid://5vts7ippn4cl" path="res://assets/tux4kids/images/tux/gulp1.png" id="3_o008d"]
+[ext_resource type="Texture2D" uid="uid://cwnh5jv7ftuam" path="res://assets/tux4kids/images/tux/gulp2.png" id="4_1s1b5"]
+[ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="4_jdxlc"]
+[ext_resource type="Theme" uid="uid://b34g4whlitecf" path="res://assets/visual/sprites/tuxtheme.tres" id="5_7i71e"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="5_jdxlc"]
+[ext_resource type="Texture2D" uid="uid://cy7chpor47cqe" path="res://assets/tux4kids/images/tux/gulp3.png" id="5_pvajk"]
+[ext_resource type="AudioStream" uid="uid://dfixf6al6ycoh" path="res://assets/tux4kids/sounds/pop.wav" id="6_jjrna"]
+[ext_resource type="Texture2D" uid="uid://tpukb58o242b" path="res://assets/tux4kids/images/tux/run0.png" id="6_lg4hc"]
+[ext_resource type="FontFile" uid="uid://2owj3686xy47" path="res://assets/tux4kids/fonts/AndikaDesRevG.ttf" id="6_tftxw"]
+[ext_resource type="AudioStream" uid="uid://cgre0ban0ndv6" path="res://assets/tux4kids/sounds/lose.wav" id="7_hyems"]
+[ext_resource type="Texture2D" uid="uid://cuprnmxy5a7u2" path="res://assets/tux4kids/images/tux/run1.png" id="7_tj4tg"]
+[ext_resource type="AudioStream" uid="uid://cvbqgeqsi3vjd" path="res://assets/tux4kids/sounds/cheer.wav" id="8_p3dah"]
+[ext_resource type="Texture2D" uid="uid://bsh0r0ldjgt51" path="res://assets/tux4kids/images/tux/stand0.png" id="8_wevax"]
+[ext_resource type="Texture2D" uid="uid://cebh8ecpj0274" path="res://assets/tux4kids/images/tux/stand1.png" id="9_8sqkf"]
+[ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="9_fwdw2"]
+[ext_resource type="Texture2D" uid="uid://cjl3087f6x4u3" path="res://assets/visual/sprites/wumba.png" id="9_peu8s"]
+[ext_resource type="Script" uid="uid://or8mcd735o0r" path="res://scenes/game/restart.gd" id="10_xsrxq"]
+[ext_resource type="Script" uid="uid://crxm56favhwos" path="res://scenes/game/exit.gd" id="11_la0i3"]
+[ext_resource type="Texture2D" uid="uid://dyjdddytxqybg" path="res://assets/tux4kids/images/tux/walk0.png" id="11_lg4hc"]
+[ext_resource type="Texture2D" uid="uid://bequiqfu54xe7" path="res://assets/tux4kids/images/tux/walk1.png" id="12_tj4tg"]
+[ext_resource type="Texture2D" uid="uid://f6sy7wboy6td" path="res://assets/tux4kids/images/tux/walk2.png" id="13_wevax"]
+[ext_resource type="Texture2D" uid="uid://nduj5djmkad7" path="res://assets/tux4kids/images/tux/walk3.png" id="14_8sqkf"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="14_f8n8m"]
+[ext_resource type="Texture2D" uid="uid://qk2rt4gl8w84" path="res://assets/visual/sprites/pointer.png" id="14_hyems"]
+[ext_resource type="Script" uid="uid://cqo3yt8ao4laj" path="res://scenes/game/fish_tux.gd" id="16_5wky4"]
+[ext_resource type="Theme" uid="uid://bryxi4x6uhnqm" path="res://assets/visual/themes/tuxtheme2.tres" id="16_64i30"]
+[ext_resource type="Texture2D" uid="uid://d00ho8soovytc" path="res://assets/tux4kids/images/tux/yipe0.png" id="16_hyems"]
+[ext_resource type="Texture2D" uid="uid://bxcpytyk3nibh" path="res://assets/tux4kids/images/tux/win0.png" id="16_peu8s"]
+[ext_resource type="Texture2D" uid="uid://cof8n5nxw8ml3" path="res://assets/tux4kids/images/tux/win1.png" id="17_fwdw2"]
+[ext_resource type="PackedScene" uid="uid://dm6jp4gjboooc" path="res://scenes/menus/pause/pause.tscn" id="18_5wky4"]
+[ext_resource type="AudioStream" uid="uid://b878e5o04ftof" path="res://assets/audio/sfx/runtrim.wav" id="23_jjrna"]
+[ext_resource type="AudioStream" uid="uid://c3gx87x10wh2t" path="res://assets/tux4kids/sounds/bite.wav" id="30_jdxlc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdxlc"]
+font = ExtResource("14_f8n8m")
+font_size = 50
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6qnpa"]
+font = ExtResource("14_f8n8m")
+font_size = 50
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hyems"]
+font = ExtResource("14_f8n8m")
+font_size = 128
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5wky4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_peu8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_fwdw2")
+}],
+"loop": true,
+"name": &"cheer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_hyems")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("2_04abn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_o008d")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_1s1b5")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_pvajk")
+}],
+"loop": false,
+"name": &"gulp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_lg4hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tj4tg")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_wevax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8sqkf")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_lg4hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tj4tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wevax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8sqkf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wky4"]
+size = Vector2(122, 115)
+
+[node name="FishCascade" type="Node2D" unique_id=82120739]
+script = ExtResource("1_tj4tg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1937900767]
+layer = -1
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1754186074]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=1605677218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lx3ow")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Dim" type="ColorRect" parent="CanvasLayer/Control" unique_id=906276329]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=221240507]
+stream = ExtResource("3_jdxlc")
+volume_db = -15.0
+parameters/looping = true
+
+[node name="Back" type="AudioStreamPlayer" parent="." unique_id=770582390]
+stream = ExtResource("4_jdxlc")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1420025567]
+stream = ExtResource("5_jdxlc")
+volume_db = -5.0
+
+[node name="Pop" type="AudioStreamPlayer" parent="." unique_id=65823807]
+stream = ExtResource("6_jjrna")
+volume_db = -15.0
+pitch_scale = 3.53
+
+[node name="Lose" type="AudioStreamPlayer" parent="." unique_id=419499275]
+stream = ExtResource("7_hyems")
+volume_db = -5.0
+
+[node name="Sad" type="AudioStreamPlayer" parent="." unique_id=357859173]
+
+[node name="Win" type="AudioStreamPlayer" parent="." unique_id=1907414213]
+stream = ExtResource("8_p3dah")
+volume_db = -5.0
+
+[node name="NewClick" type="AudioStreamPlayer" parent="." unique_id=2068293594]
+stream = ExtResource("9_fwdw2")
+
+[node name="OnTop" type="CanvasLayer" parent="." unique_id=793935371]
+
+[node name="HUD" type="Control" parent="OnTop" unique_id=1311297979]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wumba" type="TextureRect" parent="OnTop/HUD" unique_id=1659620480]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -112.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_peu8s")
+stretch_mode = 3
+
+[node name="Pointer" type="TextureRect" parent="OnTop/HUD" unique_id=533625516]
+layout_mode = 0
+offset_top = -63.0
+offset_right = 64.0
+offset_bottom = 1.0
+texture = ExtResource("14_hyems")
+
+[node name="Level" type="Label" parent="OnTop/HUD" unique_id=1015930071]
+layout_mode = 1
+offset_right = 135.0
+offset_bottom = 82.0
+size_flags_horizontal = 2
+theme = ExtResource("5_7i71e")
+theme_override_fonts/font = ExtResource("6_tftxw")
+theme_override_font_sizes/font_size = 32
+text = "Level:"
+label_settings = SubResource("LabelSettings_jdxlc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OnTop/HUD" unique_id=2132705964]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -169.0
+offset_bottom = 168.0
+grow_horizontal = 0
+
+[node name="Fish" type="Label" parent="OnTop/HUD/VBoxContainer" unique_id=1040973200]
+layout_mode = 2
+size_flags_horizontal = 2
+theme = ExtResource("5_7i71e")
+theme_override_fonts/font = ExtResource("6_tftxw")
+theme_override_font_sizes/font_size = 32
+text = "Fish:"
+label_settings = SubResource("LabelSettings_6qnpa")
+horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="OnTop/HUD/VBoxContainer" unique_id=2132522007]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("5_7i71e")
+theme_override_fonts/font = ExtResource("6_tftxw")
+theme_override_font_sizes/font_size = 32
+text = "Health:"
+label_settings = SubResource("LabelSettings_6qnpa")
+
+[node name="OptionsDim" type="ColorRect" parent="OnTop" unique_id=977369104]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Pause" parent="OnTop" unique_id=1227462733 instance=ExtResource("18_5wky4")]
+visible = false
+
+[node name="GameOver" type="Control" parent="OnTop" unique_id=1735610374]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("16_64i30")
+
+[node name="Dim" type="ColorRect" parent="OnTop/GameOver" unique_id=1697310676]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Label" type="Label" parent="OnTop/GameOver" unique_id=1892461233]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -290.0
+offset_right = 277.0
+offset_bottom = -114.99994
+grow_horizontal = 2
+grow_vertical = 2
+text = "Oh No!"
+label_settings = SubResource("LabelSettings_hyems")
+horizontal_alignment = 1
+
+[node name="Buttons" type="BoxContainer" parent="OnTop/GameOver" unique_id=969255926]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -118.75
+offset_right = 267.0
+offset_bottom = 118.75
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="Restart" type="Button" parent="OnTop/GameOver/Buttons" unique_id=261652085]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Restart
+"
+script = ExtResource("10_xsrxq")
+
+[node name="Exit" type="Button" parent="OnTop/GameOver/Buttons" unique_id=2043565326]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Select Gamemode"
+script = ExtResource("11_la0i3")
+
+[node name="Fade" type="ColorRect" parent="OnTop" unique_id=1781533862]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Tux" type="CharacterBody2D" parent="." unique_id=398386293]
+position = Vector2(960, 1019)
+script = ExtResource("16_5wky4")
+
+[node name="FishTux" type="AnimatedSprite2D" parent="Tux" unique_id=1877342570]
+sprite_frames = SubResource("SpriteFrames_5wky4")
+animation = &"stand"
+autoplay = "stand"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tux" unique_id=442093053]
+position = Vector2(2, 1.5)
+shape = SubResource("RectangleShape2D_5wky4")
+
+[node name="Running" type="AudioStreamPlayer" parent="Tux" unique_id=754575555]
+stream = ExtResource("23_jjrna")
+volume_db = -15.0
+
+[node name="Bite" type="AudioStreamPlayer" parent="Tux" unique_id=784084800]
+stream = ExtResource("30_jdxlc")
+volume_db = -15.0
+
+[connection signal="pressed" from="OnTop/GameOver/Buttons/Restart" to="OnTop/GameOver/Buttons/Restart" method="_on_pressed"]
+[connection signal="pressed" from="OnTop/GameOver/Buttons/Exit" to="OnTop/GameOver/Buttons/Exit" method="_on_pressed"]

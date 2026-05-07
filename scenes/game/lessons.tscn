@@ -1,0 +1,757 @@
+[gd_scene format=3 uid="uid://bdfra4a8yal0b"]
+
+[ext_resource type="Script" uid="uid://b0liv7sousf8t" path="res://scenes/game/lessons.gd" id="1_ij4qk"]
+[ext_resource type="Script" uid="uid://bk1nwfkbqoqfy" path="res://scenes/game/camera_2d.gd" id="2_7armx"]
+[ext_resource type="Texture2D" uid="uid://cey2njyevsky" path="res://assets/tux4kids/images/keyboard/keyboard_A00.png" id="3_ij4qk"]
+[ext_resource type="Texture2D" uid="uid://3wxjvtet6v48" path="res://assets/tux4kids/images/keyboard/keyboard.png" id="4_7armx"]
+[ext_resource type="Texture2D" uid="uid://bwkj5vtktgu8a" path="res://assets/tux4kids/images/keyboard/keyboard_A01.png" id="4_57xel"]
+[ext_resource type="Texture2D" uid="uid://dfmoovu4kfmfe" path="res://assets/tux4kids/images/keyboard/keyboard_A02.png" id="5_eblc8"]
+[ext_resource type="Texture2D" uid="uid://cjl3087f6x4u3" path="res://assets/visual/sprites/wumba.png" id="5_m1xpu"]
+[ext_resource type="Texture2D" uid="uid://c1gfotp8kuh4u" path="res://assets/tux4kids/images/keyboard/keyboard_A03.png" id="6_bhweu"]
+[ext_resource type="Texture2D" uid="uid://d2s2dj0w1e8et" path="res://assets/tux4kids/images/keyboard/keyboard_A04.png" id="7_j2en8"]
+[ext_resource type="Texture2D" uid="uid://c0kbklnsko66s" path="res://assets/tux4kids/images/keyboard/keyboard_A05.png" id="8_7armx"]
+[ext_resource type="Texture2D" uid="uid://dhwyu4iof18lu" path="res://assets/tux4kids/images/keyboard/keyboard_A06.png" id="9_dhjlp"]
+[ext_resource type="Texture2D" uid="uid://bk866w2pyhy2m" path="res://assets/tux4kids/images/keyboard/keyboard_A07.png" id="10_ndjcj"]
+[ext_resource type="Texture2D" uid="uid://oum76v8y26uy" path="res://assets/tux4kids/images/keyboard/keyboard_A08.png" id="11_m1xpu"]
+[ext_resource type="Texture2D" uid="uid://b2xffjh6bpw50" path="res://assets/tux4kids/images/keyboard/keyboard_A09.png" id="12_8ploc"]
+[ext_resource type="Texture2D" uid="uid://b26bklx4wesa0" path="res://assets/tux4kids/images/keyboard/keyboard_A10.png" id="13_71a5g"]
+[ext_resource type="Texture2D" uid="uid://b8mecf3pa6p8n" path="res://assets/tux4kids/images/keyboard/keyboard_A11.png" id="14_n0815"]
+[ext_resource type="Texture2D" uid="uid://bhcsgr70rekxy" path="res://assets/tux4kids/images/keyboard/keyboard_A12.png" id="15_pb7kd"]
+[ext_resource type="Texture2D" uid="uid://bl7bdd04w8uro" path="res://assets/tux4kids/images/keyboard/keyboard_A13.png" id="16_xytys"]
+[ext_resource type="Texture2D" uid="uid://l1dp4mcklxsn" path="res://assets/tux4kids/images/keyboard/keyboard_B00.png" id="17_nqswt"]
+[ext_resource type="Texture2D" uid="uid://bgrtqlhxycm75" path="res://assets/tux4kids/images/keyboard/keyboard_B01.png" id="18_ut3fs"]
+[ext_resource type="Texture2D" uid="uid://1vqisy2a15qc" path="res://assets/tux4kids/images/keyboard/keyboard_B02.png" id="19_dflju"]
+[ext_resource type="Texture2D" uid="uid://dv1fks3odj7sb" path="res://assets/tux4kids/images/keyboard/keyboard_B03.png" id="20_ih3ll"]
+[ext_resource type="Texture2D" uid="uid://8v2tpv2r7n08" path="res://assets/tux4kids/images/keyboard/keyboard_B04.png" id="21_2tarm"]
+[ext_resource type="Texture2D" uid="uid://do2h3jf4s0slc" path="res://assets/tux4kids/images/keyboard/keyboard_B05.png" id="22_0akb2"]
+[ext_resource type="Texture2D" uid="uid://8gmx6rtcl8r6" path="res://assets/tux4kids/images/keyboard/keyboard_B06.png" id="23_1ks5o"]
+[ext_resource type="Texture2D" uid="uid://4objgvvm884g" path="res://assets/tux4kids/images/keyboard/keyboard_B07.png" id="24_chhdb"]
+[ext_resource type="Texture2D" uid="uid://pan47mw5qi0w" path="res://assets/tux4kids/images/keyboard/keyboard_B08.png" id="25_drj1x"]
+[ext_resource type="Texture2D" uid="uid://dsxuacf0rr2wf" path="res://assets/tux4kids/images/keyboard/keyboard_B09.png" id="26_ssia8"]
+[ext_resource type="Texture2D" uid="uid://c6rawxam5wlw0" path="res://assets/tux4kids/images/keyboard/keyboard_B10.png" id="27_03qaq"]
+[ext_resource type="Texture2D" uid="uid://b4f8gjfwmej7i" path="res://assets/tux4kids/images/keyboard/keyboard_B11.png" id="28_dpyuh"]
+[ext_resource type="Texture2D" uid="uid://cfdnk68jguiy" path="res://assets/tux4kids/images/keyboard/keyboard_B12.png" id="29_th1pu"]
+[ext_resource type="Texture2D" uid="uid://cdem35h6nt4rx" path="res://assets/tux4kids/images/keyboard/keyboard_B13.png" id="30_y8iyp"]
+[ext_resource type="Texture2D" uid="uid://be34ixge63ckh" path="res://assets/tux4kids/images/keyboard/keyboard_C00.png" id="31_gjxvj"]
+[ext_resource type="Texture2D" uid="uid://lfxk3ckbxytr" path="res://assets/tux4kids/images/keyboard/keyboard_C01.png" id="32_gcjrb"]
+[ext_resource type="Texture2D" uid="uid://dda0r4sd1vfcy" path="res://assets/tux4kids/images/keyboard/keyboard_C02.png" id="33_57k3g"]
+[ext_resource type="Texture2D" uid="uid://bphol8c27n8nu" path="res://assets/tux4kids/images/keyboard/keyboard_C03.png" id="34_j7gp8"]
+[ext_resource type="Texture2D" uid="uid://cmrax7wa64328" path="res://assets/tux4kids/images/keyboard/keyboard_C04.png" id="35_67fju"]
+[ext_resource type="Texture2D" uid="uid://bcn2f5msee38w" path="res://assets/tux4kids/images/keyboard/keyboard_C05.png" id="36_5m2v8"]
+[ext_resource type="Texture2D" uid="uid://b8iyyksuwr50k" path="res://assets/tux4kids/images/keyboard/keyboard_C06.png" id="37_p18v6"]
+[ext_resource type="Texture2D" uid="uid://dcxojw7ngm3dt" path="res://assets/tux4kids/images/keyboard/keyboard_C07.png" id="38_sm2kj"]
+[ext_resource type="Texture2D" uid="uid://boyq4cdvydtb8" path="res://assets/tux4kids/images/keyboard/keyboard_C08.png" id="39_gmsb6"]
+[ext_resource type="Texture2D" uid="uid://cspc8jwthlmm5" path="res://assets/tux4kids/images/keyboard/keyboard_C09.png" id="40_bmy2u"]
+[ext_resource type="Texture2D" uid="uid://ckj01xvxrulml" path="res://assets/tux4kids/images/keyboard/keyboard_C10.png" id="41_5m5wk"]
+[ext_resource type="Texture2D" uid="uid://d2y7gogscqc03" path="res://assets/tux4kids/images/keyboard/keyboard_C11.png" id="42_wi1ae"]
+[ext_resource type="Texture2D" uid="uid://cyug77dm0hvab" path="res://assets/tux4kids/images/keyboard/keyboard_C12.png" id="43_i6vxx"]
+[ext_resource type="Texture2D" uid="uid://c1jwylwtsckjp" path="res://assets/tux4kids/images/keyboard/keyboard_D00.png" id="44_4tuhc"]
+[ext_resource type="Texture2D" uid="uid://dxjxt4g5in7ep" path="res://assets/tux4kids/images/keyboard/keyboard_D01.png" id="45_ymp5t"]
+[ext_resource type="Texture2D" uid="uid://qlb5441dwb7o" path="res://assets/tux4kids/images/keyboard/keyboard_D02.png" id="46_elgxj"]
+[ext_resource type="Texture2D" uid="uid://oxhkts1ffeee" path="res://assets/tux4kids/images/keyboard/keyboard_D03.png" id="47_c3c28"]
+[ext_resource type="Texture2D" uid="uid://cc000sfbiqe4j" path="res://assets/tux4kids/images/keyboard/keyboard_D04.png" id="48_78674"]
+[ext_resource type="Texture2D" uid="uid://dyq1yle6mq7d8" path="res://assets/tux4kids/images/keyboard/keyboard_D05.png" id="49_22d77"]
+[ext_resource type="Texture2D" uid="uid://dmey0pharbutk" path="res://assets/tux4kids/images/keyboard/keyboard_D06.png" id="50_sgu4x"]
+[ext_resource type="Texture2D" uid="uid://b8gytro38flle" path="res://assets/tux4kids/images/keyboard/keyboard_D07.png" id="51_yux4m"]
+[ext_resource type="Texture2D" uid="uid://3cau2yraou70" path="res://assets/tux4kids/images/keyboard/keyboard_D08.png" id="52_cl51h"]
+[ext_resource type="Texture2D" uid="uid://dnnjikr5ietfr" path="res://assets/tux4kids/images/keyboard/keyboard_D09.png" id="53_h8nh6"]
+[ext_resource type="Texture2D" uid="uid://boxaimd8c5gc8" path="res://assets/tux4kids/images/keyboard/keyboard_D10.png" id="54_3r1rj"]
+[ext_resource type="Texture2D" uid="uid://bklu4qinf085p" path="res://assets/tux4kids/images/keyboard/keyboard_D11.png" id="55_offs0"]
+[ext_resource type="Texture2D" uid="uid://dxb1osv46y26k" path="res://assets/tux4kids/images/keyboard/keyboard_D12.png" id="56_pf33u"]
+[ext_resource type="Texture2D" uid="uid://7g6yv1hsqt0j" path="res://assets/tux4kids/images/keyboard/keyboard_E00.png" id="57_crg75"]
+[ext_resource type="Texture2D" uid="uid://46aa5ot1kip0" path="res://assets/tux4kids/images/keyboard/keyboard_E01.png" id="58_gn68r"]
+[ext_resource type="Texture2D" uid="uid://4b21b0is03f8" path="res://assets/tux4kids/images/keyboard/keyboard_E02.png" id="59_xt4v4"]
+[ext_resource type="Texture2D" uid="uid://cwltq3oagg0l4" path="res://assets/tux4kids/images/keyboard/keyboard_E03.png" id="60_uvldh"]
+[ext_resource type="Texture2D" uid="uid://blsaycqxgcs1c" path="res://assets/tux4kids/images/keyboard/keyboard_E04.png" id="61_8cpv5"]
+[ext_resource type="Texture2D" uid="uid://b2bseoj4naff2" path="res://assets/tux4kids/images/keyboard/keyboard_E05.png" id="62_je33d"]
+[ext_resource type="Texture2D" uid="uid://c65m0tciubqk0" path="res://assets/tux4kids/images/keyboard/keyboard_E06.png" id="63_bx2bu"]
+[ext_resource type="Texture2D" uid="uid://d0h0gk7kwohmx" path="res://assets/tux4kids/images/keyboard/keyboard_E07.png" id="64_onuv3"]
+[ext_resource type="Theme" uid="uid://b34g4whlitecf" path="res://assets/visual/sprites/tuxtheme.tres" id="65_57xel"]
+[ext_resource type="Shader" uid="uid://clkxo5uaoxwj3" path="res://shaders/lsd.gdshader" id="66_bhweu"]
+[ext_resource type="Texture2D" uid="uid://owdc4lqux3ge" path="res://assets/tux4kids/images/keyboard/keyboardN_None.png" id="67_67fju"]
+[ext_resource type="PackedScene" uid="uid://dm6jp4gjboooc" path="res://scenes/menus/pause/pause.tscn" id="69_p18v6"]
+[ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="70_5m2v8"]
+[ext_resource type="AudioStream" uid="uid://ux2ok3ov5rro" path="res://assets/audio/music/game/fish_cascade/fluffingaduck.mp3" id="70_p18v6"]
+[ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="71_5m2v8"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="71_8ploc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2en8"]
+shader = ExtResource("66_bhweu")
+shader_parameter/strength = 0.4
+shader_parameter/speed = 0.0870000041325
+shader_parameter/screen_resolution = Vector2(1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ktst7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_gcjrb")
+}],
+"loop": true,
+"name": &"A",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_22d77")
+}],
+"loop": true,
+"name": &"B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_c3c28")
+}],
+"loop": true,
+"name": &"C",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_j7gp8")
+}],
+"loop": true,
+"name": &"D",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_ih3ll")
+}],
+"loop": true,
+"name": &"E",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("35_67fju")
+}],
+"loop": true,
+"name": &"F",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_5m2v8")
+}],
+"loop": true,
+"name": &"G",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ij4qk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_57xel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eblc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bhweu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j2en8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7armx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dhjlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ndjcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_m1xpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8ploc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_71a5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_n0815")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_pb7kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_xytys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nqswt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ut3fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_dflju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ih3ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_2tarm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_0akb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_1ks5o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_chhdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_drj1x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ssia8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_03qaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_dpyuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_th1pu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_y8iyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_gjxvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_gcjrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_57k3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_j7gp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_67fju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_5m2v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_p18v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_sm2kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_gmsb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_bmy2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_5m5wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_wi1ae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_i6vxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_4tuhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_ymp5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_elgxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_c3c28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_78674")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_22d77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_sgu4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_yux4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_cl51h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_h8nh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_3r1rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_offs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_pf33u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_crg75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_gn68r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_xt4v4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_uvldh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_8cpv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_je33d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_bx2bu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_onuv3")
+}],
+"loop": true,
+"name": &"General",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("37_p18v6")
+}],
+"loop": true,
+"name": &"H",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_drj1x")
+}],
+"loop": true,
+"name": &"I",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("38_sm2kj")
+}],
+"loop": true,
+"name": &"J",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("39_gmsb6")
+}],
+"loop": true,
+"name": &"K",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_bmy2u")
+}],
+"loop": true,
+"name": &"L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_yux4m")
+}],
+"loop": true,
+"name": &"M",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_sgu4x")
+}],
+"loop": true,
+"name": &"N",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_67fju")
+}],
+"loop": true,
+"name": &"None",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_ssia8")
+}],
+"loop": true,
+"name": &"O",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_03qaq")
+}],
+"loop": true,
+"name": &"P",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_ut3fs")
+}],
+"loop": true,
+"name": &"Q",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_2tarm")
+}],
+"loop": true,
+"name": &"R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_57k3g")
+}],
+"loop": true,
+"name": &"S",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("60_uvldh")
+}],
+"loop": true,
+"name": &"Space",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_0akb2")
+}],
+"loop": true,
+"name": &"T",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_chhdb")
+}],
+"loop": true,
+"name": &"U",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_78674")
+}],
+"loop": true,
+"name": &"V",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_dflju")
+}],
+"loop": true,
+"name": &"W",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_elgxj")
+}],
+"loop": true,
+"name": &"X",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_1ks5o")
+}],
+"loop": true,
+"name": &"Y",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_ymp5t")
+}],
+"loop": true,
+"name": &"Z",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhweu"]
+bg_color = Color(0, 0, 0, 0.5529412)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[node name="Lessons" type="Node2D" unique_id=389227686]
+script = ExtResource("1_ij4qk")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1946711347]
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+script = ExtResource("2_7armx")
+randomStrength = 5.0
+
+[node name="OnTop" type="CanvasLayer" parent="." unique_id=965583851]
+
+[node name="OptionsDim" type="ColorRect" parent="OnTop" unique_id=1613162609]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Pause" parent="OnTop" unique_id=1227462733 instance=ExtResource("69_p18v6")]
+visible = false
+
+[node name="Fade" type="ColorRect" parent="OnTop" unique_id=2111009224]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control" parent="." unique_id=206546443]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Background" type="ColorRect" parent="UI" unique_id=1427534631]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.009375
+anchor_top = -0.022222223
+anchor_right = 1.0098958
+anchor_bottom = 1.0166667
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LSD" type="ColorRect" parent="UI" unique_id=1775648541]
+material = SubResource("ShaderMaterial_j2en8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wumba" type="TextureRect" parent="UI" unique_id=531004537]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.5
+offset_right = 62.5
+offset_bottom = 112.0
+grow_horizontal = 2
+texture = ExtResource("5_m1xpu")
+stretch_mode = 3
+
+[node name="Keyboard" type="TextureRect" parent="UI" unique_id=410484329]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.34564
+offset_top = -153.75
+offset_right = 464.3457
+offset_bottom = 153.75
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_7armx")
+
+[node name="Keys" type="AnimatedSprite2D" parent="UI" unique_id=422155516]
+visible = false
+position = Vector2(960.1875, 540)
+scale = Vector2(2.0630555, 2.055)
+sprite_frames = SubResource("SpriteFrames_ktst7")
+animation = &"None"
+
+[node name="Text" type="RichTextLabel" parent="UI" unique_id=1989577601]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -462.0
+offset_top = 199.0
+offset_right = 466.00037
+offset_bottom = 350.0
+grow_horizontal = 2
+theme = ExtResource("65_57xel")
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("71_8ploc")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "Wow look at the [color=lightblue][wave]cool[/wave][/color] colors here
+It would be a shame if someone did something to them
+The [font_size=50][color=red]EVIL[/color] [/font_size]one: hi I am evil and also british"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI/Text" unique_id=324301834]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhweu")
+
+[node name="Controls" type="RichTextLabel" parent="UI" unique_id=743073410]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -147.0
+offset_right = 231.99982
+grow_vertical = 0
+theme = ExtResource("65_57xel")
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("71_8ploc")
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = " PgUp: Font Up
+ PgDn: Font Down
+ Del: Delete
+ Enter: New Line"
+fit_content = true
+
+[node name="Panel" type="Panel" parent="UI/Controls" unique_id=609389954]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhweu")
+
+[node name="FontSize" type="RichTextLabel" parent="UI" unique_id=1214035639]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -202.0
+offset_top = -55.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("65_57xel")
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("71_8ploc")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "Font Size: 32"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI/FontSize" unique_id=33646104]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhweu")
+
+[node name="Time" type="RichTextLabel" parent="UI" unique_id=1896231588]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.5
+offset_top = -41.0
+offset_right = 75.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("65_57xel")
+theme_override_constants/outline_size = 6
+theme_override_fonts/normal_font = ExtResource("71_8ploc")
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "Time"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="UI/Time" unique_id=1271603245]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bhweu")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=800899850]
+stream = ExtResource("70_p18v6")
+volume_db = -10.0
+parameters/looping = true
+
+[node name="Back" type="AudioStreamPlayer" parent="." unique_id=30972242]
+stream = ExtResource("70_5m2v8")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1716284296]
+stream = ExtResource("71_5m2v8")
+volume_db = -5.0
+
+[node name="NewClick" type="AudioStreamPlayer" parent="." unique_id=346689256]
+stream = ExtResource("71_5m2v8")

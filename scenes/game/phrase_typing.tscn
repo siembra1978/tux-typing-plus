@@ -1,0 +1,408 @@
+[gd_scene format=3 uid="uid://6kxatcmuheo4"]
+
+[ext_resource type="Script" uid="uid://c3go57sdht8ul" path="res://scenes/game/phrase_typing.gd" id="1_jl74s"]
+[ext_resource type="Texture2D" uid="uid://cjl3087f6x4u3" path="res://assets/visual/sprites/wumba.png" id="2_4wniy"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="3_tyhi0"]
+[ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="4_gsbf1"]
+[ext_resource type="Theme" uid="uid://b34g4whlitecf" path="res://assets/visual/sprites/tuxtheme.tres" id="4_nio16"]
+[ext_resource type="AudioStream" uid="uid://ddwdpcgxtg8rx" path="res://assets/tux4kids/sounds/buzz.wav" id="5_eviq1"]
+[ext_resource type="Shader" uid="uid://b4yhwgv8l8djq" path="res://shaders/scroll.gdshader" id="6_gsbf1"]
+[ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="6_m010e"]
+[ext_resource type="AudioStream" uid="uid://cvbqgeqsi3vjd" path="res://assets/tux4kids/sounds/cheer.wav" id="6_oe0n4"]
+[ext_resource type="PackedScene" uid="uid://dm6jp4gjboooc" path="res://scenes/menus/pause/pause.tscn" id="6_tyhi0"]
+[ext_resource type="Texture2D" uid="uid://dtqwvpw3uoj1m" path="res://assets/visual/backgrounds/misc/tuxbg.png" id="7_eviq1"]
+[ext_resource type="Script" uid="uid://or8mcd735o0r" path="res://scenes/game/restart.gd" id="7_gsbf1"]
+[ext_resource type="Script" uid="uid://crxm56favhwos" path="res://scenes/game/exit.gd" id="8_eviq1"]
+[ext_resource type="Texture2D" uid="uid://cmxgeqoqxx4rn" path="res://assets/tux4kids/images/main_bkg.png" id="8_m010e"]
+[ext_resource type="Shader" uid="uid://dtoovi8aju1j3" path="res://shaders/blur.gdshader" id="10_n76ir"]
+[ext_resource type="StyleBox" uid="uid://bdmmu21u7nh2q" path="res://assets/visual/themes/darkbox.tres" id="11_eviq1"]
+[ext_resource type="Theme" uid="uid://cei78kgos2820" path="res://assets/visual/themes/properrhythm.tres" id="12_3uiq3"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="14_n76ir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oe0n4"]
+shader = ExtResource("6_gsbf1")
+shader_parameter/speed = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s68tt"]
+shader = ExtResource("10_n76ir")
+shader_parameter/samples = 50
+shader_parameter/lod = 3
+shader_parameter/tint_color = Color(0, 0, 0, 0.21568628)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3uiq3"]
+font_size = 50
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s68tt"]
+font = ExtResource("14_n76ir")
+font_size = 24
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n76ir"]
+font_size = 24
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m010e"]
+font_size = 128
+
+[node name="PhraseTyping" type="Node2D" unique_id=847292792]
+script = ExtResource("1_jl74s")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1077317731]
+stream = ExtResource("3_tyhi0")
+volume_db = -5.0
+
+[node name="Back" type="AudioStreamPlayer" parent="." unique_id=947138408]
+stream = ExtResource("4_gsbf1")
+
+[node name="Error" type="AudioStreamPlayer" parent="." unique_id=30911091]
+stream = ExtResource("5_eviq1")
+volume_db = -25.0
+
+[node name="Win" type="AudioStreamPlayer" parent="." unique_id=501164732]
+stream = ExtResource("6_oe0n4")
+volume_db = -5.0
+
+[node name="NewClick" type="AudioStreamPlayer" parent="." unique_id=1837490264]
+stream = ExtResource("6_m010e")
+
+[node name="OnTop" type="CanvasLayer" parent="." unique_id=1466838618]
+
+[node name="DefaultBackground" type="ColorRect" parent="OnTop" unique_id=785335408]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="TextureRect" parent="OnTop" unique_id=1878092406]
+material = SubResource("ShaderMaterial_oe0n4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_eviq1")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="OnTop" unique_id=2071502319]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_m010e")
+expand_mode = 1
+
+[node name="BGDim" type="ColorRect" parent="OnTop" unique_id=1287747997]
+visible = false
+material = SubResource("ShaderMaterial_s68tt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.40784314)
+
+[node name="ColorRect" type="ColorRect" parent="OnTop" unique_id=487209859]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3019608, 0.3019608, 0.3019608, 1)
+
+[node name="HUD" type="Control" parent="OnTop" unique_id=573318263]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wumba" type="TextureRect" parent="OnTop/HUD" unique_id=745458869]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.5
+offset_top = -112.0
+offset_right = 62.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_4wniy")
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="OnTop/HUD" unique_id=64448393]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -623.0
+offset_right = 622.0
+offset_bottom = 82.0
+grow_horizontal = 2
+size_flags_vertical = 6
+theme_override_styles/panel = ExtResource("11_eviq1")
+
+[node name="Info" type="BoxContainer" parent="OnTop/HUD" unique_id=330073375]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -622.75
+offset_right = 622.75
+offset_bottom = 82.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="WPM" type="Label" parent="OnTop/HUD/Info" unique_id=1590570220]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_nio16")
+theme_override_fonts/font = ExtResource("14_n76ir")
+theme_override_font_sizes/font_size = 32
+text = "WPM: 0"
+label_settings = SubResource("LabelSettings_3uiq3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Words" type="Label" parent="OnTop/HUD/Info" unique_id=18888107]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_nio16")
+theme_override_fonts/font = ExtResource("14_n76ir")
+theme_override_font_sizes/font_size = 32
+text = "Words: 0"
+label_settings = SubResource("LabelSettings_3uiq3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Errors" type="Label" parent="OnTop/HUD/Info" unique_id=131367300]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_nio16")
+theme_override_fonts/font = ExtResource("14_n76ir")
+theme_override_font_sizes/font_size = 32
+text = "Errors: 0"
+label_settings = SubResource("LabelSettings_3uiq3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PenguinOptions" type="BoxContainer" parent="OnTop/HUD" unique_id=1417769143]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -347.0
+offset_top = 90.0
+offset_right = 347.0
+offset_bottom = 172.00002
+grow_horizontal = 2
+alignment = 1
+
+[node name="Time" type="Button" parent="OnTop/HUD/PenguinOptions" unique_id=279359154]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_3uiq3")
+theme_override_font_sizes/font_size = 32
+text = "Time
+"
+
+[node name="Time2" type="Button" parent="OnTop/HUD/PenguinOptions" unique_id=311653857]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("12_3uiq3")
+theme_override_font_sizes/font_size = 32
+text = "Words"
+
+[node name="Text" type="RichTextLabel" parent="OnTop/HUD" unique_id=854952215]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -125.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/normal_font = ExtResource("14_n76ir")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_styles/normal = ExtResource("11_eviq1")
+bbcode_enabled = true
+text = "[color=green][/color]test"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundSelect" type="BoxContainer" parent="OnTop/HUD" unique_id=1372899520]
+layout_mode = 1
+offset_right = 210.0
+offset_bottom = 82.0
+theme = ExtResource("4_nio16")
+vertical = true
+
+[node name="SetLabel" type="Label" parent="OnTop/HUD/SoundSelect" unique_id=428845005]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_nio16")
+text = "Click Sound"
+label_settings = SubResource("LabelSettings_s68tt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundDropdown" type="OptionButton" parent="OnTop/HUD/SoundSelect" unique_id=2023497940]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("12_3uiq3")
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "Clack"
+popup/item_0/id = 0
+popup/item_1/text = "Dit"
+popup/item_1/id = 1
+popup/item_2/text = "Pop"
+popup/item_2/id = 2
+popup/item_3/text = "Typewriter"
+popup/item_3/id = 3
+
+[node name="WordSelect" type="BoxContainer" parent="OnTop/HUD" unique_id=1935246750]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -210.0
+offset_bottom = 82.0
+grow_horizontal = 0
+theme = ExtResource("4_nio16")
+vertical = true
+
+[node name="SetLabel" type="Label" parent="OnTop/HUD/WordSelect" unique_id=71962075]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_nio16")
+text = "Penguin Set"
+label_settings = SubResource("LabelSettings_n76ir")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WordDropdown" type="OptionButton" parent="OnTop/HUD/WordSelect" unique_id=531142111]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("12_3uiq3")
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "penguintype100"
+popup/item_0/id = 0
+popup/item_1/text = "penguintype1k"
+popup/item_1/id = 1
+popup/item_2/text = "penguintype10k"
+popup/item_2/id = 2
+
+[node name="OptionsDim" type="ColorRect" parent="OnTop" unique_id=1475305399]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Pause" parent="OnTop" unique_id=1227462733 instance=ExtResource("6_tyhi0")]
+visible = false
+
+[node name="Fade" type="ColorRect" parent="OnTop" unique_id=1719754734]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GameOver" type="Control" parent="OnTop" unique_id=1602455599]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_nio16")
+
+[node name="Dim" type="ColorRect" parent="OnTop/GameOver" unique_id=2104799514]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Label" type="Label" parent="OnTop/GameOver" unique_id=1698052807]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -290.0
+offset_right = 277.0
+offset_bottom = -114.99994
+grow_horizontal = 2
+grow_vertical = 2
+text = "Oh No!"
+label_settings = SubResource("LabelSettings_m010e")
+horizontal_alignment = 1
+
+[node name="Buttons" type="BoxContainer" parent="OnTop/GameOver" unique_id=331736031]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -118.75
+offset_right = 267.0
+offset_bottom = 118.75
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="Restart" type="Button" parent="OnTop/GameOver/Buttons" unique_id=1323756047]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Restart
+"
+script = ExtResource("7_gsbf1")
+
+[node name="Exit" type="Button" parent="OnTop/GameOver/Buttons" unique_id=1696965942]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Select Gamemode"
+script = ExtResource("8_eviq1")
+
+[connection signal="item_selected" from="OnTop/HUD/SoundSelect/SoundDropdown" to="." method="_on_sound_dropdown_item_selected"]
+[connection signal="item_selected" from="OnTop/HUD/WordSelect/WordDropdown" to="." method="_on_word_dropdown_item_selected"]
+[connection signal="pressed" from="OnTop/GameOver/Buttons/Restart" to="OnTop/GameOver/Buttons/Restart" method="_on_pressed"]
+[connection signal="pressed" from="OnTop/GameOver/Buttons/Exit" to="OnTop/GameOver/Buttons/Exit" method="_on_pressed"]

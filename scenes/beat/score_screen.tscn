@@ -1,0 +1,477 @@
+[gd_scene format=3 uid="uid://d1l6tkbtaoeka"]
+
+[ext_resource type="Shader" uid="uid://b4yhwgv8l8djq" path="res://shaders/scroll.gdshader" id="1_4a0u3"]
+[ext_resource type="Script" uid="uid://dvniu3tdcq0mq" path="res://scenes/beat/score_screen.gd" id="1_dprky"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="2_3x1mr"]
+[ext_resource type="Theme" uid="uid://b34g4whlitecf" path="res://assets/visual/sprites/tuxtheme.tres" id="2_dprky"]
+[ext_resource type="AudioStream" uid="uid://cvbqgeqsi3vjd" path="res://assets/tux4kids/sounds/cheer.wav" id="2_j80h1"]
+[ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="4_an8xe"]
+[ext_resource type="Script" uid="uid://j6ep1jnd6ohf" path="res://scenes/beat/auto_scroll.gd" id="6_3x1mr"]
+[ext_resource type="PackedScene" uid="uid://cqxgdce5mn1v2" path="res://scenes/objects/ui/version_indicator.tscn" id="7_j80h1"]
+[ext_resource type="Theme" uid="uid://cei78kgos2820" path="res://assets/visual/themes/properrhythm.tres" id="7_lm5lb"]
+[ext_resource type="Script" uid="uid://cx1xc8pye752r" path="res://scenes/menus/select_mode/background.gd" id="7_mg8j5"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="8_1slry"]
+[ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="9_ccwms"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3x1mr"]
+shader = ExtResource("1_4a0u3")
+shader_parameter/speed = 0.1
+
+[sub_resource type="LabelSettings" id="LabelSettings_an8xe"]
+font = ExtResource("8_1slry")
+font_size = 128
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ccwms"]
+font = ExtResource("8_1slry")
+font_size = 128
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1slry"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mg8j5"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jfmra"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ux6bo"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3x1mr"]
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0pos"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1s0s4"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c1r1w"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7hue7"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8feaj"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ajax3"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6y4w"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4rakb"]
+font = ExtResource("8_1slry")
+font_size = 70
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_85qt1"]
+font = ExtResource("8_1slry")
+font_size = 128
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j80h1"]
+font = ExtResource("8_1slry")
+font_size = 128
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lm5lb"]
+font = ExtResource("8_1slry")
+font_size = 512
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ScoreScreen" type="Control" unique_id=804469515]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dprky")
+
+[node name="Cheer" type="AudioStreamPlayer" parent="." unique_id=173982346]
+stream = ExtResource("2_j80h1")
+volume_db = -10.0
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1028770254]
+stream = ExtResource("2_3x1mr")
+volume_db = -5.0
+
+[node name="NewClick" type="AudioStreamPlayer" parent="." unique_id=2000375871]
+stream = ExtResource("4_an8xe")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1203754361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="TextureRect" parent="." unique_id=1874223226]
+material = SubResource("ShaderMaterial_3x1mr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dprky")
+stretch_mode = 1
+
+[node name="CustomBackground" type="TextureRect" parent="." unique_id=1274768777]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1104.0
+offset_top = -621.0
+offset_right = 1104.0
+offset_bottom = 621.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("7_mg8j5")
+
+[node name="BGDim" type="ColorRect" parent="." unique_id=293038366]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.83137256)
+
+[node name="GUI" type="BoxContainer" parent="." unique_id=1776654490]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Info" type="BoxContainer" parent="GUI" unique_id=163066524]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="AutoScroll" type="Control" parent="GUI/Info" unique_id=1630178373]
+clip_contents = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+script = ExtResource("6_3x1mr")
+
+[node name="SongTitle" type="RichTextLabel" parent="GUI/Info/AutoScroll" unique_id=1590462593]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("8_1slry")
+theme_override_fonts/bold_font = ExtResource("8_1slry")
+theme_override_fonts/bold_italics_font = ExtResource("8_1slry")
+theme_override_fonts/italics_font = ExtResource("8_1slry")
+theme_override_fonts/mono_font = ExtResource("8_1slry")
+theme_override_font_sizes/normal_font_size = 64
+theme_override_font_sizes/bold_font_size = 64
+theme_override_font_sizes/bold_italics_font_size = 64
+theme_override_font_sizes/italics_font_size = 64
+theme_override_font_sizes/mono_font_size = 64
+text = "Song Title"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="ScoreStack" type="BoxContainer" parent="GUI/Info" unique_id=1418401762]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="GUI/Info/ScoreStack" unique_id=1501633880]
+layout_mode = 2
+text = "Score"
+label_settings = SubResource("LabelSettings_an8xe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="GUI/Info/ScoreStack" unique_id=568294866]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00000000"
+label_settings = SubResource("LabelSettings_ccwms")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GradingStack" type="BoxContainer" parent="GUI/Info" unique_id=1458439308]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="BoxContainer" parent="GUI/Info/GradingStack" unique_id=1092067595]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+vertical = true
+
+[node name="Perfect" type="BoxContainer" parent="GUI/Info/GradingStack/Left" unique_id=1744372046]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PerfectLabel" type="Label" parent="GUI/Info/GradingStack/Left/Perfect" unique_id=611417142]
+layout_mode = 2
+text = "Perfect"
+label_settings = SubResource("LabelSettings_1slry")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PerfectNum" type="Label" parent="GUI/Info/GradingStack/Left/Perfect" unique_id=341507404]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_mg8j5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Good" type="BoxContainer" parent="GUI/Info/GradingStack/Left" unique_id=356090606]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GoodLabel" type="Label" parent="GUI/Info/GradingStack/Left/Good" unique_id=1298392337]
+layout_mode = 2
+text = "Good"
+label_settings = SubResource("LabelSettings_jfmra")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoodNum" type="Label" parent="GUI/Info/GradingStack/Left/Good" unique_id=1810410648]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_ux6bo")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Buffer" type="BoxContainer" parent="GUI/Info/GradingStack" unique_id=2099844693]
+layout_mode = 2
+vertical = true
+
+[node name="InvisibleBufferLabel" type="Label" parent="GUI/Info/GradingStack/Buffer" unique_id=604203734]
+layout_mode = 2
+text = " "
+label_settings = SubResource("LabelSettings_3x1mr")
+
+[node name="Right" type="BoxContainer" parent="GUI/Info/GradingStack" unique_id=46138637]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+vertical = true
+
+[node name="Meh" type="BoxContainer" parent="GUI/Info/GradingStack/Right" unique_id=1859288290]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MehLabel" type="Label" parent="GUI/Info/GradingStack/Right/Meh" unique_id=582532953]
+layout_mode = 2
+text = "Meh"
+label_settings = SubResource("LabelSettings_u0pos")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MehNum" type="Label" parent="GUI/Info/GradingStack/Right/Meh" unique_id=340778047]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_1s0s4")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Miss" type="BoxContainer" parent="GUI/Info/GradingStack/Right" unique_id=846296985]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MissLabel" type="Label" parent="GUI/Info/GradingStack/Right/Miss" unique_id=1535347861]
+layout_mode = 2
+text = "Miss"
+label_settings = SubResource("LabelSettings_c1r1w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MissNum" type="Label" parent="GUI/Info/GradingStack/Right/Miss" unique_id=2012160255]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_7hue7")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ResultStack" type="BoxContainer" parent="GUI/Info" unique_id=530537418]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+vertical = true
+
+[node name="Accuracy" type="BoxContainer" parent="GUI/Info/ResultStack" unique_id=1706724104]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AccuracyLabel" type="Label" parent="GUI/Info/ResultStack/Accuracy" unique_id=1662168513]
+layout_mode = 2
+text = "Accuracy"
+label_settings = SubResource("LabelSettings_8feaj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AccuracyPer" type="Label" parent="GUI/Info/ResultStack/Accuracy" unique_id=469895174]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100.00%"
+label_settings = SubResource("LabelSettings_ajax3")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Combo" type="BoxContainer" parent="GUI/Info/ResultStack" unique_id=289392352]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Combo" type="Label" parent="GUI/Info/ResultStack/Combo" unique_id=1960708194]
+layout_mode = 2
+text = "Combo"
+label_settings = SubResource("LabelSettings_v6y4w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComboLabel" type="Label" parent="GUI/Info/ResultStack/Combo" unique_id=1928340433]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0x"
+label_settings = SubResource("LabelSettings_4rakb")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="FC" type="Label" parent="GUI/Info/ResultStack" unique_id=469737933]
+layout_mode = 2
+text = "Full Combo"
+label_settings = SubResource("LabelSettings_85qt1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ranking" type="BoxContainer" parent="GUI" unique_id=102732269]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical = true
+
+[node name="RankControl" type="Control" parent="GUI/Ranking" unique_id=1174849283]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RankLabel" type="Label" parent="GUI/Ranking/RankControl" unique_id=1857127416]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -249.5
+offset_right = 249.5
+offset_bottom = 175.0
+grow_horizontal = 2
+text = "Ranking"
+label_settings = SubResource("LabelSettings_j80h1")
+horizontal_alignment = 1
+
+[node name="RankLetter" type="Label" parent="GUI/Ranking/RankControl" unique_id=2051593816]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.0
+offset_right = 141.0
+offset_bottom = 698.0
+grow_horizontal = 2
+text = "S"
+label_settings = SubResource("LabelSettings_lm5lb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Control" parent="GUI/Ranking" unique_id=395270001]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Menu" type="Button" parent="GUI/Ranking/Buttons" unique_id=1798759411]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -15.5
+offset_right = 96.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_lm5lb")
+theme_override_font_sizes/font_size = 96
+text = "Return To Menu"
+script = ExtResource("9_ccwms")
+
+[node name="VersionIndicator" parent="." unique_id=1429627592 instance=ExtResource("7_j80h1")]
+layout_mode = 1
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1279083566]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="GUI/Ranking/Buttons/Menu" to="." method="_on_menu_pressed"]

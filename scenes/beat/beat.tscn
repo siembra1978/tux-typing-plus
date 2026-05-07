@@ -1,0 +1,631 @@
+[gd_scene format=3 uid="uid://bmct7gu5yrat6"]
+
+[ext_resource type="Script" uid="uid://da6ub18w5ht5r" path="res://scenes/beat/beat.gd" id="1_g7pjr"]
+[ext_resource type="Texture2D" uid="uid://cjl3087f6x4u3" path="res://assets/visual/sprites/wumba.png" id="3_4sa0s"]
+[ext_resource type="Texture2D" uid="uid://d06grqxnl27hv" path="res://assets/visual/sprites/cheertemp.png" id="3_qeyds"]
+[ext_resource type="Texture2D" uid="uid://idvglnxw3r4b" path="res://assets/visual/sprites/particles.png" id="4_3gpi2"]
+[ext_resource type="Texture2D" uid="uid://sbkimt4bwhwt" path="res://assets/tux4kids/images/tux/bigtux0.png" id="4_arb1b"]
+[ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="4_q8exw"]
+[ext_resource type="AudioStream" uid="uid://bc8puf4u8rdam" path="res://assets/audio/clicks/pop/click3_1.ogg" id="7_fsxya"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="7_q8exw"]
+[ext_resource type="AudioStream" uid="uid://doeypsxpyuskf" path="res://assets/tux4kids/sounds/splat.wav" id="8_4sa0s"]
+[ext_resource type="AudioStream" uid="uid://f3hssxgrslxl" path="res://assets/audio/sfx/metronome/Perc_Can_hi.wav" id="9_arb1b"]
+[ext_resource type="Theme" uid="uid://cei78kgos2820" path="res://assets/visual/themes/properrhythm.tres" id="10_5lhft"]
+[ext_resource type="AudioStream" uid="uid://b7tuss2pkw4nr" path="res://assets/audio/sfx/metronome/Perc_Can_lo.wav" id="10_m2553"]
+[ext_resource type="PackedScene" uid="uid://dm6jp4gjboooc" path="res://scenes/menus/pause/pause.tscn" id="11_drkmo"]
+[ext_resource type="AudioStream" uid="uid://cvbqgeqsi3vjd" path="res://assets/tux4kids/sounds/cheer.wav" id="11_gc0sx"]
+[ext_resource type="Texture2D" uid="uid://dnmyx24hvbvly" path="res://assets/visual/sprites/hitcircleoverlay.png" id="11_q8exw"]
+[ext_resource type="Theme" uid="uid://b34g4whlitecf" path="res://assets/visual/sprites/tuxtheme.tres" id="12_fsxya"]
+[ext_resource type="AudioStream" uid="uid://dmcjw7shithfd" path="res://assets/audio/beat/click2_1.wav" id="12_m2553"]
+[ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="13_krf7l"]
+[ext_resource type="Script" uid="uid://or8mcd735o0r" path="res://scenes/game/restart.gd" id="13_qeyds"]
+[ext_resource type="Script" uid="uid://crxm56favhwos" path="res://scenes/game/exit.gd" id="14_3gpi2"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="14_gc0sx"]
+[ext_resource type="Script" uid="uid://dvmjj616gxe5o" path="res://scenes/beat/max_combo.gd" id="16_drkmo"]
+[ext_resource type="PackedScene" uid="uid://cnirbxye62ypr" path="res://scenes/objects/ui/accplate.tscn" id="18_enfm0"]
+[ext_resource type="Script" uid="uid://b6aqyomm420vq" path="res://scenes/beat/countdown_label.gd" id="19_pse6y"]
+[ext_resource type="Theme" uid="uid://bryxi4x6uhnqm" path="res://assets/visual/themes/tuxtheme2.tres" id="23_qeyds"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q0cuv"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_q0cuv"]
+offsets = PackedFloat32Array(0.5103093, 0.52061856, 0.943299, 0.9484536)
+colors = PackedColorArray(1, 0.7647059, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fdfu4"]
+gradient = SubResource("Gradient_q0cuv")
+
+[sub_resource type="Curve" id="Curve_q0cuv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.45909092, 0.73033714), 0.0, 0.0, 0, 0, Vector2(0.6545454, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_fdfu4"]
+curve = SubResource("Curve_q0cuv")
+
+[sub_resource type="Curve" id="Curve_fdfu4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.77272725, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5842697), -4.119848, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4vkeu"]
+curve = SubResource("Curve_fdfu4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fdfu4"]
+particle_flag_disable_z = true
+velocity_pivot = Vector3(0, -1, 0)
+direction = Vector3(1, -1, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 280.0
+angular_velocity_min = -180.00002
+angular_velocity_max = 179.99998
+gravity = Vector3(0, 75, 0)
+linear_accel_min = 9.999997
+linear_accel_max = 29.999996
+damping_min = 74.0
+damping_max = 78.0
+damping_curve = SubResource("CurveTexture_fdfu4")
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_4vkeu")
+color_initial_ramp = SubResource("GradientTexture1D_fdfu4")
+hue_variation_min = -0.020000022
+hue_variation_max = 0.019999977
+anim_speed_min = 2.0
+anim_speed_max = 5.0
+anim_offset_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q0cuv"]
+particle_flag_disable_z = true
+velocity_pivot = Vector3(0, -1, 0)
+direction = Vector3(-1, -1, 0)
+initial_velocity_min = 250.0
+initial_velocity_max = 280.0
+angular_velocity_min = -180.00002
+angular_velocity_max = 179.99998
+gravity = Vector3(0, 75, 0)
+linear_accel_min = 9.999997
+linear_accel_max = 29.999996
+damping_min = 74.0
+damping_max = 78.0
+damping_curve = SubResource("CurveTexture_fdfu4")
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_4vkeu")
+color_initial_ramp = SubResource("GradientTexture1D_fdfu4")
+hue_variation_min = -0.020000022
+hue_variation_max = 0.019999977
+anim_speed_min = 2.0
+anim_speed_max = 5.0
+anim_offset_max = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fdfu4"]
+font = ExtResource("14_gc0sx")
+font_size = 50
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4sa0s"]
+font = ExtResource("14_gc0sx")
+font_size = 64
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_arb1b"]
+font = ExtResource("14_gc0sx")
+font_size = 512
+outline_size = 48
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4vkeu"]
+font = ExtResource("14_gc0sx")
+font_size = 128
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fsxya"]
+load_path = "res://.godot/imported/Hornet_Idle.png-c4a98933d1285cde74a1aee36aaaa223.ctex"
+
+[node name="Beat" type="Node2D" unique_id=1281335826]
+script = ExtResource("1_g7pjr")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1909143975]
+layer = -1
+
+[node name="Control" type="Control" parent="Background" unique_id=1244212998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Background/Control" unique_id=1069522131]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRectS" type="TextureRect" parent="Background/Control" unique_id=337286297]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Background/Control" unique_id=629017400]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1200.0
+offset_top = -675.0
+offset_right = 1200.0
+offset_bottom = 675.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Background/Control" unique_id=1154145700]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+volume_db = -80.0
+
+[node name="BGDim" type="ColorRect" parent="Background/Control" unique_id=1312671274]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5803922)
+
+[node name="Bar" type="ColorRect" parent="Background/Control" unique_id=1278199897]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = 347.0
+offset_right = 720.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="ActiveBackground" type="CanvasLayer" parent="." unique_id=1517899605]
+layer = -1
+
+[node name="KiaiCheerLeft" type="TextureRect" parent="ActiveBackground" unique_id=639710073]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 510.0
+offset_bottom = 300.0
+grow_vertical = 0
+texture = ExtResource("3_qeyds")
+expand_mode = 5
+
+[node name="KiaiParticles" type="GPUParticles2D" parent="ActiveBackground/KiaiCheerLeft" unique_id=594971723]
+material = SubResource("CanvasItemMaterial_q0cuv")
+position = Vector2(324, 420)
+emitting = false
+amount = 30
+texture = ExtResource("4_3gpi2")
+lifetime = 5.0
+one_shot = true
+preprocess = 0.1
+speed_scale = 1.5
+explosiveness = 0.97
+process_material = SubResource("ParticleProcessMaterial_fdfu4")
+
+[node name="KiaiCheerRight" type="TextureRect" parent="ActiveBackground" unique_id=891544696]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -510.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_qeyds")
+expand_mode = 5
+flip_h = true
+
+[node name="KiaiParticles" type="GPUParticles2D" parent="ActiveBackground/KiaiCheerRight" unique_id=791330916]
+material = SubResource("CanvasItemMaterial_q0cuv")
+position = Vector2(496, 416)
+emitting = false
+amount = 30
+texture = ExtResource("4_3gpi2")
+lifetime = 5.0
+one_shot = true
+preprocess = 0.1
+speed_scale = 1.5
+explosiveness = 0.97
+process_material = SubResource("ParticleProcessMaterial_q0cuv")
+
+[node name="Wumba" type="TextureRect" parent="ActiveBackground" unique_id=782337694]
+visible = false
+offset_right = 125.0
+offset_bottom = 112.0
+texture = ExtResource("3_4sa0s")
+stretch_mode = 3
+
+[node name="Tux" type="TextureRect" parent="ActiveBackground" unique_id=456597498]
+z_index = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.244995
+offset_top = -180.0
+offset_right = 105.244995
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_arb1b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=434167733]
+volume_db = -10.0
+
+[node name="Back" type="AudioStreamPlayer" parent="." unique_id=624327942]
+stream = ExtResource("4_q8exw")
+
+[node name="CometBreakSound" type="AudioStreamPlayer" parent="." unique_id=1747442212]
+stream = ExtResource("7_fsxya")
+volume_db = 7.5
+
+[node name="Miss" type="AudioStreamPlayer" parent="." unique_id=687388794]
+stream = ExtResource("8_4sa0s")
+volume_db = -10.0
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=493664903]
+stream = ExtResource("7_q8exw")
+volume_db = -5.0
+
+[node name="Lose" type="AudioStreamPlayer" parent="." unique_id=698151206]
+stream = ExtResource("8_4sa0s")
+volume_db = -5.0
+
+[node name="Sad" type="AudioStreamPlayer" parent="." unique_id=866429984]
+
+[node name="Metronome" type="AudioStreamPlayer" parent="." unique_id=38482507]
+stream = ExtResource("9_arb1b")
+volume_db = 7.0
+
+[node name="Metronome2" type="AudioStreamPlayer" parent="." unique_id=1487133056]
+stream = ExtResource("10_m2553")
+volume_db = 7.5
+
+[node name="Kiai" type="AudioStreamPlayer" parent="." unique_id=1851224969]
+stream = ExtResource("11_gc0sx")
+volume_db = -5.0
+
+[node name="Countdown" type="AudioStreamPlayer" parent="." unique_id=1637741715]
+stream = ExtResource("12_m2553")
+
+[node name="NewClick" type="AudioStreamPlayer" parent="." unique_id=920342616]
+stream = ExtResource("13_krf7l")
+
+[node name="OnTop" type="CanvasLayer" parent="." unique_id=399292839]
+
+[node name="HUD" type="Control" parent="OnTop" unique_id=1339120983]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreStack" type="BoxContainer" parent="OnTop/HUD" unique_id=620235748]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_bottom = 215.0
+grow_horizontal = 0
+vertical = true
+
+[node name="Score" type="Label" parent="OnTop/HUD/ScoreStack" unique_id=1507748544]
+layout_mode = 2
+theme = ExtResource("12_fsxya")
+text = "00000000"
+label_settings = SubResource("LabelSettings_fdfu4")
+horizontal_alignment = 2
+
+[node name="Accuracy" type="Label" parent="OnTop/HUD/ScoreStack" unique_id=965553434]
+layout_mode = 2
+theme = ExtResource("12_fsxya")
+text = "100.00%"
+label_settings = SubResource("LabelSettings_fdfu4")
+horizontal_alignment = 2
+
+[node name="Mods" type="BoxContainer" parent="OnTop/HUD" unique_id=1828451855]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = -215.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+vertical = true
+
+[node name="EZ" type="Label" parent="OnTop/HUD/Mods" unique_id=1911185307]
+visible = false
+layout_mode = 2
+text = "EZ"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AP" type="Label" parent="OnTop/HUD/Mods" unique_id=2007199322]
+visible = false
+layout_mode = 2
+text = "AP"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NF" type="Label" parent="OnTop/HUD/Mods" unique_id=1626324394]
+visible = false
+layout_mode = 2
+text = "NF"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HT" type="Label" parent="OnTop/HUD/Mods" unique_id=108544244]
+visible = false
+layout_mode = 2
+text = "HT"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DT" type="Label" parent="OnTop/HUD/Mods" unique_id=720624452]
+visible = false
+layout_mode = 2
+text = "DT"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HD" type="Label" parent="OnTop/HUD/Mods" unique_id=428552223]
+visible = false
+layout_mode = 2
+text = "HD"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HR" type="Label" parent="OnTop/HUD/Mods" unique_id=443959381]
+visible = false
+layout_mode = 2
+text = "HR"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CS" type="Label" parent="OnTop/HUD/Mods" unique_id=1447349641]
+visible = false
+layout_mode = 2
+text = "CS"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ComboStack" type="BoxContainer" parent="OnTop/HUD" unique_id=348866263]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -187.0
+offset_right = 260.0
+grow_vertical = 0
+alignment = 2
+vertical = true
+
+[node name="MaxCombo" type="Label" parent="OnTop/HUD/ComboStack" unique_id=2106757467]
+layout_mode = 2
+text = "0x"
+label_settings = SubResource("LabelSettings_fdfu4")
+vertical_alignment = 2
+script = ExtResource("16_drkmo")
+
+[node name="HealthBar" type="ProgressBar" parent="OnTop/HUD" unique_id=83826985]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -405.0
+offset_right = 60.0
+offset_bottom = 405.0
+grow_vertical = 2
+theme = ExtResource("10_5lhft")
+value = 75.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ProgressCircle" type="TextureProgressBar" parent="OnTop/HUD" unique_id=1119113967]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 142.0
+offset_bottom = 206.0
+grow_horizontal = 0
+theme = ExtResource("10_5lhft")
+step = 0.01
+value = 75.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress = ExtResource("11_q8exw")
+
+[node name="AccuracyPlate" parent="OnTop/HUD" unique_id=3688410 instance=ExtResource("18_enfm0")]
+layout_mode = 1
+
+[node name="CountdownLabel" type="Label" parent="OnTop/HUD" unique_id=210601248]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_arb1b")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("19_pse6y")
+
+[node name="OptionsDim" type="ColorRect" parent="OnTop" unique_id=555654512]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Pause" parent="OnTop" unique_id=1227462733 instance=ExtResource("11_drkmo")]
+visible = false
+
+[node name="GameOver" type="Control" parent="OnTop" unique_id=128836893]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("23_qeyds")
+
+[node name="Dim" type="ColorRect" parent="OnTop/GameOver" unique_id=435383168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Label" type="Label" parent="OnTop/GameOver" unique_id=155428882]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -290.0
+offset_right = 277.0
+offset_bottom = -114.99994
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_4vkeu")
+
+[node name="Buttons" type="BoxContainer" parent="OnTop/GameOver" unique_id=1725562457]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -118.75
+offset_right = 267.0
+offset_bottom = 118.75
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="Restart" type="Button" parent="OnTop/GameOver/Buttons" unique_id=262477403]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Restart
+"
+script = ExtResource("13_qeyds")
+
+[node name="Exit" type="Button" parent="OnTop/GameOver/Buttons" unique_id=1388978277]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Select Beatmap
+"
+script = ExtResource("14_3gpi2")
+
+[node name="silson" type="TextureRect" parent="OnTop/GameOver" unique_id=1224578975]
+visible = false
+layout_mode = 0
+offset_left = 1270.0
+offset_top = 394.0
+offset_right = 1863.0
+offset_bottom = 1185.0
+texture = SubResource("CompressedTexture2D_fsxya")
+stretch_mode = 4
+
+[node name="Fade" type="ColorRect" parent="OnTop" unique_id=587898596]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]
+[connection signal="pressed" from="OnTop/GameOver/Buttons/Restart" to="OnTop/GameOver/Buttons/Restart" method="_on_pressed"]
+[connection signal="pressed" from="OnTop/GameOver/Buttons/Exit" to="OnTop/GameOver/Buttons/Exit" method="_on_pressed"]

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bfocaekhvgdee"]
+
+[ext_resource type="Script" uid="uid://j42c8q04yew4" path="res://scenes/objects/ui/fps_counter.gd" id="1_gbmn3"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="2_kfjmx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6vx7f"]
+font = ExtResource("2_kfjmx")
+
+[node name="FPSCounter" type="Control" unique_id=1062448119]
+visible = false
+top_level = true
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gbmn3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1366905604]
+layer = 2
+
+[node name="CounterLabel" type="Label" parent="CanvasLayer" unique_id=1324755134]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_right = 140.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "30 FPS (min 30 / avg 30 / max 30)"
+label_settings = SubResource("LabelSettings_6vx7f")

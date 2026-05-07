@@ -1,0 +1,751 @@
+[gd_scene format=3 uid="uid://2oh6ddkcfc1j"]
+
+[ext_resource type="Script" uid="uid://n8tabnsrht57" path="res://scenes/beat/rhythmgame.gd" id="1_evdug"]
+[ext_resource type="Theme" uid="uid://b34g4whlitecf" path="res://assets/visual/sprites/tuxtheme.tres" id="1_gmrfc"]
+[ext_resource type="Shader" uid="uid://b4yhwgv8l8djq" path="res://shaders/scroll.gdshader" id="1_t2e5h"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="2_46l52"]
+[ext_resource type="AudioStream" uid="uid://ddwdpcgxtg8rx" path="res://assets/tux4kids/sounds/buzz.wav" id="3_n0ign"]
+[ext_resource type="AudioStream" uid="uid://cvbqgeqsi3vjd" path="res://assets/tux4kids/sounds/cheer.wav" id="4_vrqkv"]
+[ext_resource type="Texture2D" uid="uid://cjl3087f6x4u3" path="res://assets/visual/sprites/wumba.png" id="5_j87rg"]
+[ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="5_prewn"]
+[ext_resource type="Shader" uid="uid://dtoovi8aju1j3" path="res://shaders/blur.gdshader" id="6_46l52"]
+[ext_resource type="Texture2D" uid="uid://celxi1ktj4c5o" path="res://assets/visual/sprites/dropshadow.png" id="7_x10ls"]
+[ext_resource type="Texture2D" uid="uid://dmwnpoude5iww" path="res://assets/visual/sprites/clock.png" id="8_gpwjp"]
+[ext_resource type="Texture2D" uid="uid://dtqwvpw3uoj1m" path="res://assets/visual/backgrounds/misc/tuxbg.png" id="8_ucm3w"]
+[ext_resource type="StyleBox" uid="uid://bdmmu21u7nh2q" path="res://assets/visual/themes/darkbox.tres" id="9_j87rg"]
+[ext_resource type="Script" uid="uid://cx1xc8pye752r" path="res://scenes/menus/select_mode/background.gd" id="9_jjx2o"]
+[ext_resource type="Theme" uid="uid://cei78kgos2820" path="res://assets/visual/themes/properrhythm.tres" id="9_voxba"]
+[ext_resource type="Script" uid="uid://das3vs6ssmh4m" path="res://scenes/beat/auto_scroll_pr.gd" id="11_f6imh"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="11_ld6hf"]
+[ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="12_p231l"]
+[ext_resource type="Script" uid="uid://bsglqy5l5pcon" path="res://scenes/menus/select_mode/texture_bob.gd" id="13_ucm3w"]
+[ext_resource type="Script" uid="uid://0yy5jfmffl70" path="res://scenes/menus/select_mode/bob.gd" id="15_jsu8p"]
+[ext_resource type="Script" uid="uid://dov42jljp3tip" path="res://scenes/beat/modtoggle.gd" id="17_wobq5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjesv"]
+shader = ExtResource("1_t2e5h")
+shader_parameter/speed = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpwjp"]
+shader = ExtResource("6_46l52")
+shader_parameter/samples = 50
+shader_parameter/lod = 3
+shader_parameter/tint_color = Color(0, 0, 0, 0.21568628)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6fnm"]
+font = ExtResource("11_ld6hf")
+font_size = 24
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmrfc"]
+font = ExtResource("11_ld6hf")
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_46l52"]
+font = ExtResource("11_ld6hf")
+font_size = 24
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpwjp"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0ign"]
+font = ExtResource("11_ld6hf")
+font_size = 34
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6imh"]
+font = ExtResource("11_ld6hf")
+font_size = 24
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x10ls"]
+font = ExtResource("11_ld6hf")
+font_size = 24
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j87rg"]
+font = ExtResource("11_ld6hf")
+font_size = 20
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_voxba"]
+font = ExtResource("11_ld6hf")
+font_size = 20
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vrqkv"]
+font = ExtResource("11_ld6hf")
+font_size = 20
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j87rg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.03137255, 0.078431375, 0.11764706, 0.56078434)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_voxba"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrqkv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.15618604, 0.3372517, 0.14481673, 0.94509804)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6imh"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.15686275, 0.3372549, 0.14509805, 0.94509804)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prewn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.23529412, 0.4862745, 0.21960784, 0.94509804)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p231l"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.15686275, 0.3372549, 0.14509805, 0.94509804)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld6hf"]
+bg_color = Color(0.19607843, 0.32941177, 0.43529412, 0.6901961)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wobq5"]
+bg_color = Color(0.3764706, 0.5647059, 0.7137255, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_hulpf"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.9490196, 0.9490196, 0.019607844, 1)
+Button/colors/font_hover_color = Color(0.9490196, 0.9490196, 0.019607844, 1)
+Button/colors/font_hover_pressed_color = Color(0.9490196, 0.9490196, 0.019607844, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.79199976, 0.7919248, 0.0011944127, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 11
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_j87rg")
+Button/styles/focus = SubResource("StyleBoxFlat_voxba")
+Button/styles/hover = SubResource("StyleBoxFlat_vrqkv")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_f6imh")
+Button/styles/normal = SubResource("StyleBoxFlat_prewn")
+Button/styles/pressed = SubResource("StyleBoxFlat_p231l")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ld6hf")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_wobq5")
+
+[node name="RhythmGame" type="Node2D" unique_id=339582882]
+script = ExtResource("1_evdug")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=618693607]
+volume_db = -10.0
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=936168182]
+stream = ExtResource("2_46l52")
+volume_db = -5.0
+
+[node name="Error" type="AudioStreamPlayer" parent="." unique_id=1760774217]
+stream = ExtResource("3_n0ign")
+volume_db = -10.0
+
+[node name="Kiai" type="AudioStreamPlayer" parent="." unique_id=1331630721]
+stream = ExtResource("4_vrqkv")
+volume_db = -5.0
+
+[node name="NewClick" type="AudioStreamPlayer" parent="." unique_id=1982429173]
+stream = ExtResource("5_prewn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1438658939]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1069416591]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gmrfc")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=293629789]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="TextureRect" parent="CanvasLayer/Control" unique_id=1880206127]
+material = SubResource("ShaderMaterial_bjesv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gmrfc")
+stretch_mode = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Control" unique_id=443177949]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+volume_db = -80.0
+loop = true
+
+[node name="CustomBackground" type="TextureRect" parent="CanvasLayer/Control" unique_id=315050007]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1104.0
+offset_top = -621.0
+offset_right = 1104.0
+offset_bottom = 621.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("8_ucm3w")
+expand_mode = 1
+script = ExtResource("9_jjx2o")
+
+[node name="BGDim" type="ColorRect" parent="CanvasLayer/Control" unique_id=1062548630]
+material = SubResource("ShaderMaterial_gpwjp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.40784314)
+
+[node name="Wumba" type="TextureRect" parent="CanvasLayer/Control" unique_id=29457329]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.5
+offset_top = -112.0
+offset_right = 62.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_j87rg")
+stretch_mode = 3
+
+[node name="DropShadow" type="TextureRect" parent="CanvasLayer/Control" unique_id=1323210329]
+visible = false
+modulate = Color(1, 1, 1, 0.81960785)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 93.0
+offset_top = -316.0
+offset_right = 929.0
+offset_bottom = 176.00043
+grow_vertical = 2
+texture = ExtResource("7_x10ls")
+script = ExtResource("13_ucm3w")
+
+[node name="HUD" type="BoxContainer" parent="CanvasLayer/Control" unique_id=1883621531]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gmrfc")
+vertical = true
+
+[node name="Top" type="BoxContainer" parent="CanvasLayer/Control/HUD" unique_id=567064430]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_gmrfc")
+
+[node name="Back" type="Button" parent="CanvasLayer/Control/HUD/Top" unique_id=1909255765]
+layout_mode = 2
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+script = ExtResource("12_p231l")
+
+[node name="WordSelect" type="BoxContainer" parent="CanvasLayer/Control/HUD/Top" unique_id=1670705190]
+layout_mode = 2
+theme = ExtResource("1_gmrfc")
+vertical = true
+
+[node name="SetLabel" type="Label" parent="CanvasLayer/Control/HUD/Top/WordSelect" unique_id=2026001456]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_gmrfc")
+text = "Selected Word Set"
+label_settings = SubResource("LabelSettings_s6fnm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WordDropdown" type="OptionButton" parent="CanvasLayer/Control/HUD/Top/WordSelect" unique_id=416487593]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+alignment = 1
+
+[node name="Options" type="BoxContainer" parent="CanvasLayer/Control" unique_id=1664530853]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+offset_right = 542.0
+grow_vertical = 0
+size_flags_horizontal = 3
+
+[node name="OpenBeatmapFolder" type="Button" parent="CanvasLayer/Control/Options" unique_id=662745594]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Directory"
+script = ExtResource("12_p231l")
+
+[node name="Editor" type="Button" parent="CanvasLayer/Control/Options" unique_id=1555071521]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Editor"
+script = ExtResource("12_p231l")
+
+[node name="Mods" type="Button" parent="CanvasLayer/Control/Options" unique_id=841893743]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Mods"
+script = ExtResource("12_p231l")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control" unique_id=424518857]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -890.0
+offset_top = -540.0
+offset_right = 2.0
+offset_bottom = 540.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("9_voxba")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="SelectButtons" type="VBoxContainer" parent="CanvasLayer/Control/ScrollContainer" unique_id=1076579764]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Preview" type="BoxContainer" parent="CanvasLayer/Control" unique_id=1931154503]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 91.0
+offset_top = -440.0
+offset_right = 891.0
+offset_bottom = 335.0
+grow_vertical = 2
+theme_override_constants/separation = 20
+vertical = true
+script = ExtResource("15_jsu8p")
+
+[node name="Scroll" type="Control" parent="CanvasLayer/Control/Preview" unique_id=1076843974]
+clip_contents = true
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+size_flags_vertical = 6
+script = ExtResource("11_f6imh")
+
+[node name="SongArtist" type="Label" parent="CanvasLayer/Control/Preview/Scroll" unique_id=1172178015]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_gmrfc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Difficulty" type="Label" parent="CanvasLayer/Control/Preview" unique_id=1824064781]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_46l52")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/Preview" unique_id=617949036]
+clip_children = 2
+clip_contents = true
+custom_minimum_size = Vector2(800, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gpwjp")
+
+[node name="SongPreview" type="TextureRect" parent="CanvasLayer/Control/Preview/PanelContainer" unique_id=1018125534]
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/Preview" unique_id=1790168107]
+custom_minimum_size = Vector2(0, 89)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_styles/panel = ExtResource("9_j87rg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/Preview/Panel" unique_id=1031187897]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Duration" type="Label" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer" unique_id=738707868]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "02:56"
+label_settings = SubResource("LabelSettings_n0ign")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer/Duration" unique_id=1952300448]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -27.5
+offset_right = 14.0
+offset_bottom = 49.5
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+size_flags_horizontal = 0
+texture = ExtResource("8_gpwjp")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Difficulty" type="Label" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer" unique_id=1951254307]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+label_settings = SubResource("LabelSettings_46l52")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mapper" type="Label" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer" unique_id=1346509231]
+layout_mode = 2
+size_flags_horizontal = 6
+label_settings = SubResource("LabelSettings_f6imh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BPM" type="Label" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer" unique_id=181500411]
+layout_mode = 2
+size_flags_horizontal = 6
+label_settings = SubResource("LabelSettings_x10ls")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer" unique_id=1056781667]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="AR" type="Label" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer/VBoxContainer" unique_id=2104143774]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "AR:"
+label_settings = SubResource("LabelSettings_j87rg")
+vertical_alignment = 1
+
+[node name="OD" type="Label" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer/VBoxContainer" unique_id=976035487]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "OD:"
+label_settings = SubResource("LabelSettings_voxba")
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer/VBoxContainer" unique_id=794491402]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "HP:"
+label_settings = SubResource("LabelSettings_vrqkv")
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="CanvasLayer/Control/Preview" unique_id=104296737]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme = SubResource("Theme_hulpf")
+theme_override_fonts/font = ExtResource("11_ld6hf")
+theme_override_font_sizes/font_size = 48
+text = "Start!
+"
+script = ExtResource("12_p231l")
+
+[node name="ModDim" type="ColorRect" parent="CanvasLayer/Control" unique_id=363394841]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.9019608)
+
+[node name="ModMenu" type="BoxContainer" parent="CanvasLayer/Control" unique_id=51033221]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -846.0
+offset_top = -250.0
+offset_right = -46.0
+offset_bottom = 250.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+vertical = true
+
+[node name="Mods" type="BoxContainer" parent="CanvasLayer/Control/ModMenu" unique_id=367217611]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="BasicMods" type="BoxContainer" parent="CanvasLayer/Control/ModMenu/Mods" unique_id=348127344]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+vertical = true
+
+[node name="Auto" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/BasicMods" unique_id=1772806179]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Auto"
+script = ExtResource("17_wobq5")
+
+[node name="NoFail" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/BasicMods" unique_id=1027146093]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "No Fail"
+script = ExtResource("17_wobq5")
+
+[node name="HalfTime" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/BasicMods" unique_id=882903449]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "HalfTime"
+script = ExtResource("17_wobq5")
+
+[node name="DoubleTime" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/BasicMods" unique_id=776328083]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "DoubleTime"
+script = ExtResource("17_wobq5")
+
+[node name="GameplayMods" type="BoxContainer" parent="CanvasLayer/Control/ModMenu/Mods" unique_id=1352252010]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+vertical = true
+
+[node name="Easy" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/GameplayMods" unique_id=558579371]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Easy"
+script = ExtResource("17_wobq5")
+
+[node name="Hardrock" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/GameplayMods" unique_id=1965736522]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Hard Rock"
+script = ExtResource("17_wobq5")
+
+[node name="Hidden" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/GameplayMods" unique_id=1832134295]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Hidden
+"
+script = ExtResource("17_wobq5")
+
+[node name="Caps" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/GameplayMods" unique_id=1309719771]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Case Sensitive"
+script = ExtResource("17_wobq5")
+
+[node name="CloseModMenu" type="Button" parent="CanvasLayer/Control/ModMenu" unique_id=1679082780]
+layout_mode = 2
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Close Mod Menu"
+script = ExtResource("12_p231l")
+
+[node name="Fade" type="ColorRect" parent="CanvasLayer/Control" unique_id=410031986]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]
+[connection signal="pressed" from="CanvasLayer/Control/HUD/Top/Back" to="." method="_on_back_pressed"]
+[connection signal="item_selected" from="CanvasLayer/Control/HUD/Top/WordSelect/WordDropdown" to="." method="_on_word_dropdown_item_selected"]
+[connection signal="pressed" from="CanvasLayer/Control/HUD/Top/WordSelect/WordDropdown" to="." method="_on_word_dropdown_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Options/OpenBeatmapFolder" to="." method="_on_open_beatmap_folder_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Options/Editor" to="." method="_on_editor_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Options/Mods" to="." method="_on_mods_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Preview/Start" to="." method="_on_start_pressed"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/Auto" to="." method="_on_auto_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/NoFail" to="." method="_on_no_fail_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/HalfTime" to="." method="_on_half_time_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/DoubleTime" to="." method="_on_double_time_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Easy" to="." method="_on_easy_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Hardrock" to="." method="_on_hardrock_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Hidden" to="." method="_on_hidden_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Caps" to="." method="_on_caps_toggled"]
+[connection signal="pressed" from="CanvasLayer/Control/ModMenu/CloseModMenu" to="." method="_on_close_mod_menu_pressed"]

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bxhyh5xkl8o31"]
+
+[ext_resource type="Script" uid="uid://vrep8fdk6uqo" path="res://scenes/objects/game/comet.gd" id="1_0gpin"]
+[ext_resource type="Texture2D" uid="uid://bfhijtgf8gfq5" path="res://assets/tux4kids/images/comets/comet1.svg" id="1_k3nfo"]
+[ext_resource type="Texture2D" uid="uid://bsa3mto3d4240" path="res://assets/tux4kids/images/comets/comet2.svg" id="2_y71x0"]
+[ext_resource type="Texture2D" uid="uid://birp1wvovf4ti" path="res://assets/tux4kids/images/comets/comet3.svg" id="3_hx85f"]
+[ext_resource type="Texture2D" uid="uid://bd7b3e43u8l1g" path="res://assets/tux4kids/images/comets/cometex1.png" id="4_boty6"]
+[ext_resource type="Texture2D" uid="uid://bgq4uyobibfoe" path="res://assets/tux4kids/images/comets/cometex2.png" id="5_r0eex"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="7_t0sfh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ggplc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k3nfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y71x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hx85f")
+}],
+"loop": true,
+"name": &"comet",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_boty6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r0eex")
+}],
+"loop": false,
+"name": &"cometbreak",
+"speed": 20.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3d2ho"]
+font = ExtResource("7_t0sfh")
+font_size = 70
+outline_size = 10
+outline_color = Color(0.9529412, 0.16078432, 1, 1)
+
+[node name="Comet" type="Node2D" unique_id=1878661663]
+script = ExtResource("1_0gpin")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1849187873]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_ggplc")
+animation = &"comet"
+autoplay = "comet"
+
+[node name="ReadabilityBox" type="ColorRect" parent="Sprite" unique_id=735089304]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.5
+offset_top = -75.0
+offset_right = -41.5
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Sprite" unique_id=494320078]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.5
+offset_top = -75.0
+offset_right = -41.5
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "H"
+label_settings = SubResource("LabelSettings_3d2ho")
+horizontal_alignment = 1
+vertical_alignment = 2

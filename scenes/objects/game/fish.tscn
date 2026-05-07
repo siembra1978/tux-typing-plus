@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://b6xc0bu0slgue"]
+
+[ext_resource type="Script" uid="uid://c0mf5vliqjiou" path="res://scenes/objects/game/fish.gd" id="1_dy21x"]
+[ext_resource type="Texture2D" uid="uid://bpmmklm87rhys" path="res://assets/tux4kids/images/fishy0.png" id="1_foolk"]
+[ext_resource type="Texture2D" uid="uid://bgjxv801vvsw2" path="res://assets/tux4kids/images/fishy1.png" id="2_dy21x"]
+[ext_resource type="Texture2D" uid="uid://b4wc4ngjdq0es" path="res://assets/tux4kids/images/fishy2.png" id="3_qijva"]
+[ext_resource type="Texture2D" uid="uid://ba8uy4eamf0qc" path="res://assets/tux4kids/images/fishy3.png" id="4_2qncy"]
+[ext_resource type="Texture2D" uid="uid://n6yqudl5bdtc" path="res://assets/tux4kids/images/fishy-.png" id="5_u8vaa"]
+[ext_resource type="Texture2D" uid="uid://dn63xjbx8yqac" path="res://assets/tux4kids/images/splat0.png" id="7_qijva"]
+[ext_resource type="AudioStream" uid="uid://doeypsxpyuskf" path="res://assets/tux4kids/sounds/splat.wav" id="8_2qncy"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="8_u8vaa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10y2t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_foolk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dy21x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qijva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2qncy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u8vaa")
+}],
+"loop": true,
+"name": &"fish",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_qijva")
+}],
+"loop": true,
+"name": &"splat",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qncy"]
+size = Vector2(38, 50)
+
+[node name="Fish" type="Node2D" unique_id=1446966186]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_dy21x")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=71448930]
+sprite_frames = SubResource("SpriteFrames_10y2t")
+animation = &"fish"
+autoplay = "fish"
+
+[node name="ReadabilityBox" type="ColorRect" parent="Sprite" unique_id=737449628]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -25.0
+offset_right = -18.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Sprite" unique_id=1746822548]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -46.0
+offset_right = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("8_u8vaa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="splat" type="AudioStreamPlayer" parent="." unique_id=1148941473]
+stream = ExtResource("8_2qncy")
+volume_db = -20.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1854964057]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=599457336]
+shape = SubResource("RectangleShape2D_2qncy")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://jwfd2nk0oc5g"]
+
+[ext_resource type="AudioStream" uid="uid://4uanmwy38twb" path="res://assets/audio/clicks/pop/click3_1.wav" id="1_v0c50"]
+
+[node name="Hitsound" type="AudioStreamPlayer" unique_id=1874530511]
+stream = ExtResource("1_v0c50")

@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://dm6jp4gjboooc"]
+
+[ext_resource type="Script" uid="uid://15e0tr7en3iq" path="res://scenes/menus/pause/pause.gd" id="1_8lsyj"]
+[ext_resource type="Script" uid="uid://or8mcd735o0r" path="res://scenes/game/restart.gd" id="2_miayh"]
+[ext_resource type="Theme" uid="uid://bryxi4x6uhnqm" path="res://assets/visual/themes/tuxtheme2.tres" id="3_irxsy"]
+[ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="4_irxsy"]
+[ext_resource type="Texture2D" uid="uid://cotuyhxob7idi" path="res://assets/visual/logos/tux typing + pause.png" id="5_0d44p"]
+[ext_resource type="PackedScene" uid="uid://cqxgdce5mn1v2" path="res://scenes/objects/ui/version_indicator.tscn" id="7_emc2q"]
+[ext_resource type="AudioStream" uid="uid://1vnw5nx4ajpp" path="res://assets/tux4kids/sounds/shieldsdown.wav" id="7_irxsy"]
+[ext_resource type="Script" uid="uid://bsglqy5l5pcon" path="res://scenes/menus/select_mode/texture_bob.gd" id="7_xylmy"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="8_46fcs"]
+[ext_resource type="PackedScene" uid="uid://cqtq57ntjvy0j" path="res://scenes/menus/options/options.tscn" id="8_irxsy"]
+
+[node name="Pause" type="Control" unique_id=1227462733]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8lsyj")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=677985495]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="VersionIndicator" parent="." unique_id=1429627592 instance=ExtResource("7_emc2q")]
+top_level = true
+layout_mode = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=724874690]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -162.5
+offset_right = 267.0
+offset_bottom = 162.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_irxsy")
+alignment = 1
+vertical = true
+
+[node name="Back" type="Button" parent="BoxContainer" unique_id=2010495470]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_irxsy")
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+script = ExtResource("4_irxsy")
+
+[node name="Restart" type="Button" parent="BoxContainer" unique_id=1217720724]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_irxsy")
+theme_override_font_sizes/font_size = 32
+text = "Restart
+"
+script = ExtResource("2_miayh")
+
+[node name="Options" type="Button" parent="BoxContainer" unique_id=1573468039]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_irxsy")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+script = ExtResource("4_irxsy")
+
+[node name="SelectExit" type="Button" parent="BoxContainer" unique_id=1817893995]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_irxsy")
+theme_override_font_sizes/font_size = 32
+text = "Back To Title"
+script = ExtResource("4_irxsy")
+
+[node name="Exit" type="Button" parent="BoxContainer" unique_id=870296717]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_irxsy")
+theme_override_font_sizes/font_size = 32
+text = "Back To Title
+"
+script = ExtResource("4_irxsy")
+
+[node name="Quit" type="Button" parent="BoxContainer" unique_id=1946326277]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_irxsy")
+theme_override_font_sizes/font_size = 32
+text = "Quit to Desktop
+"
+script = ExtResource("4_irxsy")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=855388024]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -332.0
+offset_right = 514.0
+offset_bottom = 200.0
+grow_vertical = 0
+texture = ExtResource("5_0d44p")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("7_xylmy")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=559715861]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Options" parent="." unique_id=184406744 instance=ExtResource("8_irxsy")]
+visible = false
+layout_mode = 1
+
+[node name="Bye" type="AudioStreamPlayer" parent="." unique_id=2136338758]
+stream = ExtResource("7_irxsy")
+volume_db = -5.0
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=770704678]
+stream = ExtResource("8_46fcs")
+volume_db = -5.0
+
+[connection signal="pressed" from="BoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="BoxContainer/Restart" to="BoxContainer/Restart" method="_on_pressed"]
+[connection signal="pressed" from="BoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="BoxContainer/SelectExit" to="." method="_on_select_exit_pressed"]
+[connection signal="pressed" from="BoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="BoxContainer/Quit" to="." method="_on_quit_pressed"]

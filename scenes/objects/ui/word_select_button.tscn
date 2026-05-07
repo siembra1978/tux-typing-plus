@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://xcgelb5iy4wu"]
+
+[ext_resource type="Theme" uid="uid://bryxi4x6uhnqm" path="res://assets/visual/themes/tuxtheme2.tres" id="1_dq3j8"]
+[ext_resource type="Script" uid="uid://bsfmhi1abix5v" path="res://scenes/objects/ui/word_select_button.gd" id="1_mjqrp"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="2_suean"]
+
+[node name="Button" type="Button" unique_id=25006937]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_dq3j8")
+theme_override_font_sizes/font_size = 50
+text = "Placeholder"
+script = ExtResource("1_mjqrp")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=487076356]
+stream = ExtResource("2_suean")
+volume_db = -5.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

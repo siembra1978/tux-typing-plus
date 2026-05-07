@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://bbhcanks82mtl"]
+
+[ext_resource type="Script" uid="uid://copfxf3poi325" path="res://scenes/menus/loading/loading.gd" id="1_pi25y"]
+[ext_resource type="Texture2D" uid="uid://n1m6jawlg4ls" path="res://assets/visual/sprites/loadalt/run0.png" id="2_60inj"]
+[ext_resource type="Texture2D" uid="uid://btgos0xgop0ok" path="res://assets/visual/sprites/loadalt/run1.png" id="3_ttd3b"]
+[ext_resource type="Texture2D" uid="uid://dj5jcl80aerhx" path="res://assets/visual/sprites/loadalt/gulp0.png" id="4_60inj"]
+[ext_resource type="Texture2D" uid="uid://dp8nxq1phixmd" path="res://assets/visual/sprites/loadalt/gulp1.png" id="5_ttd3b"]
+[ext_resource type="Texture2D" uid="uid://c6sc2o8njfolg" path="res://assets/visual/sprites/loadalt/gulp2.png" id="6_0wwb3"]
+[ext_resource type="Texture2D" uid="uid://dtl4s05s5dgl2" path="res://assets/visual/sprites/loadalt/gulp3.png" id="7_4h06q"]
+[ext_resource type="Texture2D" uid="uid://cunar2xnbaeqq" path="res://assets/visual/sprites/loadalt/walk0.png" id="8_llnnx"]
+[ext_resource type="Texture2D" uid="uid://b005e8uaglv3o" path="res://assets/visual/sprites/loadalt/walk1.png" id="9_2a0y0"]
+[ext_resource type="Texture2D" uid="uid://c2nt43k3heewu" path="res://assets/visual/sprites/loadalt/walk2.png" id="10_7601b"]
+[ext_resource type="Texture2D" uid="uid://yr3yt3x8xume" path="res://assets/visual/sprites/loadalt/walk3.png" id="11_0bpa2"]
+[ext_resource type="PackedScene" uid="uid://cqxgdce5mn1v2" path="res://scenes/objects/ui/version_indicator.tscn" id="13_0wwb3"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="14_4h06q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkex0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_60inj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ttd3b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_60inj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ttd3b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0wwb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4h06q")
+}],
+"loop": true,
+"name": &"gulp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_llnnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2a0y0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7601b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0bpa2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Loading" type="Control" unique_id=1111624431]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pi25y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1437422728]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=450240267]
+repeat_size = Vector2(0, 200)
+autoscroll = Vector2(0, 100)
+repeat_times = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Parallax2D" unique_id=590528361]
+offset_left = 49.934723
+offset_right = 257.4816
+offset_bottom = 49.934723
+rotation = 1.5707964
+theme_override_fonts/normal_font = ExtResource("14_4h06q")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]Tux Typing [color=yellow]+[/color]"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1108392623]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="sprite" type="AnimatedSprite2D" parent="Control" unique_id=1678810295]
+position = Vector2(-74, -68)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_dkex0")
+animation = &"walk"
+
+[node name="VersionIndicator" parent="." unique_id=1429627592 instance=ExtResource("13_0wwb3")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.992
+anchor_bottom = 0.0
+offset_left = -106.0
+offset_top = 28.0
+offset_right = -106.0
+offset_bottom = 28.0
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="Tip" type="RichTextLabel" parent="." unique_id=605658388]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -448.0
+offset_top = -125.0
+offset_right = 448.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("14_4h06q")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[wave][color=yellow]Tip:[/color] Wiggle your fingers and jam the keys!"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1

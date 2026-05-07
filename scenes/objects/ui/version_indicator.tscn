@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cqxgdce5mn1v2"]
+
+[ext_resource type="Script" uid="uid://oho5xjp3wmek" path="res://scenes/objects/ui/version_indicator.gd" id="1_koro3"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="2_mflba"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_adeyr"]
+font = ExtResource("2_mflba")
+font_size = 20
+
+[node name="VersionIndicator" type="Control" unique_id=1429627592]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_koro3")
+
+[node name="VersionLabel" type="Label" parent="." unique_id=459034404]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+offset_right = 106.0
+grow_vertical = 0
+text = "Indev-0.0.0"
+label_settings = SubResource("LabelSettings_adeyr")
+vertical_alignment = 1

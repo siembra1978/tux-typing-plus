@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blatwvb2x6njw"
+path="res://.godot/imported/Fluffing a Duck.mp3-4275416547f0dd99109e9f02563af072.mp3str"
+
+[deps]
+
+source_file="res://gameplay/beatmaps/fluffingaducknormal/Fluffing a Duck.mp3"
+dest_files=["res://.godot/imported/Fluffing a Duck.mp3-4275416547f0dd99109e9f02563af072.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://ba01uoi6uaudr"]
+
+[ext_resource type="Script" uid="uid://b57wfoxm81umo" path="res://scenes/menus/start_menu/intro.gd" id="1_ddle0"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="2_7af1u"]
+[ext_resource type="Texture2D" uid="uid://dx2mh72gbp1x1" path="res://assets/tux4kids/images/menu/tux4kids.png" id="2_wphlt"]
+[ext_resource type="AudioStream" uid="uid://bcrf10md6pmlj" path="res://assets/tux4kids/sounds/harp.wav" id="3_7af1u"]
+[ext_resource type="Script" uid="uid://crhbeqci5y3hh" path="res://scenes/menus/options/discord.gd" id="4_wphlt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ssko"]
+font = ExtResource("2_7af1u")
+font_size = 24
+
+[node name="Control" type="Control" unique_id=1323894027]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ddle0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1919797421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1554006987]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -308.375
+offset_top = -209.625
+offset_right = 308.375
+offset_bottom = 209.625
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=833277454]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Original Game By"
+label_settings = SubResource("LabelSettings_7ssko")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=512356111]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_wphlt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1594074620]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Recreated by siembra & Cosm0s"
+label_settings = SubResource("LabelSettings_7ssko")
+horizontal_alignment = 1
+
+[node name="harp" type="AudioStreamPlayer" parent="." unique_id=2133504175]
+stream = ExtResource("3_7af1u")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=842565959]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="discordinit" type="Node" parent="." unique_id=141608787]
+script = ExtResource("4_wphlt")

@@ -1,0 +1,1578 @@
+[gd_scene format=3 uid="uid://di4fgccfby3dg"]
+
+[ext_resource type="Script" uid="uid://bqw8cvt7ovmio" path="res://scenes/beat/editor.gd" id="1_exge2"]
+[ext_resource type="Shader" uid="uid://b4yhwgv8l8djq" path="res://shaders/scroll.gdshader" id="2_jk6fb"]
+[ext_resource type="AudioStream" uid="uid://f3hssxgrslxl" path="res://assets/audio/sfx/metronome/Perc_Can_hi.wav" id="2_y32iy"]
+[ext_resource type="AudioStream" uid="uid://dfixf6al6ycoh" path="res://assets/tux4kids/sounds/pop.wav" id="3_olhbj"]
+[ext_resource type="AudioStream" uid="uid://b7tuss2pkw4nr" path="res://assets/audio/sfx/metronome/Perc_Can_lo.wav" id="3_oyte0"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="4_olhbj"]
+[ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="5_oyte0"]
+[ext_resource type="AudioStream" uid="uid://ddwdpcgxtg8rx" path="res://assets/tux4kids/sounds/buzz.wav" id="6_olhbj"]
+[ext_resource type="AudioStream" uid="uid://cvbqgeqsi3vjd" path="res://assets/tux4kids/sounds/cheer.wav" id="8_3lvtx"]
+[ext_resource type="Texture2D" uid="uid://dtqwvpw3uoj1m" path="res://assets/visual/backgrounds/misc/tuxbg.png" id="8_olhbj"]
+[ext_resource type="Texture2D" uid="uid://dwlobaiaqj6jy" path="res://assets/visual/sprites/icon.png" id="8_ue134"]
+[ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="9_3sajq"]
+[ext_resource type="Theme" uid="uid://scdoto1172tt" path="res://assets/visual/themes/editor_theme.tres" id="9_oyte0"]
+[ext_resource type="Texture2D" uid="uid://c7jw1vlhj7bxo" path="res://assets/visual/sprites/lastrack.png" id="11_y32iy"]
+[ext_resource type="Texture2D" uid="uid://cu2k60r5e7uwl" path="res://assets/visual/sprites/play.png" id="12_3lvtx"]
+[ext_resource type="Script" uid="uid://cx1xc8pye752r" path="res://scenes/menus/select_mode/background.gd" id="12_p7we2"]
+[ext_resource type="Texture2D" uid="uid://by8eamf7bqrut" path="res://assets/visual/sprites/nexttrack.png" id="13_efp3n"]
+[ext_resource type="StyleBox" path="res://new_style_box_flat.tres" id="14_n6a1k"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="15_efp3n"]
+[ext_resource type="Script" uid="uid://s5l015ddfelw" path="res://scenes/beat/popup_pivot.gd" id="18_lybr3"]
+[ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="18_o8plc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxt15"]
+shader = ExtResource("2_jk6fb")
+shader_parameter/speed = 0.1
+
+[sub_resource type="LabelSettings" id="LabelSettings_ne0eg"]
+font = ExtResource("15_efp3n")
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7we2"]
+font = ExtResource("15_efp3n")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_olhbj"]
+font = ExtResource("15_efp3n")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ru2dm"]
+font = ExtResource("15_efp3n")
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oyte0"]
+font = ExtResource("15_efp3n")
+font_size = 20
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8plc"]
+font = ExtResource("15_efp3n")
+font_size = 20
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_exge2"]
+font = ExtResource("15_efp3n")
+font_size = 24
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Editor" type="Node2D" unique_id=555972283]
+script = ExtResource("1_exge2")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1801212793]
+volume_db = -10.0
+
+[node name="Metronome" type="AudioStreamPlayer" parent="." unique_id=1530461101]
+stream = ExtResource("2_y32iy")
+volume_db = 7.0
+
+[node name="Metronome2" type="AudioStreamPlayer" parent="." unique_id=1319231926]
+stream = ExtResource("3_oyte0")
+volume_db = 7.5
+
+[node name="Hitsound" type="AudioStreamPlayer" parent="." unique_id=439509690]
+stream = ExtResource("3_olhbj")
+volume_db = 5.0
+pitch_scale = 3.0
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=977813961]
+stream = ExtResource("4_olhbj")
+volume_db = -5.0
+
+[node name="Back" type="AudioStreamPlayer" parent="." unique_id=1914060430]
+stream = ExtResource("5_oyte0")
+
+[node name="Error" type="AudioStreamPlayer" parent="." unique_id=1361298561]
+stream = ExtResource("6_olhbj")
+volume_db = -10.0
+
+[node name="Kiai" type="AudioStreamPlayer" parent="." unique_id=1423141447]
+stream = ExtResource("8_3lvtx")
+volume_db = -5.0
+
+[node name="NewClick" type="AudioStreamPlayer" parent="." unique_id=1911382425]
+stream = ExtResource("9_3sajq")
+
+[node name="FileMusic" type="FileDialog" parent="." unique_id=351215898]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.mp3", "*.ogg")
+use_native_dialog = true
+
+[node name="FileVideo" type="FileDialog" parent="." unique_id=2033769871]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.ogv")
+use_native_dialog = true
+
+[node name="FileImg" type="FileDialog" parent="." unique_id=338179737]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.png", "*.jpg")
+use_native_dialog = true
+
+[node name="FileChart" type="FileDialog" parent="." unique_id=1617912427]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+use_native_dialog = true
+
+[node name="FileOSZ" type="FileDialog" parent="." unique_id=378871787]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 1
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.osz")
+use_native_dialog = true
+
+[node name="Bottom" type="CanvasLayer" parent="." unique_id=529780064]
+
+[node name="Control" type="Control" parent="Bottom" unique_id=2012453395]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Bottom/Control" unique_id=2021210927]
+material = SubResource("ShaderMaterial_uxt15")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_olhbj")
+stretch_mode = 1
+
+[node name="CustomBackground" type="TextureRect" parent="Bottom/Control" unique_id=1571487572]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1104.0
+offset_top = -621.0
+offset_right = 1104.0
+offset_bottom = 621.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("12_p7we2")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Bottom/Control" unique_id=304887563]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+volume_db = -80.0
+
+[node name="BGDim" type="ColorRect" parent="Bottom/Control" unique_id=1131134429]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.19607843)
+
+[node name="Top" type="CanvasLayer" parent="." unique_id=535827514]
+
+[node name="Control" type="Control" parent="Top" unique_id=968151767]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+
+[node name="Media" type="Control" parent="Top/Control" unique_id=83026407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+
+[node name="TimeLabel" type="Label" parent="Top/Control/Media" unique_id=1939415228]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 90.0
+offset_right = 268.0
+offset_bottom = 186.0
+grow_vertical = 2
+focus_mode = 2
+label_settings = SubResource("LabelSettings_ne0eg")
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Top/Control/Media/TimeLabel" unique_id=1017315218]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+
+[node name="Panel" type="Panel" parent="Top/Control/Media/TimeLabel" unique_id=531752436]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
+
+[node name="Playback" type="Control" parent="Top/Control/Media" unique_id=691030448]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 278.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+
+[node name="Scrubber" type="HSlider" parent="Top/Control/Media/Playback" unique_id=188917177]
+z_index = -1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 960.0
+offset_top = -10.0
+offset_right = 960.0
+offset_bottom = 90.0
+grow_horizontal = 2
+pivot_offset = Vector2(960, 0)
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+step = 0.0
+tick_count = 2
+ticks_on_borders = true
+ticks_position = 2
+
+[node name="TimelineScroll" type="HScrollBar" parent="Top/Control/Media/Playback" unique_id=2051189082]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 2
+theme = ExtResource("9_oyte0")
+
+[node name="PlayheadMarker" type="ColorRect" parent="Top/Control/Media/Playback/TimelineScroll" unique_id=60436787]
+z_index = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 5.0
+offset_bottom = 15.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0, 1)
+
+[node name="ActiveMarker" type="ColorRect" parent="Top/Control/Media/Playback/TimelineScroll" unique_id=792916299]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_right = 5.0
+offset_bottom = 15.0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[node name="MediaControls" type="BoxContainer" parent="Top/Control/Media" unique_id=1320888399]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.25
+offset_top = -96.5
+offset_right = 298.25
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 2
+alignment = 1
+
+[node name="Begin" type="Button" parent="Top/Control/Media/MediaControls" unique_id=2147204499]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 48
+icon = ExtResource("11_y32iy")
+icon_alignment = 1
+script = ExtResource("18_o8plc")
+
+[node name="Play" type="Button" parent="Top/Control/Media/MediaControls" unique_id=940583582]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 48
+icon = ExtResource("12_3lvtx")
+icon_alignment = 1
+script = ExtResource("18_o8plc")
+
+[node name="End" type="Button" parent="Top/Control/Media/MediaControls" unique_id=2112594441]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 48
+icon = ExtResource("13_efp3n")
+icon_alignment = 1
+script = ExtResource("18_o8plc")
+
+[node name="Quit" type="Control" parent="Top/Control" unique_id=1853770683]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.5
+offset_top = -144.5
+offset_right = 385.5
+offset_bottom = 144.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_lybr3")
+
+[node name="Panel" type="Panel" parent="Top/Control/Quit" unique_id=2059722248]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("14_n6a1k")
+
+[node name="Container" type="BoxContainer" parent="Top/Control/Quit" unique_id=21401938]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Top/Control/Quit/Container" unique_id=1380501747]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BeatmapName" type="Label" parent="Top/Control/Quit/Container/VBoxContainer" unique_id=1896799233]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 24
+text = "Do you really want to quit?"
+label_settings = SubResource("LabelSettings_p7we2")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Top/Control/Quit/Container/VBoxContainer" unique_id=1552269488]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuitYButton" type="Button" parent="Top/Control/Quit/Container/VBoxContainer/HBoxContainer" unique_id=120367831]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "Yes"
+
+[node name="QuitNButton" type="Button" parent="Top/Control/Quit/Container/VBoxContainer/HBoxContainer" unique_id=1669483228]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "No"
+
+[node name="Log" type="Control" parent="Top/Control" unique_id=45232575]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_bottom = -100.0
+grow_vertical = 0
+
+[node name="LogLabel" type="Label" parent="Top/Control/Log" unique_id=1502330625]
+layout_mode = 0
+offset_right = 29.0
+offset_bottom = 37.0
+theme_override_colors/font_shadow_color = Color(3.308989e-08, 0.079103045, 0.048226207, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 16
+text = "Log"
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="Top/Control/Log/LogLabel" unique_id=1873008177]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapInfoPopUp" type="Control" parent="Top/Control" unique_id=1312979329]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -158.25
+offset_right = 264.0
+offset_bottom = 158.25
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_lybr3")
+
+[node name="Panel" type="Panel" parent="Top/Control/MapInfoPopUp" unique_id=63654025]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
+
+[node name="MapInfo" type="BoxContainer" parent="Top/Control/MapInfoPopUp" unique_id=553895535]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Header" type="Label" parent="Top/Control/MapInfoPopUp/MapInfo" unique_id=1483742690]
+layout_mode = 2
+text = "Beatmap Info"
+label_settings = SubResource("LabelSettings_olhbj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="LineEdit" parent="Top/Control/MapInfoPopUp/MapInfo" unique_id=618538128]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Name"
+alignment = 1
+
+[node name="Artist" type="LineEdit" parent="Top/Control/MapInfoPopUp/MapInfo" unique_id=7150186]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Artist"
+alignment = 1
+
+[node name="Mapper" type="LineEdit" parent="Top/Control/MapInfoPopUp/MapInfo" unique_id=1052766825]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Mapper"
+alignment = 1
+
+[node name="Difficulty" type="LineEdit" parent="Top/Control/MapInfoPopUp/MapInfo" unique_id=1784043049]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Difficulty"
+alignment = 1
+
+[node name="Buttons" type="BoxContainer" parent="Top/Control/MapInfoPopUp/MapInfo" unique_id=492928707]
+layout_mode = 2
+
+[node name="SaveMap" type="Button" parent="Top/Control/MapInfoPopUp/MapInfo/Buttons" unique_id=1815262501]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Save"
+script = ExtResource("18_o8plc")
+
+[node name="Cancel" type="Button" parent="Top/Control/MapInfoPopUp/MapInfo/Buttons" unique_id=1144239914]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+script = ExtResource("18_o8plc")
+
+[node name="DifficultyPopUp" type="Control" parent="Top/Control" unique_id=1269256943]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -127.625
+offset_right = 264.0
+offset_bottom = 127.625
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_lybr3")
+
+[node name="Panel" type="Panel" parent="Top/Control/DifficultyPopUp" unique_id=1086624837]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
+
+[node name="MapInfo" type="BoxContainer" parent="Top/Control/DifficultyPopUp" unique_id=229752033]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Header" type="Label" parent="Top/Control/DifficultyPopUp/MapInfo" unique_id=1490994154]
+layout_mode = 2
+text = "Difficulty Settings"
+label_settings = SubResource("LabelSettings_olhbj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OD" type="BoxContainer" parent="Top/Control/DifficultyPopUp/MapInfo" unique_id=351821791]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Top/Control/DifficultyPopUp/MapInfo/OD" unique_id=605285778]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Overall Difficulty"
+label_settings = SubResource("LabelSettings_ru2dm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ODSpin" type="SpinBox" parent="Top/Control/DifficultyPopUp/MapInfo/OD" unique_id=442409865]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+min_value = 1.0
+max_value = 10.0
+step = 0.1
+value = 1.0
+alignment = 1
+
+[node name="AR" type="BoxContainer" parent="Top/Control/DifficultyPopUp/MapInfo" unique_id=511554235]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Top/Control/DifficultyPopUp/MapInfo/AR" unique_id=1800296004]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Approach Rate"
+label_settings = SubResource("LabelSettings_ru2dm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ARSpin" type="SpinBox" parent="Top/Control/DifficultyPopUp/MapInfo/AR" unique_id=2133187224]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+min_value = 1.0
+max_value = 10.0
+step = 0.1
+value = 1.0
+alignment = 1
+
+[node name="HP" type="BoxContainer" parent="Top/Control/DifficultyPopUp/MapInfo" unique_id=1296451536]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Top/Control/DifficultyPopUp/MapInfo/HP" unique_id=155260235]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Health Drain"
+label_settings = SubResource("LabelSettings_ru2dm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPSpin" type="SpinBox" parent="Top/Control/DifficultyPopUp/MapInfo/HP" unique_id=1463298733]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+min_value = 1.0
+max_value = 10.0
+step = 0.1
+value = 1.0
+alignment = 1
+
+[node name="Close" type="Button" parent="Top/Control/DifficultyPopUp/MapInfo" unique_id=657345178]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Close"
+script = ExtResource("18_o8plc")
+
+[node name="TempoPopUp" type="Control" parent="Top/Control" unique_id=846583901]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -85.8125
+offset_right = 264.0
+offset_bottom = 85.8125
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_lybr3")
+
+[node name="Panel" type="Panel" parent="Top/Control/TempoPopUp" unique_id=37351497]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
+
+[node name="MapInfo" type="BoxContainer" parent="Top/Control/TempoPopUp" unique_id=1245296768]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Header" type="Label" parent="Top/Control/TempoPopUp/MapInfo" unique_id=2031620198]
+layout_mode = 2
+text = "Add Tempo Change"
+label_settings = SubResource("LabelSettings_olhbj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewBPM" type="BoxContainer" parent="Top/Control/TempoPopUp/MapInfo" unique_id=330226668]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Top/Control/TempoPopUp/MapInfo/NewBPM" unique_id=1024210938]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Tempo (BPM)"
+label_settings = SubResource("LabelSettings_ru2dm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TempoEntry" type="SpinBox" parent="Top/Control/TempoPopUp/MapInfo/NewBPM" unique_id=1018226770]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+min_value = 1.0
+max_value = 1000.0
+step = 0.1
+value = 120.0
+alignment = 1
+
+[node name="Buttons" type="BoxContainer" parent="Top/Control/TempoPopUp/MapInfo" unique_id=1662023085]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TempoConfirm" type="Button" parent="Top/Control/TempoPopUp/MapInfo/Buttons" unique_id=1007679135]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Confirm"
+script = ExtResource("18_o8plc")
+
+[node name="TempoCancel" type="Button" parent="Top/Control/TempoPopUp/MapInfo/Buttons" unique_id=311627717]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+script = ExtResource("18_o8plc")
+
+[node name="OSZPopUp" type="Control" parent="Top/Control" unique_id=1877736899]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.25
+offset_top = -118.703125
+offset_right = 263.25
+offset_bottom = 118.703125
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_lybr3")
+
+[node name="Panel" type="Panel" parent="Top/Control/OSZPopUp" unique_id=1203095872]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
+
+[node name="DiffStack" type="BoxContainer" parent="Top/Control/OSZPopUp" unique_id=1400718421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Header" type="Label" parent="Top/Control/OSZPopUp/DiffStack" unique_id=976417035]
+layout_mode = 2
+text = "Import .osz"
+label_settings = SubResource("LabelSettings_olhbj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interact" type="BoxContainer" parent="Top/Control/OSZPopUp/DiffStack" unique_id=612267455]
+layout_mode = 2
+size_flags_vertical = 3
+vertical = true
+
+[node name="Header" type="Label" parent="Top/Control/OSZPopUp/DiffStack/Interact" unique_id=1942335870]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select Difficulty"
+label_settings = SubResource("LabelSettings_ru2dm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiffSelect" type="OptionButton" parent="Top/Control/OSZPopUp/DiffStack/Interact" unique_id=1395817002]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+alignment = 1
+text_overrun_behavior = 4
+fit_to_longest_item = false
+
+[node name="Buttons" type="BoxContainer" parent="Top/Control/OSZPopUp/DiffStack" unique_id=1637846471]
+layout_mode = 2
+
+[node name="ImportConfirm" type="Button" parent="Top/Control/OSZPopUp/DiffStack/Buttons" unique_id=682634536]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Import"
+script = ExtResource("18_o8plc")
+
+[node name="ImportCancel" type="Button" parent="Top/Control/OSZPopUp/DiffStack/Buttons" unique_id=1676165999]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+script = ExtResource("18_o8plc")
+
+[node name="ClearWarning" type="Control" parent="Top/Control" unique_id=1178320002]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -85.8125
+offset_right = 264.0
+offset_bottom = 85.8125
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_lybr3")
+
+[node name="Panel" type="Panel" parent="Top/Control/ClearWarning" unique_id=438605427]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
+
+[node name="MapInfo" type="BoxContainer" parent="Top/Control/ClearWarning" unique_id=725584421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Warning" type="Label" parent="Top/Control/ClearWarning/MapInfo" unique_id=2142533146]
+layout_mode = 2
+text = "Are you sure?"
+label_settings = SubResource("LabelSettings_olhbj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Details" type="Label" parent="Top/Control/ClearWarning/MapInfo" unique_id=1405460666]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "This will erase all placed notes!"
+label_settings = SubResource("LabelSettings_ru2dm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="BoxContainer" parent="Top/Control/ClearWarning/MapInfo" unique_id=188864506]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClearConfirm" type="Button" parent="Top/Control/ClearWarning/MapInfo/Buttons" unique_id=1017843409]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Confirm"
+
+[node name="ClearCancel" type="Button" parent="Top/Control/ClearWarning/MapInfo/Buttons" unique_id=677229502]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+
+[node name="Version" type="Label" parent="Top/Control" unique_id=765857156]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 116.0
+grow_vertical = 0
+text = "Indev-0.0.0
+TuxEditor-0.0.0"
+label_settings = SubResource("LabelSettings_oyte0")
+vertical_alignment = 2
+
+[node name="TopBar" type="Control" parent="Top/Control" unique_id=367807553]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 65.0
+grow_horizontal = 2
+
+[node name="BarBackground" type="ColorRect" parent="Top/Control/TopBar" unique_id=1196946988]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14406255, 0.14406255, 0.14406255, 1)
+
+[node name="MenuBar" type="BoxContainer" parent="Top/Control/TopBar" unique_id=1491748815]
+layout_mode = 1
+offset_right = 601.0
+offset_bottom = 61.0
+
+[node name="Icon" type="TextureRect" parent="Top/Control/TopBar/MenuBar" unique_id=1033834100]
+layout_mode = 2
+texture = ExtResource("8_ue134")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Text" type="Label" parent="Top/Control/TopBar/MenuBar" unique_id=742407461]
+visible = false
+layout_mode = 2
+focus_mode = 2
+text = "TuxEditor"
+label_settings = SubResource("LabelSettings_o8plc")
+vertical_alignment = 1
+
+[node name="File" type="Button" parent="Top/Control/TopBar/MenuBar" unique_id=185182287]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "File"
+script = ExtResource("18_o8plc")
+
+[node name="FileMenu" type="BoxContainer" parent="Top/Control/TopBar/MenuBar/File" unique_id=722034218]
+visible = false
+layout_mode = 0
+offset_top = 61.0
+offset_right = 40.0
+offset_bottom = 101.0
+mouse_filter = 0
+vertical = true
+
+[node name="New" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=2013898706]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "New"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Open" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=536678728]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Open"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="LoadAudio" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=1245361976]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Load Audio"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="LoadTux" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=800081855]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Load Tux Skin"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="LoadBG" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=557114863]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Load Background"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="LoadVideo" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=1411806203]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Load Video (Experimental)"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Test" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=708267093]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Test Beatmap"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Save" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=1721036582]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Save Beatmap"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="LoadChart" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=1582490962]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Load Beatmap"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="ImportOSZ" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=1649488783]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Import .osz File"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Quit" type="Button" parent="Top/Control/TopBar/MenuBar/File/FileMenu" unique_id=1328136556]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Quit
+"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Edit" type="Button" parent="Top/Control/TopBar/MenuBar" unique_id=1667606628]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "Edit
+"
+script = ExtResource("18_o8plc")
+
+[node name="EditMenu" type="BoxContainer" parent="Top/Control/TopBar/MenuBar/Edit" unique_id=1570524514]
+visible = false
+layout_mode = 0
+offset_top = 61.0
+offset_right = 40.0
+offset_bottom = 101.0
+mouse_filter = 0
+vertical = true
+
+[node name="TempoChange" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=1340271378]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Add Tempo Change"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="PreviewPoint" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=1446484089]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Set Preview Point"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="KiaiPoint" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=1644819715]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Set Kiai Point"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="SLLI" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=936269371]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Shift Notes Left"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="SRLI" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=51505202]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Shift Notes Right"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Quaver" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=931562458]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Fill Quavers
+"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Clear" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=1474451334]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Clear All Notes"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Undo" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=1494010924]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Undo"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="Redo" type="Button" parent="Top/Control/TopBar/MenuBar/Edit/EditMenu" unique_id=146000865]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Redo"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="View" type="Button" parent="Top/Control/TopBar/MenuBar" unique_id=437409674]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "View
+"
+script = ExtResource("18_o8plc")
+
+[node name="ViewMenu" type="BoxContainer" parent="Top/Control/TopBar/MenuBar/View" unique_id=1265823305]
+visible = false
+layout_mode = 0
+offset_top = 61.0
+offset_right = 40.0
+offset_bottom = 101.0
+mouse_filter = 0
+vertical = true
+
+[node name="ZoomIn" type="Button" parent="Top/Control/TopBar/MenuBar/View/ViewMenu" unique_id=986772060]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Zoom In
+"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="ZoomOut" type="Button" parent="Top/Control/TopBar/MenuBar/View/ViewMenu" unique_id=786883872]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Zoom Out
+"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="ToggleTimePanel" type="CheckButton" parent="Top/Control/TopBar/MenuBar/View/ViewMenu" unique_id=819918923]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "Time Info"
+script = ExtResource("18_o8plc")
+
+[node name="ToggleTempoPanel" type="CheckButton" parent="Top/Control/TopBar/MenuBar/View/ViewMenu" unique_id=2142810992]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "Timing Panel"
+script = ExtResource("18_o8plc")
+
+[node name="Settings" type="Button" parent="Top/Control/TopBar/MenuBar" unique_id=1184386123]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+script = ExtResource("18_o8plc")
+
+[node name="SettingsMenu" type="BoxContainer" parent="Top/Control/TopBar/MenuBar/Settings" unique_id=1994231623]
+visible = false
+layout_mode = 0
+offset_top = 61.0
+offset_right = 40.0
+offset_bottom = 101.0
+mouse_filter = 0
+vertical = true
+
+[node name="Difficulty" type="Button" parent="Top/Control/TopBar/MenuBar/Settings/SettingsMenu" unique_id=1462738770]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Difficulty"
+alignment = 0
+script = ExtResource("18_o8plc")
+
+[node name="ToggleDRPC" type="CheckButton" parent="Top/Control/TopBar/MenuBar/Settings/SettingsMenu" unique_id=857419507]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Rich Presence"
+script = ExtResource("18_o8plc")
+
+[node name="Help" type="Button" parent="Top/Control/TopBar/MenuBar" unique_id=1818498093]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "Help"
+script = ExtResource("18_o8plc")
+
+[node name="HelpMenu" type="BoxContainer" parent="Top/Control/TopBar/MenuBar/Help" unique_id=1569434930]
+visible = false
+layout_mode = 0
+offset_top = 61.0
+offset_right = 40.0
+offset_bottom = 101.0
+mouse_filter = 0
+vertical = true
+
+[node name="TBD" type="Button" parent="Top/Control/TopBar/MenuBar/Help/HelpMenu" unique_id=1640415254]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Coming Soon!"
+alignment = 0
+
+[node name="BPM" type="BoxContainer" parent="Top/Control" unique_id=731736247]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.86
+anchor_top = 0.060000002
+anchor_right = 1.0
+anchor_bottom = 0.42100003
+offset_left = 0.79992676
+offset_top = 0.19999695
+offset_bottom = 0.3199768
+size_flags_horizontal = 3
+vertical = true
+
+[node name="TapBPM" type="Button" parent="Top/Control/BPM" unique_id=1075310604]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "Tap BPM"
+script = ExtResource("18_o8plc")
+
+[node name="MetronomeToggle" type="Button" parent="Top/Control/BPM" unique_id=1386439254]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+text = "Metronome: OFF"
+script = ExtResource("18_o8plc")
+
+[node name="TempoControls" type="BoxContainer" parent="Top/Control/BPM" unique_id=931822054]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+vertical = true
+
+[node name="BPMStack" type="BoxContainer" parent="Top/Control/BPM/TempoControls" unique_id=1071334450]
+layout_mode = 2
+focus_mode = 2
+
+[node name="BPMLabel" type="Label" parent="Top/Control/BPM/TempoControls/BPMStack" unique_id=243032786]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+text = "BPM"
+label_settings = SubResource("LabelSettings_exge2")
+
+[node name="BPM" type="LineEdit" parent="Top/Control/BPM/TempoControls/BPMStack" unique_id=78523878]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+placeholder_text = "0"
+alignment = 1
+editable = false
+
+[node name="BPMControl" type="BoxContainer" parent="Top/Control/BPM/TempoControls/BPMStack" unique_id=708970534]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+vertical = true
+
+[node name="IncreaseBPM" type="Button" parent="Top/Control/BPM/TempoControls/BPMStack/BPMControl" unique_id=550682306]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 16
+text = "+"
+script = ExtResource("18_o8plc")
+
+[node name="DecreaseBPM" type="Button" parent="Top/Control/BPM/TempoControls/BPMStack/BPMControl" unique_id=1301768253]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 16
+text = "-"
+script = ExtResource("18_o8plc")
+
+[node name="OffsetStack" type="BoxContainer" parent="Top/Control/BPM/TempoControls" unique_id=197002833]
+layout_mode = 2
+focus_mode = 2
+
+[node name="OffsetLabel" type="Label" parent="Top/Control/BPM/TempoControls/OffsetStack" unique_id=1685666174]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+text = "Offset"
+label_settings = SubResource("LabelSettings_exge2")
+
+[node name="Offset" type="LineEdit" parent="Top/Control/BPM/TempoControls/OffsetStack" unique_id=1975033859]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+placeholder_text = "0"
+alignment = 1
+editable = false
+
+[node name="OffsetControl" type="BoxContainer" parent="Top/Control/BPM/TempoControls/OffsetStack" unique_id=766314920]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+vertical = true
+
+[node name="IncreaseOffset" type="Button" parent="Top/Control/BPM/TempoControls/OffsetStack/OffsetControl" unique_id=1800588532]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 16
+text = "+"
+script = ExtResource("18_o8plc")
+
+[node name="DecreaseOffset" type="Button" parent="Top/Control/BPM/TempoControls/OffsetStack/OffsetControl" unique_id=1369384617]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 16
+text = "-"
+script = ExtResource("18_o8plc")
+
+[node name="SpeedStack" type="BoxContainer" parent="Top/Control/BPM/TempoControls" unique_id=1583474137]
+layout_mode = 2
+focus_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="Top/Control/BPM/TempoControls/SpeedStack" unique_id=1414875425]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+text = "Speed"
+label_settings = SubResource("LabelSettings_exge2")
+
+[node name="Speed" type="LineEdit" parent="Top/Control/BPM/TempoControls/SpeedStack" unique_id=1637723126]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+placeholder_text = "100.0%"
+alignment = 1
+editable = false
+
+[node name="SpeedControl" type="BoxContainer" parent="Top/Control/BPM/TempoControls/SpeedStack" unique_id=1642959721]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+vertical = true
+
+[node name="Faster" type="Button" parent="Top/Control/BPM/TempoControls/SpeedStack/SpeedControl" unique_id=381018219]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 16
+text = "+"
+script = ExtResource("18_o8plc")
+
+[node name="Slower" type="Button" parent="Top/Control/BPM/TempoControls/SpeedStack/SpeedControl" unique_id=1853522041]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 16
+text = "-"
+script = ExtResource("18_o8plc")
+
+[node name="DividerStack" type="BoxContainer" parent="Top/Control/BPM/TempoControls" unique_id=1675184893]
+layout_mode = 2
+focus_mode = 2
+
+[node name="DividerLabel" type="Label" parent="Top/Control/BPM/TempoControls/DividerStack" unique_id=1277682325]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+text = "Divisor"
+label_settings = SubResource("LabelSettings_exge2")
+
+[node name="Divisor" type="LineEdit" parent="Top/Control/BPM/TempoControls/DividerStack" unique_id=2067051352]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+placeholder_text = "2"
+alignment = 1
+editable = false
+
+[node name="DividerControl" type="BoxContainer" parent="Top/Control/BPM/TempoControls/DividerStack" unique_id=1846736357]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+vertical = true
+
+[node name="IncreaseDivider" type="Button" parent="Top/Control/BPM/TempoControls/DividerStack/DividerControl" unique_id=1874204939]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 16
+text = "+"
+script = ExtResource("18_o8plc")
+
+[node name="DecreaseDivider" type="Button" parent="Top/Control/BPM/TempoControls/DividerStack/DividerControl" unique_id=1875473038]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 16
+text = "-"
+script = ExtResource("18_o8plc")
+
+[node name="Fade" type="ColorRect" parent="Top" unique_id=980801193]
+visible = false
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="file_selected" from="FileMusic" to="." method="_on_file_music_file_selected"]
+[connection signal="file_selected" from="FileVideo" to="." method="_on_file_video_file_selected"]
+[connection signal="file_selected" from="FileImg" to="." method="_on_file_img_file_selected"]
+[connection signal="file_selected" from="FileChart" to="." method="_on_file_chart_file_selected"]
+[connection signal="file_selected" from="FileOSZ" to="." method="_on_file_osz_file_selected"]
+[connection signal="drag_ended" from="Top/Control/Media/Playback/Scrubber" to="." method="_on_scrubber_drag_ended"]
+[connection signal="drag_started" from="Top/Control/Media/Playback/Scrubber" to="." method="_on_scrubber_drag_started"]
+[connection signal="scrolling" from="Top/Control/Media/Playback/TimelineScroll" to="." method="_on_timeline_scroll_scrolling"]
+[connection signal="pressed" from="Top/Control/Media/MediaControls/Begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="Top/Control/Media/MediaControls/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Top/Control/Media/MediaControls/End" to="." method="_on_end_pressed"]
+[connection signal="pressed" from="Top/Control/Quit/Container/VBoxContainer/HBoxContainer/QuitYButton" to="." method="_on_quit_y_button_pressed"]
+[connection signal="pressed" from="Top/Control/Quit/Container/VBoxContainer/HBoxContainer/QuitNButton" to="." method="_on_quit_n_button_pressed"]
+[connection signal="text_changed" from="Top/Control/MapInfoPopUp/MapInfo/Name" to="." method="_on_name_text_changed"]
+[connection signal="text_changed" from="Top/Control/MapInfoPopUp/MapInfo/Artist" to="." method="_on_artist_text_changed"]
+[connection signal="text_changed" from="Top/Control/MapInfoPopUp/MapInfo/Mapper" to="." method="_on_mapper_text_changed"]
+[connection signal="text_changed" from="Top/Control/MapInfoPopUp/MapInfo/Difficulty" to="." method="_on_difficulty_text_changed"]
+[connection signal="pressed" from="Top/Control/MapInfoPopUp/MapInfo/Buttons/SaveMap" to="." method="_on_save_map_pressed"]
+[connection signal="pressed" from="Top/Control/MapInfoPopUp/MapInfo/Buttons/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="value_changed" from="Top/Control/DifficultyPopUp/MapInfo/OD/ODSpin" to="." method="_on_od_spin_value_changed"]
+[connection signal="value_changed" from="Top/Control/DifficultyPopUp/MapInfo/AR/ARSpin" to="." method="_on_ar_spin_value_changed"]
+[connection signal="value_changed" from="Top/Control/DifficultyPopUp/MapInfo/HP/HPSpin" to="." method="_on_hp_spin_value_changed"]
+[connection signal="pressed" from="Top/Control/DifficultyPopUp/MapInfo/Close" to="." method="_on_close_pressed"]
+[connection signal="value_changed" from="Top/Control/TempoPopUp/MapInfo/NewBPM/TempoEntry" to="." method="_on_tempo_entry_value_changed"]
+[connection signal="pressed" from="Top/Control/TempoPopUp/MapInfo/Buttons/TempoConfirm" to="." method="_on_tempo_confirm_pressed"]
+[connection signal="pressed" from="Top/Control/TempoPopUp/MapInfo/Buttons/TempoCancel" to="." method="_on_tempo_cancel_pressed"]
+[connection signal="pressed" from="Top/Control/OSZPopUp/DiffStack/Buttons/ImportConfirm" to="." method="_on_import_confirm_pressed"]
+[connection signal="pressed" from="Top/Control/OSZPopUp/DiffStack/Buttons/ImportCancel" to="." method="_on_import_cancel_pressed"]
+[connection signal="pressed" from="Top/Control/ClearWarning/MapInfo/Buttons/ClearConfirm" to="." method="_on_clear_confirm_pressed"]
+[connection signal="pressed" from="Top/Control/ClearWarning/MapInfo/Buttons/ClearCancel" to="." method="_on_clear_cancel_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File" to="." method="_on_file_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/New" to="." method="_on_new_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/Open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/LoadAudio" to="." method="_on_load_audio_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/LoadTux" to="." method="_on_load_tux_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/LoadBG" to="." method="_on_load_bg_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/LoadVideo" to="." method="_on_load_video_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/Test" to="." method="_on_test_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/LoadChart" to="." method="_on_load_chart_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/ImportOSZ" to="." method="_on_import_osz_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/File/FileMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/TempoChange" to="." method="_on_tempo_change_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/PreviewPoint" to="." method="_on_preview_point_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/KiaiPoint" to="." method="_on_kiai_point_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/SLLI" to="." method="_on_slli_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/SRLI" to="." method="_on_srli_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/Quaver" to="." method="_on_quaver_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/Clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/Undo" to="." method="_on_undo_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Edit/EditMenu/Redo" to="." method="_on_redo_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/View" to="." method="_on_view_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/View/ViewMenu/ZoomIn" to="." method="_on_zoom_in_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/View/ViewMenu/ZoomOut" to="." method="_on_zoom_out_pressed"]
+[connection signal="toggled" from="Top/Control/TopBar/MenuBar/View/ViewMenu/ToggleTimePanel" to="." method="_on_toggle_time_panel_toggled"]
+[connection signal="toggled" from="Top/Control/TopBar/MenuBar/View/ViewMenu/ToggleTempoPanel" to="." method="_on_toggle_tempo_panel_toggled"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Settings/SettingsMenu/Difficulty" to="." method="_on_difficulty_pressed"]
+[connection signal="toggled" from="Top/Control/TopBar/MenuBar/Settings/SettingsMenu/ToggleDRPC" to="." method="_on_toggle_drpc_toggled"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="Top/Control/BPM/TapBPM" to="." method="_on_tap_bpm_pressed"]
+[connection signal="pressed" from="Top/Control/BPM/MetronomeToggle" to="." method="_on_metronome_toggle_pressed"]
+[connection signal="text_submitted" from="Top/Control/BPM/TempoControls/BPMStack/BPM" to="." method="_on_bpm_text_submitted"]
+[connection signal="pressed" from="Top/Control/BPM/TempoControls/BPMStack/BPMControl/IncreaseBPM" to="." method="_on_increase_bpm_pressed"]
+[connection signal="pressed" from="Top/Control/BPM/TempoControls/BPMStack/BPMControl/DecreaseBPM" to="." method="_on_decrease_bpm_pressed"]
+[connection signal="text_submitted" from="Top/Control/BPM/TempoControls/OffsetStack/Offset" to="." method="_on_offset_text_submitted"]
+[connection signal="pressed" from="Top/Control/BPM/TempoControls/OffsetStack/OffsetControl/IncreaseOffset" to="." method="_on_increase_offset_pressed"]
+[connection signal="pressed" from="Top/Control/BPM/TempoControls/OffsetStack/OffsetControl/DecreaseOffset" to="." method="_on_decrease_offset_pressed"]
+[connection signal="text_submitted" from="Top/Control/BPM/TempoControls/SpeedStack/Speed" to="." method="_on_speed_text_submitted"]
+[connection signal="pressed" from="Top/Control/BPM/TempoControls/SpeedStack/SpeedControl/Faster" to="." method="_on_faster_pressed"]
+[connection signal="pressed" from="Top/Control/BPM/TempoControls/SpeedStack/SpeedControl/Slower" to="." method="_on_slower_pressed"]
+[connection signal="text_submitted" from="Top/Control/BPM/TempoControls/DividerStack/Divisor" to="." method="_on_divisor_text_submitted"]
+[connection signal="pressed" from="Top/Control/BPM/TempoControls/DividerStack/DividerControl/IncreaseDivider" to="." method="_on_increase_divider_pressed"]
+[connection signal="pressed" from="Top/Control/BPM/TempoControls/DividerStack/DividerControl/DecreaseDivider" to="." method="_on_decrease_divider_pressed"]

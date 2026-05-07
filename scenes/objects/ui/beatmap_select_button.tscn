@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://d1vwxla4rs40e"]
+
+[ext_resource type="Script" uid="uid://1wqs3ismufbg" path="res://scenes/objects/ui/beatmap_select_button.gd" id="1_itkew"]
+[ext_resource type="Theme" uid="uid://cei78kgos2820" path="res://assets/visual/themes/properrhythm.tres" id="1_micnt"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="2_itkew"]
+[ext_resource type="Texture2D" uid="uid://celxi1ktj4c5o" path="res://assets/visual/sprites/dropshadow.png" id="2_micnt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fjbk"]
+bg_color = Color(0, 0, 0, 0.85882354)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_micnt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w64mu"]
+bg_color = Color(0, 0, 0, 0.9098039)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0gjq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 16
+
+[node name="Button" type="Button" unique_id=25006937]
+clip_children = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -531.0
+offset_top = 92.0
+offset_right = 321.0
+offset_bottom = 252.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("1_micnt")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0fjbk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_micnt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w64mu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_w0gjq")
+text = "Placeholder Text"
+icon = ExtResource("2_micnt")
+alignment = 2
+text_overrun_behavior = 5
+autowrap_trim_flags = 0
+expand_icon = true
+script = ExtResource("1_itkew")
+
+[node name="Image" type="TextureRect" parent="." unique_id=223914975]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 158.0
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1093986677]
+stream = ExtResource("2_itkew")
+volume_db = -5.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

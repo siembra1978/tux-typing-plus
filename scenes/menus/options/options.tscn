@@ -1,0 +1,277 @@
+[gd_scene format=3 uid="uid://cqtq57ntjvy0j"]
+
+[ext_resource type="Script" uid="uid://ju6jnryw5s1f" path="res://scenes/menus/options/options.gd" id="1_cw13b"]
+[ext_resource type="Theme" uid="uid://bryxi4x6uhnqm" path="res://assets/visual/themes/tuxtheme2.tres" id="2_s7dil"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="3_e80a3"]
+[ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="3_p4pyc"]
+[ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="4_8ubju"]
+[ext_resource type="Texture2D" uid="uid://cabhmu6316u6k" path="res://assets/visual/logos/tux typing + options.png" id="4_cw13b"]
+[ext_resource type="Script" uid="uid://x0gg034vhsfq" path="res://scenes/menus/options/label_pivot.gd" id="4_rwm32"]
+[ext_resource type="Script" uid="uid://bdc1ucu6ctn75" path="res://scenes/menus/options/slider_pivot.gd" id="5_4dyhk"]
+[ext_resource type="AudioStream" uid="uid://bcrf10md6pmlj" path="res://assets/tux4kids/sounds/harp.wav" id="5_8ubju"]
+[ext_resource type="Script" uid="uid://dnaveu7dev3dg" path="res://scenes/menus/options/dropdown_pivot.gd" id="6_00wg1"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="6_8ubju"]
+[ext_resource type="Script" uid="uid://bsglqy5l5pcon" path="res://scenes/menus/select_mode/texture_bob.gd" id="6_e80a3"]
+[ext_resource type="Script" uid="uid://bgrai46oo31pt" path="res://scenes/menus/options/check_pivot.gd" id="7_c2w82"]
+
+[node name="Options" type="Control" unique_id=184406744]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cw13b")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1610885467]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1743311198]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -162.5
+offset_right = 267.0
+offset_bottom = 104.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_s7dil")
+alignment = 1
+vertical = true
+
+[node name="VolLabel" type="Label" parent="BoxContainer" unique_id=1016507786]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_e80a3")
+theme_override_font_sizes/font_size = 22
+text = "Volume"
+vertical_alignment = 1
+script = ExtResource("4_rwm32")
+
+[node name="Volume" type="HSlider" parent="BoxContainer" unique_id=653848748]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("5_4dyhk")
+
+[node name="ResLabel" type="Label" parent="BoxContainer" unique_id=643298119]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_e80a3")
+theme_override_font_sizes/font_size = 22
+text = "Windowed Resolution"
+vertical_alignment = 1
+script = ExtResource("4_rwm32")
+
+[node name="RES" type="OptionButton" parent="BoxContainer" unique_id=832405539]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+selected = 1
+item_count = 4
+popup/item_0/text = "1280x720"
+popup/item_0/id = 0
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 1
+popup/item_2/text = "2560x1440"
+popup/item_2/id = 2
+popup/item_3/text = "3840x2160"
+popup/item_3/id = 3
+script = ExtResource("6_00wg1")
+
+[node name="FSLabel" type="Label" parent="BoxContainer" unique_id=1969348854]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_e80a3")
+theme_override_font_sizes/font_size = 22
+text = "Fullscreen Options"
+vertical_alignment = 1
+script = ExtResource("4_rwm32")
+
+[node name="FS" type="OptionButton" parent="BoxContainer" unique_id=2027934731]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+selected = 2
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "Borderless Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Windowed"
+popup/item_2/id = 2
+script = ExtResource("6_00wg1")
+
+[node name="FPSLabel" type="Label" parent="BoxContainer" unique_id=559497473]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_e80a3")
+theme_override_font_sizes/font_size = 22
+text = "Refresh Rate"
+vertical_alignment = 1
+script = ExtResource("4_rwm32")
+
+[node name="FPS" type="OptionButton" parent="BoxContainer" unique_id=662336821]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+selected = 2
+fit_to_longest_item = false
+item_count = 6
+popup/item_0/text = "30"
+popup/item_0/id = 0
+popup/item_1/text = "60"
+popup/item_1/id = 1
+popup/item_2/text = "120"
+popup/item_2/id = 2
+popup/item_3/text = "144"
+popup/item_3/id = 3
+popup/item_4/text = "240"
+popup/item_4/id = 4
+popup/item_5/text = "Unlimited"
+popup/item_5/id = 5
+script = ExtResource("6_00wg1")
+
+[node name="FPSTog" type="CheckBox" parent="BoxContainer" unique_id=1520645505]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+text = "Show FPS
+"
+script = ExtResource("7_c2w82")
+
+[node name="VsyncTog" type="CheckBox" parent="BoxContainer" unique_id=1027946692]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+text = "Vsync"
+script = ExtResource("7_c2w82")
+
+[node name="AccessibilityLabel" type="Label" parent="BoxContainer" unique_id=731296931]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_e80a3")
+theme_override_font_sizes/font_size = 22
+text = "Accessibility"
+vertical_alignment = 1
+script = ExtResource("4_rwm32")
+
+[node name="Effects" type="CheckBox" parent="BoxContainer" unique_id=747328036]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+text = "Minimize Effects"
+script = ExtResource("7_c2w82")
+
+[node name="Readability" type="CheckBox" parent="BoxContainer" unique_id=1693015389]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+text = "Improve Readability
+"
+script = ExtResource("7_c2w82")
+
+[node name="Dyslexia" type="CheckBox" parent="BoxContainer" unique_id=770729850]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+text = "Dyslexic Mode
+
+"
+script = ExtResource("7_c2w82")
+
+[node name="WumbaLabel" type="Label" parent="BoxContainer" unique_id=476840478]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+script = ExtResource("4_rwm32")
+
+[node name="Exit" type="Button" parent="BoxContainer" unique_id=1945484050]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_s7dil")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+script = ExtResource("3_p4pyc")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1574644415]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -332.0
+offset_right = 514.0
+offset_bottom = 200.0
+grow_vertical = 0
+texture = ExtResource("4_cw13b")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("6_e80a3")
+
+[node name="HiddenButton" type="Button" parent="." unique_id=1868119000]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -533.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 3
+flat = true
+
+[node name="Wumba" type="CheckBox" parent="." unique_id=1123612998]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -534.0
+offset_top = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_s7dil")
+text = "Wumba"
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1744406864]
+stream = ExtResource("6_8ubju")
+volume_db = -5.0
+
+[node name="Giggle" type="AudioStreamPlayer" parent="." unique_id=148808817]
+stream = ExtResource("5_8ubju")
+volume_db = -10.0
+pitch_scale = 2.7
+
+[node name="Back" type="AudioStreamPlayer" parent="." unique_id=914421441]
+stream = ExtResource("4_8ubju")
+
+[connection signal="value_changed" from="BoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="item_selected" from="BoxContainer/RES" to="." method="_on_res_item_selected"]
+[connection signal="item_selected" from="BoxContainer/FS" to="." method="_on_fs_item_selected"]
+[connection signal="item_selected" from="BoxContainer/FPS" to="." method="_on_fps_item_selected"]
+[connection signal="toggled" from="BoxContainer/FPSTog" to="." method="_on_fps_tog_toggled"]
+[connection signal="toggled" from="BoxContainer/VsyncTog" to="." method="_on_vsync_tog_toggled"]
+[connection signal="toggled" from="BoxContainer/Effects" to="." method="_on_effects_toggled"]
+[connection signal="toggled" from="BoxContainer/Readability" to="." method="_on_readability_toggled"]
+[connection signal="toggled" from="BoxContainer/Dyslexia" to="." method="_on_dyslexia_toggled"]
+[connection signal="pressed" from="BoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="HiddenButton" to="." method="_on_hidden_button_pressed"]
+[connection signal="toggled" from="Wumba" to="." method="_on_wumba_toggled"]

@@ -1,0 +1,329 @@
+[gd_scene format=3 uid="uid://bef8re5x0kmmd"]
+
+[ext_resource type="Script" uid="uid://c7vntfq6dyb2k" path="res://scenes/game/comet_zap.gd" id="1_eyb20"]
+[ext_resource type="Texture2D" uid="uid://dshpn3ffg3bch" path="res://assets/tux4kids/images/backgrounds/0.jpg" id="2_rlh21"]
+[ext_resource type="AudioStream" uid="uid://df5qh4dphb5lc" path="res://assets/audio/music/game/comet_zap/game.mp3" id="3_rlh21"]
+[ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="4_rlh21"]
+[ext_resource type="AudioStream" uid="uid://nsxoigujbmka" path="res://assets/tux4kids/sounds/laser.wav" id="5_s5is7"]
+[ext_resource type="PackedScene" uid="uid://dm6jp4gjboooc" path="res://scenes/menus/pause/pause.tscn" id="6_cjaft"]
+[ext_resource type="AudioStream" uid="uid://doeypsxpyuskf" path="res://assets/tux4kids/sounds/splat.wav" id="6_jnvlf"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="7_rlh21"]
+[ext_resource type="AudioStream" uid="uid://dqvgl3glgphc1" path="res://assets/tux4kids/sounds/alarm.wav" id="8_jnvlf"]
+[ext_resource type="AudioStream" uid="uid://bpvhtfnjpcv7d" path="res://assets/tux4kids/sounds/newclick.wav" id="9_xsyba"]
+[ext_resource type="Script" uid="uid://or8mcd735o0r" path="res://scenes/game/restart.gd" id="10_apana"]
+[ext_resource type="Texture2D" uid="uid://cjl3087f6x4u3" path="res://assets/visual/sprites/wumba.png" id="10_rlh21"]
+[ext_resource type="Texture2D" uid="uid://cq2oysh85epi" path="res://assets/tux4kids/images/tux/console.png" id="10_s5is7"]
+[ext_resource type="Texture2D" uid="uid://3ih5qck5atde" path="res://assets/tux4kids/images/tux/tux-relax1.png" id="11_2aokc"]
+[ext_resource type="Script" uid="uid://crxm56favhwos" path="res://scenes/game/exit.gd" id="11_jnvlf"]
+[ext_resource type="Texture2D" uid="uid://b7r3f1c6efni3" path="res://assets/tux4kids/images/tux/tux-relax2.png" id="12_aklyh"]
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="12_s5is7"]
+[ext_resource type="Theme" uid="uid://cei78kgos2820" path="res://assets/visual/themes/properrhythm.tres" id="13_fbqpm"]
+[ext_resource type="Texture2D" uid="uid://b38exow4qdyvv" path="res://assets/tux4kids/images/tux/tux-console1.png" id="13_thm3j"]
+[ext_resource type="Texture2D" uid="uid://dufam0rdkxave" path="res://assets/tux4kids/images/tux/tux-console4.png" id="14_gycq6"]
+[ext_resource type="Texture2D" uid="uid://d00ho8soovytc" path="res://assets/tux4kids/images/tux/yipe0.png" id="15_aklyh"]
+[ext_resource type="Theme" uid="uid://bryxi4x6uhnqm" path="res://assets/visual/themes/tuxtheme2.tres" id="15_fbqpm"]
+[ext_resource type="Texture2D" uid="uid://dome10tic2pwq" path="res://assets/tux4kids/images/tux/tux-console2.png" id="15_oad83"]
+[ext_resource type="Texture2D" uid="uid://teucw8c6b68l" path="res://assets/tux4kids/images/tux/tux-drat.png" id="16_thm3j"]
+[ext_resource type="Texture2D" uid="uid://yy3sohvjrpfi" path="res://assets/tux4kids/images/tux/tux-console3.png" id="16_tjxml"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fbqpm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_2aokc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_aklyh")
+}],
+"loop": false,
+"name": &"intro",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_thm3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gycq6")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_aklyh")
+}],
+"loop": true,
+"name": &"lose",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_thm3j")
+}],
+"loop": true,
+"name": &"miss",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_oad83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_tjxml")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2j0xl"]
+font = ExtResource("12_s5is7")
+font_size = 50
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xsyba"]
+font = ExtResource("12_s5is7")
+font_size = 128
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CometZap" type="Node2D" unique_id=1227404695]
+script = ExtResource("1_eyb20")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1005683026]
+layer = -1
+
+[node name="Control" type="Control" parent="Background" unique_id=2022519285]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Background/Control" unique_id=308962101]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rlh21")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=668222025]
+stream = ExtResource("3_rlh21")
+parameters/looping = true
+
+[node name="Back" type="AudioStreamPlayer" parent="." unique_id=1363849237]
+stream = ExtResource("4_rlh21")
+
+[node name="CometBreakSound" type="AudioStreamPlayer" parent="." unique_id=644279375]
+stream = ExtResource("5_s5is7")
+volume_db = -10.0
+pitch_scale = 2.0
+
+[node name="Miss" type="AudioStreamPlayer" parent="." unique_id=1703667394]
+stream = ExtResource("6_jnvlf")
+volume_db = -10.0
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1849140023]
+stream = ExtResource("7_rlh21")
+volume_db = -5.0
+
+[node name="Lose" type="AudioStreamPlayer" parent="." unique_id=1370510500]
+stream = ExtResource("8_jnvlf")
+volume_db = -10.0
+
+[node name="Sad" type="AudioStreamPlayer" parent="." unique_id=298653186]
+
+[node name="NewClick" type="AudioStreamPlayer" parent="." unique_id=2059927287]
+stream = ExtResource("9_xsyba")
+
+[node name="OnTop" type="CanvasLayer" parent="." unique_id=828008006]
+
+[node name="Tux" type="Control" parent="OnTop" unique_id=201877047]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -1080.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Console" type="TextureRect" parent="OnTop/Tux" unique_id=1323453021]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = -100.0
+offset_right = 171.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_s5is7")
+
+[node name="TuxSprite" type="AnimatedSprite2D" parent="OnTop/Tux" unique_id=1431555866]
+position = Vector2(960, 1020)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fbqpm")
+animation = &"miss"
+
+[node name="HUD" type="Control" parent="OnTop" unique_id=2042422382]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Wumba" type="TextureRect" parent="OnTop/HUD" unique_id=1951903204]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -112.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("10_rlh21")
+stretch_mode = 3
+
+[node name="Wave" type="Label" parent="OnTop/HUD" unique_id=411589405]
+layout_mode = 1
+offset_right = 187.0
+offset_bottom = 69.0
+size_flags_horizontal = 0
+size_flags_vertical = 6
+text = "Wave: 1"
+label_settings = SubResource("LabelSettings_2j0xl")
+
+[node name="HealthBar" type="ProgressBar" parent="OnTop/HUD" unique_id=744898628]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -405.0
+offset_right = 60.0
+offset_bottom = 405.0
+grow_vertical = 2
+theme = ExtResource("13_fbqpm")
+value = 75.0
+fill_mode = 3
+show_percentage = false
+
+[node name="OptionsDim" type="ColorRect" parent="OnTop" unique_id=582636566]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Pause" parent="OnTop" unique_id=1227462733 instance=ExtResource("6_cjaft")]
+visible = false
+
+[node name="GameOver" type="Control" parent="OnTop" unique_id=2084475928]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("15_fbqpm")
+
+[node name="Dim" type="ColorRect" parent="OnTop/GameOver" unique_id=651690269]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="Label" type="Label" parent="OnTop/GameOver" unique_id=1830840075]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -290.0
+offset_right = 277.0
+offset_bottom = -114.99994
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_xsyba")
+
+[node name="Buttons" type="BoxContainer" parent="OnTop/GameOver" unique_id=812956524]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -118.75
+offset_right = 267.0
+offset_bottom = 118.75
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="Restart" type="Button" parent="OnTop/GameOver/Buttons" unique_id=702028007]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Restart
+"
+script = ExtResource("10_apana")
+
+[node name="Exit" type="Button" parent="OnTop/GameOver/Buttons" unique_id=1929956127]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Select Gamemode"
+script = ExtResource("11_jnvlf")
+
+[node name="Damage" type="ColorRect" parent="OnTop" unique_id=1042791592]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.7764706, 0, 0, 1)
+
+[node name="Fade" type="ColorRect" parent="OnTop" unique_id=1872046404]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="OnTop/GameOver/Buttons/Restart" to="OnTop/GameOver/Buttons/Restart" method="_on_pressed"]
+[connection signal="pressed" from="OnTop/GameOver/Buttons/Exit" to="OnTop/GameOver/Buttons/Exit" method="_on_pressed"]

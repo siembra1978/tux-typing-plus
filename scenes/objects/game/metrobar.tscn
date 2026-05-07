@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dg7floxretwap"]
+
+[ext_resource type="Script" uid="uid://5t23ppck2wlx" path="res://scenes/objects/game/metrobar.gd" id="1_yxmch"]
+
+[node name="Metrobar" type="Control" unique_id=110411660]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yxmch")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=687714253]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 1915.0
+offset_bottom = 5.0
+grow_horizontal = 2
+color = Color(0.27450982, 0.27450982, 0.27450982, 1)

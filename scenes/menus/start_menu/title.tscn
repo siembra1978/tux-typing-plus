@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://c536b5suvq3ep"]
+
+[ext_resource type="Script" uid="uid://fh2cd7vlu5fy" path="res://scenes/menus/start_menu/title.gd" id="1_iysul"]
+[ext_resource type="Shader" uid="uid://b4yhwgv8l8djq" path="res://shaders/scroll.gdshader" id="1_kpexm"]
+[ext_resource type="Texture2D" uid="uid://db557qcd1godx" path="res://assets/visual/sprites/scrolbackground.png" id="2_3xoar"]
+[ext_resource type="Texture2D" uid="uid://dew71sa7dwdnc" path="res://assets/visual/logos/tux typing +.png" id="3_mom7w"]
+[ext_resource type="Script" uid="uid://cvxtof1igytdj" path="res://scenes/menus/start_menu/start_button.gd" id="4_jd0r5"]
+[ext_resource type="AudioStream" uid="uid://cvlft1qt26li7" path="res://assets/tux4kids/sounds/tuxi.ogg" id="7_djrfl"]
+[ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="8_djrfl"]
+[ext_resource type="AudioStream" uid="uid://b878e5o04ftof" path="res://assets/audio/sfx/runtrim.wav" id="8_ggcqs"]
+[ext_resource type="PackedScene" uid="uid://cqxgdce5mn1v2" path="res://scenes/objects/ui/version_indicator.tscn" id="9_djrfl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlc08"]
+shader = ExtResource("1_kpexm")
+shader_parameter/speed = 0.1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlc08"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.35979736, 0.51099104, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd0r5"]
+bg_color = Color(0.5014065, 0.50140655, 0.50140643, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.16862746, 0.23529412, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn0s6"]
+bg_color = Color(0.8646751, 0.86467516, 0.8646751, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.16810313, 0.23405439, 0.9999513, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_jd0r5"]
+font_size = 65
+outline_size = 30
+outline_color = Color(0.36078432, 0.50980395, 1, 1)
+shadow_size = 32
+shadow_color = Color(0.23479429, 0.36919802, 0.99998075, 1)
+shadow_offset = Vector2(9.8, 5.495)
+
+[node name="Title" type="Control" unique_id=2056562558]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iysul")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=832996317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08627451, 0, 0.7176471, 1)
+
+[node name="background" type="TextureRect" parent="." unique_id=1048489066]
+material = SubResource("ShaderMaterial_nlc08")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3xoar")
+stretch_mode = 1
+
+[node name="title" type="TextureRect" parent="." unique_id=279459107]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -507.04675
+offset_top = -381.5
+offset_right = 507.04675
+offset_bottom = 381.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mom7w")
+
+[node name="VersionIndicator" parent="." unique_id=1429627592 instance=ExtResource("9_djrfl")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="." unique_id=701951005]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.375
+offset_top = 115.0
+offset_right = 129.375
+offset_bottom = 239.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlc08")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jd0r5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jn0s6")
+text = "Start!"
+script = ExtResource("4_jd0r5")
+
+[node name="StartLabel" type="Label" parent="StartButton" unique_id=175730246]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start!"
+label_settings = SubResource("LabelSettings_jd0r5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleMusic" type="AudioStreamPlayer" parent="." unique_id=1048624201]
+stream = ExtResource("7_djrfl")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=1786659234]
+stream = ExtResource("8_djrfl")
+
+[node name="Bye" type="AudioStreamPlayer" parent="." unique_id=370317607]
+stream = ExtResource("8_ggcqs")
+volume_db = -10.0
+
+[node name="Fade" type="ColorRect" parent="." unique_id=884781609]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
