@@ -1039,7 +1039,7 @@ func _on_file_chart_file_selected(path: String) -> void:
 		$Top/Control/DifficultyPopUp/MapInfo/AR/ARSpin.value = float(AR)
 		$Top/Control/DifficultyPopUp/MapInfo/HP/HPSpin.value = float(HP)
 
-		if data["editor_version"] != "TuxEditor-0.2.10":
+		if data["editor_version"] != "TuxEditor-0.2.11":
 			data["background"] = "background.jpg"
 			data["tux_skin"] = "tux.jpg"
 
