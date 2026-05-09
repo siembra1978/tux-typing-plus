@@ -115,7 +115,7 @@ func _ready() -> void:
 	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
-			print("rpcing=================================")
+			#print("rpcing=================================")
 			rpc.details = "Chilling on the Menu"
 			rpc.large_image = "icon"
 			rpc.small_image = 'None'
@@ -414,7 +414,7 @@ func _on_phrase_typing_pressed() -> void:
 
 func _on_title_button_pressed() -> void:
 	Config.start = true
-	print("pressed")
+	#print("pressed")
 	button_press.play()
 	title_button.active = false
 	var tween = create_tween()

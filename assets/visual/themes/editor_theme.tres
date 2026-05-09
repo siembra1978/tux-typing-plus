@@ -161,6 +161,13 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hj3c"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
@@ -199,3 +206,4 @@ LineEdit/constants/outline_size = 6
 LineEdit/fonts/font = ExtResource("1_jco1w")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_ve4ni")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_d2lw7")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_2hj3c")

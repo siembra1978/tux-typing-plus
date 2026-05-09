@@ -189,33 +189,33 @@ func _ready() -> void:
 
 			rpc.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
 			# DiscordRPC.end_timestamp = int(Time.get_unix_time_from_system()) + 3600 # +1 hour in unix time / "01:00:00 remaining"
-			
+
 			rpc.refresh()
 
 	var temp_folder = DirAccess.make_dir_recursive_absolute("user://tmp/")
-	
+
 	# init
 	viewport_size = get_viewport_rect().size
 	version_label.text = str(Config.GAME_VERSION) + "\n" + str(EDITOR_VERSION)
-	
+
 	# top ui
 	fade = self.get_node('Top/Fade')
-	
+
 	fade.visible = true
 	fade.modulate.a = 1
 	var tween := create_tween()
 	tween.parallel().tween_property(fade, "modulate:a", 0, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
+
 	# music details
 	music = $Music
 	playback_position = 0.0
 	#duration = music.stream.get_length()
-	
+
 	scrubber.min_value = 0
 	scrubber.max_value = 0
 	#scrubber.step = 1
 	#scrubber.tick_count = int(duration)
-	
+
 	create_log('Ready!', true)
 	get_tree().root.files_dropped.connect(_on_files_dropped)
 
@@ -226,22 +226,22 @@ func _process(delta: float) -> void:
 	scrubber.min_value = 0
 	if music.stream != null:
 		scrubber.max_value = duration
-	
+
 	if bpm_timeout_counter >= bpm_timeout:
 		if len(bpm_timestamps) == 0:
 			create_bpm_timestamps()
-	
+
 	if music.playing:
 		playback_position = music.get_playback_position() + AudioServer.get_time_since_last_mix()
 		var integer_position_ms = playback_position*1000
-		
+
 		if bpm_timestamps:
 			if next_beat < total_beats-1:
 				if integer_position_ms > bpm_timestamps[next_beat]:
 					#print(next_beat)
 					if metronome_active:
 						var last_changed_index = 0
-			
+
 						for j in changed_indices.keys():
 							if j <= next_beat:
 								last_changed_index = int(j)
@@ -269,7 +269,7 @@ func _process(delta: float) -> void:
 								note_objects[playing_index-1].get_node("ColorRect").color = Color(1,1,1)
 							note_objects[playing_index].get_node("ColorRect").color = Color(1,1,0)
 						playing_index += 1
-		
+
 		set_time_label()
 	elif not music.playing and not scrubbing:
 		var integer_position_ms = playback_position*1000
@@ -302,35 +302,35 @@ func _process(delta: float) -> void:
 				#note_objects[playing_index-2].get_node("ColorRect").color = Color(1,1,0)
 
 			set_time_label()
-	
+
 	if not scrubbing:
 		scrubber.value = playback_position
-	
+
 	if bpm_timestamps:
 		active_marker.position.x = ((float(bpm_timestamps[active_beat])/1000.0)/float(duration))*timeline_width
-	
+
 	if playback_position and duration:
 		playhead_marker.position.x = float(playback_position/duration)*timeline_width
-		
+
 	if duration:
 		bpm_entry.editable = true
 		speed_entry.editable = true
 	if bpm_entry.text:
 		offset_entry.editable = true
 		divider_entry.editable = true
-		
+
 
 func _on_begin_pressed() -> void:
 	if music.stream != null:
 		playback_position = 0.0
 		var integer_position_ms = playback_position*1000
-		
+
 		for i in bpm_timestamps.size():
 			if bpm_timestamps[i] > integer_position_ms:
 				next_beat = i
 				playing_index = i
 				break
-				
+
 		if playing:
 			music.play(0.0)
 			if bg_video.stream:
@@ -370,7 +370,7 @@ func _on_end_pressed() -> void:
 func _on_scrubber_drag_started() -> void:
 	if music.stream != null:
 		scrubbing = true
-		
+
 		kiai_sound.stop()
 
 		if mappings and bpm_timestamps:
@@ -386,29 +386,29 @@ func _on_scrubber_drag_ended(value_changed: bool) -> void:
 	scrubbing = false
 	playback_position = scrubber.value
 	var integer_position_ms = playback_position*1000
-	
+
 	kiai_sound.stop()
-	
+
 	if mappings and bpm_timestamps:
 		for i in bpm_timestamps.size():
 			if bpm_timestamps[i] > integer_position_ms:
 				playing_index = i
 				#print("next play index: " + str(playing_index))
 				break
-				
+
 		for i in bpm_timestamps.size():
 			if (i % divider == 0):
 				if bpm_timestamps[i] > integer_position_ms:
 					next_beat = i
 					#print("new next beat: " + str(next_beat))
 					break
-	
+
 	if playing:
 		if bg_video.stream:
 			bg_video.paused = false
 			bg_video.stream_position = playback_position
 		music.play(playback_position)
-		
+
 func _input(event):
 	if (not map_info_popup.visible) and (not map_difficulty_popup.visible):
 		if event is InputEventKey and event.pressed:
@@ -418,32 +418,32 @@ func _input(event):
 			if event.keycode == KEY_LEFT:
 				if active_beat > 0:
 					var old_marker = note_objects[active_beat]
-					
+
 					if mappings[active_beat] == 1:
 						old_marker.get_node("ColorRect").color = Color(0,0,1)
 					elif mappings[active_beat] == 0:
 						old_marker.get_node("ColorRect").color = Color(1,1,1)
-					
+
 					active_beat -= 1
 					var new_marker = note_objects[active_beat]
-					
+
 					new_marker.get_node("ColorRect").color = Color(1,0,0)
-					
+
 			if event.keycode == KEY_RIGHT:
-				
+
 				if active_beat < total_beats:
 					var old_marker = note_objects[active_beat]
-						
+
 					if mappings[active_beat] == 1:
 						old_marker.get_node("ColorRect").color = Color(0,0,1)
 					elif mappings[active_beat] == 0:
 						old_marker.get_node("ColorRect").color = Color(1,1,1)
-					
+
 					active_beat += 1
 					var new_marker = note_objects[active_beat]
-					
+
 					new_marker.get_node("ColorRect").color = Color(1,0,0)
-					
+
 			if event.keycode == KEY_C or event.keycode == KEY_V:
 				#$Hitsound.play()
 				var ms = playback_position*1000
@@ -460,7 +460,7 @@ func _input(event):
 
 				mappings[best_j] = 1
 				note_objects[best_j].get_node("ColorRect").color = Color(0,0,1)
-				
+
 				'''
 				for i in bpm_timestamps.size():
 					if bpm_timestamps[i] > integer_position_ms:
@@ -470,7 +470,7 @@ func _input(event):
 						#print("beat places at index " + str(i))
 						break
 				'''
-				
+
 				#creating_mapping_visualizer()
 			if event.keycode == KEY_Z:
 				mappings[active_beat] = 1
@@ -478,16 +478,16 @@ func _input(event):
 			if event.keycode == KEY_X:
 				mappings[active_beat] = 0
 				#note_objects[active_beat].get_node("ColorRect").color = Color(1,1,1)
-			
+
 			if event.keycode == KEY_L:
 				tap_bpm_input()
-			
+
 			if event.keycode == KEY_DOWN:
 				if mappings[active_beat] == 1:
 					note_objects[active_beat].get_node("ColorRect").color = Color(0,0,1)
 				else:
 					note_objects[active_beat].get_node("ColorRect").color = Color(1,1,1)
-					
+
 				active_beat = playing_index
 				note_objects[active_beat].get_node("ColorRect").color = Color(1,0,0)
 
@@ -505,26 +505,26 @@ func _input(event):
 					await tween.finished
 					quit_panel.visible = false
 					quit_panel.scale = Vector2(1.0,1.0)
-			
+
 			if event.keycode == KEY_I:
 				zoom_in()
 
 			if event.keycode == KEY_O:
 				zoom_out()
-				
+
 
 		if event is InputEventMouseButton and event.pressed:
-			
+
 			var scrolling = Input.is_key_pressed(KEY_CTRL)
 			var d = 10000
-			
+
 			if (event.button_index == MOUSE_BUTTON_WHEEL_UP and scrolling):
 				scrubber.size.x += d
 				#scrubber.position.x -= d / 2.0
 				scrubber.position.x = (viewport_size.x/2) - (scrubber.size.x)*(timeline_scroll.value/100)
 				creating_mapping_visualizer()
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN and scrolling:
-				if scrubber.size.x > d: 
+				if scrubber.size.x > d:
 					scrubber.size.x -= d
 					scrubber.position.x = (viewport_size.x/2) - (scrubber.size.x)*(timeline_scroll.value/100)
 					creating_mapping_visualizer()
@@ -551,26 +551,26 @@ func _on_timeline_scroll_scrolling() -> void:
 func _on_music_finished() -> void:
 	playing = false
 	music.stop()
-	
+
 func creating_mapping_visualizer():
 	note_objects.clear()
 	for child in scrubber.get_children():
 		child.queue_free()
-	
+
 	if mappings:
 		var scrubber_width = scrubber.size.x
 		var total_duration_ms = duration * 1000.0
 
 		var full_beat_ms = (60.0 / bpm) * 1000.0
 		var marker_width_ms = full_beat_ms / divider
-		
+
 		for i in mappings.size():
 			var beat_time_ms = bpm_timestamps[i]
 			var pos_percentage = beat_time_ms / total_duration_ms
 			var final_x_pos = pos_percentage * scrubber_width
-		
+
 			var new_marker = beatmarker_scene.instantiate()
-			
+
 			if active_beat == i:
 				new_marker.get_node("ColorRect").color = Color(1,0,0)
 			elif mappings[i] == 1:
@@ -583,13 +583,13 @@ func creating_mapping_visualizer():
 				indicator.text = "BPM: " + str(changed_indices[i])
 				full_beat_ms = (60.0 / changed_indices[i]) * 1000.0
 				marker_width_ms = full_beat_ms / divider
-			
+
 			var last_changed_index = 0
-			
+
 			for j in changed_indices.keys():
 				if j <= i:
 					last_changed_index = int(j)
-			
+
 			if ((i-last_changed_index) % (4*metro_count)) == 0:
 				new_marker.text = str((i % divider)+1)
 				new_marker.position.y = new_marker.position.y - (new_marker.size.y*.50)/2
@@ -603,14 +603,14 @@ func creating_mapping_visualizer():
 
 			if i in kiai_indices:
 				new_marker.text = "*"
-			
+
 			new_marker.position.x = (bpm_timestamps[i] / total_duration_ms) * scrubber_width
-			
+
 			new_marker.size.x = (marker_width_ms / total_duration_ms) * scrubber_width
-				
+
 			note_objects.append(new_marker)
 			scrubber.add_child(new_marker)
-	
+
 func create_bpm_timestamps():
 	if offset != null:
 		print(offset)
@@ -619,24 +619,24 @@ func create_bpm_timestamps():
 		print(bpm)
 		var change_by = ((60/bpm)*1000)/divider
 		#print(change_by)
-		
+
 		#while (a + change_by) < duration*1000:
 			#pass
 			#print("h")
 			#bpm_timestamps.append(a)
 			#a += change_by
-		
+
 		var h = ((duration*1000)-a)/change_by
 		print(h)
 		for i in range(int((duration*1000 - a)/change_by)):
 			bpm_timestamps.append(a + change_by * i)
-		
+
 		total_beats = len(bpm_timestamps) - 1
-		
+
 		mappings.clear()
 		for i in range(total_beats):
 			mappings.append(0)
-		
+
 		bpm_deltas.clear()
 		last_recorded_timestamp = null
 		#print(bpm_timestamps)
@@ -651,7 +651,7 @@ func create_bpm_timestamps_from_osz():
 		#print(bpm)
 		var change_by = ((60/bpm)*1000)/divider
 		#print(change_by)
-		
+
 		#while (a + change_by) < duration*1000:
 			#pass
 			#print("h")
@@ -662,13 +662,13 @@ func create_bpm_timestamps_from_osz():
 		#print(h)
 		for i in range(int((duration*1000 - a)/change_by)):
 			bpm_timestamps.append(a + change_by * i)
-		
+
 		total_beats = len(bpm_timestamps) - 1
-		
+
 		mappings.clear()
 		for i in range(total_beats):
 			mappings.append(0)
-		
+
 		bpm_deltas.clear()
 		last_recorded_timestamp = null
 		#print(bpm_timestamps)
@@ -681,29 +681,29 @@ func create_partial_bpm_timestamps():
 		#bpm_timestamps.clear()
 
 		bpm_timestamps = bpm_timestamps.slice(0,active_beat+1)
-		
+
 		var new_marker = tempo_marker.instantiate()
 		timeline_scroll.add_child(new_marker)
 		new_marker.position.x = ((bpm_timestamps[int(active_beat)]/1000)/duration)*timeline_width
-		
-		
+
+
 		var a = bpm_timestamps[active_beat]
 		changed_indices[active_beat] = new_bpm
 		#print(new_bpm)
 		var change_by = ((60/new_bpm)*1000)/divider
 		#print(change_by)
-		
+
 		var h = ((duration*1000)-a)/change_by
 		#print(h)
 		for i in range(int((duration*1000 - a)/change_by)):
 			bpm_timestamps.append(a + change_by * i)
-		
+
 		total_beats = len(bpm_timestamps) - 1
-		
+
 		mappings.clear()
 		for i in range(total_beats):
 			mappings.append(0)
-		
+
 		bpm_deltas.clear()
 		last_recorded_timestamp = null
 		#print(bpm_timestamps)
@@ -726,35 +726,35 @@ func create_partial_bpm_timestamps_from_osz(requested_timing, imported_bpm):
 		#best_j+=1
 
 		bpm_timestamps = bpm_timestamps.slice(0,best_j+1)
-		
+
 		var new_marker = tempo_marker.instantiate()
 		timeline_scroll.add_child(new_marker)
 		new_marker.position.x = ((bpm_timestamps[int(best_j)]/1000)/duration)*timeline_width
-		
+
 		#var a = offset*1000
 		var a = bpm_timestamps[best_j]
 		changed_indices[best_j] = imported_bpm
 		#print(imported_bpm)
 		var change_by = ((60/imported_bpm)*1000)/divider
 		#print(change_by)
-		
+
 		var h = ((duration*1000)-a)/change_by
 		#print(h)
 		for i in range(int((duration*1000 - a)/change_by)):
 			if i > 0:
 				bpm_timestamps.append(a + change_by * i)
-		
+
 		total_beats = len(bpm_timestamps) - 1
-		
+
 		mappings.clear()
 		for i in range(total_beats):
 			mappings.append(0)
-		
+
 		bpm_deltas.clear()
 		last_recorded_timestamp = null
 		#print(bpm_timestamps)
 		#creating_mapping_visualizer()
-		
+
 func shift_offset():
 		var dif = bpm_timestamps[0] - (offset*1000)
 		var new_timestamps = []
@@ -766,20 +766,20 @@ func shift_offset():
 		bpm_timestamps = new_timestamps
 		print("after: " + str(bpm_timestamps[0]))
 		creating_mapping_visualizer()
-	
+
 func calculate_offset():
 	if len(bpm_deltas) > 0:
 		if first_recorded_timestamp:
 			var o = first_recorded_timestamp
 			var change_by = 60/bpm
-			
+
 			while (o - change_by) > 0:
 				#print(o*1000)
 				o -= change_by
-				
+
 			offset = o
 			offset_entry.text = str(int(offset*1000))
-			
+
 func save_beatmap():
 	var map_data = {
 		"name": map_name,
@@ -808,8 +808,8 @@ func save_beatmap():
 	}
 
 	var regex = RegEx.new()
-	regex.compile("[^a-zA-Z]") 
-	
+	regex.compile("[^a-zA-Z]")
+
 	var file_name = regex.sub(map_name + map_difficulty, "", true).to_lower()
 	var beatmap_path = "user://beatmaps/" + file_name + "/"
 	var error = DirAccess.make_dir_recursive_absolute(beatmap_path)
@@ -817,9 +817,9 @@ func save_beatmap():
 	if error != OK:
 		print("Error creating directory: ", error)
 		return
-	
+
 	var file = FileAccess.open(beatmap_path + file_name + ".json", FileAccess.WRITE)
-	
+
 	if file:
 		var json_string = JSON.stringify(map_data, "\t", false)
 		file.store_string(json_string)
@@ -829,11 +829,11 @@ func save_beatmap():
 		create_log("Error: Could not save file!", false)
 		error_sound.play()
 		return
-	
+
 	if source_audio_path:
 		var audio_dest = beatmap_path + source_audio_path.get_file()
 		DirAccess.copy_absolute(source_audio_path, audio_dest)
-	
+
 	if source_bg_path:
 		var bg_dest = beatmap_path + source_bg_path.get_file()
 		DirAccess.copy_absolute(source_bg_path, bg_dest)
@@ -841,11 +841,11 @@ func save_beatmap():
 	if source_skin_path:
 		var skin_dest = beatmap_path + source_skin_path.get_file()
 		DirAccess.copy_absolute(source_skin_path, skin_dest)
-		
+
 	if source_video_path:
 		var video_dest = beatmap_path + "video" + "." + source_video_path.get_extension()
 		DirAccess.copy_absolute(source_video_path, video_dest)
-	
+
 	button_sound.play()
 
 func tap_bpm_input():
@@ -853,7 +853,7 @@ func tap_bpm_input():
 		#print("bpm tapped")
 		bpm_timestamps.clear()
 		bpm_timeout_counter = 0
-		
+
 		if last_recorded_timestamp == null:
 			last_recorded_timestamp = music.get_playback_position() + AudioServer.get_time_since_last_mix()
 			first_recorded_timestamp = last_recorded_timestamp
@@ -862,10 +862,10 @@ func tap_bpm_input():
 			press_delta = current_timestamp - last_recorded_timestamp
 			bpm_deltas.append(press_delta)
 			last_recorded_timestamp = current_timestamp
-		
+
 		if len(bpm_deltas) > 0:
 			bpm = ceil(60/(bpm_deltas.reduce(func(accum, bpm_delta): return accum + bpm_delta, 0)/len(bpm_deltas)))
-		
+
 		bpm_entry.text = str(bpm)
 		calculate_offset()
 
@@ -935,10 +935,10 @@ func _on_file_music_file_selected(path: String) -> void:
 	var chosenmusic = FileAccess.open(path, FileAccess.READ)
 	var stream
 	var validformat = true
-	
+
 	source_audio_path = str(path)
 	audio_file_name = str(path.get_file())
-	
+
 	if path.ends_with('.mp3'):
 		stream = AudioStreamMP3.new()
 		stream.data = chosenmusic.get_buffer(chosenmusic.get_length())
@@ -958,7 +958,7 @@ func _on_file_music_file_selected(path: String) -> void:
 		#audio_label.set_text(audiofilename)
 		time_label.text = str(0) + "/" + str(int(duration*1000))
 		#entry_box.get_node("BeatmapName").set_text(name_entry.text)
-		
+
 #Load Beatmap
 func _on_file_chart_file_selected(path: String) -> void:
 	#create_bpm_timestamps()
@@ -971,7 +971,7 @@ func _on_file_chart_file_selected(path: String) -> void:
 
 	var json = JSON.new()
 	var error = json.parse(content)
-	
+
 	if error == OK:
 		var data = json.data
 
@@ -986,14 +986,14 @@ func _on_file_chart_file_selected(path: String) -> void:
 		metro_count = int(data["divider"])
 		mappings = data["mappings"]
 		bpm_timestamps = data["bpm_timestamps"]
-		
+
 		total_beats = len(bpm_timestamps) - 1
-		
+
 		# difficulty
 		HP = data["HP"]
 		AR = data["AR"]
 		OD = data["OD"]
-		
+
 		#print("user://beatmaps/" + file_name + "/" + str(data["song_name"]))
 		var music_path = chartfd_path + "/" + str(data["song_name"])
 
@@ -1023,11 +1023,11 @@ func _on_file_chart_file_selected(path: String) -> void:
 				playback_position = 0.0
 				time_label.text = str(0) + "/" + str(int(duration*1000))
 		source_audio_path = music_path
-		
+
 		#create_bpm_timestamps()
 		#bpm_timestamps = data["bpm_timestamps"]
 		#mappings = data["mappings"]
-				
+
 		bpm_entry.text = str(bpm)
 		offset_entry.text = str(int(offset*1000))
 		divider_entry.text = str(divider)
@@ -1039,9 +1039,9 @@ func _on_file_chart_file_selected(path: String) -> void:
 		$Top/Control/DifficultyPopUp/MapInfo/AR/ARSpin.value = float(AR)
 		$Top/Control/DifficultyPopUp/MapInfo/HP/HPSpin.value = float(HP)
 
-		if data["editor_version"] != "TuxEditor-0.2.11":
-			data["background"] = "background.jpg"
-			data["tux_skin"] = "tux.jpg"
+		#if data["editor_version"] != "TuxEditor-0.2.11":
+			#data["background"] = "background.jpg"
+			#data["tux_skin"] = "tux.jpg"
 
 		if data["background"] != null:
 			#print("user://beatmaps/" + file_name + "/background.jpg")
@@ -1055,7 +1055,7 @@ func _on_file_chart_file_selected(path: String) -> void:
 		if data["tux_skin"]:
 			source_skin_path = chartfd_path + "/" + data["tux_skin"]
 			map_tux_skin = data["tux_skin"]
-			
+
 		if "video" in data:
 			#print("there is video!")
 			if data["video"]:
@@ -1068,7 +1068,7 @@ func _on_file_chart_file_selected(path: String) -> void:
 				custom_background.visible = false
 			else:
 				bg_video.visible = false
-		
+
 		if "preview_point" in data:
 			if data["preview_point"]:
 				preview_point = data["preview_point"]
@@ -1084,7 +1084,7 @@ func _on_file_chart_file_selected(path: String) -> void:
 					new_marker.color = Color(0,1,1)
 					timeline_scroll.add_child(new_marker)
 					new_marker.position.x = ((bpm_timestamps[int(index)]/1000)/duration)*timeline_width
-		
+
 		if "changed_indices" in data:
 			if data["changed_indices"]:
 				#print(data["changed_indices"])
@@ -1095,12 +1095,12 @@ func _on_file_chart_file_selected(path: String) -> void:
 					var new_marker = tempo_marker.instantiate()
 					timeline_scroll.add_child(new_marker)
 					new_marker.position.x = ((bpm_timestamps[int(key)]/1000)/duration)*timeline_width
-		
+
 		if "video" in data:
 			if data["video"]:
 				source_video_path = chartfd_path + "/video.ogv"
-				map_video = data["video"]		
-		
+				map_video = data["video"]
+
 		creating_mapping_visualizer()
 		create_log('Load Chart: '+ path, true)
 		print(bpm_timestamps.size())
@@ -1111,7 +1111,7 @@ func _on_file_chart_file_selected(path: String) -> void:
 
 func _on_test_pressed() -> void:
 	error_sound.play()
-	
+
 func _on_quit_n_button_pressed() -> void:
 	back_sound.play()
 	var tween = create_tween()
@@ -1145,7 +1145,7 @@ func create_log(text: String, check: bool):
 	log.visible = true
 	label.set_text(text)
 	var style := StyleBoxFlat.new()
-	if check:	
+	if check:
 		style.bg_color = Color(0.0, 0.467, 0.373)
 		style.set_border_width_all(2)
 		style.border_color = Color(0.0, 0.345, 0.271)
@@ -1180,12 +1180,12 @@ func _on_offset_text_submitted(new_text: String) -> void:
 	else:
 		shift_offset()
 	offset_entry.text = str(int(offset*1000))
-	
+
 func _on_file_img_file_selected(path: String) -> void:
 	var image = FileAccess.open(path, FileAccess.READ)
 	var imagename = path.get_file()
 	var validformat = true
-	
+
 	if path.ends_with('.png'):
 		pass
 	elif path.ends_with('.jpg'):
@@ -1193,7 +1193,7 @@ func _on_file_img_file_selected(path: String) -> void:
 	else:
 		validformat = false
 		create_log('Error: Could not read file! (Wrong Format)', false)
-	
+
 	if validformat == true:
 		create_log('Load Image: '+imagename, true)
 		match imgloadaction:
@@ -1215,10 +1215,10 @@ func open_menu(menu):
 			#button.visible = true
 			button.modulate.a = 0
 			button.scale = Vector2(0.0,0.0)
-		
+
 		menu.visible = true
 		await get_tree().create_timer(.125).timeout
-		
+
 		var last_tween
 		var buttons = menu.get_children()
 		for button in buttons:
@@ -1230,7 +1230,7 @@ func open_menu(menu):
 			await get_tree().create_timer(.04).timeout
 			button.active = true
 	else:
-		var last_tween	
+		var last_tween
 		var buttons = menu.get_children()
 		buttons.reverse()
 		for button in buttons:
@@ -1247,7 +1247,7 @@ func open_menu(menu):
 func _on_file_pressed() -> void:
 	button_sound.play()
 	open_menu(file_menu)
-	
+
 func _on_edit_pressed() -> void:
 	button_sound.play()
 	open_menu(edit_menu)
@@ -1272,7 +1272,7 @@ func _on_new_pressed() -> void:
 
 	for file in temp_files:
 		DirAccess.remove_absolute("user://tmp/" + file)
-	
+
 	fade.visible = true
 	#scrubber.visible = false
 	fade.modulate.a = 0.0
@@ -1300,12 +1300,12 @@ func _on_load_bg_pressed() -> void:
 	button_sound.play()
 	imgloadaction = "bg"
 	imgload.popup()
-	
+
 func _on_load_chart_pressed() -> void:
 	button_sound.play()
 	chartload.current_dir = OS.get_user_data_dir() + "/beatmaps"
 	chartload.popup()
-	
+
 func _on_load_video_pressed() -> void:
 	button_sound.play()
 	videoload.popup()
@@ -1351,7 +1351,7 @@ func _on_redo_pressed() -> void:
 # SAVE MENU BEGIN
 func _on_name_text_changed(new_text: String) -> void:
 	map_name = new_text
-	
+
 func _on_artist_text_changed(new_text: String) -> void:
 	map_artist = new_text
 
@@ -1434,7 +1434,7 @@ func _on_toggle_tempo_panel_toggled(toggled_on: bool) -> void:
 	button_sound.play()
 	if toggled_on:
 		var tween = create_tween()
-		tween.tween_property(bpm_ui, "position", Vector2(1652, 65), .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		tween.tween_property(bpm_ui, "position", Vector2(get_viewport_rect().size.x - bpm_ui.size.x, 65), .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	else:
 		var tween = create_tween()
 		tween.tween_property(bpm_ui, "position", Vector2(get_viewport_rect().size.x + bpm_ui.size.x*1.15, 65), .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
@@ -1508,7 +1508,7 @@ func _on_file_video_file_selected(path: String) -> void:
 	var video = FileAccess.open(path, FileAccess.READ)
 	var videoname = path.get_file()
 	var validformat = true
-	
+
 	if path.ends_with('.ogv'):
 		pass
 	else:
@@ -1561,7 +1561,7 @@ func _on_kiai_point_pressed() -> void:
 		kiai_indices.erase(active_beat)
 		for marker in kiai_markers:
 			marker.queue_free()
-			
+
 		kiai_markers.clear()
 		for index in kiai_indices:
 			var new_marker = tempo_marker.instantiate()
@@ -1640,7 +1640,7 @@ func convert_osz_to_tux(diff_path):
 	var osu_file = FileAccess.open(diff_path, FileAccess.READ)
 	var text_content = osu_file.get_as_text()
 	var file_info = text_content.split("\n", true)
-	
+
 	var stage = 0
 	var offset_set = false
 	var first_time_set = false
@@ -1744,7 +1744,7 @@ func convert_osz_to_tux(diff_path):
 			if not entry == "":
 				var hit_info = entry.split(",", true)
 				var ms = float(hit_info[2])
-			
+
 				var best_j = 0
 				var best_diff = INF
 				for j in bpm_timestamps.size():
@@ -1754,7 +1754,7 @@ func convert_osz_to_tux(diff_path):
 						best_j = j
 					elif diff > best_diff:
 						break
-				
+
 				if mappings:
 					mappings[best_j] = 1
 
@@ -1762,7 +1762,7 @@ func convert_osz_to_tux(diff_path):
 	print(mappings.size())
 	creating_mapping_visualizer()
 
-	
+
 	#custom_background.texture = ImageTexture.create_from_image(Image.load_from_file("user://tmp/" + diff_path + "/background.jpg"))
 
 
@@ -1794,12 +1794,12 @@ func load_osz_file(path: String):
 		var file = FileAccess.open(root_dir.get_current_dir().path_join(file_path), FileAccess.WRITE)
 		var buffer = reader.read_file(file_path)
 		file.store_buffer(buffer)
-	
+
 	var regex = RegEx.new()
-	regex.compile("[^a-zA-Z]") 
-	
+	regex.compile("[^a-zA-Z]")
+
 	#var file_name = regex.sub(map_name + map_difficulty, "", true).to_lower()
-	
+
 	for file in DirAccess.get_files_at("user://tmp/"):
 		if file.ends_with(".osu"):
 			var osu_file = FileAccess.open("user://tmp/" + file, FileAccess.READ)
@@ -1825,7 +1825,7 @@ func _on_file_osz_file_selected(path: String) -> void:
 	#var osz_file = FileAccess.open(path, FileAccess.READ)
 	var filename = path.get_file()
 	var validformat = true
-	
+
 	if path.ends_with('.osz'):
 		pass
 	else:
@@ -1872,7 +1872,7 @@ func _on_import_cancel_pressed() -> void:
 	await tween.finished
 	osz_import_popup.visible = false
 	osz_import_popup.scale = Vector2(1.0,1.0)
-	
+
 func _on_files_dropped(files):
 	for path in files:
 		if path.ends_with('.osz'):
