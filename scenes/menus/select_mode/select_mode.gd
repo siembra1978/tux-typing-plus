@@ -112,7 +112,7 @@ func set_difficulty(d):
 func _ready() -> void:
 	#Discord RPC
 	var platform = OS.get_name()
-	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			#print("rpcing=================================")
@@ -368,7 +368,7 @@ func _on_easy_pressed() -> void:
 func _on_proper_rhythm_pressed() -> void:
 	var platform = OS.get_name()
 
-	if platform != "Web":
+	if platform != "Web" and platform != "Android":
 		var tween := create_tween()
 		tween.parallel().tween_property(fade, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		self.get_node("ButtonPress").play()
