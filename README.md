@@ -4,7 +4,7 @@ A modern reimagining of the educational classic [Tux Typing](https://github.com/
 
 ## Current Version
 
-### v1.0.1
+### v1.0.2
 
 ## About Tux Typing+
 
@@ -24,7 +24,7 @@ expand upon it beyond its original scope, and thus Tux Typing+ was born.
 ## TuxEditor-0.2.11
 
 This was easily the most time consuming part of the entire project. The entire charting and audio timing system for Proper Rhythm was built here
-starting with TuxEditor-0.1.0, but we have iterated extensively here.
+starting with TuxEditor-0.1.0, but we have iterated extensively here. 
 
 ### Core Features
 - **Tap BPM**: Tap to the beat of the music and automatically generate the timeline!
@@ -52,7 +52,7 @@ but as of right now the following procedure is to be followed.
 
 3. Convert MP4 to OGV with the following command
 ```bash
-ffmpeg -i input.mp4 -c:v libtheora -q:v 7 -c:a libvorbis -q:a 5 video.ogv
+ffmpeg -i input.mp4 -c:v libtheora -q:v 7 -c:a libvorbis -q:a 5 output.ogv
 ```
 4. Load the video into TuxEditor
 
@@ -88,7 +88,7 @@ Well, it's up to you to type as fast as you can!
 
 ### Proper Rhythm
 
-> NOTE: Due to web browsers being tricky to work with audio-wise, Proper Rhythm is disabled in the Web Version of the game!
+> NOTE: Due to web browsers being tricky to work with audio-wise, Proper Rhythm is disabled in the Web Version of the game! For the time being, at least.
 
 Type the letters to the beat! Practice utilizing proper rhythm in your typing with this all-new rhythm game!
 
@@ -129,11 +129,11 @@ Challenge your typing skills with the PenguinType word sets or a selection of po
 
 It is recommended to download the official binaries from one of the following sources:
 
-- [**GitHub**](https://github.com/siembra1978/tux-typing-plus/releases): Right here under the Releases page you'll find builds for Linux, macOS, and Android.
-- [**itch.io**](https://cosm0s-spark.itch.io/tux-typing-plus): The itch.io hosted by my friend! Go here if you're on Windows.
-- [**siembra.lol**](https://www.siembra.lol/games/tuxtypingplus/downloads): My website! You'll also find Linux, macOS, and Android builds here!
+- [**GitHub**](https://github.com/siembra1978/tux-typing-plus/releases)
+- [**itch.io**](https://cosm0s-spark.itch.io/tux-typing-plus)
+- [**siembra.lol**](https://www.siembra.lol/games/tuxtypingplus/downloads)
 
-Alternatively, you can play the [Web Version](https://www.siembra.lol/games/tuxtypingplus/play/tuxtypingplus-indev-0.6.7-4.html)
+Alternatively, you can play the [Web Version](https://siembra.lol/games/tuxtypingplus/play/tuxtypeplus-linux-1.0.2.html)
 
 OR, if you're just like that, you can build it straight from source!
 

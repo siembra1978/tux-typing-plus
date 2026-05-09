@@ -463,7 +463,7 @@ func _ready() -> void:
 	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
-			print("rhythm rpcs!!")
+			#print("rhythm rpcs!!")
 			rpc.details = "♫ Choosing a Song ♫"
 			rpc.large_image = "icon"
 			rpc.small_image = 'music'
@@ -554,14 +554,14 @@ func _on_start_pressed() -> void:
 		await get_tree().create_timer(1).timeout
 		await get_tree().process_frame
 		var word_set = word_dropdown.get_item_text(word_dropdown.get_selected_id()).to_lower().replace(" ", "")
-		print(word_set)
+		#print(word_set)
 		var next_scene = load("res://scenes/beat/beat.tscn").instantiate()
 		next_scene.word_set = word_set
 		next_scene.beatmap_filename = selected_file
 		next_scene.mods = mods
 		next_scene.legacy = legacy_file_loaded
 		next_scene.official = official_file_loaded
-		print(selected_file)
+		#print(selected_file)
 		get_tree().change_scene_to_node(next_scene)
 	else:
 		error_sound.play()

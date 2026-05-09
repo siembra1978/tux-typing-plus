@@ -10,14 +10,14 @@ func _ready() -> void:
 	pass
 	
 func reset():
-	print("resetting!")
+	#print("resetting!")
 	scrolling = false
 	content.position.x = 0
-	print(content.position.x)
+	#print(content.position.x)
 	
-	print(str(content.get_combined_minimum_size().x ) + " and " + str(self.size.x))
+	#print(str(content.get_combined_minimum_size().x ) + " and " + str(self.size.x))
 	if content.get_combined_minimum_size().x > self.size.x:
-		print("scrolling!")
+		#print("scrolling!")
 		scrolling = true
 		final_pos = -content.get_combined_minimum_size().x
 	else:

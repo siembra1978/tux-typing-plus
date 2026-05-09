@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cu2k60r5e7uwl" path="res://assets/visual/sprites/play.png" id="12_3lvtx"]
 [ext_resource type="Script" uid="uid://cx1xc8pye752r" path="res://scenes/menus/select_mode/background.gd" id="12_p7we2"]
 [ext_resource type="Texture2D" uid="uid://by8eamf7bqrut" path="res://assets/visual/sprites/nexttrack.png" id="13_efp3n"]
+[ext_resource type="StyleBox" uid="uid://dycio103hk2uq" path="res://assets/visual/themes/new_style_box_flat.tres" id="14_n6a1k"]
 [ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="15_efp3n"]
 [ext_resource type="Script" uid="uid://s5l015ddfelw" path="res://scenes/beat/popup_pivot.gd" id="18_lybr3"]
 [ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="18_o8plc"]
@@ -266,6 +267,7 @@ offset_left = 5.0
 offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="Playback" type="Control" parent="Top/Control/Media" unique_id=691030448]
 layout_mode = 1
@@ -401,6 +403,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="Container" type="BoxContainer" parent="Top/Control/Quit" unique_id=21401938]
 layout_mode = 1
@@ -497,6 +500,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="MapInfo" type="BoxContainer" parent="Top/Control/MapInfoPopUp" unique_id=553895535]
 layout_mode = 1
@@ -544,6 +548,7 @@ alignment = 1
 
 [node name="Buttons" type="BoxContainer" parent="Top/Control/MapInfoPopUp/MapInfo" unique_id=492928707]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="SaveMap" type="Button" parent="Top/Control/MapInfoPopUp/MapInfo/Buttons" unique_id=1815262501]
 layout_mode = 2
@@ -585,6 +590,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="MapInfo" type="BoxContainer" parent="Top/Control/DifficultyPopUp" unique_id=229752033]
 layout_mode = 1
@@ -694,6 +700,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="MapInfo" type="BoxContainer" parent="Top/Control/TempoPopUp" unique_id=1245296768]
 layout_mode = 1
@@ -775,6 +782,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="DiffStack" type="BoxContainer" parent="Top/Control/OSZPopUp" unique_id=1400718421]
 layout_mode = 1
@@ -857,6 +865,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
 
 [node name="MapInfo" type="BoxContainer" parent="Top/Control/ClearWarning" unique_id=725584421]
 layout_mode = 1
