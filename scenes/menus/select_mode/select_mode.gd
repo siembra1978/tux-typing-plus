@@ -368,7 +368,7 @@ func _on_easy_pressed() -> void:
 func _on_proper_rhythm_pressed() -> void:
 	var platform = OS.get_name()
 
-	if platform != "Web" and platform != "Android":
+	if platform != "Web":
 		var tween := create_tween()
 		tween.parallel().tween_property(fade, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		self.get_node("ButtonPress").play()
@@ -423,7 +423,7 @@ func _on_title_button_pressed() -> void:
 	title_button.visible = false
 
 	var platform = OS.get_name()
-	if platform == "Web":
+	if platform == "Web" or platform == "Android":
 		main_buttons.get_node("Quit").queue_free()
 		main_buttons.get_node("ProperRhythm").text = "Web Not Supported"
 	

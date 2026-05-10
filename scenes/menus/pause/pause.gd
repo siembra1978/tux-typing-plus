@@ -13,7 +13,7 @@ func _ready() -> void:
 
 	var platform = OS.get_name()
 
-	if platform == "Web":
+	if platform == "Web" or platform == "Android":
 		self.get_node("BoxContainer/Quit").queue_free()
 	
 	if get_tree().current_scene.name == "Beat":
