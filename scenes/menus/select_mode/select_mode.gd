@@ -425,7 +425,9 @@ func _on_title_button_pressed() -> void:
 	var platform = OS.get_name()
 	if platform == "Web" or platform == "Android":
 		main_buttons.get_node("Quit").queue_free()
-		main_buttons.get_node("ProperRhythm").text = "Web Not Supported"
+
+		if platform == "Web":
+			main_buttons.get_node("ProperRhythm").text = "Web Not Supported"
 	
 	var tween2 = create_tween().set_parallel(true)
 	tween2.tween_property(title_box.get_node("TitlePanel"), "self_modulate:a", 0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
