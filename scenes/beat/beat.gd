@@ -154,7 +154,7 @@ func _ready() -> void:
 		active_bg.visible = false
 
 	var platform = OS.get_name()
-	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			rpc.large_image = "icon"
@@ -326,7 +326,7 @@ func _ready() -> void:
 	
 	spawn_ahead()
 	
-	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			rpc.details = str(song_title) + " - " + str(artist)
@@ -363,7 +363,7 @@ func _ready() -> void:
 	CountdownLabel.text = ""
 	CountdownLabel.visible = false
 	
-	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			rpc.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"

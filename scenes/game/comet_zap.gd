@@ -88,7 +88,7 @@ func _ready() -> void:
 	print(Config.dyslexic_mode)
 	#Discord RPC
 	var platform = OS.get_name()
-	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			rpc.details = "Typing..."

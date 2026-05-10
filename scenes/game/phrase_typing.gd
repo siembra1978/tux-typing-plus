@@ -162,7 +162,7 @@ func _ready() -> void:
 	#Discord RPC
 	#Discord RPC
 	var platform = OS.get_name()
-	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			rpc.details = "Typing..."
@@ -220,7 +220,7 @@ func _ready() -> void:
 		text.text = strings[0] + "\n" + strings[1]
 		
 			#Discord RPC
-		if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
 				rpc.details = '"PenguinType Mode"'
@@ -247,7 +247,7 @@ func _ready() -> void:
 		text.text = strings[0]
 		
 			#Discord RPC
-		if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
 				rpc.details = '"' + word_set_content.split("\n", true)[0] + '"'

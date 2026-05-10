@@ -179,7 +179,7 @@ func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color("000000ff"))
 	#Discord RPC
 	var platform = OS.get_name()
-	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			rpc.details = "♫ Editing a Chart ♫"
@@ -1485,20 +1485,20 @@ func _on_toggle_drpc_toggled(toggled_on: bool) -> void:
 	if toggled_on and audio_file_name != null:
 	#Discord RPC
 		var platform = OS.get_name()
-		if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
 				rpc.details = "Editing - " + str(audio_file_name)
 	else:
 		var platform = OS.get_name()
-		if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
 				rpc.details = "♫ Editing a Chart ♫"
 	if not OS.has_feature("web"):
 	#Discord RPC
 		var platform = OS.get_name()
-		if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
 				rpc.refresh()

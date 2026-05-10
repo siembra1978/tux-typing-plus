@@ -112,7 +112,7 @@ func set_difficulty(d):
 func _ready() -> void:
 	#Discord RPC
 	var platform = OS.get_name()
-	if platform != "Web" and ClassDB.class_exists("DiscordRPC"):
+	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			#print("rpcing=================================")
@@ -423,9 +423,11 @@ func _on_title_button_pressed() -> void:
 	title_button.visible = false
 
 	var platform = OS.get_name()
-	if platform == "Web":
+	if platform == "Web" or platform == "Android":
 		main_buttons.get_node("Quit").queue_free()
-		main_buttons.get_node("ProperRhythm").text = "Web Not Supported"
+
+		if platform == "Web":
+			main_buttons.get_node("ProperRhythm").text = "Web Not Supported"
 	
 	var tween2 = create_tween().set_parallel(true)
 	tween2.tween_property(title_box.get_node("TitlePanel"), "self_modulate:a", 0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
