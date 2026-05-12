@@ -448,18 +448,15 @@ func _input(event):
 				#$Hitsound.play()
 				var ms = playback_position*1000
 
-				var best_j = 0
-				var best_diff = INF
-				for j in bpm_timestamps.size():
-					var diff = abs(float(bpm_timestamps[j]) - ms)
-					if diff < best_diff:
-						best_diff = diff
-						best_j = j
-					elif diff > best_diff:
+				for i in bpm_timestamps.size():
+					if bpm_timestamps[i] > ms:
+						mappings[i] = 1
+						note_objects[i].get_node("ColorRect").color = Color(0,0,1)
+						#print("beat places at index " + str(i))
 						break
 
-				mappings[best_j] = 1
-				note_objects[best_j].get_node("ColorRect").color = Color(0,0,1)
+				#mappings[best_j] = 1
+				#note_objects[best_j].get_node("ColorRect").color = Color(0,0,1)
 
 				'''
 				for i in bpm_timestamps.size():

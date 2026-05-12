@@ -6,6 +6,7 @@ var word_set_file_path
 var word_set_file
 var word_set_content
 var word_set_array
+var custom
 
 var penguin = false
 var selected_penguin_index = 0
@@ -229,9 +230,12 @@ func _ready() -> void:
 		if Config.wumba:
 			word_set_file_path = "res://gameplay/wumba/" + word_set + ".txt"
 		else:
-			word_set_file_path = "res://gameplay/phrases/" + word_set + ".txt"
+			if custom:
+				word_set_file_path = "user://phrases/" + word_set + ".txt"
+			else:
+				word_set_file_path = "res://gameplay/phrases/" + word_set + ".txt"
 
-		#print(word_set_file_path)
+		print(word_set_file_path)
 		word_set_file = FileAccess.open(word_set_file_path, FileAccess.READ)
 		
 		# Gets file contents as text

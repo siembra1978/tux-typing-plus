@@ -9,6 +9,7 @@ var phrase_set = ""
 
 var new_click
 var active = true
+var custom = false
 
 func _ready():
 	pivot_offset = size / 2
@@ -45,6 +46,7 @@ func _on_pressed() -> void:
 		await get_tree().process_frame
 		next_scene = load("res://scenes/game/fish_cascade.tscn").instantiate()
 		next_scene.word_set = self.text.to_lower().replace(" ", "")
+		next_scene.custom = custom
 		next_scene.difficulty = current_scene.difficulty
 		get_tree().change_scene_to_node(next_scene)
 	elif current_scene.game_mode == "comet":
@@ -54,6 +56,7 @@ func _on_pressed() -> void:
 		await get_tree().process_frame
 		next_scene = load("res://scenes/game/comet_zap.tscn").instantiate()
 		next_scene.word_set = self.text.to_lower().replace(" ", "")
+		next_scene.custom = custom
 		next_scene.difficulty = current_scene.difficulty
 		get_tree().change_scene_to_node(next_scene)
 	elif current_scene.game_mode == "rhythm":
@@ -63,6 +66,7 @@ func _on_pressed() -> void:
 		await get_tree().process_frame
 		next_scene = load("res://scenes/beat/beat.tscn").instantiate()
 		next_scene.word_set = self.text.to_lower().replace(" ", "")
+		next_scene.custom = custom
 		next_scene.difficulty = current_scene.difficulty
 		get_tree().change_scene_to_node(next_scene)
 	elif current_scene.game_mode == "phrase":
@@ -82,5 +86,6 @@ func _on_pressed() -> void:
 			await get_tree().process_frame
 			next_scene = load("res://scenes/game/phrase_typing.tscn").instantiate()
 			next_scene.word_set = phrase_set
+			next_scene.custom = custom
 			get_tree().change_scene_to_node(next_scene)
 		

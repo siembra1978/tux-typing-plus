@@ -39,16 +39,19 @@ func _on_pressed() -> void:
 	if get_tree().current_scene.name == "CometZap":
 		var next_scene = load("res://scenes/game/comet_zap.tscn").instantiate()
 		next_scene.word_set = get_tree().current_scene.word_set
+		next_scene.custom = get_tree().current_scene.custom
 		next_scene.difficulty = get_tree().current_scene.difficulty
 		get_tree().change_scene_to_node(next_scene)
 	elif get_tree().current_scene.name == "FishCascade":
 		var next_scene = load("res://scenes/game/fish_cascade.tscn").instantiate()
 		next_scene.word_set = get_tree().current_scene.word_set
+		next_scene.custom = get_tree().current_scene.custom
 		next_scene.difficulty = get_tree().current_scene.difficulty
 		get_tree().change_scene_to_node(next_scene)
 	elif get_tree().current_scene.name == "Beat":
 		var next_scene = load("res://scenes/beat/beat.tscn").instantiate()
 		next_scene.word_set = current_scene.word_set
+		next_scene.custom = get_tree().current_scene.custom
 		next_scene.mods = current_scene.mods
 		next_scene.legacy = current_scene.legacy
 		next_scene.official = current_scene.official
@@ -64,6 +67,7 @@ func _on_pressed() -> void:
 		else:
 			var next_scene = load("res://scenes/game/phrase_typing.tscn").instantiate()
 			next_scene.word_set = current_scene.word_set
+			next_scene.custom = get_tree().current_scene.custom
 			next_scene.selected_sound_index = current_scene.selected_sound_index
 			get_tree().change_scene_to_node(next_scene)
 	else:

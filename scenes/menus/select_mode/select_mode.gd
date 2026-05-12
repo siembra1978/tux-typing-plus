@@ -27,16 +27,7 @@ var audio_phase = false
 @onready var error_sound = get_node("Error")
 
 func check_text_files(path):
-	#clear all prev wordsets
-	for child in word_select.get_children():
-		child.queue_free()
 	var dir = DirAccess.open(path)
-
-	if game_mode == "phrase":
-		var new_select_button = word_select_button.instantiate()
-		new_select_button.text = "PenguinType"
-		new_select_button.penguin = true
-		word_select.add_child(new_select_button)
 
 	if dir:
 		dir.list_dir_begin()
@@ -46,6 +37,8 @@ func check_text_files(path):
 				var set_name = file_name.trim_suffix(".txt").capitalize()
 				var new_select_button = word_select_button.instantiate()
 				new_select_button.text = set_name
+				if path.begins_with("user"):
+					new_select_button.custom = true
 				word_select.add_child(new_select_button)
 				
 				
@@ -54,9 +47,6 @@ func check_text_files(path):
 		print("An error occurred when trying to access the path.")
 		
 func check_phrase_files(path):
-	#clear all prev wordsets
-	for child in word_select.get_children():
-		child.queue_free()
 	var dir = DirAccess.open(path)
 
 	if game_mode == "phrase":
@@ -79,6 +69,8 @@ func check_phrase_files(path):
 				#var set_name = file_name.trim_suffix(".txt").capitalize()
 				var new_select_button = word_select_button.instantiate()
 				new_select_button.text = set_name
+				if path.begins_with("user"):
+					new_select_button.custom = true
 				new_select_button.phrase_set = file_name.trim_suffix(".txt")
 				#print(set_name)
 				word_select.add_child(new_select_button)
@@ -127,6 +119,7 @@ func _ready() -> void:
 	
 	var _user_beatmaps_folder = DirAccess.make_dir_recursive_absolute("user://beatmaps/")
 	var _user_wordsets_folder = DirAccess.make_dir_recursive_absolute("user://word_sets/")
+	var _user_phrases_folder = DirAccess.make_dir_recursive_absolute("user://phrases/")
 	
 	$BackgroundMusic.play()
 	game_mode = null
@@ -147,6 +140,9 @@ func open_word_menu():
 	pass
 
 func _on_comet_pressed() -> void:
+	
+	for child in word_select.get_children():
+		child.queue_free()
 	
 	stage = 1
 	back_button.position = Vector2(-back_button.size.x, 0)
@@ -173,10 +169,14 @@ func _on_comet_pressed() -> void:
 	if Config.wumba:
 		check_text_files("res://gameplay/wumba")
 	else:
+		check_text_files("user://word_sets")
 		check_text_files("res://gameplay/word_sets")
 	#audio_phase = true
 
 func _on_cascade_pressed() -> void:
+	for child in word_select.get_children():
+		child.queue_free()
+		
 	stage = 1
 	back_button.visible = true
 	back_button.position = Vector2(-back_button.size.x, 0)
@@ -202,6 +202,7 @@ func _on_cascade_pressed() -> void:
 	if Config.wumba:
 		check_text_files("res://gameplay/wumba")
 	else:
+		check_text_files("user://word_sets")
 		check_text_files("res://gameplay/word_sets")
 	#audio_phase = true
 
@@ -275,6 +276,7 @@ func close_menu(menut):
 
 func go_back():
 	back_button.disabled = true
+	
 	if stage == 1:
 		$Back.play()
 		stage = 0
@@ -385,6 +387,9 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_phrase_typing_pressed() -> void:
+	for child in word_select.get_children():
+		child.queue_free()
+
 	stage = 2
 	back_button.visible = true
 	back_button.position = Vector2(-back_button.size.x, 0)
@@ -396,6 +401,7 @@ func _on_phrase_typing_pressed() -> void:
 	if Config.wumba:
 		check_phrase_files("res://gameplay/wumba")
 	else:
+		check_phrase_files("user://phrases")
 		check_phrase_files("res://gameplay/phrases")
 
 	header.position = Vector2(header.position.x, -header.size.y)
