@@ -227,7 +227,7 @@ func _ready() -> void:
 				rpc.refresh()
 	else:
 		if Config.wumba:
-			word_set_file_path = "res://gameplay/wumba/" + word_set + ".txt"
+			word_set_file_path = "res://gameplay/wumba/" + 'wumba' + ".txt"
 		else:
 			word_set_file_path = "res://gameplay/phrases/" + word_set + ".txt"
 
