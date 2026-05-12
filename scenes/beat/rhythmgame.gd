@@ -77,6 +77,8 @@ var legacy_file_loaded
 var official_file_loaded
 #var word_sets = []
 
+var custom_text_files = []
+
 var mods = {
 	"EZ": false,
 	"NF": false,
@@ -367,7 +369,10 @@ func check_text_files(path):
 		while file_name != "":
 			if not dir.current_is_dir():
 				var set_name = file_name.trim_suffix(".txt").capitalize()
+				if path.begins_with("user"):
+					custom_text_files.append(set_name)
 				word_dropdown.add_item(set_name)
+				
 
 			file_name = dir.get_next()
 	else:
@@ -481,6 +486,7 @@ func _ready() -> void:
 	if Config.wumba:
 		check_text_files("res://gameplay/wumba")
 	else:
+		check_text_files("user://word_sets")
 		check_text_files("res://gameplay/word_sets")
 	#check_legacy_beatmap_files("res://scenes/beat/maps")
 	check_official_beatmap_files("res://gameplay/beatmaps")
@@ -557,6 +563,8 @@ func _on_start_pressed() -> void:
 		#print(word_set)
 		var next_scene = load("res://scenes/beat/beat.tscn").instantiate()
 		next_scene.word_set = word_set
+		if word_dropdown.get_item_text(word_dropdown.get_selected_id()) in custom_text_files:
+			next_scene.custom = true
 		next_scene.beatmap_filename = selected_file
 		next_scene.mods = mods
 		next_scene.legacy = legacy_file_loaded

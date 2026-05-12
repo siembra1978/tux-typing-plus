@@ -6,6 +6,7 @@ var word_set_file_path
 var word_set_file
 var word_set_content
 var word_set_array
+var custom = false
 
 # init random
 var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
@@ -120,7 +121,10 @@ func _ready() -> void:
 	if Config.wumba:
 		word_set_file_path = "res://gameplay/wumba/" + 'wumba' + ".txt"
 	else:
-		word_set_file_path = "res://gameplay/word_sets/" + word_set + ".txt"
+		if custom:
+			word_set_file_path = "user://word_sets/" + word_set + ".txt"
+		else:
+			word_set_file_path = "res://gameplay/word_sets/" + word_set + ".txt"
 	word_set_file = FileAccess.open(word_set_file_path, FileAccess.READ)
 	
 	# Gets file contents as text

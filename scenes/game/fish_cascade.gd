@@ -9,6 +9,7 @@ var word_set_array
 var active_words = []
 var current_index = 0
 var word_loc = []
+var custom = false
 
 # init random
 var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
@@ -115,7 +116,10 @@ func _ready() -> void:
 	if Config.wumba:
 		word_set_file_path = "res://gameplay/wumba/" + 'wumba' + ".txt"
 	else:
-		word_set_file_path = "res://gameplay/word_sets/" + word_set + ".txt"
+		if custom:
+			word_set_file_path = "user://word_sets/" + word_set + ".txt"
+		else:
+			word_set_file_path = "res://gameplay/word_sets/" + word_set + ".txt"
 	word_set_file = FileAccess.open(word_set_file_path, FileAccess.READ)
 	
 	# Gets file contents as text
@@ -249,6 +253,7 @@ func _process(delta: float) -> void:
 			fish_speed += (difficulty) * log(fish_speed)
 			
 			next_scene.word_set = get_tree().current_scene.word_set
+			next_scene.custom = custom
 			next_scene.difficulty = get_tree().current_scene.difficulty
 			next_scene.level = get_tree().current_scene.level
 			next_scene.health = get_tree().current_scene.health

@@ -6,6 +6,7 @@ var word_set_file_path
 var word_set_file
 var word_set_content
 var word_set_array
+var custom = false
 
 # init random
 var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
@@ -188,7 +189,11 @@ func _ready() -> void:
 	if Config.wumba:
 		word_set_file_path = "res://gameplay/wumba/" + word_set + ".txt"
 	else:
-		word_set_file_path = "res://gameplay/word_sets/" + word_set + ".txt"
+		if custom:
+			word_set_file_path = "user://word_sets/" + word_set + ".txt"
+			print(word_set_file_path)
+		else:
+			word_set_file_path = "res://gameplay/word_sets/" + word_set + ".txt"
 	#word_set_file_path = "res://gameplay/word_sets/" + "shapes" + ".txt"
 	word_set_file = FileAccess.open(word_set_file_path, FileAccess.READ)
 	
@@ -200,6 +205,7 @@ func _ready() -> void:
 	word_set_array.remove_at(0)
 	
 	if word_set_array[len(word_set_array)-1] == "":
+		print("L")
 		word_set_array.remove_at(len(word_set_array)-1)
 	
 	if official:
@@ -888,6 +894,7 @@ func _input(event):
 				var current_scene = get_tree().current_scene
 				var next_scene = load("res://scenes/beat/beat.tscn").instantiate()
 				next_scene.word_set = current_scene.word_set
+				next_scene.custom = current_scene.custom
 				next_scene.mods = current_scene.mods
 				next_scene.legacy = current_scene.legacy
 				next_scene.official = current_scene.official
