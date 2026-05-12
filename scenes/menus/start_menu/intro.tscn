@@ -2,18 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b57wfoxm81umo" path="res://scenes/menus/start_menu/intro.gd" id="1_ddle0"]
 [ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="2_7af1u"]
+[ext_resource type="Texture2D" uid="uid://cm7v67csmbo6t" path="res://assets/visual/sprites/warningbg.png" id="2_vso0v"]
 [ext_resource type="Texture2D" uid="uid://dx2mh72gbp1x1" path="res://assets/tux4kids/images/menu/tux4kids.png" id="2_wphlt"]
 [ext_resource type="AudioStream" uid="uid://bcrf10md6pmlj" path="res://assets/tux4kids/sounds/harp.wav" id="3_7af1u"]
+[ext_resource type="Texture2D" uid="uid://clxb3qne2h873" path="res://assets/visual/sprites/warningkeyboard.png" id="3_vso0v"]
+[ext_resource type="Texture2D" uid="uid://c67h0es56q1dj" path="res://assets/visual/sprites/warningtext.png" id="4_6twyi"]
 [ext_resource type="Script" uid="uid://crhbeqci5y3hh" path="res://scenes/menus/options/discord.gd" id="4_wphlt"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_7af1u"]
-font = ExtResource("2_7af1u")
-font_size = 128
-font_color = Color(1, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_iavqc"]
-font = ExtResource("2_7af1u")
-font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ssko"]
 font = ExtResource("2_7af1u")
@@ -45,6 +39,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TextureRect" type="TextureRect" parent="Notice" unique_id=1157638407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vso0v")
+stretch_mode = 1
+
 [node name="BoxContainer" type="BoxContainer" parent="Notice" unique_id=797307391]
 layout_mode = 1
 anchors_preset = 8
@@ -61,22 +65,14 @@ grow_vertical = 2
 alignment = 1
 vertical = true
 
-[node name="Label2" type="Label" parent="Notice/BoxContainer" unique_id=405926776]
+[node name="keyboard" type="TextureRect" parent="Notice/BoxContainer" unique_id=1543573489]
 layout_mode = 2
-size_flags_vertical = 5
-text = "ATTENTION"
-label_settings = SubResource("LabelSettings_7af1u")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("3_vso0v")
+stretch_mode = 5
 
-[node name="Label" type="Label" parent="Notice/BoxContainer" unique_id=18778548]
+[node name="text" type="TextureRect" parent="Notice/BoxContainer" unique_id=166968916]
 layout_mode = 2
-size_flags_vertical = 5
-text = "This game requires a PHYSICAL KEYBOARD 
-in order to be played."
-label_settings = SubResource("LabelSettings_iavqc")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("4_6twyi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1554006987]
 modulate = Color(1, 1, 1, 0)
