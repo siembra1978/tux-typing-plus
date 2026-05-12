@@ -187,7 +187,7 @@ func _ready() -> void:
 
 	# Load Corresponding Text File
 	if Config.wumba:
-		word_set_file_path = "res://gameplay/wumba/" + word_set + ".txt"
+		word_set_file_path = "res://gameplay/wumba/" + 'wumba' + ".txt"
 	else:
 		if custom:
 			word_set_file_path = "user://word_sets/" + word_set + ".txt"
