@@ -49,12 +49,6 @@ func check_text_files(path):
 func check_phrase_files(path):
 	var dir = DirAccess.open(path)
 
-	if game_mode == "phrase":
-		var new_select_button = word_select_button.instantiate()
-		new_select_button.text = "PenguinType Mode"
-		new_select_button.penguin = true
-		word_select.add_child(new_select_button)
-
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -401,6 +395,11 @@ func _on_phrase_typing_pressed() -> void:
 	if Config.wumba:
 		check_phrase_files("res://gameplay/wumba")
 	else:
+		if game_mode == "phrase":
+			var new_select_button = word_select_button.instantiate()
+			new_select_button.text = "PenguinType Mode"
+			new_select_button.penguin = true
+			word_select.add_child(new_select_button)
 		check_phrase_files("user://phrases")
 		check_phrase_files("res://gameplay/phrases")
 
