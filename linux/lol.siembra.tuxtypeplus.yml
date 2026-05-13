@@ -24,7 +24,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/siembra1978/tux-typing-plus.git
-        commit: c32dc6ad02cdf9aba9077e339bd07b8b32a767f3
+        commit: 3a75f8ceadd8574faaa37c0cef3a11f645b3fd40
 
       - type: file
         url: https://github.com/siembra1978/tux-typing-plus/releases/download/v1.0.3/tuxtypeplus-1.0.3-2.pck
