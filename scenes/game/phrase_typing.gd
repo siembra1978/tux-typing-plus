@@ -136,18 +136,15 @@ func load_sounds(type_enum):
 		var file_name = dir.get_next()
 		while file_name != "":
 			#print("Proceeding...")
-			print(file_name)
-			if file_name.ends_with(".ogg"):
-				if FileAccess.file_exists(path + "/" + file_name):
-					print("loading: " + str(file_name))
-					var audio_file = FileAccess.open(path + "/" + file_name, FileAccess.READ)
-					var buffer = audio_file.get_buffer(audio_file.get_length())
-					var stream = AudioStreamOggVorbis.load_from_buffer(buffer)
-					var new_sound = sound_object.instantiate()
-					print(path + "/" + file_name)
-					new_sound.stream = stream
-					add_child(new_sound)
-					sound_set.append(new_sound)
+			#print(file_name)
+			if file_name.ends_with(".ogg.import"):
+				file_name = file_name.replace(".import","")
+				print(path + "/" + file_name)
+				var stream = load(path + "/" + file_name)
+				var new_sound = sound_object.instantiate()
+				new_sound.stream = stream
+				add_child(new_sound)
+				sound_set.append(new_sound)
 				
 			file_name = dir.get_next()
 	else:
