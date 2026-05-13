@@ -136,12 +136,13 @@ func load_sounds(type_enum):
 		var file_name = dir.get_next()
 		while file_name != "":
 			#print("Proceeding...")
-			print(file_name)
-			if file_name.ends_with(".ogg"):
-				print("loading: " + str(file_name))
+			#print(file_name)
+			if file_name.ends_with(".ogg.import"):
+				file_name = file_name.replace(".import","")
+				print(path + "/" + file_name)
+				var stream = load(path + "/" + file_name)
 				var new_sound = sound_object.instantiate()
-				print(path + file_name)
-				new_sound.stream = load(path + "/" + file_name)
+				new_sound.stream = stream
 				add_child(new_sound)
 				sound_set.append(new_sound)
 				
