@@ -19,11 +19,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/siembra1978/tux-typing-plus.git
-        commit: 491f407e71a74b6f46bf177e3794e547500a429a
+        commit: 98002bcaadefc249716cf7b1d1b40c14587c96b3
 
       - type: file
-        url: https://github.com/siembra1978/tux-typing-plus/releases/download/v1.0.3/tuxtypeplus-1.0.3.pck
-        sha256: e0cb4118d892aefcc06dff7fb9c550b7b2e1c2c3ba4bfcc7a1fe10ee82565016
+        url: https://github.com/siembra1978/tux-typing-plus/releases/download/v1.0.3/tuxtypeplus-1.0.3-2.pck
+        sha256: ab0c117d01417fca3f779cdb237c77a6149d3258fa902c415c54c2bb55d638b1
 
     build-commands:
       - install -Dm644 tuxtypeplus-1.0.3.pck ${FLATPAK_DEST}/bin/godot-runner.pck
