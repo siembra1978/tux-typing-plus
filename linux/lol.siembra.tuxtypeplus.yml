@@ -19,14 +19,14 @@ modules:
     sources:
       - type: git
         url: https://github.com/siembra1978/tux-typing-plus.git
-        commit: fb7e7fe
+        commit: 491f407e71a74b6f46bf177e3794e547500a429a
 
       - type: file
-        url: https://github.com/siembra1978/tux-typing-plus/releases/download/v1.0.1/tuxtypeplus-1.0.1.pck
-        sha256: a50f7ae9062942bb1449f801ed7cef1fee0ea109bd631e0a7a295dce6128d903
+        url: https://github.com/siembra1978/tux-typing-plus/releases/download/v1.0.3/tuxtypeplus-1.0.3.pck
+        sha256: e0cb4118d892aefcc06dff7fb9c550b7b2e1c2c3ba4bfcc7a1fe10ee82565016
 
     build-commands:
-      - install -Dm644 tuxtypeplus-1.0.1.pck ${FLATPAK_DEST}/bin/godot-runner.pck
+      - install -Dm644 tuxtypeplus-1.0.3.pck ${FLATPAK_DEST}/bin/godot-runner.pck
       - install -Dm644 linux/${FLATPAK_ID}.desktop ${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop
       - install -Dm644 linux/${FLATPAK_ID}.metainfo.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
       - install -Dm644 linux/${FLATPAK_ID}.png ${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
