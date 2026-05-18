@@ -4,7 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-only</project_license>
   <name>Tux Typing+</name>
-  <summary>A modern reimagining of the educational classic Tux Typing by Tux4Kids, made in Godot by siembra &amp; Cosm0s</summary>
+  <summary>Typing challenge featuring Tux</summary>
 
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">mild</content_attribute>
@@ -16,7 +16,12 @@
       <name translate="no">siembra &amp; Cosm0s</name>
   </developer>
   <launchable type="desktop-id">lol.siembra.tuxtypeplus.desktop</launchable>
-  
+
+  <branding>
+    <color type="primary" scheme_preference="light">#4bc2fa</color>
+    <color type="primary" scheme_preference="dark">#0284c1</color>
+  </branding>
+
   <description>
     <p>The GNU Classic, Reborn!</p>
     <p>Tux Typing+ is a typing challenge for all ages.</p>
