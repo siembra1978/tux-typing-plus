@@ -132,6 +132,7 @@ It is recommended to download the official binaries from one of the following so
 - [**GitHub**](https://github.com/siembra1978/tux-typing-plus/releases)
 - [**itch.io**](https://cosm0s-spark.itch.io/tux-typing-plus)
 - [**siembra.lol**](https://www.siembra.lol/games/tuxtypingplus/downloads)
+- [**Flathub**](https://flathub.org/en/apps/lol.siembra.tuxtypeplus)
 
 Alternatively, you can play the [Web Version](https://siembra.lol/games/tuxtypingplus/play/tuxtypeplus-linux-1.0.2.html)
 
