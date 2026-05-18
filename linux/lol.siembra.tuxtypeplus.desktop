@@ -3,7 +3,7 @@ Version=1.0
 Type=Application
 
 Name=Tux Typing+
-Comment=A modern reimagining of the educational classic Tux Typing by Tux4Kids, made in Godot by siembra & Cosm0s
+Comment=Typing challenge featuring Tux
 Categories=Game;ActionGame;
 
 Icon=lol.siembra.tuxtypeplus
