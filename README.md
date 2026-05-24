@@ -164,7 +164,15 @@ Contributions that fit within the vision of the project are welcome, but we may 
 ### A project by siembra & Cosm0s, licensed under the [GNU General Public License Version 2](LICENSE)
 
 ### Tux the Penguin
-The Linux mascot, Tux, was created by [Larry Ewing](lewing@isc.tamu.edu) using The GIMP.
+The Linux mascot, Tux, was created by [Larry Ewing](lewing@isc.tamu.edu) using the GIMP.
+
+### Kevin MacLeod
+For the songs in the built-in beatmaps for Proper Rhythm:
+- Fluffing A Duck
+- Flying Kerfuffle
+- Local Forecast
+- Monkey Spinning Monkeys
+- Pixel Peeker Polka
 
 ### The Original
 

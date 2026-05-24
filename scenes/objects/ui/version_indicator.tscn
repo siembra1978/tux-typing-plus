@@ -6,6 +6,8 @@
 [sub_resource type="LabelSettings" id="LabelSettings_adeyr"]
 font = ExtResource("2_mflba")
 font_size = 20
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="VersionIndicator" type="Control" unique_id=1429627592]
 layout_mode = 3

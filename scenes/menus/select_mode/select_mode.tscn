@@ -218,6 +218,12 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_ohvyo"]
+font = ExtResource("8_tchf2")
+font_size = 20
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [node name="ModeSelect" type="Control" unique_id=550682840]
 layout_mode = 3
 anchors_preset = 15
@@ -679,6 +685,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=819541909]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Developed by siembra & Cosm0s"
+label_settings = SubResource("LabelSettings_ohvyo")
 
 [connection signal="pressed" from="Menu/MainButtons/Cascade" to="." method="_on_cascade_pressed"]
 [connection signal="pressed" from="Menu/MainButtons/Comet" to="." method="_on_comet_pressed"]
