@@ -1,6 +1,6 @@
 extends Node
 
-const GAME_VERSION = "v1.0.4"
+const GAME_VERSION = "v1.1.0"
 
 var config = ConfigFile.new()
 

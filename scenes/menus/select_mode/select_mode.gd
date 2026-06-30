@@ -11,7 +11,7 @@ var audio_phase = false
 @onready var fade = self.get_node("Fade")
 
 @onready var menu = self.get_node("Menu")
-@onready var main_buttons = menu.get_node("MainButtons")
+@onready var main_buttons = menu.get_node("MainButtons").get_node("ButtonBox")
 @onready var difficulty_buttons = self.get_node("DifficultySelect")
 @onready var word_select = self.get_node("WordSelectScroll").get_node("WordSelect")
 @onready var options = self.get_node('Options')
@@ -446,7 +446,7 @@ func _on_title_button_pressed() -> void:
 	menu.visible = true
 	
 	for button in main_buttons.get_children():
-		button.active = false
+		#button.active = false
 		button.scale = Vector2(0.0,0.0)
 	
 	var tween3 = create_tween().set_parallel(true)
@@ -457,6 +457,8 @@ func _on_title_button_pressed() -> void:
 	var last_tween
 	for button in main_buttons.get_children():
 			button.visible = true
+			button.scale = Vector2(0.0,0.0)
+			button.modulate.a = 1
 			last_tween = create_tween()
 			last_tween.tween_property(button, "scale", Vector2(1, 1), .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 			var new_pop = pop_sound_temp.instantiate()
@@ -491,7 +493,7 @@ func return_menu() -> void:
 	menu.visible = true
 	
 	for button in main_buttons.get_children():
-		button.active = false
+		#button.active = false
 		button.scale = Vector2(0.0,0.0)
 	
 	var tween3 = create_tween().set_parallel(true)
@@ -502,6 +504,8 @@ func return_menu() -> void:
 	var last_tween
 	for button in main_buttons.get_children():
 			button.visible = true
+			button.scale = Vector2(0.0,0.0)
+			button.modulate.a = 1
 			last_tween = create_tween()
 			last_tween.tween_property(button, "scale", Vector2(1, 1), .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 			var new_pop = pop_sound_temp.instantiate()

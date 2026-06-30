@@ -49,7 +49,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_6fgto")
 }],
-"loop": true,
+"loop": 1,
 "name": &"cheer",
 "speed": 5.0
 }, {
@@ -57,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("15_t01ef")
 }],
-"loop": true,
+"loop": 1,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -74,7 +74,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_8y3tj")
 }],
-"loop": false,
+"loop": 0,
 "name": &"gulp",
 "speed": 5.0
 }, {
@@ -85,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("21_ohvyo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 5.0
 }, {
@@ -96,7 +96,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("23_fcg06")
 }],
-"loop": true,
+"loop": 1,
 "name": &"stand",
 "speed": 5.0
 }, {
@@ -107,7 +107,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_8y3tj")
 }],
-"loop": true,
+"loop": 1,
 "name": &"stand_noeye",
 "speed": 5.0
 }, {
@@ -124,7 +124,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("27_uxy2o")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -138,7 +138,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("33_ohvyo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -337,20 +337,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("7_tchf2")
 
-[node name="Cascade" type="Button" parent="Menu/MainButtons" unique_id=1019308409]
-visible = false
+[node name="ButtonBox" type="BoxContainer" parent="Menu/MainButtons" unique_id=2004452321]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.10938
-offset_top = -311.6875
-offset_right = 249.89063
-offset_bottom = -240.6875
+offset_left = -253.89258
+offset_top = -347.16406
+offset_right = 253.89258
+offset_bottom = 347.16406
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="Cascade" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=1019308409]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 size_flags_vertical = 2
 theme = ExtResource("7_tchf2")
 theme_override_font_sizes/font_size = 50
@@ -359,18 +364,9 @@ text = "Fish Cascade
 expand_icon = true
 script = ExtResource("8_wwqku")
 
-[node name="Comet" type="Button" parent="Menu/MainButtons" unique_id=1352982543]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.10938
-offset_top = -222.6875
-offset_right = 249.89063
-offset_bottom = -151.6875
+[node name="Comet" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=1352982543]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 size_flags_vertical = 2
 theme = ExtResource("7_tchf2")
 theme_override_font_sizes/font_size = 50
@@ -379,18 +375,9 @@ text = "Comet Zap
 expand_icon = true
 script = ExtResource("8_wwqku")
 
-[node name="ProperRhythm" type="Button" parent="Menu/MainButtons" unique_id=932951159]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.10938
-offset_top = -132.6875
-offset_right = 249.89063
-offset_bottom = -61.6875
+[node name="ProperRhythm" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=932951159]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 size_flags_vertical = 2
 theme = ExtResource("7_tchf2")
 theme_override_font_sizes/font_size = 50
@@ -399,18 +386,19 @@ text = "Proper Rhythm
 expand_icon = true
 script = ExtResource("8_wwqku")
 
-[node name="Lessons" type="Button" parent="Menu/MainButtons" unique_id=1616574107]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.10938
-offset_top = -43.6875
-offset_right = 249.89063
-offset_bottom = 27.3125
+[node name="Bullet" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=471955837]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme = ExtResource("7_tchf2")
+theme_override_font_sizes/font_size = 50
+text = "Bullet Spell"
+expand_icon = true
+script = ExtResource("8_wwqku")
+
+[node name="Lessons" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=1616574107]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 size_flags_vertical = 2
 theme = ExtResource("7_tchf2")
 theme_override_font_sizes/font_size = 50
@@ -418,18 +406,9 @@ text = "Sandbox"
 expand_icon = true
 script = ExtResource("8_wwqku")
 
-[node name="PhraseTyping" type="Button" parent="Menu/MainButtons" unique_id=1430893740]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.10938
-offset_top = 46.3125
-offset_right = 249.89063
-offset_bottom = 117.3125
+[node name="PhraseTyping" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=1430893740]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 size_flags_vertical = 2
 theme = ExtResource("7_tchf2")
 theme_override_font_sizes/font_size = 50
@@ -437,18 +416,9 @@ text = "Phrase Typing"
 expand_icon = true
 script = ExtResource("8_wwqku")
 
-[node name="Options" type="Button" parent="Menu/MainButtons" unique_id=249277019]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.10938
-offset_top = 135.3125
-offset_right = 249.89063
-offset_bottom = 206.3125
+[node name="Options" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=249277019]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 size_flags_vertical = 2
 theme = ExtResource("7_tchf2")
 theme_override_font_sizes/font_size = 50
@@ -458,18 +428,9 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("8_wwqku")
 
-[node name="Quit" type="Button" parent="Menu/MainButtons" unique_id=1080429911]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.10938
-offset_top = 225.3125
-offset_right = 249.89063
-offset_bottom = 296.3125
+[node name="Quit" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=1080429911]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 size_flags_vertical = 2
 theme = ExtResource("7_tchf2")
 theme_override_font_sizes/font_size = 50
@@ -697,16 +658,17 @@ offset_left = -250.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Developed by siembra & Cosm0s"
+text = "Bubblicity Games"
 label_settings = SubResource("LabelSettings_ohvyo")
+horizontal_alignment = 2
 
-[connection signal="pressed" from="Menu/MainButtons/Cascade" to="." method="_on_cascade_pressed"]
-[connection signal="pressed" from="Menu/MainButtons/Comet" to="." method="_on_comet_pressed"]
-[connection signal="pressed" from="Menu/MainButtons/ProperRhythm" to="." method="_on_proper_rhythm_pressed"]
-[connection signal="pressed" from="Menu/MainButtons/Lessons" to="." method="_on_lessons_pressed"]
-[connection signal="pressed" from="Menu/MainButtons/PhraseTyping" to="." method="_on_phrase_typing_pressed"]
-[connection signal="pressed" from="Menu/MainButtons/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Menu/MainButtons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/MainButtons/ButtonBox/Cascade" to="." method="_on_cascade_pressed"]
+[connection signal="pressed" from="Menu/MainButtons/ButtonBox/Comet" to="." method="_on_comet_pressed"]
+[connection signal="pressed" from="Menu/MainButtons/ButtonBox/ProperRhythm" to="." method="_on_proper_rhythm_pressed"]
+[connection signal="pressed" from="Menu/MainButtons/ButtonBox/Lessons" to="." method="_on_lessons_pressed"]
+[connection signal="pressed" from="Menu/MainButtons/ButtonBox/PhraseTyping" to="." method="_on_phrase_typing_pressed"]
+[connection signal="pressed" from="Menu/MainButtons/ButtonBox/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/MainButtons/ButtonBox/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="DifficultySelect/Easy" to="." method="_on_easy_pressed"]
 [connection signal="pressed" from="DifficultySelect/Medium" to="." method="_on_medium_pressed"]
 [connection signal="pressed" from="DifficultySelect/Hard" to="." method="_on_hard_pressed"]
