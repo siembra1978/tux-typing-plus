@@ -126,7 +126,6 @@ outline_size = 24
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fsxya"]
-load_path = "res://.godot/imported/Hornet_Idle.png-c4a98933d1285cde74a1aee36aaaa223.ctex"
 
 [node name="Beat" type="Node2D" unique_id=1281335826]
 script = ExtResource("1_g7pjr")
@@ -311,7 +310,7 @@ stream = ExtResource("4_q8exw")
 
 [node name="CometBreakSound" type="AudioStreamPlayer" parent="." unique_id=1747442212]
 stream = ExtResource("7_fsxya")
-volume_db = 7.5
+volume_db = 4.0
 
 [node name="Miss" type="AudioStreamPlayer" parent="." unique_id=687388794]
 stream = ExtResource("8_4sa0s")

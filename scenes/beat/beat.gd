@@ -505,6 +505,10 @@ func miss(comet):
 	if combo >= 15:
 		$Miss.play()
 	combo = 0
+	max_combo_label.text = str(combo) + "x"
+	var combo_tween := create_tween()
+	combo_tween.tween_property(max_combo_label, "scale", Vector2(1.05,1.05), 0.0625).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	combo_tween.tween_property(max_combo_label, "scale", Vector2(1,1), 0.0625).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	comets_processed += 1
 	miss_count += 1.0
 	judgments["miss"] += 1
@@ -799,10 +803,11 @@ func hit(comet, note_latency):
 		combo += 1
 		if combo > max_combo:
 			max_combo = combo
-			max_combo_label.text = str(max_combo) + "x"
-			var tween := create_tween()
-			tween.tween_property(max_combo_label, "scale", Vector2(1.05,1.05), 0.0625).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-			tween.tween_property(max_combo_label, "scale", Vector2(1,1), 0.0625).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+			#max_combo_label.text = str(max_combo) + "x"
+		max_combo_label.text = str(combo) + "x"
+		var combo_tween := create_tween()
+		combo_tween.tween_property(max_combo_label, "scale", Vector2(1.05,1.05), 0.0625).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		combo_tween.tween_property(max_combo_label, "scale", Vector2(1,1), 0.0625).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		calculate_accuracy()
 		#tux_react()
 		tux.flip_h = not tux.flip_h
