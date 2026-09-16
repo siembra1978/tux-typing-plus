@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://idvglnxw3r4b" path="res://assets/visual/sprites/particles.png" id="4_3gpi2"]
 [ext_resource type="Texture2D" uid="uid://sbkimt4bwhwt" path="res://assets/tux4kids/images/tux/bigtux0.png" id="4_arb1b"]
 [ext_resource type="AudioStream" uid="uid://c4l6kpsi75jsq" path="res://assets/tux4kids/sounds/pause.wav" id="4_q8exw"]
-[ext_resource type="AudioStream" uid="uid://bc8puf4u8rdam" path="res://assets/audio/clicks/pop/click3_1.ogg" id="7_fsxya"]
+[ext_resource type="AudioStream" uid="uid://chkdcv53ish8b" path="res://assets/audio/clicks/clack/click4_33.ogg" id="7_fsxya"]
 [ext_resource type="AudioStream" uid="uid://ckip2psbfadg0" path="res://assets/tux4kids/sounds/tock.wav" id="7_q8exw"]
 [ext_resource type="AudioStream" uid="uid://doeypsxpyuskf" path="res://assets/tux4kids/sounds/splat.wav" id="8_4sa0s"]
 [ext_resource type="AudioStream" uid="uid://f3hssxgrslxl" path="res://assets/audio/sfx/metronome/Perc_Can_hi.wav" id="9_arb1b"]
@@ -310,7 +310,7 @@ stream = ExtResource("4_q8exw")
 
 [node name="CometBreakSound" type="AudioStreamPlayer" parent="." unique_id=1747442212]
 stream = ExtResource("7_fsxya")
-volume_db = 4.0
+volume_db = 10.0
 
 [node name="Miss" type="AudioStreamPlayer" parent="." unique_id=687388794]
 stream = ExtResource("8_4sa0s")

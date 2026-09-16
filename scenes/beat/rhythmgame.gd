@@ -21,6 +21,10 @@ extends Node2D
 @onready var top = hud.get_node("Top")
 @onready var word_select = top.get_node("WordSelect")
 @onready var word_dropdown = word_select.get_node("WordDropdown")
+@onready var sound_select = top.get_node("SoundSelect")
+@onready var sound_dropdown = sound_select.get_node("SoundDropdown")
+@onready var showcase_mode = top.get_node("ShowcaseMode")
+@onready var showcase_toggle = showcase_mode.get_node("ShowcaseToggle")
 
 # middle ui
 #@onready var mid = hud.get_node("Middle")
@@ -55,10 +59,12 @@ extends Node2D
 
 @onready var ez_button = gameplay_mods.get_node("Easy")
 @onready var hr_button = gameplay_mods.get_node("Hardrock")
-#@onready var nf_button = mod_menu.get_node("NoFail")
+@onready var hd_button = gameplay_mods.get_node("Hidden")
+@onready var cs_button = gameplay_mods.get_node("Caps")
+@onready var nf_button = basic_mods.get_node("NoFail")
 @onready var ht_button = basic_mods.get_node("HalfTime")
 @onready var dt_button = basic_mods.get_node("DoubleTime")
-#@onready var ap_button = mod_menu.get_node("Auto")
+@onready var ap_button = basic_mods.get_node("Auto")
 
 # extra ui
 @onready var fade = control.get_node("Fade")
@@ -90,12 +96,17 @@ var mods = {
 	"HD": false,
 }
 
+var showcase = false
+
 var min_bpm = 0
 var max_bpm = 0
 
 var AR = 1
 var OD = 1
 var HP = 1
+
+var selected_sound_index = 0
+var incoming_word_set
 
 # initialize objects
 var beatmap_select_button = preload("res://scenes/objects/ui/beatmap_select_button.tscn")
@@ -482,18 +493,66 @@ func _ready() -> void:
 	fade.visible = true
 	var tween := create_tween()
 	tween.parallel().tween_property(fade, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-
+	
 	if Config.wumba:
 		check_text_files("res://gameplay/wumba")
 	else:
 		check_text_files("user://word_sets")
 		check_text_files("res://gameplay/word_sets")
+	
+	if incoming_word_set:
+		for i in range(word_dropdown.item_count):
+			if word_dropdown.get_item_text(i).to_lower().replace(" ", "") == incoming_word_set:
+				word_dropdown.select(i)
+	
 	#check_legacy_beatmap_files("res://scenes/beat/maps")
 	check_official_beatmap_files("res://gameplay/beatmaps")
 	check_beatmap_files("user://beatmaps")
 
 	preview.up()
 	dropshadow.up()
+	
+	# load stuff if already selected
+	# basic mods
+	if mods["AP"]:
+		ap_button.set_pressed_no_signal(mods["AP"])
+	if mods["NF"]:
+		nf_button.set_pressed_no_signal(mods["NF"])
+	if mods["HT"]:
+		music.pitch_scale = .75
+		video.speed_scale = .75
+		if music.stream != null:
+			duration_label.text = "" + format_time(music.stream.get_length())
+		ht_button.set_pressed_no_signal(mods["HT"])
+	if mods["DT"]:
+		music.pitch_scale = 1.5
+		video.speed_scale = 1.5
+		if music.stream != null:
+			duration_label.text = "" + format_time(music.stream.get_length())
+		dt_button.set_pressed_no_signal(mods["DT"])
+	
+	# gameplay mods
+	if mods["EZ"]:
+		ez_button.set_pressed_no_signal(mods["EZ"])
+	if mods["HR"]:
+		hr_button.set_pressed_no_signal(mods["HR"])
+	if mods["HD"]:
+		hd_button.set_pressed_no_signal(mods["HD"])
+	if mods["CS"]:
+		cs_button.set_pressed_no_signal(mods["CS"])
+	
+	sound_dropdown.selected = selected_sound_index
+	showcase_toggle.set_pressed_no_signal(showcase)
+	
+	# map
+	if selected_file:
+		if official_file_loaded:
+			load_official_beatmap(selected_file)
+		else:
+			load_beatmap(selected_file)
+	
+	refresh_detail_labels()
+	
 
 	for button in select_buttons.get_children():
 		button.active = false
@@ -567,8 +626,10 @@ func _on_start_pressed() -> void:
 			next_scene.custom = true
 		next_scene.beatmap_filename = selected_file
 		next_scene.mods = mods
+		next_scene.showcase = showcase
 		next_scene.legacy = legacy_file_loaded
 		next_scene.official = official_file_loaded
+		next_scene.selected_sound_index = selected_sound_index
 		#print(selected_file)
 		get_tree().change_scene_to_node(next_scene)
 	else:
@@ -710,3 +771,11 @@ func _on_word_dropdown_pressed() -> void:
 
 func _on_word_dropdown_item_selected(index: int) -> void:
 	button_sound.play()
+
+
+func _on_showcase_toggle_toggled(toggled_on: bool) -> void:
+	showcase = toggled_on
+
+
+func _on_sound_dropdown_item_selected(index: int) -> void:
+	selected_sound_index = index

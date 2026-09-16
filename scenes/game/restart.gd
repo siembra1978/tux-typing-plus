@@ -53,6 +53,7 @@ func _on_pressed() -> void:
 		next_scene.word_set = current_scene.word_set
 		next_scene.custom = get_tree().current_scene.custom
 		next_scene.mods = current_scene.mods
+		next_scene.showcase = current_scene.showcase
 		next_scene.legacy = current_scene.legacy
 		next_scene.official = current_scene.official
 		next_scene.beatmap_filename = current_scene.beatmap_filename

@@ -693,7 +693,8 @@ func create_partial_bpm_timestamps():
 		var h = ((duration*1000)-a)/change_by
 		#print(h)
 		for i in range(int((duration*1000 - a)/change_by)):
-			bpm_timestamps.append(a + change_by * i)
+			if i > 0:
+				bpm_timestamps.append(a + change_by * i)
 
 		total_beats = len(bpm_timestamps) - 1
 
@@ -735,7 +736,7 @@ func create_partial_bpm_timestamps_from_osz(requested_timing, imported_bpm):
 		var change_by = ((60/imported_bpm)*1000)/divider
 		#print(change_by)
 
-		var h = ((duration*1000)-a)/change_by
+		#var h = ((duration*1000)-a)/change_by
 		#print(h)
 		for i in range(int((duration*1000 - a)/change_by)):
 			if i > 0:

@@ -38,6 +38,12 @@ font_size = 24
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ucm3w"]
+font = ExtResource("11_ld6hf")
+font_size = 24
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_gmrfc"]
 font = ExtResource("11_ld6hf")
 font_size = 32
@@ -309,7 +315,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.40784314)
+color = Color(0, 0, 0, 0.39215687)
 
 [node name="Wumba" type="TextureRect" parent="CanvasLayer/Control" unique_id=29457329]
 visible = false
@@ -364,6 +370,17 @@ theme_override_font_sizes/font_size = 32
 text = "Back"
 script = ExtResource("12_p231l")
 
+[node name="ShowcaseMode" type="BoxContainer" parent="CanvasLayer/Control/HUD/Top" unique_id=551962492]
+layout_mode = 2
+theme = ExtResource("1_gmrfc")
+vertical = true
+
+[node name="ShowcaseToggle" type="CheckButton" parent="CanvasLayer/Control/HUD/Top/ShowcaseMode" unique_id=1665884601]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+text = "Showcase Mode"
+
 [node name="WordSelect" type="BoxContainer" parent="CanvasLayer/Control/HUD/Top" unique_id=1670705190]
 layout_mode = 2
 theme = ExtResource("1_gmrfc")
@@ -383,6 +400,36 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("9_voxba")
 alignment = 1
+
+[node name="SoundSelect" type="BoxContainer" parent="CanvasLayer/Control/HUD/Top" unique_id=127126301]
+layout_mode = 2
+theme = ExtResource("1_gmrfc")
+vertical = true
+
+[node name="SetLabel" type="Label" parent="CanvasLayer/Control/HUD/Top/SoundSelect" unique_id=344011041]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_gmrfc")
+text = "Hit Sound"
+label_settings = SubResource("LabelSettings_ucm3w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundDropdown" type="OptionButton" parent="CanvasLayer/Control/HUD/Top/SoundSelect" unique_id=1823135443]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+alignment = 1
+selected = 0
+item_count = 4
+popup/item_0/text = "Clack"
+popup/item_0/id = 0
+popup/item_1/text = "Dit"
+popup/item_1/id = 1
+popup/item_2/text = "Pop"
+popup/item_2/id = 2
+popup/item_3/text = "Typewriter"
+popup/item_3/id = 3
 
 [node name="Options" type="BoxContainer" parent="CanvasLayer/Control" unique_id=1664530853]
 layout_mode = 1
@@ -407,7 +454,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_voxba")
 theme_override_font_sizes/font_size = 32
-text = "Editor"
+text = "TuxEditor"
 script = ExtResource("12_p231l")
 
 [node name="Mods" type="Button" parent="CanvasLayer/Control/Options" unique_id=841893743]
@@ -456,8 +503,8 @@ vertical = true
 script = ExtResource("15_jsu8p")
 
 [node name="Scroll" type="Control" parent="CanvasLayer/Control/Preview" unique_id=1076843974]
-clip_contents = true
 custom_minimum_size = Vector2(0, 65)
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 6
 script = ExtResource("11_f6imh")
@@ -484,8 +531,8 @@ text_overrun_behavior = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/Preview" unique_id=617949036]
 clip_children = 2
-clip_contents = true
 custom_minimum_size = Vector2(800, 450)
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -734,8 +781,10 @@ color = Color(0, 0, 0, 1)
 
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="pressed" from="CanvasLayer/Control/HUD/Top/Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="CanvasLayer/Control/HUD/Top/ShowcaseMode/ShowcaseToggle" to="." method="_on_showcase_toggle_toggled"]
 [connection signal="item_selected" from="CanvasLayer/Control/HUD/Top/WordSelect/WordDropdown" to="." method="_on_word_dropdown_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Control/HUD/Top/WordSelect/WordDropdown" to="." method="_on_word_dropdown_pressed"]
+[connection signal="item_selected" from="CanvasLayer/Control/HUD/Top/SoundSelect/SoundDropdown" to="." method="_on_sound_dropdown_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Control/Options/OpenBeatmapFolder" to="." method="_on_open_beatmap_folder_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Options/Editor" to="." method="_on_editor_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Options/Mods" to="." method="_on_mods_pressed"]

@@ -104,6 +104,7 @@ var acc_total
 var total_score = 0
 var accuracy
 var mods
+var showcase
 var hit_point
 
 var song_title
@@ -136,6 +137,7 @@ var started = false
 var metronome_active = false
 var metro_count = 4
 var kiai_indices = []
+var skipped = false
 
 @onready var active_bg = get_node("ActiveBackground")
 @onready var tux = active_bg.get_node("Tux")
@@ -146,6 +148,53 @@ var kiai_indices = []
 var init_cl_pos
 var init_cr_pos
 
+var sound_set = []
+var sound_object = preload("res://scenes/objects/game/typesound.tscn")
+var selected_sound_index
+
+func load_sounds(type_enum):
+	print("loading sounds")
+	selected_sound_index = type_enum
+	for thing in sound_set:
+		thing.queue_free()
+	sound_set.clear()
+	var path
+	
+	match type_enum:
+		0:
+			path = "res://assets/audio/clicks/clack"
+		1:
+			path = "res://assets/audio/clicks/dit"
+		2:
+			path = "res://assets/audio/clicks/pop"
+		3:
+			path = "res://assets/audio/clicks/type"
+	
+	print(path)
+			
+	var dir = DirAccess.open(path)
+	print(dir)
+
+	if dir:
+		print("Scanning...")
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			#print("Proceeding...")
+			#print(file_name)
+			if file_name.ends_with(".ogg.import"):
+				file_name = file_name.replace(".import","")
+				print(path + "/" + file_name)
+				var stream = load(path + "/" + file_name)
+				var new_sound = sound_object.instantiate()
+				new_sound.stream = stream
+				add_child(new_sound)
+				sound_set.append(new_sound)
+				
+			file_name = dir.get_next()
+	else:
+		pass
+
 # Runs on start
 func _ready() -> void:
 	if Config.wumba:
@@ -153,6 +202,9 @@ func _ready() -> void:
 	if Config.min_effects:
 		$Background/Control/TextureRect.visible = false
 		active_bg.visible = false
+		
+	load_sounds(selected_sound_index)
+	#load_sounds(3)
 
 	var platform = OS.get_name()
 	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
@@ -237,7 +289,7 @@ func _ready() -> void:
 		mod_stack.get_node(mod).visible = mods[mod]
 	
 	# determines approach rates
-	dur_in_pos = (1500*(float(AR)/10))*duration
+	dur_in_pos = (2000*(float(AR)/10))*duration
 	
 	perfect_window = 80 - (6 * OD)
 	good_window = 140 - (8 * OD)
@@ -267,6 +319,9 @@ func _ready() -> void:
 		selected_word_array.append(new_word.remove_char(32))
 	
 	var play_area = viewport_size.x * .75
+	
+	if showcase:
+		play_area = viewport_size.x * .70
 	var scan_commet = note_source.instantiate()
 	var comet_width = scan_commet.get_node("Sprite").texture.get_width()
 	var new_word = word_set_array[randi_range(0,len(word_set_array)-1)]
@@ -290,20 +345,22 @@ func _ready() -> void:
 		var spawn_pos = 0
 
 		if (i % int(divider)) == 0:
-			var new_bar = metro_bar.instantiate()
-			#new_bar.position = Vector2(((viewport_size.x - play_area)/2),spawn_pos)
-			new_bar.position = Vector2(((viewport_size.x - play_area)/2),-100)
-			new_bar.get_node("ColorRect").color = Color(0.49, 0.49, 0.49, 1.0)
-			new_bar.timestamp = note_timestamp
-			metro_dict[i] = new_bar
-			#bg.add_child(new_bar)
+			if not showcase:
+				var new_bar = metro_bar.instantiate()
+				#new_bar.position = Vector2(((viewport_size.x - play_area)/2),spawn_pos)
+				new_bar.position = Vector2(((viewport_size.x - play_area)/2),-100)
+				new_bar.get_node("ColorRect").color = Color(0.49, 0.49, 0.49, 1.0)
+				new_bar.timestamp = note_timestamp
+				metro_dict[i] = new_bar
+				#bg.add_child(new_bar)
 		else:
-			var new_bar = metro_bar.instantiate()
-			#new_bar.position = Vector2(((viewport_size.x - play_area)/2),spawn_pos)
-			new_bar.position = Vector2(((viewport_size.x - play_area)/2),-100)
-			new_bar.timestamp = note_timestamp
-			metro_dict[i] = new_bar
-			#bg.add_child(new_bar)
+			if not showcase:
+				var new_bar = metro_bar.instantiate()
+				#new_bar.position = Vector2(((viewport_size.x - play_area)/2),spawn_pos)
+				new_bar.position = Vector2(((viewport_size.x - play_area)/2),-100)
+				new_bar.timestamp = note_timestamp
+				metro_dict[i] = new_bar
+				#bg.add_child(new_bar)
 
 		if mappings[i] == 1:
 			var new_note = note_source.instantiate()
@@ -329,6 +386,14 @@ func _ready() -> void:
 					offset = viewport_size.x - (((viewport_size.x - play_area)/2) + comet_width)
 	
 	total_beats = len(bpm_timestamps)
+	
+	'''
+	var first_note_timing = bpm_timestamps[0]
+	for time in bpm_timestamps:
+		if mappings[time] == 1:
+			first_note_timing = time
+			break
+	'''
 	
 	spawn_ahead()
 	
@@ -432,9 +497,17 @@ func _process(delta: float) -> void:
 	#var sf = viewport_sizen.y / original_height
 	#comet_speed = base_speed * sf
 
-
 	if active:
 		playback_position = music.get_playback_position() + AudioServer.get_time_since_last_mix()
+		
+		var next_note = bpm_timestamps[0]
+		
+		for i in range(total_beats-1):
+			if bpm_timestamps[i] > (playback_position*1000) and mappings[i] == 1:
+				next_note = bpm_timestamps[i]
+				break
+			else:
+				next_note = bpm_timestamps[-1]
 
 		progress_circle.value = (playback_position/duration)*100
 		health_bar.value = health
@@ -442,7 +515,9 @@ func _process(delta: float) -> void:
 		var position_ms = playback_position*1000
 		
 		if started:
-			health -= HP*delta
+			#print(str(next_note) + " " + str(playback_position*1000) + " " + str(next_note-(playback_position*1000)))
+			if not ((next_note - (playback_position*1000)) >= 4*2*(60/bpm)*1000):
+				health -= HP*1.5*delta
 		
 		if health <= 0:
 			if not mods["NF"]:
@@ -572,7 +647,8 @@ func load_official_beatmap(file_name: String):
 		if data["background"]:
 			if not Config.min_effects:
 				$Background/Control/TextureRect.visible = true
-				$Background/Control/BGDim.visible = true
+				if not showcase:
+					$Background/Control/BGDim.visible = true
 				#print("res://gameplay/beatmaps/" + file_name + "/background.jpg")
 				$Background/Control/TextureRect.texture = load("res://gameplay/beatmaps/" + file_name + "/" + data["background"])
 				background = load("res://gameplay/beatmaps/" + file_name + "/" + data["background"])
@@ -589,7 +665,8 @@ func load_official_beatmap(file_name: String):
 
 		if "video" in data:
 			if data["video"]:
-				$Background/Control/BGDim.visible = true
+				if not showcase:
+					$Background/Control/BGDim.visible = true
 				$Background/Control/TextureRect.visible = false
 				$Background/Control/VideoStreamPlayer.visible = true
 				#print("res://gameplay/beatmaps/" + file_name + "/video.ogv")
@@ -660,7 +737,8 @@ func load_beatmap(file_name: String):
 		if data["background"]:
 			if not Config.min_effects:
 				$Background/Control/TextureRect.visible = true
-				$Background/Control/BGDim.visible = true
+				if not showcase:
+					$Background/Control/BGDim.visible = true
 				#print("user://beatmaps/" + file_name + "/background.jpg")
 				$Background/Control/TextureRect.texture = ImageTexture.create_from_image(Image.load_from_file("user://beatmaps/" + file_name + "/" + data["background"]))
 				background = ImageTexture.create_from_image(Image.load_from_file("user://beatmaps/" + file_name + "/" + data["background"]))
@@ -677,7 +755,8 @@ func load_beatmap(file_name: String):
 
 		if "video" in data:
 			if data["video"]:
-				$Background/Control/BGDim.visible = true
+				if not showcase:
+					$Background/Control/BGDim.visible = true
 				$Background/Control/TextureRect.visible = false
 				$Background/Control/VideoStreamPlayer.visible = true
 				#print("user://beatmaps/" + file_name + "/video.ogv")
@@ -755,29 +834,32 @@ func hit(comet, note_latency):
 			
 			health += 7.5
 			
-			display_acc_plate("Perfect!", comet.position.x)
+			if not showcase:
+				display_acc_plate("Perfect!", comet.position.x)
 		else:
 			if (abs(note_latency) < perfect_window):
 				judgments["perfect"] += 1
 				base_points = judgment_scores["perfect"]
 				
 				health += 7.5
-				
-				display_acc_plate("Perfect!", comet.position.x)
+				if not showcase:
+					display_acc_plate("Perfect!", comet.position.x)
 			elif (abs(note_latency) < good_window):
 				judgments["good"] += 1
 				
 				health += 5
 				
 				base_points = judgment_scores["good"]
-				display_acc_plate("Good!", comet.position.x)
+				if not showcase:
+					display_acc_plate("Good!", comet.position.x)
 			elif (abs(note_latency) < meh_window):
 				judgments["meh"] += 1
 				
 				health += 1
 				
 				base_points = judgment_scores["meh"]
-				display_acc_plate("Meh...", comet.position.x)
+				if not showcase:
+					display_acc_plate("Meh...", comet.position.x)
 
 
 		var pre_points = base_points + (base_points * combo * .1)
@@ -813,7 +895,9 @@ func hit(comet, note_latency):
 		tux.flip_h = not tux.flip_h
 		comet.self_active = false
 		comets.erase(comet)
-		$CometBreakSound.play()
+		#$CometBreakSound.play()
+		if len(sound_set) > 0:
+			sound_set.pick_random().play()
 		var tween := create_tween().set_parallel(true)
 		tween.tween_property(comet, "modulate:a", 0, .125).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		tween.tween_property(comet, "scale", Vector2(2,2), 0.125).set_ease(Tween.EASE_OUT)
@@ -901,10 +985,37 @@ func _input(event):
 				next_scene.word_set = current_scene.word_set
 				next_scene.custom = current_scene.custom
 				next_scene.mods = current_scene.mods
+				next_scene.showcase = current_scene.showcase
 				next_scene.legacy = current_scene.legacy
 				next_scene.official = current_scene.official
+				next_scene.selected_sound_index = current_scene.selected_sound_index
 				next_scene.beatmap_filename = current_scene.beatmap_filename
 				get_tree().change_scene_to_node(next_scene)
+		elif event.keycode == KEY_SPACE:
+			if not skipped and started:
+				var first_note
+				for i in range(total_beats-1):
+					if mappings[i] == 1:
+						first_note = bpm_timestamps[i]
+						break
+				
+				if ((first_note - (playback_position*1000)) >= 4*2*(60/bpm)*1000):
+					var skip_position = (first_note - (4*1*(60/bpm)*1000))/1000
+					
+					if skip_position > 0:
+						$Back.play()
+						music.play(skip_position)
+						for i in range(total_beats-1):
+							if bpm_timestamps[i+1] > (skip_position*1000):
+								playing_index = i
+								break
+							
+						if not Config.min_effects:
+							if video.stream:
+								video.play()
+								video.stream_position = skip_position
+						skipped = true
+			
 
 '''
 func create_bpm_timestamps():
@@ -944,12 +1055,17 @@ func _on_background_music_finished() -> void:
 	var next_scene = score_screen.instantiate()
 	next_scene.song_title = str(song_title) + " [" + str(diff_name) + "]" + " by " + str(artist)
 	next_scene.score = total_score
-	next_scene.mods = mods
 	next_scene.judgments = judgments
 	next_scene.accuracy = accuracy
 	next_scene.combo = max_combo
+	
+	next_scene.beatmap_filename = beatmap_filename
+	next_scene.mods = mods
+	next_scene.showcase = showcase
 	next_scene.legacy = legacy
 	next_scene.official = official
+	next_scene.selected_sound_index = selected_sound_index
+	next_scene.word_set = word_set
 
 	if legacy:
 		next_scene.background = load("res://scenes/beat/images/" + str(background))

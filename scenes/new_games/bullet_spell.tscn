@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cen1ip7nxryoo"]
+
+[ext_resource type="Script" uid="uid://boaqplflthqv6" path="res://scenes/new_games/bullet_player.gd" id="1_gbdeh"]
+[ext_resource type="Texture2D" uid="uid://q4i5s1nngj4i" path="res://assets/tux4kids/images/sprites/tux_helmet0.png" id="2_r0eat"]
+
+[node name="BulletSpell" type="Node2D" unique_id=2017340988]
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1730022256]
+layer = -1
+
+[node name="Control" type="Control" parent="Background" unique_id=514378596]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Background/Control" unique_id=821926844]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1200.0
+offset_top = -675.0
+offset_right = 1200.0
+offset_bottom = 675.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BGDim" type="ColorRect" parent="Background/Control" unique_id=945773832]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5803922)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1638182789]
+script = ExtResource("1_gbdeh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1389620944]
+position = Vector2(960, 540)
+texture = ExtResource("2_r0eat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=944932462]

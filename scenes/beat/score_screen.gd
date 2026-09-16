@@ -51,9 +51,15 @@ var combo
 var fc = false
 var rank
 var background
+
+var word_set
+
+var beatmap_filename
+var mods
+var showcase
 var legacy
 var official
-var mods
+var selected_sound_index
 
 func _ready() -> void:
 	song_label.text = song_title
@@ -114,4 +120,16 @@ func _on_menu_pressed() -> void:
 	button_sound.play()
 	await get_tree().create_timer(1).timeout
 	await get_tree().process_frame
-	get_tree().change_scene_to_file("res://scenes/beat/rhythmgame.tscn")
+	#get_tree().change_scene_to_file("res://scenes/beat/rhythmgame.tscn")
+	var next_scene = load("res://scenes/beat/rhythmgame.tscn").instantiate()
+	#next_scene.word_set = word_set
+	
+	next_scene.selected_file = beatmap_filename
+	next_scene.mods = mods
+	next_scene.showcase = showcase
+	next_scene.legacy_file_loaded = legacy
+	next_scene.official_file_loaded= official
+	next_scene.selected_sound_index = selected_sound_index
+	next_scene.incoming_word_set = word_set
+	
+	get_tree().change_scene_to_node(next_scene)
