@@ -153,7 +153,7 @@ func _input(event):
 					create_tween().tween_property(get_node("UI/Controls"), "modulate:a", 1, 2)
 					create_tween().tween_property(get_node("UI/FontSize"), "modulate:a", 1, 2)
 					create_tween().tween_property(get_node("UI/Time"), "modulate:a", 1, 2)
-		elif event.keycode == KEY_ESCAPE:
+		elif Input.is_action_just_pressed('ui_cancel'):
 			if pause_menu.visible:
 				pause_menu.resume()
 				$BackgroundMusic.volume_db = -15

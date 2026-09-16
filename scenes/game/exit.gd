@@ -2,10 +2,12 @@ extends Button
 
 var button_sound
 var fade
+var current_scene
 var new_click
 var active = true
 
 func _ready() -> void:
+	current_scene = get_tree().current_scene
 	button_sound = get_tree().current_scene.get_node("ButtonPress")
 	fade = get_tree().current_scene.get_node("OnTop").get_node("Fade")
 	pivot_offset = size / 2
@@ -20,7 +22,9 @@ func _on_pressed() -> void:
 	await get_tree().create_timer(1).timeout
 	await get_tree().process_frame
 	if get_tree().current_scene.name == "Beat":
-		get_tree().change_scene_to_file("res://scenes/beat/rhythmgame.tscn")
+		var next_scene = load("res://scenes/beat/rhythmgame.tscn").instantiate()
+		next_scene.mods = current_scene.mods
+		get_tree().change_scene_to_node(next_scene)
 	else:
 		get_tree().change_scene_to_file("res://scenes/menus/select_mode/select_mode.tscn")
 		

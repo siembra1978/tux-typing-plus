@@ -333,7 +333,7 @@ func _input(event):
 						await comet.get_node("Sprite").animation_finished
 						laser.queue_free()
 						comet.queue_free()
-		elif event.keycode == KEY_ESCAPE:
+		elif Input.is_action_just_pressed('ui_cancel'):
 			if pause_menu.visible:
 				pause_menu.resume()
 				$BackgroundMusic.volume_db = 0

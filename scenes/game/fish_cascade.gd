@@ -337,7 +337,7 @@ func _input(event):
 						streak = 0
 			else:
 				streak = 0
-		elif event.keycode == KEY_ESCAPE:
+		elif Input.is_action_just_pressed('ui_cancel'):
 			if pause_menu.visible:
 				pause_menu.resume()
 				$BackgroundMusic.volume_db = -15

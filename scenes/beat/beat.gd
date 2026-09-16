@@ -46,6 +46,7 @@ var total_comets = 0.0
 @onready var background_ui = get_node("Background")
 @onready var background_control = background_ui.get_node("Control")
 @onready var pink_bar = background_control.get_node("Bar")
+@onready var skip_indicator = background_control.get_node("SkipIndicator")
 
 
 # objects
@@ -138,6 +139,7 @@ var metronome_active = false
 var metro_count = 4
 var kiai_indices = []
 var skipped = false
+var skippable = false
 
 @onready var active_bg = get_node("ActiveBackground")
 @onready var tux = active_bg.get_node("Tux")
@@ -147,6 +149,7 @@ var skipped = false
 @onready var particlesright = cheerright.get_node("KiaiParticles")
 var init_cl_pos
 var init_cr_pos
+@onready var tuxloc = tux.position.y
 
 var sound_set = []
 var sound_object = preload("res://scenes/objects/game/typesound.tscn")
@@ -445,11 +448,12 @@ func _ready() -> void:
 		active_bg.visible = false
 
 	music.play()
+	if not skipped:
+		skip_indicator.visible = true
 	if not Config.min_effects:
 		if video.stream:
 			video.play()
 	started = true
-
 func recreate_bpm_timestamps():
 	if offset:
 		#print(bpm_timestamps)
@@ -517,7 +521,7 @@ func _process(delta: float) -> void:
 		if started:
 			#print(str(next_note) + " " + str(playback_position*1000) + " " + str(next_note-(playback_position*1000)))
 			if not ((next_note - (playback_position*1000)) >= 4*2*(60/bpm)*1000):
-				health -= HP*1.5*delta
+				health -= HP*1.25*delta
 		
 		if health <= 0:
 			if not mods["NF"]:
@@ -954,7 +958,7 @@ func _input(event):
 							await tween.finished
 							comet.queue_free()
 							'''
-		elif event.keycode == KEY_ESCAPE:
+		elif Input.is_action_just_pressed('ui_cancel'):
 			if pause_menu.visible:
 				pause_menu.resume()
 				if video.stream:
@@ -1001,6 +1005,7 @@ func _input(event):
 				
 				if ((first_note - (playback_position*1000)) >= 4*2*(60/bpm)*1000):
 					var skip_position = (first_note - (4*1*(60/bpm)*1000))/1000
+					skip_indicator.visible = false
 					
 					if skip_position > 0:
 						$Back.play()
@@ -1088,10 +1093,10 @@ func _on_background_music_finished() -> void:
 func tux_react():
 	if not Config.min_effects:
 		var tween := create_tween()
-		tween.parallel().tween_property($ActiveBackground/Tux, "position:y", 890, 0.125).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.parallel().tween_property($ActiveBackground/Tux, "position:y", tuxloc - 10, 0.125).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		await tween.finished
 		var tween2 := create_tween()
-		tween2.parallel().tween_property($ActiveBackground/Tux, "position:y", 900, 0.125).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		tween2.parallel().tween_property($ActiveBackground/Tux, "position:y", tuxloc, 0.125).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 		await tween2.finished
 		
 func cheer():

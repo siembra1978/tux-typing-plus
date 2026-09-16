@@ -57,6 +57,7 @@ func _on_pressed() -> void:
 		next_scene.legacy = current_scene.legacy
 		next_scene.official = current_scene.official
 		next_scene.beatmap_filename = current_scene.beatmap_filename
+		next_scene.selected_sound_index = current_scene.selected_sound_index
 		get_tree().change_scene_to_node(next_scene)
 	elif get_tree().current_scene.name == "PhraseTyping":
 		if current_scene.penguin:

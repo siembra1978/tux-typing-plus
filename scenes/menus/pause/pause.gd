@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 	if get_tree().current_scene.name == "Beat":
 		get_node("BoxContainer/SelectExit").text = "Beatmap Select"
+		get_node("BoxContainer/Quit").visible = false
 		
 	if get_tree().current_scene.name == "Lessons":
 		get_node("BoxContainer/Restart").visible = false
