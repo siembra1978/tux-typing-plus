@@ -23,8 +23,7 @@ extends Node2D
 @onready var word_dropdown = word_select.get_node("WordDropdown")
 @onready var sound_select = top.get_node("SoundSelect")
 @onready var sound_dropdown = sound_select.get_node("SoundDropdown")
-@onready var showcase_mode = top.get_node("ShowcaseMode")
-@onready var showcase_toggle = showcase_mode.get_node("ShowcaseToggle")
+
 
 # middle ui
 #@onready var mid = hud.get_node("Middle")
@@ -65,6 +64,8 @@ extends Node2D
 @onready var ht_button = basic_mods.get_node("HalfTime")
 @onready var dt_button = basic_mods.get_node("DoubleTime")
 @onready var ap_button = basic_mods.get_node("Auto")
+@onready var us_button = basic_mods.get_node("Upscroll")
+@onready var showcase_toggle = basic_mods.get_node("ShowcaseToggle")
 
 # extra ui
 @onready var fade = control.get_node("Fade")
@@ -94,6 +95,7 @@ var mods = {
 	"HR": false,
 	"CS": false,
 	"HD": false,
+	"UP": false
 }
 
 var showcase = false
@@ -540,6 +542,8 @@ func _ready() -> void:
 		hd_button.set_pressed_no_signal(mods["HD"])
 	if mods["CS"]:
 		cs_button.set_pressed_no_signal(mods["CS"])
+	if mods["UP"]:
+		us_button.set_pressed_no_signal(mods["UP"])
 	
 	sound_dropdown.selected = selected_sound_index
 	showcase_toggle.set_pressed_no_signal(showcase)
@@ -764,7 +768,11 @@ func _on_hardrock_toggled(toggled_on: bool) -> void:
 
 	refresh_detail_labels()
 
-
+func _on_upscroll_toggled(toggled_on: bool) -> void:
+	button_sound.play()
+	mods["UP"] = toggled_on
+	
+	
 func _on_word_dropdown_pressed() -> void:
 	button_sound.play()
 

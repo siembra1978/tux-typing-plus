@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmct7gu5yrat6"]
 
 [ext_resource type="Script" uid="uid://da6ub18w5ht5r" path="res://scenes/beat/beat.gd" id="1_g7pjr"]
+[ext_resource type="StyleBox" uid="uid://bdmmu21u7nh2q" path="res://assets/visual/themes/darkbox.tres" id="2_qeyds"]
 [ext_resource type="Texture2D" uid="uid://cjl3087f6x4u3" path="res://assets/visual/sprites/wumba.png" id="3_4sa0s"]
 [ext_resource type="Texture2D" uid="uid://d06grqxnl27hv" path="res://assets/visual/sprites/cheertemp.png" id="3_qeyds"]
 [ext_resource type="Texture2D" uid="uid://idvglnxw3r4b" path="res://assets/visual/sprites/particles.png" id="4_3gpi2"]
@@ -25,6 +26,12 @@
 [ext_resource type="PackedScene" uid="uid://cnirbxye62ypr" path="res://scenes/objects/ui/accplate.tscn" id="18_enfm0"]
 [ext_resource type="Script" uid="uid://b6aqyomm420vq" path="res://scenes/beat/countdown_label.gd" id="19_pse6y"]
 [ext_resource type="Theme" uid="uid://bryxi4x6uhnqm" path="res://assets/visual/themes/tuxtheme2.tres" id="23_qeyds"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qeyds"]
+font = ExtResource("14_gc0sx")
+font_size = 34
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q0cuv"]
 particles_animation = true
@@ -205,21 +212,39 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5803922)
 
-[node name="SkipIndicator" type="ColorRect" parent="Background/Control" unique_id=1917126657]
+[node name="SkipIndicator" type="Panel" parent="Background/Control" unique_id=1279621986]
 visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.731
+anchor_right = 0.5
+anchor_bottom = 0.731
+offset_left = -57.0
+offset_top = -57.47998
+offset_right = 57.0
+offset_bottom = 56.52002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_qeyds")
+
+[node name="Label" type="Label" parent="Background/Control/SkipIndicator" unique_id=1236986320]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 704.0
-offset_top = 446.0
-offset_right = 927.0
-offset_bottom = 507.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.37730053, 0.6902582, 0.6289729, 1)
+text = "Skip
+>>>"
+label_settings = SubResource("LabelSettings_qeyds")
+horizontal_alignment = 1
 
 [node name="Bar" type="ColorRect" parent="Background/Control" unique_id=1278199897]
 layout_mode = 1
@@ -472,6 +497,14 @@ label_settings = SubResource("LabelSettings_4sa0s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="UP" type="Label" parent="OnTop/HUD/Mods" unique_id=1195703678]
+visible = false
+layout_mode = 2
+text = "UP"
+label_settings = SubResource("LabelSettings_4sa0s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ComboStack" type="BoxContainer" parent="OnTop/HUD" unique_id=348866263]
 layout_mode = 1
 anchors_preset = 2
@@ -547,6 +580,8 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 17.0
+offset_right = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.29411766)

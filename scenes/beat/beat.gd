@@ -286,6 +286,10 @@ func _ready() -> void:
 		AR *= .5
 		OD *= .5
 		HP *= .5
+	if mods["UP"]:
+		pink_bar.position.y = 193.0
+		tux.set_anchors_and_offsets_preset(Control.LayoutPreset.PRESET_CENTER_TOP, Control.LayoutPresetMode.PRESET_MODE_KEEP_SIZE)
+		tuxloc = tux.position.y
 	
 	for mod in mods.keys():
 		#print(mod + " " + str(mods[mod]))
@@ -448,8 +452,18 @@ func _ready() -> void:
 		active_bg.visible = false
 
 	music.play()
+	
 	if not skipped:
-		skip_indicator.visible = true
+		var first_note
+		for i in range(total_beats-1):
+			if mappings[i] == 1:
+				first_note = bpm_timestamps[i]
+				skip_indicator.visible = false
+				break
+		
+		if ((first_note - (playback_position*1000)) >= 4*2*(60/bpm)*1000):
+			skip_indicator.visible = true
+			
 	if not Config.min_effects:
 		if video.stream:
 			video.play()
@@ -522,6 +536,7 @@ func _process(delta: float) -> void:
 			#print(str(next_note) + " " + str(playback_position*1000) + " " + str(next_note-(playback_position*1000)))
 			if not ((next_note - (playback_position*1000)) >= 4*2*(60/bpm)*1000):
 				health -= HP*1.25*delta
+				skip_indicator.visible = false
 		
 		if health <= 0:
 			if not mods["NF"]:

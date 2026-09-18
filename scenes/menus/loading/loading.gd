@@ -19,7 +19,9 @@ var tips = [
 	"The key is to emphasize precision over raw speed. Speed comes with practice.",
 	"Make sure to take breaks to prevent carpal tunnel and RSI!",
 	"I cooka da pizza, can you?",
-	"I hit the tuxport 1 trillion$"
+	"I hit the tuxport 1 trillion$",
+	"Prefer Upscroll? There's a mod for that!",
+	"Want more charts? You can import .osz files in the editor too!"
 ]
 
 @onready var tip_label = get_node("Tip")

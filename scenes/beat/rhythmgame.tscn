@@ -370,17 +370,6 @@ theme_override_font_sizes/font_size = 32
 text = "Back"
 script = ExtResource("12_p231l")
 
-[node name="ShowcaseMode" type="BoxContainer" parent="CanvasLayer/Control/HUD/Top" unique_id=551962492]
-layout_mode = 2
-theme = ExtResource("1_gmrfc")
-vertical = true
-
-[node name="ShowcaseToggle" type="CheckButton" parent="CanvasLayer/Control/HUD/Top/ShowcaseMode" unique_id=1665884601]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("9_voxba")
-text = "Showcase Mode"
-
 [node name="WordSelect" type="BoxContainer" parent="CanvasLayer/Control/HUD/Top" unique_id=1670705190]
 layout_mode = 2
 theme = ExtResource("1_gmrfc")
@@ -718,6 +707,23 @@ theme_override_font_sizes/font_size = 32
 text = "DoubleTime"
 script = ExtResource("17_wobq5")
 
+[node name="Upscroll" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/BasicMods" unique_id=543835848]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Upscroll [WIP]"
+script = ExtResource("17_wobq5")
+
+[node name="ShowcaseToggle" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/BasicMods" unique_id=1665884601]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Showcase Mode"
+script = ExtResource("17_wobq5")
+
 [node name="GameplayMods" type="BoxContainer" parent="CanvasLayer/Control/ModMenu/Mods" unique_id=1352252010]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -781,7 +787,6 @@ color = Color(0, 0, 0, 1)
 
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="pressed" from="CanvasLayer/Control/HUD/Top/Back" to="." method="_on_back_pressed"]
-[connection signal="toggled" from="CanvasLayer/Control/HUD/Top/ShowcaseMode/ShowcaseToggle" to="." method="_on_showcase_toggle_toggled"]
 [connection signal="item_selected" from="CanvasLayer/Control/HUD/Top/WordSelect/WordDropdown" to="." method="_on_word_dropdown_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Control/HUD/Top/WordSelect/WordDropdown" to="." method="_on_word_dropdown_pressed"]
 [connection signal="item_selected" from="CanvasLayer/Control/HUD/Top/SoundSelect/SoundDropdown" to="." method="_on_sound_dropdown_item_selected"]
@@ -793,6 +798,8 @@ color = Color(0, 0, 0, 1)
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/NoFail" to="." method="_on_no_fail_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/HalfTime" to="." method="_on_half_time_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/DoubleTime" to="." method="_on_double_time_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/Upscroll" to="." method="_on_upscroll_toggled"]
+[connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/ShowcaseToggle" to="." method="_on_showcase_toggle_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Easy" to="." method="_on_easy_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Hardrock" to="." method="_on_hardrock_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Hidden" to="." method="_on_hidden_toggled"]
