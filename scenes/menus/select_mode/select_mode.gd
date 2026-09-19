@@ -518,3 +518,7 @@ func return_menu() -> void:
 	
 	for button in main_buttons.get_children():
 		button.active = true
+
+func _on_discord_pressed() -> void:
+	$ButtonPress.play()
+	OS.shell_open("https://discord.gg/dZH5Xfsrf7")

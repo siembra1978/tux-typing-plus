@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://bleuqf1hbqvu8" path="res://assets/visual/sprites/eye2.png" id="33_8y3tj"]
 [ext_resource type="Texture2D" uid="uid://184rwms6cghk" path="res://assets/visual/sprites/eye.png" id="33_ohvyo"]
 [ext_resource type="Script" uid="uid://dtkbndi5kg2nt" path="res://scenes/menus/select_mode/run_tux.gd" id="34_spgfy"]
+[ext_resource type="Texture2D" uid="uid://c85tye2acwtal" path="res://assets/visual/thirdparty/discord.png" id="40_fcg06"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7l3v2"]
 animations = [{
@@ -386,16 +387,6 @@ text = "Proper Rhythm
 expand_icon = true
 script = ExtResource("8_wwqku")
 
-[node name="Bullet" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=471955837]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_vertical = 2
-theme = ExtResource("7_tchf2")
-theme_override_font_sizes/font_size = 50
-text = "Bullet Spell"
-expand_icon = true
-script = ExtResource("8_wwqku")
-
 [node name="Lessons" type="Button" parent="Menu/MainButtons/ButtonBox" unique_id=1616574107]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
@@ -662,6 +653,29 @@ text = "Bubblicity Games"
 label_settings = SubResource("LabelSettings_ohvyo")
 horizontal_alignment = 2
 
+[node name="Links" type="BoxContainer" parent="." unique_id=871657252]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_bottom = 71.0
+grow_horizontal = 0
+alignment = 1
+vertical = true
+
+[node name="Discord" type="Button" parent="Links" unique_id=1208186431]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("7_tchf2")
+theme_override_font_sizes/font_size = 50
+text = "
+"
+icon = ExtResource("40_fcg06")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("8_wwqku")
+
 [connection signal="pressed" from="Menu/MainButtons/ButtonBox/Cascade" to="." method="_on_cascade_pressed"]
 [connection signal="pressed" from="Menu/MainButtons/ButtonBox/Comet" to="." method="_on_comet_pressed"]
 [connection signal="pressed" from="Menu/MainButtons/ButtonBox/ProperRhythm" to="." method="_on_proper_rhythm_pressed"]
@@ -676,3 +690,4 @@ horizontal_alignment = 2
 [connection signal="pressed" from="DifficultySelect/Extreme" to="." method="_on_extreme_pressed"]
 [connection signal="pressed" from="TitleButton" to="." method="_on_title_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Links/Discord" to="." method="_on_discord_pressed"]

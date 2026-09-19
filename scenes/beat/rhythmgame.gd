@@ -52,6 +52,8 @@ extends Node2D
 @onready var mod_dim = control.get_node("ModDim")
 @onready var mod_button = btm.get_node("Mods")
 @onready var mod_menu = control.get_node("ModMenu")
+@onready var osu_button = btm.get_node("osu!")
+@onready var osu_menu = control.get_node("osu!Panel")
 @onready var mods_stack = mod_menu.get_node("Mods")
 @onready var basic_mods = mods_stack.get_node("BasicMods")
 @onready var gameplay_mods = mods_stack.get_node("GameplayMods")
@@ -316,7 +318,7 @@ func load_beatmap(file_name: String):
 
 		refresh_detail_labels()
 
-		if data["song_name"].ends_with(".mp3"):
+		if data["song_name"].to_lower().ends_with(".mp3"):
 			if FileAccess.file_exists(music_path):
 				#print("Loading MP3")
 				var music_file = FileAccess.open(music_path, FileAccess.READ)
@@ -574,12 +576,12 @@ func _ready() -> void:
 		button.scale = Vector2(0.0,0.0)
 		button.modulate.a = 1
 		last_tween = create_tween()
-		last_tween.tween_property(button, "scale", Vector2(1, 1), .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		last_tween.tween_property(button, "scale", Vector2(1, 1), .4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		#var new_pop = pop_sound_temp.instantiate()
 		#self.add_child(new_pop)
 		#new_pop.play()
 		#new_pop.finished.connect(new_pop.queue_free)
-		await get_tree().create_timer(.04).timeout
+		await get_tree().create_timer(.03).timeout
 		button.active = true
 
 	#for button in select_buttons.get_children():
@@ -790,3 +792,33 @@ func _on_showcase_toggle_toggled(toggled_on: bool) -> void:
 
 func _on_sound_dropdown_item_selected(index: int) -> void:
 	selected_sound_index = index
+
+func _on_osu_pressed() -> void:
+	button_sound.play()
+
+	osu_menu.position.y = get_viewport_rect().size.y
+
+	mod_dim.visible = true
+	osu_menu.visible = true
+
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(mod_dim, "modulate:a", 1, .25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(osu_menu, "position", Vector2(osu_menu.position.x, (get_viewport_rect().size.y/2) - (osu_menu.size.y/2)), .5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	await tween.finished
+
+
+func _on_osu_close_pressed() -> void:
+	button_sound.play()
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(mod_dim, "modulate:a", 0, .75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(osu_menu, "position", Vector2(osu_menu.position.x, get_viewport_rect().size.y), .5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	await tween.finished
+
+	mod_dim.visible = false
+	osu_menu.visible = false
+	#osu_menu.position.x = get_viewport_rect
+
+
+func _on_osu_website_pressed() -> void:
+	button_sound.play()
+	OS.shell_open("https://osu.ppy.sh/beatmapsets")

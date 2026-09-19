@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://s5l015ddfelw" path="res://scenes/beat/popup_pivot.gd" id="18_lybr3"]
 [ext_resource type="Script" uid="uid://mqye7goe66g2" path="res://scenes/menus/select_mode/menu_button_hover.gd" id="18_o8plc"]
 [ext_resource type="Texture2D" uid="uid://4qkhkso7fbah" path="res://assets/visual/sprites/iconhires.png" id="20_p7we2"]
+[ext_resource type="Texture2D" uid="uid://c85tye2acwtal" path="res://assets/visual/thirdparty/discord.png" id="22_xi2pv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxt15"]
 shader = ExtResource("2_jk6fb")
@@ -58,7 +59,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_o8plc"]
 font = ExtResource("15_efp3n")
-font_size = 20
+font_size = 11
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
@@ -1362,6 +1363,42 @@ theme_override_font_sizes/font_size = 24
 text = "Coming Soon!"
 alignment = 0
 
+[node name="MenuBar2" type="BoxContainer" parent="Top/Control/TopBar" unique_id=1604435865]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -339.0
+offset_top = -31.5
+offset_bottom = 28.5
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="Text" type="Label" parent="Top/Control/TopBar/MenuBar2" unique_id=1155327478]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+text = "NOTE: TuxEditor is in an experimental state. 
+Lag, bugs, and other issues may occur. 
+Report them in the Discord server to the right."
+label_settings = SubResource("LabelSettings_o8plc")
+vertical_alignment = 1
+
+[node name="Discord" type="Button" parent="Top/Control/TopBar/MenuBar2" unique_id=1448407591]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 32
+icon = ExtResource("22_xi2pv")
+text_overrun_behavior = 5
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("18_o8plc")
+
 [node name="BPM" type="BoxContainer" parent="Top/Control" unique_id=731736247]
 layout_mode = 1
 anchors_preset = -1
@@ -1640,6 +1677,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Top/Control/TopBar/MenuBar/Settings/SettingsMenu/Chart Theme" to="." method="_on_chart_theme_pressed"]
 [connection signal="toggled" from="Top/Control/TopBar/MenuBar/Settings/SettingsMenu/ToggleDRPC" to="." method="_on_toggle_drpc_toggled"]
 [connection signal="pressed" from="Top/Control/TopBar/MenuBar/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar2/Discord" to="." method="_on_discord_pressed"]
 [connection signal="pressed" from="Top/Control/BPM/TapBPM" to="." method="_on_tap_bpm_pressed"]
 [connection signal="pressed" from="Top/Control/BPM/MetronomeToggle" to="." method="_on_metronome_toggle_pressed"]
 [connection signal="text_submitted" from="Top/Control/BPM/TempoControls/BPMStack/BPM" to="." method="_on_bpm_text_submitted"]

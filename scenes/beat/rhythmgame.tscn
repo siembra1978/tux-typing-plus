@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://bsglqy5l5pcon" path="res://scenes/menus/select_mode/texture_bob.gd" id="13_ucm3w"]
 [ext_resource type="Script" uid="uid://0yy5jfmffl70" path="res://scenes/menus/select_mode/bob.gd" id="15_jsu8p"]
 [ext_resource type="Script" uid="uid://dov42jljp3tip" path="res://scenes/beat/modtoggle.gd" id="17_wobq5"]
+[ext_resource type="Texture2D" uid="uid://bybfbx7yaeo7c" path="res://assets/visual/thirdparty/osu.png" id="22_vuw7e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bjesv"]
 shader = ExtResource("1_t2e5h")
@@ -426,7 +427,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -66.0
-offset_right = 542.0
+offset_right = 914.0
 grow_vertical = 0
 size_flags_horizontal = 3
 
@@ -454,6 +455,14 @@ theme_override_font_sizes/font_size = 32
 text = "Mods"
 script = ExtResource("12_p231l")
 
+[node name="osu!" type="Button" parent="CanvasLayer/Control/Options" unique_id=1166023451]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Get More Beatmaps!"
+script = ExtResource("12_p231l")
+
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control" unique_id=424518857]
 clip_contents = false
 layout_mode = 1
@@ -470,7 +479,6 @@ grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("9_voxba")
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
 
 [node name="SelectButtons" type="VBoxContainer" parent="CanvasLayer/Control/ScrollContainer" unique_id=1076579764]
 layout_mode = 2
@@ -774,6 +782,68 @@ theme_override_font_sizes/font_size = 32
 text = "Close Mod Menu"
 script = ExtResource("12_p231l")
 
+[node name="osu!Panel" type="BoxContainer" parent="CanvasLayer/Control" unique_id=142311750]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.0
+offset_top = -203.0
+offset_right = 376.0
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+vertical = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/osu!Panel" unique_id=1830614482]
+custom_minimum_size = Vector2(0, 89)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("9_j87rg")
+
+[node name="osu!Explain" type="Label" parent="CanvasLayer/Control/osu!Panel/Panel" unique_id=154008923]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+text = "Looking for more maps? Don't fret!
+No need to chart! Just do this:
+1. Download a map from osu! (.osz)
+2. In TuxEditor, drag and drop the file
+3. File -> Save Beatmap -> Save -> Quit
+4. That's All There Is To It."
+label_settings = SubResource("LabelSettings_n0ign")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="BoxContainer" parent="CanvasLayer/Control/osu!Panel" unique_id=1292516844]
+layout_mode = 2
+
+[node name="osu!Website" type="Button" parent="CanvasLayer/Control/osu!Panel/Buttons" unique_id=2145039523]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Get maps from osu!"
+icon = ExtResource("22_vuw7e")
+expand_icon = true
+script = ExtResource("12_p231l")
+
+[node name="osu!Close" type="Button" parent="CanvasLayer/Control/osu!Panel/Buttons" unique_id=692742249]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_voxba")
+theme_override_font_sizes/font_size = 32
+text = "Close"
+script = ExtResource("12_p231l")
+
 [node name="Fade" type="ColorRect" parent="CanvasLayer/Control" unique_id=410031986]
 visible = false
 layout_mode = 1
@@ -793,6 +863,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="CanvasLayer/Control/Options/OpenBeatmapFolder" to="." method="_on_open_beatmap_folder_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Options/Editor" to="." method="_on_editor_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Options/Mods" to="." method="_on_mods_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Options/osu!" to="." method="_on_osu_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Preview/Start" to="." method="_on_start_pressed"]
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/Auto" to="." method="_on_auto_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/BasicMods/NoFail" to="." method="_on_no_fail_toggled"]
@@ -805,3 +876,5 @@ color = Color(0, 0, 0, 1)
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Hidden" to="." method="_on_hidden_toggled"]
 [connection signal="toggled" from="CanvasLayer/Control/ModMenu/Mods/GameplayMods/Caps" to="." method="_on_caps_toggled"]
 [connection signal="pressed" from="CanvasLayer/Control/ModMenu/CloseModMenu" to="." method="_on_close_mod_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/osu!Panel/Buttons/osu!Website" to="." method="_on_osu_website_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/osu!Panel/Buttons/osu!Close" to="." method="_on_osu_close_pressed"]

@@ -1,6 +1,6 @@
 extends Node2D
 
-const EDITOR_VERSION = "TuxEditor-0.2.11"
+const EDITOR_VERSION = "TuxEditor-0.2.12"
 
 # init
 var viewport_size
@@ -1689,7 +1689,7 @@ func convert_osz_to_tux(diff_path):
 				audio_file_name = entry.replace("AudioFilename: ","")
 				source_audio_path = "user://tmp/" + entry.replace("AudioFilename: ","")
 				print(source_audio_path)
-				if source_audio_path.ends_with(".mp3"):
+				if source_audio_path.to_lower().ends_with(".mp3"):
 					if FileAccess.file_exists(source_audio_path):
 						print("wwwge")
 						var music_file = FileAccess.open(source_audio_path, FileAccess.READ)
@@ -1921,3 +1921,7 @@ func _on_files_dropped(files):
 			_on_file_img_file_selected(path)
 		if path.ends_with('.ogv'):
 			_on_file_video_file_selected(path)
+
+func _on_discord_pressed() -> void:
+	button_sound.play()
+	OS.shell_open("https://discord.gg/dZH5Xfsrf7")
