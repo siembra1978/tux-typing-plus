@@ -456,6 +456,9 @@ func check_beatmap_files(path):
 					new_select_button.text = str(data["name"]) + "* \n[" + str(data["difficulty"]) + "] "
 					if data.has("background") and data['background'] != null:
 						#print("kys: " + data["name"])
+						print(data["name"])
+						print(data["background"])
+
 						new_select_button.get_node("Image").texture = ImageTexture.create_from_image(Image.load_from_file("user://beatmaps/" + file_name + "/" + data["background"]))
 					new_select_button.given_filename = str(file_name)
 					new_select_button.legacy = false

@@ -290,9 +290,10 @@ func _ready() -> void:
 		pink_bar.position.y = 193.0
 		tux.set_anchors_and_offsets_preset(Control.LayoutPreset.PRESET_CENTER_TOP, Control.LayoutPresetMode.PRESET_MODE_KEEP_SIZE)
 		tuxloc = tux.position.y
-	
+		
 	for mod in mods.keys():
-		#print(mod + " " + str(mods[mod]))
+		if showcase and mod == "AP":
+			continue
 		mod_stack.get_node(mod).visible = mods[mod]
 	
 	# determines approach rates

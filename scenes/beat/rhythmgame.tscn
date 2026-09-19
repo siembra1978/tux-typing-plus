@@ -713,7 +713,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("9_voxba")
 theme_override_font_sizes/font_size = 32
-text = "Upscroll [WIP]"
+text = "Upscroll"
 script = ExtResource("17_wobq5")
 
 [node name="ShowcaseToggle" type="CheckButton" parent="CanvasLayer/Control/ModMenu/Mods/BasicMods" unique_id=1665884601]

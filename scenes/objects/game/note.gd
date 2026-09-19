@@ -13,6 +13,8 @@ var AR
 var hit_window
 var ap_hit_window
 
+var direction = 1
+
 var timestamp
 
 var smoothed_time: float = 0.0
@@ -42,6 +44,9 @@ func _ready() -> void:
 	ap = scene.mods["AP"]
 	OD = scene.OD
 	AR = scene.AR
+
+	if scene.mods["UP"]:
+		direction = -1
 	
 	ap_hit_window = 80 - (6 * OD)
 	hit_window = 200 - (10 * OD)
@@ -50,7 +55,7 @@ func _process(delta: float) -> void:
 	active = scene.active
 
 	var hit_point = scene.hit_point
-	var start_pos = (hit_point - scene.dur_in_pos) + (scene.dur_in_pos * (1 - ((timestamp/1000)/scene.duration)))
+	var start_pos = (hit_point - direction*scene.dur_in_pos) + direction*(scene.dur_in_pos * (1 - ((timestamp/1000)/scene.duration)))
 
 	var audio_time = scene.playback_position
 
@@ -62,7 +67,7 @@ func _process(delta: float) -> void:
 	#self.position.y = start_pos + (scene.playback_position/scene.duration)*scene.dur_in_pos
 
 	if in_play:
-		self.position.y = start_pos + (smoothed_time/scene.duration)*scene.dur_in_pos
+		self.position.y = start_pos + direction*((smoothed_time/scene.duration)*scene.dur_in_pos)
 		
 		var hd_point = hit_point/3
 		
