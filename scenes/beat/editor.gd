@@ -38,15 +38,18 @@ var viewport_size
 
 @onready var map_info_popup = top_control.get_node("MapInfoPopUp")
 @onready var map_difficulty_popup = top_control.get_node("DifficultyPopUp")
+@onready var map_theme_popup = top_control.get_node("ThemePopUp")
 @onready var tempo_change_popup = top_control.get_node("TempoPopUp")
 @onready var clear_warning_popup = top_control.get_node("ClearWarning")
 @onready var osz_import_popup = top_control.get_node("OSZPopUp")
 @onready var osz_diff_select = osz_import_popup.get_node("DiffStack").get_node("Interact").get_node("DiffSelect")
 @onready var map_info_stack = map_info_popup.get_node("MapInfo")
+@onready var map_theme_info = map_theme_popup.get_node("ThemeInfo")
 @onready var name_entry = map_info_stack.get_node("Name")
 @onready var artist_entry = map_info_stack.get_node("Artist")
 @onready var mapper_entry = map_info_stack.get_node("Mapper")
 @onready var difficulty_entry = map_info_stack.get_node("Difficulty")
+@onready var color_entry = map_theme_info.get_node("ColorPicker")
 
 # media controls
 @onready var media_ui = top_control.get_node("Media")
@@ -149,6 +152,7 @@ var map_tux_skin = false
 var map_background = false
 var map_video = false
 var imgloadaction: String = ""
+var map_color
 
 #beatmap editing ui
 var note_objects = []
@@ -410,7 +414,7 @@ func _on_scrubber_drag_ended(value_changed: bool) -> void:
 		music.play(playback_position)
 
 func _input(event):
-	if (not map_info_popup.visible) and (not map_difficulty_popup.visible):
+	if (not map_info_popup.visible) and (not map_difficulty_popup.visible) and (not map_theme_popup.visible):
 		if event is InputEventKey and event.pressed:
 			if event.keycode == KEY_R:
 				scrubber.size.x = viewport_size.x
@@ -790,6 +794,7 @@ func save_beatmap():
 		"tux_skin": map_tux_skin,
 		#"tux_skin": tux_file_name,
 		"video": map_video,
+		"color": map_color,
 		"HP": HP,
 		"OD": OD,
 		"AR": AR,
@@ -804,6 +809,7 @@ func save_beatmap():
 		"bpm_timestamps": bpm_timestamps,
 		"mappings": mappings
 	}
+	
 
 	var regex = RegEx.new()
 	regex.compile("[^a-zA-Z]")
@@ -991,6 +997,12 @@ func _on_file_chart_file_selected(path: String) -> void:
 		HP = data["HP"]
 		AR = data["AR"]
 		OD = data["OD"]
+		
+		if 'color' in data:
+			map_color = data["color"]
+			color_entry.color = str(map_color)
+		else:
+			color_entry.color = 'f329ff'
 
 		#print("user://beatmaps/" + file_name + "/" + str(data["song_name"]))
 		var music_path = chartfd_path + "/" + str(data["song_name"])
@@ -1453,6 +1465,31 @@ func _on_difficulty_pressed() -> void:
 		await tween.finished
 		map_difficulty_popup.visible = false
 		map_difficulty_popup.scale = Vector2(1.0,1.0)
+		
+func _on_chart_theme_pressed() -> void:
+	button_sound.play()
+	if not map_theme_popup.visible:
+		map_theme_popup.scale = Vector2(0.0,0.0)
+		map_theme_popup.visible = true
+		var tween = create_tween()
+		tween.tween_property(map_theme_popup, "scale", Vector2(1.0, 1.0), .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	else:
+		var tween = create_tween()
+		tween.tween_property(map_theme_popup, "scale", Vector2(0.0, 0.0), .25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		await tween.finished
+		map_theme_popup.visible = false
+		map_theme_popup.scale = Vector2(1.0,1.0)
+	
+func _on_theme_cancel_pressed() -> void:
+	back_sound.play()
+	var tween = create_tween()
+	tween.tween_property(map_theme_popup, "scale", Vector2(0.0, 0.0), .25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	await tween.finished
+	map_theme_popup.visible = false
+	map_theme_popup.scale = Vector2(1.0,1.0)
+	
+func _on_color_picker_color_changed(color: Color) -> void:
+	map_color = color.to_html()
 
 # SETTINGS MENU END
 

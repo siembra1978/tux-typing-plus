@@ -671,6 +671,76 @@ theme_override_font_sizes/font_size = 24
 text = "Close"
 script = ExtResource("18_o8plc")
 
+[node name="ThemePopUp" type="Control" parent="Top/Control" unique_id=1869338771]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -238.0
+offset_right = 264.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_lybr3")
+
+[node name="Panel" type="Panel" parent="Top/Control/ThemePopUp" unique_id=1030101619]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("14_n6a1k")
+
+[node name="ThemeInfo" type="BoxContainer" parent="Top/Control/ThemePopUp" unique_id=377149196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Header" type="Label" parent="Top/Control/ThemePopUp/ThemeInfo" unique_id=1670286107]
+layout_mode = 2
+text = "Chart Theme"
+label_settings = SubResource("LabelSettings_olhbj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorPicker" type="ColorPicker" parent="Top/Control/ThemePopUp/ThemeInfo" unique_id=1066320347]
+layout_mode = 2
+theme = ExtResource("9_oyte0")
+color = Color(0.9529412, 0.16078432, 1, 1)
+color_modes_visible = false
+sliders_visible = false
+presets_visible = false
+
+[node name="Buttons" type="BoxContainer" parent="Top/Control/ThemePopUp/ThemeInfo" unique_id=1351006545]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SaveMap" type="Button" parent="Top/Control/ThemePopUp/ThemeInfo/Buttons" unique_id=1799229869]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Save"
+script = ExtResource("18_o8plc")
+
+[node name="Cancel" type="Button" parent="Top/Control/ThemePopUp/ThemeInfo/Buttons" unique_id=23337177]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("9_oyte0")
+theme_override_font_sizes/font_size = 24
+text = "Cancel"
+script = ExtResource("18_o8plc")
+
 [node name="TempoPopUp" type="Control" parent="Top/Control" unique_id=846583901]
 visible = false
 layout_mode = 1
@@ -1253,6 +1323,14 @@ text = "Difficulty"
 alignment = 0
 script = ExtResource("18_o8plc")
 
+[node name="Chart Theme" type="Button" parent="Top/Control/TopBar/MenuBar/Settings/SettingsMenu" unique_id=2008300455]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Chart Theme"
+alignment = 0
+script = ExtResource("18_o8plc")
+
 [node name="ToggleDRPC" type="CheckButton" parent="Top/Control/TopBar/MenuBar/Settings/SettingsMenu" unique_id=857419507]
 layout_mode = 2
 theme = ExtResource("9_oyte0")
@@ -1520,6 +1598,9 @@ color = Color(0, 0, 0, 1)
 [connection signal="value_changed" from="Top/Control/DifficultyPopUp/MapInfo/AR/ARSpin" to="." method="_on_ar_spin_value_changed"]
 [connection signal="value_changed" from="Top/Control/DifficultyPopUp/MapInfo/HP/HPSpin" to="." method="_on_hp_spin_value_changed"]
 [connection signal="pressed" from="Top/Control/DifficultyPopUp/MapInfo/Close" to="." method="_on_close_pressed"]
+[connection signal="color_changed" from="Top/Control/ThemePopUp/ThemeInfo/ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="Top/Control/ThemePopUp/ThemeInfo/Buttons/SaveMap" to="." method="_on_save_map_pressed"]
+[connection signal="pressed" from="Top/Control/ThemePopUp/ThemeInfo/Buttons/Cancel" to="." method="_on_theme_cancel_pressed"]
 [connection signal="value_changed" from="Top/Control/TempoPopUp/MapInfo/NewBPM/TempoEntry" to="." method="_on_tempo_entry_value_changed"]
 [connection signal="pressed" from="Top/Control/TempoPopUp/MapInfo/Buttons/TempoConfirm" to="." method="_on_tempo_confirm_pressed"]
 [connection signal="pressed" from="Top/Control/TempoPopUp/MapInfo/Buttons/TempoCancel" to="." method="_on_tempo_cancel_pressed"]
@@ -1556,6 +1637,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="toggled" from="Top/Control/TopBar/MenuBar/View/ViewMenu/ToggleTempoPanel" to="." method="_on_toggle_tempo_panel_toggled"]
 [connection signal="pressed" from="Top/Control/TopBar/MenuBar/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Top/Control/TopBar/MenuBar/Settings/SettingsMenu/Difficulty" to="." method="_on_difficulty_pressed"]
+[connection signal="pressed" from="Top/Control/TopBar/MenuBar/Settings/SettingsMenu/Chart Theme" to="." method="_on_chart_theme_pressed"]
 [connection signal="toggled" from="Top/Control/TopBar/MenuBar/Settings/SettingsMenu/ToggleDRPC" to="." method="_on_toggle_drpc_toggled"]
 [connection signal="pressed" from="Top/Control/TopBar/MenuBar/Help" to="." method="_on_help_pressed"]
 [connection signal="pressed" from="Top/Control/BPM/TapBPM" to="." method="_on_tap_bpm_pressed"]
