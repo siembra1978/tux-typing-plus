@@ -239,6 +239,8 @@ func _ready() -> void:
 	pink_bar.position.x = .25*viewport_size.x
 	pink_bar.size.x = .75*viewport_size.x
 	hit_point = pink_bar.position.y
+	
+	load("res://assets/visual/themes/notelabel.tres").outline_color = 'f329ff'
 
 	# Load Corresponding Text File
 	if Config.wumba:
@@ -693,6 +695,12 @@ func load_official_beatmap(file_name: String):
 				video.stream = load("res://gameplay/beatmaps/" + file_name + "/video.ogv")
 				#await get_tree().create_timer(3.0).timeout
 				#video.play()
+				
+		if "color" in data:
+			if data["color"]:
+				if not Config.improve_readability:
+					pink_bar.color = data["color"]
+					load("res://assets/visual/themes/notelabel.tres").outline_color = data["color"]
 
 		#print("Loaded beatmap successfully!")
 	else:
@@ -781,6 +789,12 @@ func load_beatmap(file_name: String):
 				$Background/Control/VideoStreamPlayer.visible = true
 				#print("user://beatmaps/" + file_name + "/video.ogv")
 				video.stream = load("user://beatmaps/" + file_name + "/video.ogv")
+				
+		if "color" in data:
+			if data["color"]:
+				if not Config.improve_readability:
+					pink_bar.color = data["color"]
+					load("res://assets/visual/themes/notelabel.tres").outline_color = data["color"]
 
 		#print("Loaded beatmap successfully!")
 	else:

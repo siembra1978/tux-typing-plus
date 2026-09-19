@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://d3bimgohryyqx"]
+
+[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="1_ifrjx"]
+
+[resource]
+font = ExtResource("1_ifrjx")
+font_size = 70
+outline_size = 10
+outline_color = Color(0.9529412, 0.16078432, 1, 1)
