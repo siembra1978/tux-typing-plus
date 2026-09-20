@@ -186,8 +186,7 @@ script = ExtResource("7_c2w82")
 [node name="Dyslexia" type="CheckBox" parent="BoxContainer" unique_id=770729850]
 layout_mode = 2
 theme = ExtResource("2_s7dil")
-text = "Dyslexic Mode
-
+text = "Dyslexic Font
 "
 script = ExtResource("7_c2w82")
 

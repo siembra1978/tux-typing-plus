@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 	if get_tree().current_scene.name == "Beat":
 		get_node("BoxContainer/SelectExit").text = "Beatmap Select"
+		get_node("BoxContainer/Quit").visible = false
 		
 	if get_tree().current_scene.name == "Lessons":
 		get_node("BoxContainer/Restart").visible = false
@@ -116,7 +117,16 @@ func _on_select_exit_pressed() -> void:
 	await get_tree().create_timer(1).timeout
 	await get_tree().process_frame
 	if get_tree().current_scene.name == "Beat":
-		get_tree().change_scene_to_file("res://scenes/beat/rhythmgame.tscn")
+		var next_scene = load("res://scenes/beat/rhythmgame.tscn").instantiate()
+		#next_scene.word_set = get_tree().current_scene.word_set
+		next_scene.selected_file = get_tree().current_scene.beatmap_filename
+		next_scene.mods = get_tree().current_scene.mods
+		next_scene.showcase = get_tree().current_scene.showcase
+		next_scene.legacy_file_loaded = get_tree().current_scene.legacy
+		next_scene.official_file_loaded= get_tree().current_scene.official
+		next_scene.selected_sound_index = get_tree().current_scene.selected_sound_index
+		next_scene.incoming_word_set = get_tree().current_scene.word_set
+		get_tree().change_scene_to_node(next_scene)
 	else:
 		get_tree().change_scene_to_file("res://scenes/menus/select_mode/select_mode.tscn")
 	

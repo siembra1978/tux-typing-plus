@@ -21,6 +21,9 @@ extends Node2D
 @onready var top = hud.get_node("Top")
 @onready var word_select = top.get_node("WordSelect")
 @onready var word_dropdown = word_select.get_node("WordDropdown")
+@onready var sound_select = top.get_node("SoundSelect")
+@onready var sound_dropdown = sound_select.get_node("SoundDropdown")
+
 
 # middle ui
 #@onready var mid = hud.get_node("Middle")
@@ -49,16 +52,22 @@ extends Node2D
 @onready var mod_dim = control.get_node("ModDim")
 @onready var mod_button = btm.get_node("Mods")
 @onready var mod_menu = control.get_node("ModMenu")
+@onready var osu_button = btm.get_node("osu!")
+@onready var osu_menu = control.get_node("osu!Panel")
 @onready var mods_stack = mod_menu.get_node("Mods")
 @onready var basic_mods = mods_stack.get_node("BasicMods")
 @onready var gameplay_mods = mods_stack.get_node("GameplayMods")
 
 @onready var ez_button = gameplay_mods.get_node("Easy")
 @onready var hr_button = gameplay_mods.get_node("Hardrock")
-#@onready var nf_button = mod_menu.get_node("NoFail")
+@onready var hd_button = gameplay_mods.get_node("Hidden")
+@onready var cs_button = gameplay_mods.get_node("Caps")
+@onready var nf_button = basic_mods.get_node("NoFail")
 @onready var ht_button = basic_mods.get_node("HalfTime")
 @onready var dt_button = basic_mods.get_node("DoubleTime")
-#@onready var ap_button = mod_menu.get_node("Auto")
+@onready var ap_button = basic_mods.get_node("Auto")
+@onready var us_button = basic_mods.get_node("Upscroll")
+@onready var showcase_toggle = basic_mods.get_node("ShowcaseToggle")
 
 # extra ui
 @onready var fade = control.get_node("Fade")
@@ -88,7 +97,10 @@ var mods = {
 	"HR": false,
 	"CS": false,
 	"HD": false,
+	"UP": false
 }
+
+var showcase = false
 
 var min_bpm = 0
 var max_bpm = 0
@@ -96,6 +108,9 @@ var max_bpm = 0
 var AR = 1
 var OD = 1
 var HP = 1
+
+var selected_sound_index = 0
+var incoming_word_set
 
 # initialize objects
 var beatmap_select_button = preload("res://scenes/objects/ui/beatmap_select_button.tscn")
@@ -303,7 +318,7 @@ func load_beatmap(file_name: String):
 
 		refresh_detail_labels()
 
-		if data["song_name"].ends_with(".mp3"):
+		if data["song_name"].to_lower().ends_with(".mp3"):
 			if FileAccess.file_exists(music_path):
 				#print("Loading MP3")
 				var music_file = FileAccess.open(music_path, FileAccess.READ)
@@ -443,6 +458,9 @@ func check_beatmap_files(path):
 					new_select_button.text = str(data["name"]) + "* \n[" + str(data["difficulty"]) + "] "
 					if data.has("background") and data['background'] != null:
 						#print("kys: " + data["name"])
+						print(data["name"])
+						print(data["background"])
+
 						new_select_button.get_node("Image").texture = ImageTexture.create_from_image(Image.load_from_file("user://beatmaps/" + file_name + "/" + data["background"]))
 					new_select_button.given_filename = str(file_name)
 					new_select_button.legacy = false
@@ -482,18 +500,68 @@ func _ready() -> void:
 	fade.visible = true
 	var tween := create_tween()
 	tween.parallel().tween_property(fade, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-
+	
 	if Config.wumba:
 		check_text_files("res://gameplay/wumba")
 	else:
 		check_text_files("user://word_sets")
 		check_text_files("res://gameplay/word_sets")
+	
+	if incoming_word_set:
+		for i in range(word_dropdown.item_count):
+			if word_dropdown.get_item_text(i).to_lower().replace(" ", "") == incoming_word_set:
+				word_dropdown.select(i)
+	
 	#check_legacy_beatmap_files("res://scenes/beat/maps")
 	check_official_beatmap_files("res://gameplay/beatmaps")
 	check_beatmap_files("user://beatmaps")
 
 	preview.up()
 	dropshadow.up()
+	
+	# load stuff if already selected
+	# basic mods
+	if mods["AP"]:
+		ap_button.set_pressed_no_signal(mods["AP"])
+	if mods["NF"]:
+		nf_button.set_pressed_no_signal(mods["NF"])
+	if mods["HT"]:
+		music.pitch_scale = .75
+		video.speed_scale = .75
+		if music.stream != null:
+			duration_label.text = "" + format_time(music.stream.get_length())
+		ht_button.set_pressed_no_signal(mods["HT"])
+	if mods["DT"]:
+		music.pitch_scale = 1.5
+		video.speed_scale = 1.5
+		if music.stream != null:
+			duration_label.text = "" + format_time(music.stream.get_length())
+		dt_button.set_pressed_no_signal(mods["DT"])
+	
+	# gameplay mods
+	if mods["EZ"]:
+		ez_button.set_pressed_no_signal(mods["EZ"])
+	if mods["HR"]:
+		hr_button.set_pressed_no_signal(mods["HR"])
+	if mods["HD"]:
+		hd_button.set_pressed_no_signal(mods["HD"])
+	if mods["CS"]:
+		cs_button.set_pressed_no_signal(mods["CS"])
+	if mods["UP"]:
+		us_button.set_pressed_no_signal(mods["UP"])
+	
+	sound_dropdown.selected = selected_sound_index
+	showcase_toggle.set_pressed_no_signal(showcase)
+	
+	# map
+	if selected_file:
+		if official_file_loaded:
+			load_official_beatmap(selected_file)
+		else:
+			load_beatmap(selected_file)
+	
+	refresh_detail_labels()
+	
 
 	for button in select_buttons.get_children():
 		button.active = false
@@ -508,12 +576,12 @@ func _ready() -> void:
 		button.scale = Vector2(0.0,0.0)
 		button.modulate.a = 1
 		last_tween = create_tween()
-		last_tween.tween_property(button, "scale", Vector2(1, 1), .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		last_tween.tween_property(button, "scale", Vector2(1, 1), .4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 		#var new_pop = pop_sound_temp.instantiate()
 		#self.add_child(new_pop)
 		#new_pop.play()
 		#new_pop.finished.connect(new_pop.queue_free)
-		await get_tree().create_timer(.04).timeout
+		await get_tree().create_timer(.03).timeout
 		button.active = true
 
 	#for button in select_buttons.get_children():
@@ -567,8 +635,10 @@ func _on_start_pressed() -> void:
 			next_scene.custom = true
 		next_scene.beatmap_filename = selected_file
 		next_scene.mods = mods
+		next_scene.showcase = showcase
 		next_scene.legacy = legacy_file_loaded
 		next_scene.official = official_file_loaded
+		next_scene.selected_sound_index = selected_sound_index
 		#print(selected_file)
 		get_tree().change_scene_to_node(next_scene)
 	else:
@@ -703,10 +773,52 @@ func _on_hardrock_toggled(toggled_on: bool) -> void:
 
 	refresh_detail_labels()
 
-
+func _on_upscroll_toggled(toggled_on: bool) -> void:
+	button_sound.play()
+	mods["UP"] = toggled_on
+	
+	
 func _on_word_dropdown_pressed() -> void:
 	button_sound.play()
 
 
 func _on_word_dropdown_item_selected(index: int) -> void:
 	button_sound.play()
+
+
+func _on_showcase_toggle_toggled(toggled_on: bool) -> void:
+	showcase = toggled_on
+
+
+func _on_sound_dropdown_item_selected(index: int) -> void:
+	selected_sound_index = index
+
+func _on_osu_pressed() -> void:
+	button_sound.play()
+
+	osu_menu.position.y = get_viewport_rect().size.y
+
+	mod_dim.visible = true
+	osu_menu.visible = true
+
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(mod_dim, "modulate:a", 1, .25).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(osu_menu, "position", Vector2(osu_menu.position.x, (get_viewport_rect().size.y/2) - (osu_menu.size.y/2)), .5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	await tween.finished
+
+
+func _on_osu_close_pressed() -> void:
+	button_sound.play()
+	var tween = create_tween().set_parallel(true)
+	tween.tween_property(mod_dim, "modulate:a", 0, .75).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(osu_menu, "position", Vector2(osu_menu.position.x, get_viewport_rect().size.y), .5).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	await tween.finished
+
+	mod_dim.visible = false
+	osu_menu.visible = false
+	#osu_menu.position.x = get_viewport_rect
+
+
+func _on_osu_website_pressed() -> void:
+	button_sound.play()
+	OS.shell_open("https://osu.ppy.sh/beatmapsets")

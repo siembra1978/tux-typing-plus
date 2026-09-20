@@ -265,7 +265,7 @@ func _process(delta: float) -> void:
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_ESCAPE:
+		if Input.is_action_just_pressed('ui_cancel'):
 				if pause_menu.visible:
 					pause_menu.resume()
 				elif $OnTop/GameOver.visible:

@@ -4,7 +4,7 @@ A modern reimagining of the educational classic [Tux Typing](https://github.com/
 
 ## Current Version
 
-### v1.0.3
+### v1.0.4
 
 ## About Tux Typing+
 
@@ -21,7 +21,7 @@ expand upon it beyond its original scope, and thus Tux Typing+ was born.
 - [**Godot Engine**](https://github.com/godotengine/godot): We chose Godot for its free & open-source nature and its low barrier for entry. This allowed us to iterate quickly and learn a lot about software and game development without the shadow of a mega corporation looming over us.
 - **That's All There Is To It**
 
-## TuxEditor-0.2.11
+## TuxEditor-0.2.12
 
 This was easily the most time consuming part of the entire project. The entire charting and audio timing system for Proper Rhythm was built here
 starting with TuxEditor-0.1.0, but we have iterated extensively here. 
@@ -39,6 +39,7 @@ starting with TuxEditor-0.1.0, but we have iterated extensively here.
 - **Difficulty Settings**: Adjust Approach Rate, Overall Difficulty, and HP Drain!
 - **Discord Rich Presence**: Show your friends what you're charting! Or don't. Your call.
 - **Import .osz Files**: Want more maps but don't want to chart em? Have access to nearly the entire osu! catalog of beatmaps!
+- **Chart Themes**: Customize the hitbar and text colors of your beatmap/chart!
 
 ### Regarding Background Videos
 If you really want background videos in your map, it'll take a bit of effort.
@@ -107,6 +108,8 @@ Proper Rhythm features several mod options to the gameplay, some making it easie
 - **No Fail**: You can't game over with this one!
 - **Half Time**: Play the map at .75x the speed!
 - **Double Time**: Or, play the map at 1.5x the speed! (REALLY HARD)
+- **Upscroll**: Notes move up intead of down! Doesn't really affect difficulty, it's mostly just preference.
+- **Showcase**: Remove metronome bars and judgment plates for cleaner gameplay to show off!
 - **Easy**: Halves Approach Rate, HP Drain, and Overall Difficulty.
 - **Hard Rock**: Increases Approach Rate, HP Drain, and Overall Difficulty by 1.15x, and words spawn in reverse!
 - **Hidden**: Notes fade out a bit before the hit line!
@@ -132,7 +135,7 @@ It is recommended to download the official binaries from one of the following so
 - [**GitHub**](https://github.com/siembra1978/tux-typing-plus/releases)
 - [**itch.io**](https://cosm0s-spark.itch.io/tux-typing-plus)
 - [**siembra.lol**](https://www.siembra.lol/games/tuxtypingplus/downloads)
-- [**Flathub**](https://flathub.org/en/apps/lol.siembra.tuxtypeplus)
+- [**Flathub**](https://flathub.org/en/apps/lol.siembra.tuxtypeplus) (LINUX ONLY)
 
 Alternatively, you can play the [Web Version](https://siembra.lol/games/tuxtypingplus/play/tuxtypeplus-linux-1.0.2.html)
 
@@ -142,7 +145,7 @@ OR, if you're just like that, you can build it straight from source!
 
 ### Prerequisites
 
-- Godot 4.6 or Higher
+- Godot 4.7 or Higher
 - Computer running Windows, macOS, or Linux
 - Git for version control
 
@@ -151,7 +154,7 @@ OR, if you're just like that, you can build it straight from source!
 git clone https://github.com/siembra1978/tux-typing-plus
 cd tux-typing-plus
 ```
-2. Open Godot 4.6.X
+2. Open Godot 4.7.X
 
 3. Load the project into Godot
 
@@ -164,7 +167,15 @@ Contributions that fit within the vision of the project are welcome, but we may 
 ### A project by siembra & Cosm0s, licensed under the [GNU General Public License Version 2](LICENSE)
 
 ### Tux the Penguin
-The Linux mascot, Tux, was created by [Larry Ewing](lewing@isc.tamu.edu) using The GIMP.
+The Linux mascot, Tux, was created by [Larry Ewing](lewing@isc.tamu.edu) using the GIMP.
+
+### Kevin MacLeod
+For the songs in the built-in beatmaps for Proper Rhythm:
+- Fluffing A Duck
+- Flying Kerfuffle
+- Local Forecast
+- Monkey Spinning Monkeys
+- Pixel Peeker Polka
 
 ### The Original
 

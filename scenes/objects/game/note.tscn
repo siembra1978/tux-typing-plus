@@ -3,13 +3,7 @@
 [ext_resource type="Script" uid="uid://dve7gl6uuc8at" path="res://scenes/objects/game/note.gd" id="1_6be81"]
 [ext_resource type="Texture2D" uid="uid://dnmyx24hvbvly" path="res://assets/visual/sprites/hitcircleoverlay.png" id="2_p410c"]
 [ext_resource type="Texture2D" uid="uid://2ecea67epwcd" path="res://assets/visual/sprites/hitcircle.png" id="3_xkpqn"]
-[ext_resource type="FontFile" uid="uid://buygpdsbe12rv" path="res://assets/visual/fonts/Comic_Relief/ComicRelief-Bold.ttf" id="4_xkpqn"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_2kc2d"]
-font = ExtResource("4_xkpqn")
-font_size = 70
-outline_size = 10
-outline_color = Color(0.9529412, 0.16078432, 1, 1)
+[ext_resource type="LabelSettings" uid="uid://d3bimgohryyqx" path="res://assets/visual/themes/notelabel.tres" id="4_xkpqn"]
 
 [node name="Note" type="Node2D" unique_id=1919935964]
 scale = Vector2(1.5, 1.5)
@@ -59,6 +53,6 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "H"
-label_settings = SubResource("LabelSettings_2kc2d")
+label_settings = ExtResource("4_xkpqn")
 horizontal_alignment = 1
 vertical_alignment = 1

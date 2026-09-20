@@ -23,7 +23,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_ttd3b")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }, {
@@ -40,7 +40,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_4h06q")
 }],
-"loop": true,
+"loop": 1,
 "name": &"gulp",
 "speed": 5.0
 }, {
@@ -57,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_0bpa2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 5.0
 }]
