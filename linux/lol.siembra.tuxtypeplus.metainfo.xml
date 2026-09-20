@@ -64,9 +64,24 @@
   </screenshots>
 
   <releases>
-    <release version="1.0.3" date="2026-05-12">
+    <release version="1.0.4" date="2026-09-19">
       <description>
-        <p>I am Tux and I like to Type Plus</p>
+        <p>- Implemented Upscroll mod</p>
+        <p>- Implemented Showcase mode</p>
+        <p>- Hitsound options in Proper Rhythm</p>
+        <p>- Songs, hitsounds, and mods now persist in Proper Rhythm</p>
+        <p>- Updated developer name to Bubblicity Games</p>
+        <p>- Implemented links to the Discord server for community and ease of access to assistance for using the software</p>
+        <p>- Scrollbar in the Proper Rhythm beatmap select menu</p>
+        <p>- Skip intro for Proper Rhythm</p>
+        <p>- Break times for Proper Rhythms (no more dying to HP during stretches with no notes)</p>
+        <p>- Buffed Approach Rates in Proper Rhythm by approx 33%</p>
+        <p>- Buffed Health Drain in Proper Rhythm slightly</p>
+        <p>- New notice in the Proper Rhythm beatmap select menu to guide players on installing new .osz beatmaps</p>
+        <p>- Chart color option in TuxEditor</p>
+        <p>- Fixed edge case when importing osu! beatmaps whose audio files end with .MP3 instead of .mp3</p>
+        <p>- Fixed a few bugs in TuxEditor</p>
+        <p>- Updated difficulty names for Comet Zap and Fish Cascade</p>
       </description>
     </release>
   </releases>
