@@ -1039,16 +1039,16 @@ func _input(event):
 					
 					if skip_position > 0:
 						$Back.play()
-						music.play(skip_position)
 						for i in range(total_beats-1):
 							if bpm_timestamps[i+1] > (skip_position*1000):
 								playing_index = i
 								break
-							
+						
 						if not Config.min_effects:
 							if video.stream:
-								video.play()
+								video.paused = false
 								video.stream_position = skip_position
+						music.play(skip_position)
 						skipped = true
 			
 
