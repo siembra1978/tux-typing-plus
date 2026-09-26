@@ -211,14 +211,6 @@ func load_official_beatmap(file_name: String):
 
 		var stream = load(music_path)
 
-		if stream:
-			music.stream = stream
-			music.play(pbp)
-			duration_label.text = "" + format_time(music.stream.get_length())
-		else:
-			duration_label.text = "???"
-			push_error("Failed to load music at: " + music_path)
-
 		legacy_file_loaded = false
 		official_file_loaded = true
 
@@ -262,6 +254,16 @@ func load_official_beatmap(file_name: String):
 		else:
 			video.visible = false
 			video.stop()
+
+		if video.stream:
+			video.stream_position = pbp
+		if stream:
+			music.stream = stream
+			music.play(pbp)
+			duration_label.text = "" + format_time(music.stream.get_length())
+		else:
+			duration_label.text = "???"
+			push_error("Failed to load music at: " + music_path)
 	else:
 		pass
 		#print("JSON Parse Error: ", json.get_error_message())

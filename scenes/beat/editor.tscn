@@ -85,7 +85,6 @@ volume_db = 7.5
 
 [node name="Hitsound" type="AudioStreamPlayer" parent="." unique_id=439509690]
 stream = ExtResource("3_olhbj")
-volume_db = 5.0
 pitch_scale = 3.0
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="." unique_id=977813961]
