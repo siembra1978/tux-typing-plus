@@ -1858,7 +1858,6 @@ func load_osz_file(path: String):
 func _on_file_osz_file_selected(path: String) -> void:
 	osz_diff_select.clear()
 	#var osz_file = FileAccess.open(path, FileAccess.READ)
-	var filename = path.get_file()
 	var validformat = true
 
 	if path.ends_with('.osz'):
