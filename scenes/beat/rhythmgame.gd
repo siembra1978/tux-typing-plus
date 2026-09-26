@@ -458,8 +458,8 @@ func check_beatmap_files(path):
 					new_select_button.text = str(data["name"]) + "* \n[" + str(data["difficulty"]) + "] "
 					if data.has("background") and data['background'] != null:
 						#print("kys: " + data["name"])
-						print(data["name"])
-						print(data["background"])
+						#print(data["name"])
+						#print(data["background"])
 
 						new_select_button.get_node("Image").texture = ImageTexture.create_from_image(Image.load_from_file("user://beatmaps/" + file_name + "/" + data["background"]))
 					new_select_button.given_filename = str(file_name)
@@ -482,6 +482,7 @@ func _ready() -> void:
 		$CanvasLayer/Control/Wumba.visible = true
 	#Discord RPC
 		#Discord RPC
+	get_tree().root.files_dropped.connect(_on_files_dropped)
 	var platform = OS.get_name()
 	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
@@ -822,3 +823,187 @@ func _on_osu_close_pressed() -> void:
 func _on_osu_website_pressed() -> void:
 	button_sound.play()
 	OS.shell_open("https://osu.ppy.sh/beatmapsets")
+
+func _on_files_dropped(files):
+	print("file detected")
+	for path in files:
+		if path.ends_with('.osz'):
+			print("osu file dropped!")
+			load_osz_file(path)
+
+func load_osz_file(path: String):
+	var temp_files = DirAccess.get_files_at("user://tmp/")
+
+	for file in temp_files:
+		DirAccess.remove_absolute("user://tmp/" + file)
+
+	var reader = ZIPReader.new()
+	reader.open(path)
+	
+	var root_dir = DirAccess.open("user://tmp")
+
+	var files = reader.get_files()
+	for file_path in files:
+		if file_path.ends_with("/"):
+			root_dir.make_dir_recursive(file_path)
+			continue
+
+		root_dir.make_dir_recursive(root_dir.get_current_dir().path_join(file_path).get_base_dir())
+		var file = FileAccess.open(root_dir.get_current_dir().path_join(file_path), FileAccess.WRITE)
+		var buffer = reader.read_file(file_path)
+		file.store_buffer(buffer)
+
+	var regex = RegEx.new()
+	regex.compile("[^a-zA-Z]")
+
+	#var file_name = regex.sub(map_name + map_difficulty, "", true).to_lower()
+
+	for file in DirAccess.get_files_at("user://tmp/"):
+		if file.ends_with(".osu"):
+			var osu_file = FileAccess.open("user://tmp/" + file, FileAccess.READ)
+			#print(file)
+			var text_content = osu_file.get_as_text()
+			var file_info = text_content.split("\n", true)
+
+			for entry in file_info:
+				if entry.begins_with("Version:"):
+					#osz_diff_select.add_item(entry.replace("Version:", ""))
+					osu_file.close()
+					DirAccess.rename_absolute("user://tmp/" + file, "user://tmp/" + regex.sub(entry.replace("Version:", ""), "", true).to_lower() + ".tsu")
+
+func convert_osz_to_tux(diff_path):
+	print("Loading " + str(diff_path))
+	#source_audio_path = "user://tmp/audio.mp3"
+	var osu_file = FileAccess.open(diff_path, FileAccess.READ)
+	var text_content = osu_file.get_as_text()
+	var file_info = text_content.split("\n", true)
+
+	var stage = 0
+	var offset_set = false
+	var first_time_set = false
+
+	var audio_file_name
+	var source_audio_path
+	var duration
+	var preview_point
+	var map_name
+	var map_artist
+	var map_mapper
+	var map_difficulty
+
+	for entry in file_info:
+		entry = entry.strip_edges()
+
+		if stage == 0:
+			print("["+entry+"]")
+			if entry.begins_with("AudioFilename:"):
+				audio_file_name = entry.replace("AudioFilename: ","")
+				source_audio_path = "user://tmp/" + entry.replace("AudioFilename: ","")
+				print(source_audio_path)
+				if source_audio_path.to_lower().ends_with(".mp3"):
+					if FileAccess.file_exists(source_audio_path):
+						print("wwwge")
+						var music_file = FileAccess.open(source_audio_path, FileAccess.READ)
+						var buffer = music_file.get_buffer(music_file.get_length())
+
+						var stream = AudioStreamMP3.new()
+						stream.data = buffer
+						music.stream = stream
+						duration = music.stream.get_length()
+				elif source_audio_path.ends_with(".ogg"):
+					if FileAccess.file_exists(source_audio_path):
+						var music_file = FileAccess.open(source_audio_path, FileAccess.READ)
+						var buffer = music_file.get_buffer(music_file.get_length())
+
+						var stream = AudioStreamOggVorbis.load_from_buffer(buffer)
+						music.stream = stream
+						duration = music.stream.get_length()
+			if entry.begins_with("PreviewTime"):
+				preview_point = float(entry.replace("PreviewTime: ",""))/1000
+			if entry.begins_with("BeatDivisor:"):
+				pass
+				#divider = int(entry.replace("BeatDivisor:",""))
+			if entry.begins_with("Title:"):
+				map_name = entry.replace("Title:","")
+				name_entry.text = str(map_name)
+			if entry.begins_with("Artist:"):
+				map_artist = entry.replace("Artist:","")
+				artist_entry.text = str(map_artist)
+			if entry.begins_with("Creator:"):
+				map_mapper = entry.replace("Creator:","")
+				mapper_entry.text = str(map_mapper) + " ft. " + EDITOR_VERSION
+			if entry.begins_with("Version:"):
+				map_difficulty = entry.replace("Version:","")
+				difficulty_entry.text = str(map_difficulty)
+			if entry.begins_with("HPDrainRate:"):
+				HP = float(entry.replace("HPDrainRate:",""))
+				$Top/Control/DifficultyPopUp/MapInfo/HP/HPSpin.value = float(HP)
+			if entry.begins_with("OverallDifficulty:"):
+				OD = float(entry.replace("OverallDifficulty:",""))
+				$Top/Control/DifficultyPopUp/MapInfo/OD/ODSpin.value = float(OD)
+			if entry.begins_with("ApproachRate:"):
+				AR = float(entry.replace("ApproachRate:",""))
+				$Top/Control/DifficultyPopUp/MapInfo/AR/ARSpin.value = float(AR)
+			if entry.begins_with("0,0,"):
+				var background_info = entry.split(",", true)
+				var background_filename = background_info[2]
+				background_filename = background_filename.erase(0)
+				background_filename = background_filename.erase(len(background_filename)-1)
+
+				source_bg_path = "user://tmp/" + background_filename
+				print(source_bg_path)
+				map_background = background_filename
+				custom_background.texture = ImageTexture.create_from_image(Image.load_from_file(source_bg_path))
+				background_rect.texture = null
+				custom_background.visible = true
+			if entry.begins_with("[TimingPoints]"):
+				print("scanning timing points")
+				stage = 1
+		elif stage == 1:
+			if not entry == "":
+				var timing_info = entry.split(",", true)
+				var ms = float(timing_info[0])
+
+				if not offset_set:
+					offset_set = true
+					offset = ms/1000
+					offset_entry.text = str(int(ms))
+
+				if float(timing_info[6]) == 1:
+					if not first_time_set:
+						print("["+entry+"]")
+						first_time_set = true
+						#print(timing_info[1])
+						bpm = 60000.0/float(timing_info[1])
+						bpm_entry.text = str(bpm)
+						create_bpm_timestamps_from_osz()
+					else:
+						create_partial_bpm_timestamps_from_osz(ms,60000.0/float(timing_info[1]))
+			else:
+				print("no longer scanning timing points")
+				stage = 2
+		elif stage == 2:
+			if entry.begins_with("[HitObjects]"):
+				print("scanning hit points")
+				stage = 3
+		elif stage == 3:
+			if not entry == "":
+				var hit_info = entry.split(",", true)
+				var ms = float(hit_info[2])
+
+				var best_j = 0
+				var best_diff = INF
+				for j in bpm_timestamps.size():
+					var diff = abs(float(bpm_timestamps[j]) - ms)
+					if diff < best_diff:
+						best_diff = diff
+						best_j = j
+					elif diff > best_diff:
+						break
+
+				if mappings:
+					mappings[best_j] = 1
+
+	print(bpm_timestamps.size())
+	print(mappings.size())
+	creating_mapping_visualizer()
