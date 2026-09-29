@@ -927,16 +927,12 @@ func convert_osz_to_tux(diff_path):
 				#divider = int(entry.replace("BeatDivisor:",""))
 			if entry.begins_with("Title:"):
 				map_name = entry.replace("Title:","")
-				name_entry.text = str(map_name)
 			if entry.begins_with("Artist:"):
 				map_artist = entry.replace("Artist:","")
-				artist_entry.text = str(map_artist)
 			if entry.begins_with("Creator:"):
 				map_mapper = entry.replace("Creator:","")
-				mapper_entry.text = str(map_mapper) + " ft. " + EDITOR_VERSION
 			if entry.begins_with("Version:"):
 				map_difficulty = entry.replace("Version:","")
-				difficulty_entry.text = str(map_difficulty)
 			if entry.begins_with("HPDrainRate:"):
 				HP = float(entry.replace("HPDrainRate:",""))
 				$Top/Control/DifficultyPopUp/MapInfo/HP/HPSpin.value = float(HP)
@@ -952,12 +948,12 @@ func convert_osz_to_tux(diff_path):
 				background_filename = background_filename.erase(0)
 				background_filename = background_filename.erase(len(background_filename)-1)
 
-				source_bg_path = "user://tmp/" + background_filename
-				print(source_bg_path)
-				map_background = background_filename
-				custom_background.texture = ImageTexture.create_from_image(Image.load_from_file(source_bg_path))
-				background_rect.texture = null
-				custom_background.visible = true
+				#source_bg_path = "user://tmp/" + background_filename
+				#print(source_bg_path)
+				#map_background = background_filename
+				#custom_background.texture = ImageTexture.create_from_image(Image.load_from_file(source_bg_path))
+				#background_rect.texture = null
+				#custom_background.visible = true
 			if entry.begins_with("[TimingPoints]"):
 				print("scanning timing points")
 				stage = 1
@@ -968,19 +964,20 @@ func convert_osz_to_tux(diff_path):
 
 				if not offset_set:
 					offset_set = true
-					offset = ms/1000
-					offset_entry.text = str(int(ms))
+					#offset = ms/1000
+					#offset_entry.text = str(int(ms))
 
 				if float(timing_info[6]) == 1:
 					if not first_time_set:
 						print("["+entry+"]")
 						first_time_set = true
 						#print(timing_info[1])
-						bpm = 60000.0/float(timing_info[1])
-						bpm_entry.text = str(bpm)
-						create_bpm_timestamps_from_osz()
+						#bpm = 60000.0/float(timing_info[1])
+						#bpm_entry.text = str(bpm)
+						#create_bpm_timestamps_from_osz()
 					else:
-						create_partial_bpm_timestamps_from_osz(ms,60000.0/float(timing_info[1]))
+						pass
+						#create_partial_bpm_timestamps_from_osz(ms,60000.0/float(timing_info[1]))
 			else:
 				print("no longer scanning timing points")
 				stage = 2
@@ -995,6 +992,7 @@ func convert_osz_to_tux(diff_path):
 
 				var best_j = 0
 				var best_diff = INF
+				'''
 				for j in bpm_timestamps.size():
 					var diff = abs(float(bpm_timestamps[j]) - ms)
 					if diff < best_diff:
@@ -1002,10 +1000,11 @@ func convert_osz_to_tux(diff_path):
 						best_j = j
 					elif diff > best_diff:
 						break
+				'''
 
-				if mappings:
-					mappings[best_j] = 1
+				#if mappings:
+					#mappings[best_j] = 1
 
-	print(bpm_timestamps.size())
-	print(mappings.size())
-	creating_mapping_visualizer()
+	#print(bpm_timestamps.size())
+	#print(mappings.size())
+	#creating_mapping_visualizer()
