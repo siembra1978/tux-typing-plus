@@ -418,6 +418,7 @@ func check_official_beatmap_files(path):
 				if error == OK:
 					var data = json.data
 					var new_select_button = beatmap_select_button.instantiate()
+					new_select_button.mouse_filter = Control.MOUSE_FILTER_PASS
 					new_select_button.text = str(data["name"]) + " \n[" + str(data["difficulty"]) + "] "
 					if data.has("background") and data['background'] != null:
 						new_select_button.get_node("Image").texture = load("res://gameplay/beatmaps/" + file_name + "/" + data["background"])
@@ -457,6 +458,7 @@ func check_beatmap_files(path):
 				if error == OK:
 					var data = json.data
 					var new_select_button = beatmap_select_button.instantiate()
+					new_select_button.mouse_filter = Control.MOUSE_FILTER_PASS
 					new_select_button.text = str(data["name"]) + "* \n[" + str(data["difficulty"]) + "] "
 					if data.has("background") and data['background'] != null:
 						#print("kys: " + data["name"])

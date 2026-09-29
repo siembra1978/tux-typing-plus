@@ -190,6 +190,22 @@ text = "Dyslexic Font
 "
 script = ExtResource("7_c2w82")
 
+[node name="OtherLabel" type="Label" parent="BoxContainer" unique_id=1908919175]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_e80a3")
+theme_override_font_sizes/font_size = 22
+text = "Other"
+vertical_alignment = 1
+script = ExtResource("4_rwm32")
+
+[node name="Attenuation" type="CheckBox" parent="BoxContainer" unique_id=118806143]
+layout_mode = 2
+theme = ExtResource("2_s7dil")
+text = "Mute when Unfocused"
+script = ExtResource("7_c2w82")
+
 [node name="WumbaLabel" type="Label" parent="BoxContainer" unique_id=476840478]
 layout_mode = 2
 theme = ExtResource("2_s7dil")
@@ -269,6 +285,7 @@ stream = ExtResource("4_8ubju")
 [connection signal="toggled" from="BoxContainer/Effects" to="." method="_on_effects_toggled"]
 [connection signal="toggled" from="BoxContainer/Readability" to="." method="_on_readability_toggled"]
 [connection signal="toggled" from="BoxContainer/Dyslexia" to="." method="_on_dyslexia_toggled"]
+[connection signal="toggled" from="BoxContainer/Attenuation" to="." method="_on_attenuation_toggled"]
 [connection signal="pressed" from="BoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="HiddenButton" to="." method="_on_hidden_button_pressed"]
 [connection signal="toggled" from="Wumba" to="." method="_on_wumba_toggled"]

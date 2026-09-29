@@ -4,7 +4,7 @@ A modern reimagining of the educational classic [Tux Typing](https://github.com/
 
 ## Current Version
 
-### v1.0.4
+### v1.0.4-2
 
 ## About Tux Typing+
 

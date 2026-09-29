@@ -18,6 +18,7 @@ var config = ConfigFile.new()
 @onready var effects = box.get_node("Effects")
 @onready var readability = box.get_node("Readability")
 @onready var dyslexia = box.get_node("Dyslexia")
+@onready var attenuation = box.get_node("Attenuation")
 @onready var giggle = get_node("Giggle")
 @onready var button_sound = get_node("ButtonPress")
 @onready var back = get_node("Back")
@@ -45,6 +46,7 @@ func _ready() -> void:
 		box.get_node("FPS").queue_free()
 		box.get_node("FPSTog").queue_free()
 		box.get_node("VsyncTog").queue_free()
+		box.get_node("Attenuation").queue_free()
 
 		
 	if res_button:
@@ -104,11 +106,15 @@ func _ready() -> void:
 		readability.set_pressed_no_signal(Config.improve_readability)
 	Config.dyslexic_mode = config.get_value('Tux Typing Config', 'Dyslexia')
 	#print("wtf dys?: " + str(Config.dyslexic_mode))
+	Config.attenuation = config.get_value('Tux Typing Config', 'Attenuation')
 	if dyslexia:
 		dyslexia.set_pressed_no_signal(Config.dyslexic_mode)
 		
 	if wumba_button:
 		wumba_button.set_pressed_no_signal(Config.wumba)
+		
+	if attenuation:
+		attenuation.set_pressed_no_signal(Config.attenuation)
 		
 		
 	var time = Time.get_datetime_dict_from_system()
@@ -283,3 +289,10 @@ func _on_dyslexia_toggled(toggled_on: bool) -> void:
 	config.set_value('Tux Typing Config', 'Dyslexia', toggled_on)
 	config.save("user://config.cfg")
 	
+
+
+func _on_attenuation_toggled(toggled_on: bool) -> void:
+	#print("Setting dyslexia to: " + str(toggled_on))
+	Config.attenuation = toggled_on
+	config.set_value('Tux Typing Config', 'Attenuation', toggled_on)
+	config.save("user://config.cfg")
