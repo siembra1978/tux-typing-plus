@@ -627,6 +627,29 @@ text = "Back
 expand_icon = true
 script = ExtResource("8_wwqku")
 
+[node name="Links" type="BoxContainer" parent="." unique_id=871657252]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_bottom = 71.0
+grow_horizontal = 0
+alignment = 1
+vertical = true
+
+[node name="Discord" type="Button" parent="Links" unique_id=1208186431]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("7_tchf2")
+theme_override_font_sizes/font_size = 50
+text = "
+"
+icon = ExtResource("40_fcg06")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("8_wwqku")
+
 [node name="Fade" type="ColorRect" parent="." unique_id=1920157134]
 visible = false
 layout_mode = 1
@@ -652,29 +675,6 @@ grow_vertical = 0
 text = "Bubblicity Games"
 label_settings = SubResource("LabelSettings_ohvyo")
 horizontal_alignment = 2
-
-[node name="Links" type="BoxContainer" parent="." unique_id=871657252]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -71.0
-offset_bottom = 71.0
-grow_horizontal = 0
-alignment = 1
-vertical = true
-
-[node name="Discord" type="Button" parent="Links" unique_id=1208186431]
-layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("7_tchf2")
-theme_override_font_sizes/font_size = 50
-text = "
-"
-icon = ExtResource("40_fcg06")
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("8_wwqku")
 
 [connection signal="pressed" from="Menu/MainButtons/ButtonBox/Cascade" to="." method="_on_cascade_pressed"]
 [connection signal="pressed" from="Menu/MainButtons/ButtonBox/Comet" to="." method="_on_comet_pressed"]
