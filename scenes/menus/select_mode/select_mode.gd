@@ -37,6 +37,7 @@ func check_text_files(path):
 				var set_name = file_name.trim_suffix(".txt").capitalize()
 				var new_select_button = word_select_button.instantiate()
 				new_select_button.text = set_name
+				new_select_button.mouse_filter = Control.MOUSE_FILTER_PASS
 				if path.begins_with("user"):
 					new_select_button.custom = true
 				word_select.add_child(new_select_button)
@@ -63,6 +64,7 @@ func check_phrase_files(path):
 				#var set_name = file_name.trim_suffix(".txt").capitalize()
 				var new_select_button = word_select_button.instantiate()
 				new_select_button.text = set_name
+				new_select_button.mouse_filter = Control.MOUSE_FILTER_PASS
 				if path.begins_with("user"):
 					new_select_button.custom = true
 				new_select_button.phrase_set = file_name.trim_suffix(".txt")

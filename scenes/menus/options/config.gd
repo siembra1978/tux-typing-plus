@@ -1,6 +1,6 @@
 extends Node
 
-const GAME_VERSION = "v1.0.4"
+const GAME_VERSION = "v1.0.4-2"
 
 var config = ConfigFile.new()
 
@@ -11,6 +11,7 @@ var music = AudioServer.get_bus_index('Master')
 var min_effects
 var improve_readability
 var dyslexic_mode
+var attenuation
 
 #loading
 var loading = load('res://scenes/menus/loading/loading.tscn')
@@ -35,12 +36,19 @@ func _ready() -> void:
 		config.set_value('Tux Typing Config', 'MinEffects', false)
 		config.set_value('Tux Typing Config', 'ImproveRead', false)
 		config.set_value('Tux Typing Config', 'Dyslexia', false)
+		config.set_value('Tux Typing Config', 'Attenuation', false)
 		config.save("user://config.cfg")
 		return
 
+	if Config.attenuation == null:
+		config.set_value('Tux Typing Config', 'Attenuation', false)
+		config.save("user://config.cfg")
+		
 	Config.min_effects = config.get_value('Tux Typing Config', 'MinEffects')
 	Config.improve_readability = config.get_value('Tux Typing Config', 'ImproveRead')
 	Config.dyslexic_mode = config.get_value('Tux Typing Config', 'Dyslexia')
+	
+	Config.attenuation = config.get_value('Tux Typing Config', 'Attenuation')
 
 	#Load Config cont
 	DisplayServer.window_set_size(config.get_value('Tux Typing Config', 'Resolution'))
@@ -57,6 +65,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func _notification(audio: int) -> void:
+	if attenuation:
+		if audio == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+			AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
+		elif audio == NOTIFICATION_WM_WINDOW_FOCUS_IN:
+			AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
 
 func load_scene(scene):
 	next_scene = scene
