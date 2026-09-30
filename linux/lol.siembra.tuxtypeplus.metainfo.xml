@@ -64,7 +64,7 @@
   </screenshots>
 
   <releases>
-    <release version="1.0.4" date="2026-09-19">
+    <release version="1.0.4-2" date="2026-09-29">
       <description>
         <p>- Implemented Upscroll mod</p>
         <p>- Implemented Showcase mode</p>
@@ -82,6 +82,8 @@
         <p>- Fixed edge case when importing osu! beatmaps whose audio files end with .MP3 instead of .mp3</p>
         <p>- Fixed a few bugs in TuxEditor</p>
         <p>- Updated difficulty names for Comet Zap and Fish Cascade</p>
+        <p>- Fixed button scroll issue on Android builds</p>
+        <p>- Added Sound Attenuation (Mute on unfocus)</p>
       </description>
     </release>
   </releases>
