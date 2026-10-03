@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+.godotlauncher
 
 .DS_Store
 Thumbs.db
