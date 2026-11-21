@@ -53,6 +53,7 @@ corner_radius_bottom_left = 20
 corner_detail = 16
 
 [node name="Button" type="Button" unique_id=25006937]
+auto_translate_mode = 2
 clip_children = 2
 anchors_preset = 8
 anchor_left = 0.5

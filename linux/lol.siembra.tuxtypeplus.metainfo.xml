@@ -5,6 +5,12 @@
   <project_license>GPL-2.0-only</project_license>
   <name>Tux Typing+</name>
   <summary>Typing challenge featuring Tux</summary>
+  <summary xml:lang="sv">Skrivspel med pingvinen Tux</summary>
+
+  <languages>
+    <lang>en</lang>
+    <lang>sv</lang>
+  </languages>
 
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">mild</content_attribute>
@@ -24,42 +30,56 @@
 
   <description>
     <p>The GNU Classic, Reborn!</p>
+    <p xml:lang="sv">GNU-klassikern är tillbaka!</p>
     <p>Tux Typing+ is a typing challenge for all ages.</p>
+    <p xml:lang="sv">Tux Typing+ är ett skrivspel för alla åldrar.</p>
     <p>Fish Cascade: Tux is hungry! Type to turn the words into fish and keep Tux fed! Do you have what it takes?</p>
+    <p xml:lang="sv">Fiskregn: Tux är hungrig! Skriv orden så blir de till fisk som Tux kan äta. Hinner du mata honom?</p>
     <p>Comet Zap: Oh no! A barrage of comets is coming! Help Tux defend the Earth by zapping away all the comets!</p>
+    <p xml:lang="sv">Pricka kometer: En svärm av kometer närmar sig! Hjälp Tux att försvara jorden genom att skjuta ner dem.</p>
     <p>Proper Rhythm: Type the letters to the beat! Practice utilizing proper rhythm in your typing with this all-new rhythm game!</p>
+    <p xml:lang="sv">Hitta takten: Skriv bokstäverna i takt med musiken och träna upp rytmen i fingrarna.</p>
     <p>Sandbox: Type to your heart&apos;s content. Just ignore the psychedelic background... or enable Minimize Effects in Accessibility Settings!</p>
+    <p xml:lang="sv">Fritt skrivande: Skriv så mycket du vill. Om den psykedeliska bakgrunden stör kan du välja ”Minska visuella effekter” i tillgänglighetsinställningarna.</p>
     <p>Phrase Typing: Challenge your typing skills with the PenguinType word sets or a selection of poems filled with intricate patterns, capitalization, and symbols!</p>
+    <p xml:lang="sv">Skriv meningar: Öva med ordlistorna i PenguinType eller utmana dig med dikter som blandar stora och små bokstäver, mönster och skiljetecken.</p>
   </description>
 
   <screenshots>
     <screenshot type="default">
       <image>https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/fishgame.png</image>
       <caption>Fish Cascade Gameplay</caption>
+      <caption xml:lang="sv">Fiskregn</caption>
     </screenshot>
     <screenshot>
       <image>https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/cometgame.png</image>
       <caption>Comet Zap Gameplay</caption>
+      <caption xml:lang="sv">Pricka kometer</caption>
     </screenshot>
     <screenshot>
       <image>https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/properrhythmgame.png</image>
       <caption>Proper Rhythm Gameplay</caption>
+      <caption xml:lang="sv">Hitta takten</caption>
     </screenshot>
     <screenshot>
       <image>https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/properrhythmmenu.png</image>
       <caption>Proper Rhythm Menu</caption>
+      <caption xml:lang="sv">Menyn i Hitta takten</caption>
     </screenshot>
     <screenshot>
       <image>https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/properrhythmmod.png</image>
       <caption>Proper Rhythm Mod Menu</caption>
+      <caption xml:lang="sv">Spelmodifieringar i Hitta takten</caption>
     </screenshot>
     <screenshot>
       <image>https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/sandboxgame.png</image>
       <caption>Sandbox Gameplay</caption>
+      <caption xml:lang="sv">Fritt skrivande</caption>
     </screenshot>
     <screenshot>
       <image>https://github.com/siembra1978/tux-typing-plus/raw/main/doc/images/phrasegame.png</image>
       <caption>Phrase Typing Gameplay</caption>
+      <caption xml:lang="sv">Skriv meningar</caption>
     </screenshot>
   </screenshots>
 
@@ -67,23 +87,41 @@
     <release version="1.0.4-2" date="2026-09-29">
       <description>
         <p>- Implemented Upscroll mod</p>
+        <p xml:lang="sv">- Nytt läge där noterna rullar uppåt.</p>
         <p>- Implemented Showcase mode</p>
+        <p xml:lang="sv">- Nytt uppvisningsläge.</p>
         <p>- Hitsound options in Proper Rhythm</p>
+        <p xml:lang="sv">- Träffljudet kan väljas i Hitta takten.</p>
         <p>- Songs, hitsounds, and mods now persist in Proper Rhythm</p>
+        <p xml:lang="sv">- Hitta takten kommer ihåg vald låt, träffljud och spelmodifieringar.</p>
         <p>- Updated developer name to Bubblicity Games</p>
+        <p xml:lang="sv">- Utvecklarens namn har ändrats till Bubblicity Games.</p>
         <p>- Implemented links to the Discord server for community and ease of access to assistance for using the software</p>
+        <p xml:lang="sv">- Länkar till Discord-servern gör det lättare att träffa andra spelare och få hjälp.</p>
         <p>- Scrollbar in the Proper Rhythm beatmap select menu</p>
+        <p xml:lang="sv">- Rullningslist i menyn för val av rytmbana i Hitta takten.</p>
         <p>- Skip intro for Proper Rhythm</p>
+        <p xml:lang="sv">- Introt i Hitta takten kan hoppas över.</p>
         <p>- Break times for Proper Rhythms (no more dying to HP during stretches with no notes)</p>
+        <p xml:lang="sv">- Pauser i Hitta takten gör att du slipper förlora hälsa under avsnitt utan noter.</p>
         <p>- Buffed Approach Rates in Proper Rhythm by approx 33%</p>
+        <p xml:lang="sv">- Noternas hastighet har ökats med omkring 33 %.</p>
         <p>- Buffed Health Drain in Proper Rhythm slightly</p>
+        <p xml:lang="sv">- Hälsan sjunker nu lite snabbare.</p>
         <p>- New notice in the Proper Rhythm beatmap select menu to guide players on installing new .osz beatmaps</p>
+        <p xml:lang="sv">- Ny information i menyn för rytmbanor visar hur du installerar .osz-filer.</p>
         <p>- Chart color option in TuxEditor</p>
+        <p xml:lang="sv">- Det går att välja färg på banan i TuxEditor.</p>
         <p>- Fixed edge case when importing osu! beatmaps whose audio files end with .MP3 instead of .mp3</p>
+        <p xml:lang="sv">- Ett importfel för osu!-banor med filändelsen .MP3 i stället för .mp3 har rättats.</p>
         <p>- Fixed a few bugs in TuxEditor</p>
+        <p xml:lang="sv">- Ett antal fel i TuxEditor har rättats.</p>
         <p>- Updated difficulty names for Comet Zap and Fish Cascade</p>
+        <p xml:lang="sv">- Nivåerna i Pricka kometer och Fiskregn har fått nya namn.</p>
         <p>- Fixed button scroll issue on Android builds</p>
+        <p xml:lang="sv">- Ett problem med rullning bland knappar på Android har rättats.</p>
         <p>- Added Sound Attenuation (Mute on unfocus)</p>
+        <p xml:lang="sv">- Ljudet kan stängas av när fönstret är inaktivt.</p>
       </description>
     </release>
   </releases>

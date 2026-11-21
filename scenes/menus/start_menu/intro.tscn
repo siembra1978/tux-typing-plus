@@ -74,6 +74,18 @@ stretch_mode = 5
 layout_mode = 2
 texture = ExtResource("4_6twyi")
 
+[node name="LocalizedNotice" type="Label" parent="Notice/BoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.38, 0.84, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_7af1u")
+theme_override_font_sizes/font_size = 76
+text = "Real Tux Typists Use a Keyboard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1554006987]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1

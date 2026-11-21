@@ -67,6 +67,10 @@ ui_focus_prev={
 
 pointing/emulate_touch_from_mouse=true
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations/sv.po")
+
 [rendering]
 
 renderer/rendering_method="mobile"

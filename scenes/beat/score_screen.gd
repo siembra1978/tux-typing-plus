@@ -53,6 +53,7 @@ var rank
 var background
 
 var word_set
+var custom = false
 
 var beatmap_filename
 var mods
@@ -131,5 +132,6 @@ func _on_menu_pressed() -> void:
 	next_scene.official_file_loaded= official
 	next_scene.selected_sound_index = selected_sound_index
 	next_scene.incoming_word_set = word_set
+	next_scene.incoming_custom = custom
 	
 	get_tree().change_scene_to_node(next_scene)

@@ -176,7 +176,9 @@ func format_time(s: float) -> String:
 	return "%02d:%02d:%03d" % [minutes, seconds, milliseconds]
 
 func set_time_label():
-	time_label.text = str(format_time(scrubber.value)) + " | " + str(format_time(duration)) +"\nSelected Index: " + str(active_beat) + "\nPlayhead Index: " + str(playing_index)
+	time_label.text = tr("%s | %s\nSelected Index: %s\nPlayhead Index: %s") % [
+		format_time(scrubber.value), format_time(duration), active_beat, playing_index
+	]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -186,10 +188,10 @@ func _ready() -> void:
 	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
-			rpc.details = "♫ Editing a Chart ♫"
+			rpc.details = tr("♫ Editing a Chart ♫")
 			rpc.large_image = "icon"
 			rpc.small_image = 'music'
-			rpc.small_image_text = 'Proper Rhythm'
+			rpc.small_image_text = tr("Proper Rhythm")
 
 			rpc.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
 			# DiscordRPC.end_timestamp = int(Time.get_unix_time_from_system()) + 3600 # +1 hour in unix time / "01:00:00 remaining"
@@ -220,7 +222,7 @@ func _ready() -> void:
 	#scrubber.step = 1
 	#scrubber.tick_count = int(duration)
 
-	create_log('Ready!', true)
+	create_log(tr("Ready!"), true)
 	get_tree().root.files_dropped.connect(_on_files_dropped)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -828,9 +830,9 @@ func save_beatmap():
 		var json_string = JSON.stringify(map_data, "\t", false)
 		file.store_string(json_string)
 		file.close()
-		create_log("Saved beatmap to: "+ ProjectSettings.globalize_path(beatmap_path), true)
+		create_log(tr("Saved beatmap to: %s") % ProjectSettings.globalize_path(beatmap_path), true)
 	else:
-		create_log("Error: Could not save file!", false)
+		create_log(tr("Error: Could not save file!"), false)
 		error_sound.play()
 		return
 
@@ -951,10 +953,10 @@ func _on_file_music_file_selected(path: String) -> void:
 	elif path.ends_with('.ogg'):
 		stream = AudioStreamOggVorbis.load_from_file(path)
 	else:
-		create_log('Error: Could not read file! (Wrong Format)', false)
+		create_log(tr("Error: Could not read file! (Wrong Format)"), false)
 		validformat = false
 	if validformat:
-		create_log('Load Audio: '+ audio_file_name, true)
+		create_log(tr("Load Audio: %s") % audio_file_name, true)
 		chosenmusic.close()
 		music.stream = stream
 		playback_position = 0.0
@@ -1112,7 +1114,7 @@ func _on_file_chart_file_selected(path: String) -> void:
 				map_video = data["video"]
 
 		creating_mapping_visualizer()
-		create_log('Load Chart: '+ path, true)
+		create_log(tr("Load Chart: %s") % path, true)
 		print(bpm_timestamps.size())
 		print(mappings.size())
 	else:
@@ -1202,10 +1204,10 @@ func _on_file_img_file_selected(path: String) -> void:
 		pass
 	else:
 		validformat = false
-		create_log('Error: Could not read file! (Wrong Format)', false)
+		create_log(tr("Error: Could not read file! (Wrong Format)"), false)
 
 	if validformat == true:
-		create_log('Load Image: '+imagename, true)
+		create_log(tr("Load Image: %s") % imagename, true)
 		match imgloadaction:
 			"skin":
 				source_skin_path = path
@@ -1523,13 +1525,13 @@ func _on_toggle_drpc_toggled(toggled_on: bool) -> void:
 		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
-				rpc.details = "Editing - " + str(audio_file_name)
+				rpc.details = tr("Editing - %s") % audio_file_name
 	else:
 		var platform = OS.get_name()
 		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
-				rpc.details = "♫ Editing a Chart ♫"
+				rpc.details = tr("♫ Editing a Chart ♫")
 	if not OS.has_feature("web"):
 	#Discord RPC
 		var platform = OS.get_name()
@@ -1548,9 +1550,9 @@ func _on_file_video_file_selected(path: String) -> void:
 		pass
 	else:
 		validformat = false
-		create_log('Error: Could not read file! (Wrong Format)', false)
+		create_log(tr("Error: Could not read file! (Wrong Format)"), false)
 	if validformat == true:
-		create_log('Load Video: '+videoname, true)
+		create_log(tr("Load Video: %s") % videoname, true)
 		bg_video.stream = load(path)
 		bg_video.play()
 		bg_video.paused = true
@@ -1865,7 +1867,7 @@ func _on_file_osz_file_selected(path: String) -> void:
 		pass
 	else:
 		validformat = false
-		create_log('Error: Could not read file! (Wrong Format)', false)
+		create_log(tr("Error: Could not read file! (Wrong Format)"), false)
 
 	if validformat == true:
 		#DirAccess.copy_absolute(path, "user://tmp/oszimport.zip")

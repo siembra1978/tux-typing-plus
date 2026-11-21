@@ -33,12 +33,14 @@ func check_text_files(path):
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if not dir.current_is_dir():
-				var set_name = file_name.trim_suffix(".txt").capitalize()
+			if not dir.current_is_dir() and file_name.ends_with(".txt"):
+				var set_name = file_name.trim_suffix(".txt")
 				var new_select_button = word_select_button.instantiate()
-				new_select_button.text = set_name
+				new_select_button.word_set_id = set_name
+				new_select_button.text = Config.word_set_label(path, file_name)
 				new_select_button.mouse_filter = Control.MOUSE_FILTER_PASS
 				if path.begins_with("user"):
+					new_select_button.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 					new_select_button.custom = true
 				word_select.add_child(new_select_button)
 				
@@ -54,18 +56,21 @@ func check_phrase_files(path):
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if not dir.current_is_dir():
+			if not dir.current_is_dir() and file_name.ends_with(".txt"):
 				var word_set_file_path = path + "/" + file_name
 				print(word_set_file_path)
 				var word_set_file = FileAccess.open(word_set_file_path, FileAccess.READ)
-				var word_set_content = word_set_file.get_as_text()
-				var word_set_array = word_set_content.split("\n", true)
-				var set_name = word_set_array[0]
-				#var set_name = file_name.trim_suffix(".txt").capitalize()
+				var set_name = word_set_file.get_line()
 				var new_select_button = word_select_button.instantiate()
-				new_select_button.text = set_name
+				if path == "res://gameplay/phrases" and file_name.begins_with("sv_"):
+					new_select_button.text = tr("%s (Swedish)") % set_name
+				elif path == "res://gameplay/phrases" and FileAccess.file_exists(path.path_join("sv_" + file_name)):
+					new_select_button.text = tr("%s (English)") % set_name
+				else:
+					new_select_button.text = set_name
 				new_select_button.mouse_filter = Control.MOUSE_FILTER_PASS
 				if path.begins_with("user"):
+					new_select_button.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 					new_select_button.custom = true
 				new_select_button.phrase_set = file_name.trim_suffix(".txt")
 				#print(set_name)
@@ -104,7 +109,7 @@ func _ready() -> void:
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			#print("rpcing=================================")
-			rpc.details = "Chilling on the Menu"
+			rpc.details = tr("Chilling on the Menu")
 			rpc.large_image = "icon"
 			rpc.small_image = 'None'
 

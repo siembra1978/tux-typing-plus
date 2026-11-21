@@ -38,4 +38,4 @@ func _process(delta: float) -> void:
 	if fps_count > 0:
 		avg_fps = sum_fps/fps_count
 	
-	counter_label.text = str(current_fps) + " FPS (min " + str(min_fps) + " / avg " + str(round(avg_fps)) + " / max " + str(max_fps) + ")"
+	counter_label.text = tr("%s FPS (min %s / avg %s / max %s)") % [current_fps, min_fps, round(avg_fps), max_fps]

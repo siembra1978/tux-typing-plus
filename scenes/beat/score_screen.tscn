@@ -209,6 +209,7 @@ layout_mode = 2
 script = ExtResource("6_3x1mr")
 
 [node name="SongTitle" type="RichTextLabel" parent="GUI/Info/AutoScroll" unique_id=1590462593]
+auto_translate_mode = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

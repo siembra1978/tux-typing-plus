@@ -9,8 +9,6 @@ var word_set_array
 var custom = false
 
 # init random
-var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
-"O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 var comets = []
 var active
 
@@ -215,7 +213,7 @@ func _ready() -> void:
 		if rpc:
 			rpc.large_image = "icon"
 			rpc.small_image = 'music'
-			rpc.small_image_text = 'Proper Rhythm'
+			rpc.small_image_text = tr("Proper Rhythm")
 			
 			rpc.refresh()
 	
@@ -941,22 +939,10 @@ func hit(comet, note_latency):
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		var shifting = Input.is_key_pressed(KEY_SHIFT)
-		var input_char = event.as_text().to_lower()
-		
-		if mods["CS"]:
-			if shifting:
-				#print(input_char)
-				input_char = input_char.replace("shift+", "")
-				input_char = input_char.to_upper()
-				#print(input_char)
-			else:
-				input_char = input_char.to_lower()
-		else:
+		var input_char := String.chr(event.unicode) if event.unicode > 0 else ""
+		if not mods["CS"]:
 			input_char = input_char.to_upper()
-		
-		#print(input_char.to_upper())
-		if input_char.to_upper() in alphabet:
+		if input_char.to_lower() != input_char.to_upper():
 			if active:
 				if len(comets) > 0:
 					var comet = comets[0]
@@ -1088,7 +1074,7 @@ func _on_background_music_finished() -> void:
 		video.paused = true
 	
 	var next_scene = score_screen.instantiate()
-	next_scene.song_title = str(song_title) + " [" + str(diff_name) + "]" + " by " + str(artist)
+	next_scene.song_title = tr("%s [%s] by %s") % [song_title, diff_name, artist]
 	next_scene.score = total_score
 	next_scene.judgments = judgments
 	next_scene.accuracy = accuracy
@@ -1101,6 +1087,7 @@ func _on_background_music_finished() -> void:
 	next_scene.official = official
 	next_scene.selected_sound_index = selected_sound_index
 	next_scene.word_set = word_set
+	next_scene.custom = custom
 
 	if legacy:
 		next_scene.background = load("res://scenes/beat/images/" + str(background))

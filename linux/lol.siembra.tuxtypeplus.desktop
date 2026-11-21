@@ -4,6 +4,7 @@ Type=Application
 
 Name=Tux Typing+
 Comment=Typing challenge featuring Tux
+Comment[sv]=Skrivspel med pingvinen Tux
 Categories=Game;ActionGame;
 
 Icon=lol.siembra.tuxtypeplus

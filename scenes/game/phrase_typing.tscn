@@ -224,6 +224,7 @@ theme_override_font_sizes/font_size = 32
 text = "Words"
 
 [node name="Text" type="RichTextLabel" parent="OnTop/HUD" unique_id=854952215]
+auto_translate_mode = 2
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -304,13 +305,21 @@ size_flags_vertical = 3
 theme = ExtResource("12_3uiq3")
 alignment = 1
 selected = 0
-item_count = 3
+item_count = 7
 popup/item_0/text = "penguintype100"
 popup/item_0/id = 0
 popup/item_1/text = "penguintype1k"
 popup/item_1/id = 1
 popup/item_2/text = "penguintype10k"
 popup/item_2/id = 2
+popup/item_3/text = "Swedish Everyday Words"
+popup/item_3/id = 3
+popup/item_4/text = "PenguinType 100 (Swedish)"
+popup/item_4/id = 4
+popup/item_5/text = "PenguinType 1,000 (Swedish)"
+popup/item_5/id = 5
+popup/item_6/text = "PenguinType 10,000 (Swedish)"
+popup/item_6/id = 6
 
 [node name="OptionsDim" type="ColorRect" parent="OnTop" unique_id=1475305399]
 modulate = Color(1, 1, 1, 0)

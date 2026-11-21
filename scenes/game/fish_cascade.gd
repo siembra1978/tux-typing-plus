@@ -12,8 +12,6 @@ var word_loc = []
 var custom = false
 
 # init random
-var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
-"O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 var fishs = [] 
 var letter_bank = []
 var fish_speed = 75
@@ -85,10 +83,10 @@ func _ready() -> void:
 	var platform = OS.get_name()
 	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
-		rpc.details = "Typing..."
+		rpc.details = tr("Typing...")
 		rpc.large_image = "icon" # Image key from "Art Assets"
 		rpc.small_image = 'fish'
-		rpc.small_image_text = 'Fish Cascade'
+		rpc.small_image_text = tr("Fish Cascade")
 
 		rpc.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
 		# DiscordRPC.end_timestamp = int(Time.get_unix_time_from_system()) + 3600 # +1 hour in unix time / "01:00:00 remaining"
@@ -194,9 +192,9 @@ func _process(delta: float) -> void:
 			spawn_timer = 0
 			spawn_word()
 			
-		level_label.text = "Level: " + str(level)
-		fish_label.text = "Fish: " + str(fish_count)
-		health_label.text = "Health: " + str(health)
+		level_label.text = tr("Level: %d") % level
+		fish_label.text = tr("Fish: %d") % fish_count
+		health_label.text = tr("Health: %d") % health
 		
 		'''
 		if word_loc.size() > 0:
@@ -304,12 +302,12 @@ func spawn_word():
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if event.as_text() in alphabet:
+		if event.unicode >= 33 and event.unicode != 127:
 			if active:
 				#print(event.as_text())
 				if len(fishs) > 0:
 					var fish = fishs[0]
-					if event.as_text() == fish.get_node("Sprite").get_node("Label").text:
+					if String.chr(event.unicode).to_upper() == fish.get_node("Sprite").get_node("Label").text.to_upper():
 						$Pop.play()
 						streak += 1
 						current_index += 1

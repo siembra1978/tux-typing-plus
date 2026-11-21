@@ -604,6 +604,7 @@ sprite_frames = SubResource("SpriteFrames_ktst7")
 animation = &"None"
 
 [node name="Text" type="RichTextLabel" parent="UI" unique_id=1989577601]
+auto_translate_mode = 2
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
