@@ -37,7 +37,7 @@ func check_text_files(path):
 				var set_name = file_name.trim_suffix(".txt")
 				var new_select_button = word_select_button.instantiate()
 				new_select_button.word_set_id = set_name
-				new_select_button.text = set_name if path.begins_with("user://") else set_name.capitalize()
+				new_select_button.text = Config.word_set_label(path, file_name)
 				new_select_button.mouse_filter = Control.MOUSE_FILTER_PASS
 				if path.begins_with("user"):
 					new_select_button.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
@@ -60,12 +60,14 @@ func check_phrase_files(path):
 				var word_set_file_path = path + "/" + file_name
 				print(word_set_file_path)
 				var word_set_file = FileAccess.open(word_set_file_path, FileAccess.READ)
-				var word_set_content = word_set_file.get_as_text()
-				var word_set_array = word_set_content.split("\n", true)
-				var set_name = word_set_array[0]
-				#var set_name = file_name.trim_suffix(".txt").capitalize()
+				var set_name = word_set_file.get_line()
 				var new_select_button = word_select_button.instantiate()
-				new_select_button.text = set_name
+				if path == "res://gameplay/phrases" and file_name.begins_with("sv_"):
+					new_select_button.text = tr("%s (Swedish)") % set_name
+				elif path == "res://gameplay/phrases" and FileAccess.file_exists(path.path_join("sv_" + file_name)):
+					new_select_button.text = tr("%s (English)") % set_name
+				else:
+					new_select_button.text = set_name
 				new_select_button.mouse_filter = Control.MOUSE_FILTER_PASS
 				if path.begins_with("user"):
 					new_select_button.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED

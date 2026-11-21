@@ -217,7 +217,7 @@ func spawn_word():
 	var scan_commet = comet_source.instantiate()
 	var comet_width = scan_commet.get_node("Sprite").sprite_frames.get_frame_texture("comet",0).get_width()
 	var new_word = word_set_array[randi_range(0,len(word_set_array)-1)]
-	words.append(new_word)
+	words.append(new_word.remove_char(32))
 	#var dist = (viewport_size.x - (2*comet_width))/(max_character_count-1)
 	var dist = (viewport_size.x - (2*(viewport_size.x * .125)))/maxi(1, max_character_count - 1)
 	#var offset = comet_widthv

@@ -76,3 +76,13 @@ func _notification(audio: int) -> void:
 func load_scene(scene):
 	next_scene = scene
 	get_tree().change_scene_to_packed(loading)
+
+func word_set_label(path: String, file_name: String) -> String:
+	var set_name := file_name.get_basename()
+	if path.begins_with("user://"):
+		return set_name
+	if path == "res://gameplay/word_sets" and set_name.begins_with("sv_"):
+		var file := FileAccess.open(path.path_join(file_name), FileAccess.READ)
+		if file:
+			return tr("%s (Swedish)") % file.get_line()
+	return tr(set_name.capitalize())

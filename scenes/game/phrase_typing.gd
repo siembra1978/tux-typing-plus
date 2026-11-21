@@ -9,7 +9,10 @@ var word_set_array
 var custom
 
 var penguin = false
-const PENGUIN_SETS = ["penguintype100", "penguintype1k", "penguintype10k", "swedish_everyday_words"]
+const PENGUIN_SETS = [
+	"penguintype100", "penguintype1k", "penguintype10k", "swedish_everyday_words",
+	"sv_penguintype100", "sv_penguintype1k", "sv_penguintype10k",
+]
 var string_count = 25
 var word_count_per = 8
 
@@ -55,9 +58,7 @@ var string_index = 0
 var error_count = 0
 var word_count = 0
 
-var start_time
-var current_time
-var end_time
+var start_ticks_ms: int
 
 var sound_set = []
 var sound_object = preload("res://scenes/objects/game/typesound.tscn")
@@ -197,17 +198,12 @@ func _ready() -> void:
 		print(word_set_file_path)
 		word_set_file = FileAccess.open(word_set_file_path, FileAccess.READ)
 		
-		# Gets file contents as text
-		word_set_content = word_set_file.get_as_text()
-		
-		# Splits text file contents by line and removes the first entry (its just the name)
-		strings = word_set_content.split("\n", true)
-		strings.remove_at(0)
-		
-		if strings[len(strings)-1] == "":
-			strings.remove_at(len(strings)-1)
-		
-		text.text = strings[0]
+		word_set_content = word_set_file.get_as_text().replace("\r\n", "\n")
+		# The first line is the title; blank lines separate stanzas.
+		var title_and_body: PackedStringArray = word_set_content.split("\n", true, 1)
+		strings = title_and_body[1].split("\n", false) if title_and_body.size() == 2 else PackedStringArray()
+		active = not strings.is_empty()
+		text.text = strings[0] if active else ""
 		
 			#Discord RPC
 		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
@@ -216,11 +212,6 @@ func _ready() -> void:
 				var title: String = word_set_content.get_slice("\n", 0)
 				rpc.details = '"%s"' % (title if custom else tr(title))
 				rpc.refresh()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if not winned:
-		current_time = Time.get_unix_time_from_system()
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
@@ -256,24 +247,22 @@ func _input(event):
 			var input_char := String.chr(event.unicode)
 			if input_char == strings[string_index][char_index]:
 				if not started:
-					start_time = Time.get_unix_time_from_system()
+					start_ticks_ms = Time.get_ticks_msec()
 					started = true
 				
-				if input_char == " ":
-					word_count+=1
+				var at_line_end: bool = char_index == len(strings[string_index]) - 1
+				if input_char == " " or at_line_end:
+					word_count += 1
 					word_label.text = tr("Words: %d") % word_count
-
-					wpm_label.text = tr("WPM: %d") % int((word_count*60/(current_time-start_time)))
+					var elapsed_ms := Time.get_ticks_msec() - start_ticks_ms
+					if elapsed_ms > 0:
+						wpm_label.text = tr("WPM: %d") % int(word_count * 60000.0 / elapsed_ms)
 				
 				#type_sound.play()
 				if len(sound_set) > 0:
 					sound_set.pick_random().play()
-				if char_index == len(strings[string_index])-1:
+				if at_line_end:
 					string_index += 1
-					
-					word_count+=1
-					word_label.text = tr("Words: %d") % word_count
-					wpm_label.text = tr("WPM: %d") % int((word_count*60/(current_time-start_time)))
 					
 					if string_index <= (len(strings)-1):
 						if penguin:

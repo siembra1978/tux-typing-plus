@@ -383,8 +383,7 @@ func check_text_files(path):
 		var file_name = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir() and file_name.ends_with(".txt"):
-				var set_name = file_name.get_basename()
-				word_dropdown.add_item(set_name if path.begins_with("user://") else tr(set_name.capitalize()))
+				word_dropdown.add_item(Config.word_set_label(path, file_name))
 				word_dropdown.set_item_metadata(word_dropdown.item_count - 1, path.path_join(file_name))
 				
 

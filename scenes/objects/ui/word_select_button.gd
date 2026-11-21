@@ -78,7 +78,7 @@ func _on_pressed() -> void:
 			await get_tree().process_frame
 			next_scene = load("res://scenes/game/phrase_typing.tscn").instantiate()
 			next_scene.penguin = true
-			next_scene.word_set = "swedish_everyday_words" if TranslationServer.get_locale().get_slice("_", 0) == "sv" else "penguintype100"
+			next_scene.word_set = "sv_penguintype100" if TranslationServer.get_locale().get_slice("_", 0) == "sv" else "penguintype100"
 			get_tree().change_scene_to_node(next_scene)
 		else:
 			$ButtonPress.play()

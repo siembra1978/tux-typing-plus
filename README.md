@@ -128,6 +128,8 @@ Type to your heart's content. Just ignore the psychadelic background... or enabl
 
 Challenge your typing skills with the PenguinType word sets or a selection of poems filled with intricate patterns, capitalization, and symbols!
 
+The [Swedish practice material](doc/swedish-exercises.md) includes word sets, finger drills for a Swedish keyboard and five poems.
+
 ## Installation
 
 It is recommended to download the official binaries from one of the following sources:
@@ -176,6 +178,17 @@ For the songs in the built-in beatmaps for Proper Rhythm:
 - Local Forecast
 - Monkey Spinning Monkeys
 - Pixel Peeker Polka
+
+### Swedish PenguinType word sets
+
+The 100-, 1,000- and 10,000-word Swedish PenguinType sets use the word frequencies
+published by Språkbanken for the Stockholm–Umeå Corpus 3.0 (2024). Word forms
+were ranked by frequency after combining capitalization variants. Entries tagged
+as proper names or abbreviations and a selection of words unsuitable for
+children’s typing practice were excluded.
+Each larger set includes the smaller ones. The word sets are available under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+[Source dataset and word statistics](https://doi.org/10.23695/wy84-ar30).
 
 ### The Original
 
