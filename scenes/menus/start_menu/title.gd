@@ -5,7 +5,7 @@ var fade
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Discord RPC
-	DiscordRPC.details = "Title Screen"
+	DiscordRPC.details = tr("Title Screen")
 	DiscordRPC.large_image = "icon"
 	DiscordRPC.small_image = 'None'
 

@@ -880,6 +880,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DiffSelect" type="OptionButton" parent="Top/Control/OSZPopUp/DiffStack/Interact" unique_id=1395817002]
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("9_oyte0")

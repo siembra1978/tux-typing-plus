@@ -66,6 +66,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="Sprite" unique_id=1746822548]
+auto_translate_mode = 2
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0

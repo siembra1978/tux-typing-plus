@@ -4,6 +4,9 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color("000000ff"))
+	var notice: Label = $Notice/BoxContainer/LocalizedNotice
+	notice.visible = tr(notice.text) != notice.text
+	$Notice/BoxContainer/text.visible = not notice.visible
 	var fade = $Fade
 	await get_tree().process_frame
 	fade.visible = true

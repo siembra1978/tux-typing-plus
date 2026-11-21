@@ -9,53 +9,11 @@ var word_set_array
 var custom
 
 var penguin = false
-var selected_penguin_index = 0
+const PENGUIN_SETS = ["penguintype100", "penguintype1k", "penguintype10k", "swedish_everyday_words"]
 var string_count = 25
 var word_count_per = 8
 
-# random vars
-var alphabet = [
-"a","b","c","d","e","f","g","h","i","j","k","l","m","n",
-"o","p","q","r","s","t","u","v","w","x","y","z"
-]
-
-var symbols = {
-"space" : " ",
-"apostrophe" : "'",
-"shift+slash" : "?",
-"period" : ".",
-"bracketleft" : "{",
-"bracketright" : "}",
-"shift+bracketleft" : "[",
-"shift+bracketright" : "]",
-"comma" : ",",
-"shift+apostrophe" : '"',
-"semicolon" : ";",
-"shift+1" : "!",
-"shift+2" : "@",
-"shift+3" : "#",
-"shift+4" : "$",
-"shift+5" : "%",
-"shift+6" : "^",
-"shift+7" : "&",
-"shift+8" : "*",
-"shift+9" : "(",
-"shift+0" : ")",
-"shift+minus" : "_",
-"shift+plus" : "+",
-"minus" : "-",
-"plus" : "+",
-"shift+semicolon" : ":"
-}
-
-var exceptions = [
-	"escape",
-	"shift",
-	"enter",
-	"meta",
-	"alt"
-]
-
+# State of the current exercise
 var active
 var winned = false
 var started = false
@@ -167,10 +125,10 @@ func _ready() -> void:
 	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
-			rpc.details = "Typing..."
+			rpc.details = tr("Typing...")
 			rpc.large_image = "icon" # Image key from "Art Assets"
 			rpc.small_image = 'phrase'
-			rpc.small_image_text = 'Phrase Typing'
+			rpc.small_image_text = tr("Phrase Typing")
 
 			rpc.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
 			# DiscordRPC.end_timestamp = int(Time.get_unix_time_from_system()) + 3600 # +1 hour in unix time / "01:00:00 remaining"
@@ -193,7 +151,7 @@ func _ready() -> void:
 		#penguin_Config.visible = true
 		word_stack.visible = true
 
-		word_dropdown.selected = selected_penguin_index
+		word_dropdown.selected = PENGUIN_SETS.find(word_set)
 
 		word_set_file_path = "res://gameplay/word_sets/" + word_set + ".txt"
 
@@ -201,7 +159,7 @@ func _ready() -> void:
 		word_set_file = FileAccess.open(word_set_file_path, FileAccess.READ)
 		
 		word_set_content = word_set_file.get_as_text()
-		word_set_array = word_set_content.split("\n", true)
+		word_set_array = word_set_content.split("\n", false)
 		word_set_array.remove_at(0)
 
 		for i in range(string_count):
@@ -225,7 +183,7 @@ func _ready() -> void:
 		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
-				rpc.details = '"PenguinType Mode"'
+				rpc.details = '"%s"' % tr("PenguinType Mode")
 				rpc.refresh()
 	else:
 		if Config.wumba:
@@ -255,7 +213,8 @@ func _ready() -> void:
 		if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 			var rpc = Engine.get_singleton("DiscordRPC")
 			if rpc:
-				rpc.details = '"' + word_set_content.split("\n", true)[0] + '"'
+				var title: String = word_set_content.get_slice("\n", 0)
+				rpc.details = '"%s"' % (title if custom else tr(title))
 				rpc.refresh()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -281,44 +240,20 @@ func _input(event):
 					#$BackgroundMusic.volume_db = -15
 					
 		if event.keycode == KEY_ENTER:
-			if penguin:
-				var penguin_sets = ["penguintype100", "penguintype1k", "penguintype10k"]
+			var tween := create_tween()
+			tween.parallel().tween_property(fade, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			await get_tree().create_timer(1).timeout
+			await get_tree().process_frame
+			var next_scene = load("res://scenes/game/phrase_typing.tscn").instantiate()
+			next_scene.word_set = word_set
+			next_scene.penguin = penguin
+			next_scene.custom = custom
+			next_scene.selected_sound_index = selected_sound_index
+			get_tree().change_scene_to_node(next_scene)
+			return
 
-
-				var tween := create_tween()
-				tween.parallel().tween_property(fade, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-				await get_tree().create_timer(1).timeout
-				await get_tree().process_frame
-				var next_scene = load("res://scenes/game/phrase_typing.tscn").instantiate()
-				next_scene.word_set = penguin_sets[selected_penguin_index]
-				next_scene.selected_penguin_index = selected_penguin_index
-				next_scene.word_set = word_set
-				next_scene.penguin = true
-				next_scene.selected_sound_index = selected_sound_index
-				get_tree().change_scene_to_node(next_scene)
-			else:
-				var tween := create_tween()
-				tween.parallel().tween_property(fade, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-				await get_tree().create_timer(1).timeout
-				await get_tree().process_frame
-				var next_scene = load("res://scenes/game/phrase_typing.tscn").instantiate()
-				next_scene.word_set = word_set
-				next_scene.selected_sound_index = selected_sound_index
-				get_tree().change_scene_to_node(next_scene)
-		
-		var input_char = event.as_text().to_lower()
-		if active and not winned:
-			var shifting = Input.is_key_pressed(KEY_SHIFT)
-			#print(input_char)
-
-			if input_char in symbols.keys():
-				input_char = symbols[input_char]
-			elif shifting:
-				input_char = input_char.replace("shift+", "")
-				input_char = input_char.to_upper()
-
-			#print(input_char)
-			
+		if active and not winned and event.unicode >= 32 and event.unicode != 127:
+			var input_char := String.chr(event.unicode)
 			if input_char == strings[string_index][char_index]:
 				if not started:
 					start_time = Time.get_unix_time_from_system()
@@ -326,9 +261,9 @@ func _input(event):
 				
 				if input_char == " ":
 					word_count+=1
-					word_label.text = "Words: " + str(word_count)
+					word_label.text = tr("Words: %d") % word_count
 
-					wpm_label.text = "WPM: " + str(int((word_count*60/(current_time-start_time))))
+					wpm_label.text = tr("WPM: %d") % int((word_count*60/(current_time-start_time)))
 				
 				#type_sound.play()
 				if len(sound_set) > 0:
@@ -337,8 +272,8 @@ func _input(event):
 					string_index += 1
 					
 					word_count+=1
-					word_label.text = "Words: " + str(word_count)
-					wpm_label.text = "WPM: " + str(int((word_count*60/(current_time-start_time))))
+					word_label.text = tr("Words: %d") % word_count
+					wpm_label.text = tr("WPM: %d") % int((word_count*60/(current_time-start_time)))
 					
 					if string_index <= (len(strings)-1):
 						if penguin:
@@ -379,22 +314,19 @@ func _input(event):
 					h = h.insert(0, "[color=green]")
 					#print(h)
 					text.text = h
-			elif not input_char.to_lower() in exceptions:
+			else:
 				error_count += 1
-				error_label.text = "Errors: " + str(error_count)
+				error_label.text = tr("Errors: %d") % error_count
 				#error_sound.play()
 
 
 func _on_word_dropdown_item_selected(index: int) -> void:
-	var penguin_sets = ["penguintype100", "penguintype1k", "penguintype10k"]
-
 	var tween := create_tween()
 	tween.parallel().tween_property(fade, "modulate:a", 1, 1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	await get_tree().create_timer(1).timeout
 	await get_tree().process_frame
 	var next_scene = load("res://scenes/game/phrase_typing.tscn").instantiate()
-	next_scene.word_set = penguin_sets[index]
-	next_scene.selected_penguin_index = index
+	next_scene.word_set = PENGUIN_SETS[index]
 	next_scene.penguin = true
 	next_scene.selected_sound_index = selected_sound_index
 	get_tree().change_scene_to_node(next_scene)

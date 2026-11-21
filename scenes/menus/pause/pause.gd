@@ -126,6 +126,7 @@ func _on_select_exit_pressed() -> void:
 		next_scene.official_file_loaded= get_tree().current_scene.official
 		next_scene.selected_sound_index = get_tree().current_scene.selected_sound_index
 		next_scene.incoming_word_set = get_tree().current_scene.word_set
+		next_scene.incoming_custom = get_tree().current_scene.custom
 		get_tree().change_scene_to_node(next_scene)
 	else:
 		get_tree().change_scene_to_file("res://scenes/menus/select_mode/select_mode.tscn")

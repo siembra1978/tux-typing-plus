@@ -386,6 +386,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WordDropdown" type="OptionButton" parent="CanvasLayer/Control/HUD/Top/WordSelect" unique_id=416487593]
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("9_voxba")
@@ -507,6 +508,7 @@ size_flags_vertical = 6
 script = ExtResource("11_f6imh")
 
 [node name="SongArtist" type="Label" parent="CanvasLayer/Control/Preview/Scroll" unique_id=1172178015]
+auto_translate_mode = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -519,6 +521,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Difficulty" type="Label" parent="CanvasLayer/Control/Preview" unique_id=1824064781]
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 label_settings = SubResource("LabelSettings_46l52")
@@ -587,6 +590,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Mapper" type="Label" parent="CanvasLayer/Control/Preview/Panel/HBoxContainer" unique_id=1346509231]
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_horizontal = 6
 label_settings = SubResource("LabelSettings_f6imh")

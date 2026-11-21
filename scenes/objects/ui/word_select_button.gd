@@ -6,6 +6,7 @@ var next_scene
 var penguin = false
 
 var phrase_set = ""
+var word_set_id := ""
 
 var new_click
 var active = true
@@ -45,7 +46,7 @@ func _on_pressed() -> void:
 		await get_tree().create_timer(0.5).timeout
 		await get_tree().process_frame
 		next_scene = load("res://scenes/game/fish_cascade.tscn").instantiate()
-		next_scene.word_set = self.text.to_lower().replace(" ", "")
+		next_scene.word_set = word_set_id
 		next_scene.custom = custom
 		next_scene.difficulty = current_scene.difficulty
 		get_tree().change_scene_to_node(next_scene)
@@ -55,7 +56,7 @@ func _on_pressed() -> void:
 		await get_tree().create_timer(0.5).timeout
 		await get_tree().process_frame
 		next_scene = load("res://scenes/game/comet_zap.tscn").instantiate()
-		next_scene.word_set = self.text.to_lower().replace(" ", "")
+		next_scene.word_set = word_set_id
 		next_scene.custom = custom
 		next_scene.difficulty = current_scene.difficulty
 		get_tree().change_scene_to_node(next_scene)
@@ -65,7 +66,7 @@ func _on_pressed() -> void:
 		await get_tree().create_timer(0.5).timeout
 		await get_tree().process_frame
 		next_scene = load("res://scenes/beat/beat.tscn").instantiate()
-		next_scene.word_set = self.text.to_lower().replace(" ", "")
+		next_scene.word_set = word_set_id
 		next_scene.custom = custom
 		next_scene.difficulty = current_scene.difficulty
 		get_tree().change_scene_to_node(next_scene)
@@ -77,7 +78,7 @@ func _on_pressed() -> void:
 			await get_tree().process_frame
 			next_scene = load("res://scenes/game/phrase_typing.tscn").instantiate()
 			next_scene.penguin = true
-			next_scene.word_set = "penguintype100"
+			next_scene.word_set = "swedish_everyday_words" if TranslationServer.get_locale().get_slice("_", 0) == "sv" else "penguintype100"
 			get_tree().change_scene_to_node(next_scene)
 		else:
 			$ButtonPress.play()

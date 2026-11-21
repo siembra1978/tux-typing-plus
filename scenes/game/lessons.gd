@@ -14,8 +14,6 @@ var active = true
 var phase = 0
 var size = 32
 var music
-var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
-"O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 var time
 var clocktype = true
 
@@ -33,10 +31,10 @@ func _ready() -> void:
 	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
-			rpc.details = "Typing..."
+			rpc.details = tr("Typing...")
 			rpc.large_image = "icon" # Image key from "Art Assets"
 			rpc.small_image = 'lesson'
-			rpc.small_image_text = 'Sandbox'
+			rpc.small_image_text = tr("Sandbox")
 
 			rpc.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
 			# DiscordRPC.end_timestamp = int(Time.get_unix_time_from_system()) + 3600 # +1 hour in unix time / "01:00:00 remaining"
@@ -69,9 +67,9 @@ func _ready() -> void:
 	var tween := create_tween()
 	tween.parallel().tween_property(fade, "modulate:a", 0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	if Config.wumba:
-		text.set_text('Hello There. Welcome to Tux Typing[color=yellow]+[/color]. Now with added \n[font_size=100][wave]WUMBA![/wave][/font_size][pulse] _[/pulse]\n(Press any key to continue)')
+		text.set_text(tr('Hello There. Welcome to Tux Typing[color=yellow]+[/color]. Now with added \n[font_size=100][wave]WUMBA![/wave][/font_size][pulse] _[/pulse]\n(Press any key to continue)'))
 	else:
-		text.set_text('Hello There. Welcome to [wave]Tux Typing[color=yellow]+[/color][/wave].[pulse] _[/pulse]\n(Press any key to continue)')
+		text.set_text(tr('Hello There. Welcome to [wave]Tux Typing[color=yellow]+[/color][/wave].[pulse] _[/pulse]\n(Press any key to continue)'))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -92,7 +90,8 @@ func _process(delta: float) -> void:
 #Spaghetti Code begins now! Everything here is essentially hardcoded cause idk how to make a proper dialog system (oops)
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if event.as_text() in alphabet:
+		var letter := String.chr(event.unicode).to_upper() if event.unicode > 0 else ""
+		if letter != letter.to_lower():
 			if active:
 				if phase < 5:
 					se.play()
@@ -101,7 +100,7 @@ func _input(event):
 						await get_tree().create_timer(1).timeout
 					phase += 1
 				if phase == 0:
-					text.set_text('First, press the [wave]A[/wave] key.[pulse] _[/pulse]')
+					text.set_text(tr('First, press the [wave]A[/wave] key.[pulse] _[/pulse]'))
 					keyboard.visible = true
 					keys.visible = true
 					keys.set_frame(29)
@@ -110,24 +109,24 @@ func _input(event):
 						phase += 1
 				if phase == 1:
 					keys.visible = false
-					text.set_text('Good.[pulse] _[/pulse]')
+					text.set_text(tr('Good.[pulse] _[/pulse]'))
 				if phase == 2:
 					keys.visible = true
 					keys.set_frame(24)
-					text.set_text('Now, press the [wave]P[/wave] key.[pulse] _[/pulse]')
+					text.set_text(tr('Now, press the [wave]P[/wave] key.[pulse] _[/pulse]'))
 					if event.keycode == KEY_P:
 						phase += 1
 				if phase == 3:
 					keys.visible = false
-					text.set_text('Alright.[pulse] _[/pulse]')
+					text.set_text(tr('Alright.[pulse] _[/pulse]'))
 				if phase == 4:
 					keys.visible = true
 					keys.set_frame(19)
-					text.set_text('Once more, press the [wave]T[/wave] key.[pulse] _[/pulse]')
+					text.set_text(tr('Once more, press the [wave]T[/wave] key.[pulse] _[/pulse]'))
 					if event.keycode == KEY_T:
 						phase += 1
 						keys.visible = false
-						text.set_text("Ok. Let's get into it.[pulse] _[/pulse]")
+						text.set_text(tr("Ok. Let's get into it.[pulse] _[/pulse]"))
 						music.play()
 						await get_tree().create_timer(1).timeout
 						text.set_text("")
@@ -145,8 +144,8 @@ func _input(event):
 					#$A.stream = load('res://assets/audio/sfx/letter voiceclips/' + str(player)[0].to_lower() + '.wav')
 					se.play()
 					text.visible = true
-					text.append_text('[wave][font_size=' + str(size) + ']'+event.as_text()+'[/font_size][/wave]')
-					keys.play(event.as_text())
+					text.append_text('[wave][font_size=' + str(size) + ']'+letter+'[/font_size][/wave]')
+					keys.play(letter if keys.sprite_frames.has_animation(letter) else "None")
 				if phase > 5:
 					#await get_tree().create_timer(11.4).timeout
 					create_tween().tween_property(lsd, "modulate:a", 1, 4)
@@ -179,11 +178,11 @@ func _input(event):
 				$Back.play()
 		elif event.keycode == KEY_PAGEUP:
 			size += 1
-			self.get_node("UI/FontSize").set_text('Font Size: '+str(size))
+			self.get_node("UI/FontSize").set_text(tr("Font Size: %d") % size)
 		elif event.keycode == KEY_PAGEDOWN:
 			if size > 1:
 				size -= 1
-			self.get_node("UI/FontSize").set_text('Font Size: '+str(size))
+			self.get_node("UI/FontSize").set_text(tr("Font Size: %d") % size)
 		elif event.keycode == KEY_END:
 			clocktype = not clocktype
 	else:

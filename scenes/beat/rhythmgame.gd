@@ -86,7 +86,6 @@ var legacy_file_loaded
 var official_file_loaded
 #var word_sets = []
 
-var custom_text_files = []
 
 var mods = {
 	"EZ": false,
@@ -111,6 +110,7 @@ var HP = 1
 
 var selected_sound_index = 0
 var incoming_word_set
+var incoming_custom = false
 
 # initialize objects
 var beatmap_select_button = preload("res://scenes/objects/ui/beatmap_select_button.tscn")
@@ -190,7 +190,7 @@ func load_official_beatmap(file_name: String):
 		#song_name_label.text = "Song Name: " + str(data["name"])
 		#artist_label.text = "Artist: " + str(data["artist"])
 		song_artist_label.text = str(data["name"]) + " - " + str(data["artist"])
-		mapper_label.text = "Mapper\n" + str(data["mapper"])
+		mapper_label.text = tr("Mapper\n%s") % data["mapper"]
 		#bpm_label.text = "BPM: " + str(data["bpm"])
 		difficulty_label.text = "[" + str(data["difficulty"]) + "]"
 		#audio_name_label.text = "Audio: " + str(data["song_name"])
@@ -286,7 +286,7 @@ func load_beatmap(file_name: String):
 		#song_name_label.text = "Song Name: " + str(data["name"])
 		#artist_label.text = "Artist: " + str(data["artist"])
 		song_artist_label.text = str(data["name"]) + " - " + str(data["artist"])
-		mapper_label.text = "Mapper\n" + str(data["mapper"])
+		mapper_label.text = tr("Mapper\n%s") % data["mapper"]
 		#bpm_label.text = "BPM: " + str(data["bpm"])
 		difficulty_label.text = "[" + str(data["difficulty"]) + "]"
 		#audio_name_label.text = "Audio: " + str(data["song_name"])
@@ -382,11 +382,10 @@ func check_text_files(path):
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if not dir.current_is_dir():
-				var set_name = file_name.trim_suffix(".txt").capitalize()
-				if path.begins_with("user"):
-					custom_text_files.append(set_name)
-				word_dropdown.add_item(set_name)
+			if not dir.current_is_dir() and file_name.ends_with(".txt"):
+				var set_name = file_name.get_basename()
+				word_dropdown.add_item(set_name if path.begins_with("user://") else tr(set_name.capitalize()))
+				word_dropdown.set_item_metadata(word_dropdown.item_count - 1, path.path_join(file_name))
 				
 
 			file_name = dir.get_next()
@@ -489,10 +488,10 @@ func _ready() -> void:
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
 			#print("rhythm rpcs!!")
-			rpc.details = "♫ Choosing a Song ♫"
+			rpc.details = tr("♫ Choosing a Song ♫")
 			rpc.large_image = "icon"
 			rpc.small_image = 'music'
-			rpc.small_image_text = 'Proper Rhythm'
+			rpc.small_image_text = tr("Proper Rhythm")
 
 			rpc.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
 			# DiscordRPC.end_timestamp = int(Time.get_unix_time_from_system()) + 3600 # +1 hour in unix time / "01:00:00 remaining"
@@ -511,8 +510,10 @@ func _ready() -> void:
 	
 	if incoming_word_set:
 		for i in range(word_dropdown.item_count):
-			if word_dropdown.get_item_text(i).to_lower().replace(" ", "") == incoming_word_set:
+			var path: String = word_dropdown.get_item_metadata(i)
+			if path.get_file().get_basename() == incoming_word_set and path.begins_with("user://") == incoming_custom:
 				word_dropdown.select(i)
+				break
 	
 	#check_legacy_beatmap_files("res://scenes/beat/maps")
 	check_official_beatmap_files("res://gameplay/beatmaps")
@@ -629,12 +630,10 @@ func _on_start_pressed() -> void:
 		button_sound.play()
 		await get_tree().create_timer(1).timeout
 		await get_tree().process_frame
-		var word_set = word_dropdown.get_item_text(word_dropdown.get_selected_id()).to_lower().replace(" ", "")
-		#print(word_set)
+		var path: String = word_dropdown.get_item_metadata(word_dropdown.selected)
 		var next_scene = load("res://scenes/beat/beat.tscn").instantiate()
-		next_scene.word_set = word_set
-		if word_dropdown.get_item_text(word_dropdown.get_selected_id()) in custom_text_files:
-			next_scene.custom = true
+		next_scene.word_set = path.get_file().get_basename()
+		next_scene.custom = path.begins_with("user://")
 		next_scene.beatmap_filename = selected_file
 		next_scene.mods = mods
 		next_scene.showcase = showcase

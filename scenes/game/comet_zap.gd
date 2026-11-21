@@ -9,8 +9,6 @@ var word_set_array
 var custom = false
 
 # init random
-var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N",
-"O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 var comets = []
 var active
 
@@ -92,10 +90,10 @@ func _ready() -> void:
 	if platform != "Web" and platform != "Android" and ClassDB.class_exists("DiscordRPC"):
 		var rpc = Engine.get_singleton("DiscordRPC")
 		if rpc:
-			rpc.details = "Typing..."
+			rpc.details = tr("Typing...")
 			rpc.large_image = "icon" # Image key from "Art Assets"
 			rpc.small_image = 'comet'
-			rpc.small_image_text = 'Comet Zap'
+			rpc.small_image_text = tr("Comet Zap")
 
 			rpc.start_timestamp = int(Time.get_unix_time_from_system()) # "02:46 elapsed"
 			# DiscordRPC.end_timestamp = int(Time.get_unix_time_from_system()) + 3600 # +1 hour in unix time / "01:00:00 remaining"
@@ -221,9 +219,9 @@ func spawn_word():
 	var new_word = word_set_array[randi_range(0,len(word_set_array)-1)]
 	words.append(new_word)
 	#var dist = (viewport_size.x - (2*comet_width))/(max_character_count-1)
-	var dist = (viewport_size.x - (2*(viewport_size.x * .125)))/(max_character_count-1)
+	var dist = (viewport_size.x - (2*(viewport_size.x * .125)))/maxi(1, max_character_count - 1)
 	#var offset = comet_widthv
-	var offset = viewport_size.x * .125
+	var offset = viewport_size.x / 2 if max_character_count == 1 else viewport_size.x * .125
 	scan_commet.queue_free()
 	
 	for chara in new_word:
@@ -270,11 +268,11 @@ func game_over():
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if event.as_text() in alphabet:
+		if event.unicode >= 33 and event.unicode != 127:
 			if active:
 				if len(comets) > 0:
 					var comet = comets[0]
-					if event.as_text() == comet.get_node("Sprite").get_node("Label").text:
+					if String.chr(event.unicode).to_upper() == comet.get_node("Sprite").get_node("Label").text.to_upper():
 						comets.erase(comet)
 						comets_processed += 1
 						hit_count += 1
@@ -307,7 +305,7 @@ func _input(event):
 								
 							#delay = max_delay
 							comet_speed += (difficulty) * log(comet_speed)
-							wave_label.text = "Wave: " + str(wave)
+							wave_label.text = tr("Wave: %d") % wave
 							
 							next_wave_req = randi_range(10,35)
 							

@@ -1,0 +1,1131 @@
+# Swedish translation of Tux Typing+.
+# Distributed under the same license as Tux Typing+.
+# Jonatan Nyberg, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Tux Typing+ 1.0.4-2\n"
+"PO-Revision-Date: 2026-11-21 11:15+0200\n"
+"Last-Translator: Jonatan Nyberg\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: scenes/game/lessons.tscn:659
+msgid ""
+" PgUp: Font Up\n"
+" PgDn: Font Down\n"
+" Del: Delete\n"
+" Enter: New Line"
+msgstr ""
+" PgUp: Större text\n"
+" PgDn: Mindre text\n"
+" Del: Rensa\n"
+" Enter: Ny rad"
+
+#: scenes/objects/ui/fps_counter.gd:41
+msgid "%s FPS (min %s / avg %s / max %s)"
+msgstr "%s bilder/s (min %s / snitt %s / max %s)"
+
+#: scenes/beat/beat.gd:1077
+msgid "%s [%s] by %s"
+msgstr "%s [%s] av %s"
+
+#: scenes/beat/editor.gd:179
+msgid ""
+"%s | %s\n"
+"Selected Index: %s\n"
+"Playhead Index: %s"
+msgstr ""
+"%s | %s\n"
+"Markerat index: %s\n"
+"Index vid spelhuvudet: %s"
+
+#: scenes/objects/ui/fps_counter.tscn:33
+msgid "30 FPS (min 30 / avg 30 / max 30)"
+msgstr "30 bilder/s (min 30 / snitt 30 / max 30)"
+
+#: scenes/menus/loading/loading.gd:8
+msgid ""
+"A quick snap of the finger, and with practice, that's all there is to it."
+msgstr "Ett snabbt tryck med fingret. Med lite övning är det allt som behövs!"
+
+#: scenes/menus/options/options.tscn:169
+msgid "Accessibility"
+msgstr "Tillgänglighet"
+
+#: scenes/beat/beat.gd:68 scenes/beat/beat.tscn:415
+#: scenes/beat/score_screen.gd:30 scenes/beat/score_screen.tscn:359
+#: scenes/game/comet_zap.gd:107
+msgid "Accuracy"
+msgstr "Träffsäkerhet"
+
+#: scenes/beat/editor.tscn:782
+msgid "Add Tempo Change"
+msgstr "Lägg till tempoväxling"
+
+#: scenes/menus/select_mode/select_mode.tscn:528
+msgid "All There Is To It"
+msgstr "Det är allt som krävs"
+
+msgid "Alphabet"
+msgstr "Engelska alfabetet"
+
+#: scenes/game/lessons.gd:121
+msgid "Alright.[pulse] _[/pulse]"
+msgstr "Precis![pulse] _[/pulse]"
+
+msgid "Animals"
+msgstr "Djur (engelska)"
+
+#: scenes/beat/editor.tscn:633
+msgid "Approach Rate"
+msgstr "Noternas hastighet"
+
+msgid "Arcticanimals"
+msgstr "Arktiska djur (engelska)"
+
+#: scenes/menus/loading/loading.gd:11
+msgid "Are you relaxed? You should be, you know."
+msgstr "Sitter du avslappnat? Så ska det kännas."
+
+#: scenes/beat/editor.tscn:948
+msgid "Are you sure?"
+msgstr "Är du säker?"
+
+#: scenes/beat/editor.gd:49 scenes/beat/editor.tscn:524
+#: scenes/beat/rhythmgame.gd:37
+msgid "Artist"
+msgstr "Artist"
+
+msgid "Astronomy"
+msgstr "Astronomi (engelska)"
+
+#: scenes/beat/rhythmgame.gd:68 scenes/beat/rhythmgame.tscn:686
+msgid "Auto"
+msgstr "Autospel"
+
+#: scenes/beat/beat.tscn:349 scenes/beat/editor.gd:9
+#: scenes/beat/editor.tscn:95 scenes/beat/rhythmgame.tscn:367
+#: scenes/game/comet_zap.tscn:123 scenes/game/fish_cascade.tscn:179
+#: scenes/game/lessons.tscn:750 scenes/game/phrase_typing.gd:42
+#: scenes/game/phrase_typing.tscn:58 scenes/menus/options/options.gd:24
+#: scenes/menus/options/options.tscn:220 scenes/menus/pause/pause.tscn:54
+#: scenes/menus/select_mode/select_mode.gd:26
+#: scenes/menus/select_mode/select_mode.tscn:250
+msgid "Back"
+msgstr "Tillbaka"
+
+#: scenes/menus/select_mode/select_mode.tscn:625
+msgid "Back\n"
+msgstr "Tillbaka\n"
+
+#: scenes/menus/pause/pause.tscn:84
+msgid "Back To Title"
+msgstr "Till huvudmenyn"
+
+#: scenes/menus/pause/pause.tscn:93
+msgid "Back To Title\n"
+msgstr "Till titelskärmen\n"
+
+#: scenes/beat/editor.tscn:512
+msgid "Beatmap Info"
+msgstr "Om rytmbanan"
+
+#: scenes/menus/pause/pause.gd:20
+msgid "Beatmap Select"
+msgstr "Välj rytmbana"
+
+#: scenes/menus/options/options.tscn:112
+msgid "Borderless Fullscreen"
+msgstr "Kantlös helskärm"
+
+#: scenes/beat/editor.tscn:557
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: scenes/beat/rhythmgame.tscn:779
+msgid "Case Sensitive"
+msgstr "Skiftlägeskänsligt"
+
+#: scenes/beat/editor.tscn:712
+msgid "Chart Theme"
+msgstr "Banans tema"
+
+#: scenes/menus/select_mode/select_mode.gd:110
+msgid "Chilling on the Menu"
+msgstr "Tar det lugnt i menyn"
+
+#: scenes/beat/rhythmgame.tscn:416 scenes/game/phrase_typing.tscn:272
+msgid "Clack"
+msgstr "Klack"
+
+#: scenes/beat/editor.tscn:1225
+msgid "Clear All Notes"
+msgstr "Ta bort alla noter"
+
+#: scenes/game/phrase_typing.tscn:260
+msgid "Click Sound"
+msgstr "Tangentljud"
+
+#: scenes/beat/editor.tscn:667 scenes/beat/rhythmgame.tscn:848
+msgid "Close"
+msgstr "Stäng"
+
+#: scenes/beat/rhythmgame.tscn:786
+msgid "Close Mod Menu"
+msgstr "Stäng menyn"
+
+msgid "Colors"
+msgstr "Färger (engelska)"
+
+#: scenes/beat/score_screen.gd:33 scenes/beat/score_screen.tscn:378
+msgid "Combo"
+msgstr "Kombo"
+
+#: scenes/game/comet_zap.gd:96
+msgid "Comet Zap"
+msgstr "Pricka kometer"
+
+#: scenes/menus/select_mode/select_mode.tscn:374
+msgid "Comet Zap\n"
+msgstr "Pricka kometer\n"
+
+#: scenes/beat/editor.tscn:1364
+msgid "Coming Soon!"
+msgstr "Kommer snart!"
+
+#: scenes/beat/editor.tscn:816
+msgid "Confirm"
+msgstr "Bekräfta"
+
+#: scenes/menus/select_mode/select_mode.tscn:510
+msgid "Cosm0s' Insane"
+msgstr "Cosm0s vansinnesnivå"
+
+#: scenes/menus/loading/loading.gd:12
+msgid ""
+"Curve your fingers naturally and rest their tips lightly on the homerow "
+"keys."
+msgstr ""
+"Böj fingrarna lätt och låt fingertopparna vila på tangentbordets mittrad."
+
+#: scenes/beat/editor.gd:51 scenes/beat/editor.tscn:538
+#: scenes/beat/rhythmgame.gd:12 scenes/beat/rhythmgame.tscn:523
+msgid "Difficulty"
+msgstr "Svårighetsgrad"
+
+#: scenes/beat/editor.tscn:602
+msgid "Difficulty Settings"
+msgstr "Svårighetsinställningar"
+
+#: scenes/beat/rhythmgame.tscn:440
+msgid "Directory"
+msgstr "Mapp"
+
+#: scenes/beat/rhythmgame.tscn:418 scenes/game/phrase_typing.tscn:274
+msgid "Dit"
+msgstr "Pip"
+
+#: scenes/beat/editor.gd:86 scenes/beat/editor.tscn:1570
+msgid "Divisor"
+msgstr "Taktdelning"
+
+#: scenes/beat/editor.tscn:420
+msgid "Do you really want to quit?"
+msgstr "Vill du verkligen avsluta?"
+
+#: scenes/menus/loading/loading.gd:10
+msgid "Don't ever let yourself become tense."
+msgstr "Slappna av när du skriver."
+
+#: scenes/menus/loading/loading.gd:14
+msgid "Don't ever let yourself get discouraged!"
+msgstr "Ge inte upp även om det känns svårt!"
+
+#: scenes/beat/rhythmgame.gd:67 scenes/beat/rhythmgame.tscn:713
+msgid "DoubleTime"
+msgstr "Snabbare"
+
+msgid "Dyslexic Font"
+msgstr "Typsnitt för dyslexi"
+
+#: scenes/menus/options/options.tscn:189
+msgid "Dyslexic Font\n"
+msgstr "Typsnitt för dyslexi\n"
+
+#: scenes/beat/rhythmgame.gd:61 scenes/beat/rhythmgame.tscn:745
+#: scenes/menus/select_mode/select_mode.tscn:485
+msgid "Easy"
+msgstr "Lätt"
+
+#: scenes/beat/editor.tscn:1152
+msgid "Edit\n"
+msgstr "Redigera\n"
+
+#: scenes/beat/editor.gd:1528
+msgid "Editing - %s"
+msgstr "Redigerar – %s"
+
+msgid "Elements"
+msgstr "Grundämnen (engelska)"
+
+#: scenes/beat/editor.gd:956
+msgid "Error: Could not read file! (Wrong Format)"
+msgstr "Fel: Filen kunde inte läsas. Fel filformat."
+
+#: scenes/beat/editor.gd:835
+msgid "Error: Could not save file!"
+msgstr "Fel: Filen kunde inte sparas."
+
+#: scenes/game/phrase_typing.gd:319
+msgid "Errors: %d"
+msgstr "Fel: %d"
+
+#: scenes/game/phrase_typing.tscn:193
+msgid "Errors: 0"
+msgstr "Fel: 0"
+
+#: scenes/beat/editor.gd:28 scenes/beat/editor.tscn:1028
+msgid "File"
+msgstr "Arkiv"
+
+#: scenes/beat/editor.tscn:1215
+msgid "Fill Quavers\n"
+msgstr "Fyll i åttondelar\n"
+
+msgid "Fingers"
+msgstr "Fingerövningar"
+
+#: scenes/game/lessons.gd:103
+msgid "First, press the [wave]A[/wave] key.[pulse] _[/pulse]"
+msgstr "Tryck först på [wave]A[/wave].[pulse] _[/pulse]"
+
+#: scenes/game/fish_cascade.gd:89
+msgid "Fish Cascade"
+msgstr "Fiskregn"
+
+#: scenes/menus/select_mode/select_mode.tscn:363
+msgid "Fish Cascade\n"
+msgstr "Fiskregn\n"
+
+#: scenes/game/fish_cascade.tscn:262
+msgid "Fish:"
+msgstr "Fiskar:"
+
+#: scenes/game/fish_cascade.gd:196
+msgid "Fish: %d"
+msgstr "Fiskar: %d"
+
+#: scenes/game/lessons.gd:181
+msgid "Font Size: %d"
+msgstr "Textstorlek: %d"
+
+#: scenes/game/lessons.tscn:696
+msgid "Font Size: 32"
+msgstr "Textstorlek: 32"
+
+msgid "Food"
+msgstr "Mat (engelska)"
+
+msgid "Foulenz' Normal"
+msgstr "Foulenz normalnivå"
+
+#: scenes/menus/select_mode/select_mode.tscn:500
+msgid "Foulenz' Normal\n"
+msgstr "Foulenz normalnivå\n"
+
+msgid "Fruit"
+msgstr "Frukt (engelska)"
+
+#: scenes/beat/score_screen.gd:78 scenes/beat/score_screen.tscn:399
+msgid "Full Combo"
+msgstr "Full kombo"
+
+#: scenes/menus/options/config.gd:30 scenes/menus/options/options.gd:157
+#: scenes/menus/options/options.tscn:114
+msgid "Fullscreen"
+msgstr "Helskärm"
+
+#: scenes/menus/options/options.tscn:102
+msgid "Fullscreen Options"
+msgstr "Skärmläge"
+
+#: scenes/beat/beat.tscn:624 scenes/game/comet_zap.tscn:274
+msgid "Game Over!"
+msgstr "Spelet är slut!"
+
+msgid "Geography"
+msgstr "Geografi (engelska)"
+
+#: scenes/beat/rhythmgame.tscn:464
+msgid "Get More Beatmaps!"
+msgstr "Hämta fler rytmbanor!"
+
+#: scenes/beat/rhythmgame.tscn:838
+msgid "Get maps from osu!"
+msgstr "Hämta banor från osu!"
+
+#: scenes/beat/score_screen.gd:19 scenes/beat/score_screen.tscn:281
+msgid "Good"
+msgstr "Bra"
+
+#: scenes/beat/beat.gd:816
+msgid "Good!"
+msgstr "Bra!"
+
+#: scenes/game/lessons.gd:112
+msgid "Good.[pulse] _[/pulse]"
+msgstr "Bra![pulse] _[/pulse]"
+
+#: scenes/beat/rhythmgame.gd:66 scenes/beat/rhythmgame.tscn:704
+msgid "HalfTime"
+msgstr "Långsammare"
+
+#: scenes/beat/rhythmgame.tscn:760
+msgid "Hard Rock"
+msgstr "Hard Rock"
+
+#: scenes/beat/editor.tscn:653
+msgid "Health Drain"
+msgstr "Hälsoförlust"
+
+#: scenes/game/fish_cascade.tscn:272
+msgid "Health:"
+msgstr "Hälsa:"
+
+#: scenes/game/fish_cascade.gd:197
+msgid "Health: %d"
+msgstr "Hälsa: %d"
+
+#: scenes/game/lessons.gd:70
+msgid ""
+"Hello There. Welcome to Tux Typing[color=yellow]+[/color]. Now with added \n"
+"[font_size=100][wave]WUMBA![/wave][/font_size][pulse] _[/pulse]\n"
+"(Press any key to continue)"
+msgstr ""
+"Hej! Välkommen till Tux Typing[color=yellow]+[/color]. Nu med ännu mer\n"
+"[font_size=100][wave]WUMBA![/wave][/font_size][pulse] _[/pulse]\n"
+"(Tryck på en bokstav för att fortsätta)"
+
+#: scenes/game/lessons.gd:72
+msgid ""
+"Hello There. Welcome to [wave]Tux Typing[color=yellow]+[/color][/wave].[pulse] _[/pulse]\n"
+"(Press any key to continue)"
+msgstr ""
+"Hej! Välkommen till [wave]Tux Typing[color=yellow]+[/color][/wave].[pulse] _[/pulse]\n"
+"(Tryck på en bokstav för att fortsätta)"
+
+#: scenes/menus/options/discord.gd:8
+msgid "Hello World!"
+msgstr "Hej världen!"
+
+#: scenes/beat/editor.gd:36 scenes/beat/editor.tscn:1343
+msgid "Help"
+msgstr "Hjälp"
+
+#: scenes/beat/rhythmgame.tscn:769
+msgid "Hidden\n"
+msgstr "Dolda noter\n"
+
+#: scenes/beat/rhythmgame.tscn:404
+msgid "Hit Sound"
+msgstr "Träffljud"
+
+#: scenes/menus/loading/loading.gd:21
+msgid "I cooka da pizza, can you?"
+msgstr "Jag kan baka pizza. Kan du?"
+
+#: scenes/menus/loading/loading.gd:22
+msgid "I hit the tuxport 1 trillion$"
+msgstr "Jag vann tusen miljarder dollar på Tuxpotten!"
+
+#: scenes/beat/editor.tscn:900
+msgid "Import"
+msgstr "Importera"
+
+#: scenes/beat/editor.tscn:864
+msgid "Import .osz"
+msgstr "Importera .osz"
+
+#: scenes/beat/editor.tscn:1133
+msgid "Import .osz File"
+msgstr "Importera .osz-fil"
+
+msgid "Improve Readability"
+msgstr "Öka läsbarheten"
+
+#: scenes/menus/options/options.tscn:182
+msgid "Improve Readability\n"
+msgstr "Öka läsbarheten\n"
+
+#: scenes/game/fish_cascade.tscn:244
+msgid "Level:"
+msgstr "Nivå:"
+
+#: scenes/game/fish_cascade.gd:195
+msgid "Level: %d"
+msgstr "Nivå: %d"
+
+#: scenes/beat/editor.tscn:1069
+msgid "Load Audio"
+msgstr "Läs in ljud"
+
+#: scenes/beat/editor.gd:959
+msgid "Load Audio: %s"
+msgstr "Läste in ljud: %s"
+
+#: scenes/beat/editor.tscn:1087
+msgid "Load Background"
+msgstr "Läs in bakgrund"
+
+#: scenes/beat/editor.tscn:1124
+msgid "Load Beatmap"
+msgstr "Läs in rytmbana"
+
+#: scenes/beat/editor.gd:1117
+msgid "Load Chart: %s"
+msgstr "Läste in rytmbana: %s"
+
+#: scenes/beat/editor.gd:1210
+msgid "Load Image: %s"
+msgstr "Läste in bild: %s"
+
+#: scenes/beat/editor.tscn:1078
+msgid "Load Tux Skin"
+msgstr "Läs in utseende för Tux"
+
+#: scenes/beat/editor.tscn:1096
+msgid "Load Video (Experimental)"
+msgstr "Läs in video (experimentellt)"
+
+#: scenes/beat/editor.gd:1555
+msgid "Load Video: %s"
+msgstr "Läste in video: %s"
+
+#: scenes/beat/editor.tscn:446
+msgid "Log"
+msgstr "Logg"
+
+#: scenes/beat/rhythmgame.tscn:820
+msgid ""
+"Looking for more maps? Don't fret!\n"
+"No need to chart! Just do this:\n"
+"1. Download a map from osu! (.osz)\n"
+"2. In TuxEditor, drag and drop the file\n"
+"3. File -> Save Beatmap -> Save -> Quit\n"
+"4. That's All There Is To It."
+msgstr ""
+"Vill du ha fler rytmbanor utan att skapa dem själv?\n"
+"Gör så här:\n"
+"1. Hämta en bana från osu! (.osz).\n"
+"2. Dra och släpp filen i TuxEditor.\n"
+"3. Välj Arkiv → Spara rytmbanan → Spara → Avsluta.\n"
+"4. Klart!"
+
+#: scenes/menus/loading/loading.gd:20
+msgid "Make sure to take breaks to prevent carpal tunnel and RSI!"
+msgstr "Ta pauser så att händer och handleder får vila!"
+
+#: scenes/beat/editor.gd:50 scenes/beat/editor.tscn:531
+#: scenes/beat/rhythmgame.gd:38 scenes/beat/rhythmgame.tscn:592
+msgid "Mapper"
+msgstr "Banskapare"
+
+#: scenes/beat/rhythmgame.gd:193
+msgid ""
+"Mapper\n"
+"%s"
+msgstr ""
+"Banskapare\n"
+"%s"
+
+msgid "Math"
+msgstr "Matematik (engelska)"
+
+#: scenes/beat/score_screen.gd:23 scenes/beat/score_screen.tscn:315
+msgid "Meh"
+msgstr "Sådär"
+
+#: scenes/beat/beat.gd:818
+msgid "Meh..."
+msgstr "Sådär …"
+
+#: scenes/beat/editor.gd:884 scenes/beat/editor.tscn:1428
+msgid "Metronome: OFF"
+msgstr "Metronom: av"
+
+#: scenes/beat/editor.gd:887
+msgid "Metronome: ON"
+msgstr "Metronom: på"
+
+#: scenes/menus/options/options.tscn:176
+msgid "Minimize Effects"
+msgstr "Minska visuella effekter"
+
+#: scenes/beat/beat.gd:598 scenes/beat/beat.tscn:356
+#: scenes/beat/score_screen.gd:25 scenes/beat/score_screen.tscn:334
+#: scenes/game/comet_zap.tscn:131
+msgid "Miss"
+msgstr "Miss"
+
+#: scenes/beat/beat.gd:65 scenes/beat/beat.tscn:422
+#: scenes/beat/rhythmgame.gd:53 scenes/beat/rhythmgame.tscn:451
+msgid "Mods"
+msgstr "Spelmodifierare"
+
+#: scenes/menus/options/options.tscn:206
+msgid "Mute when Unfocused"
+msgstr "Stäng av ljudet när fönstret är inaktivt"
+
+#: scenes/beat/editor.tscn:1386
+msgid ""
+"NOTE: TuxEditor is in an experimental state. \n"
+"Lag, bugs, and other issues may occur. \n"
+"Report them in the Discord server to the right."
+msgstr ""
+"TuxEditor är fortfarande under utveckling.\n"
+"Spelet kan hacka och andra fel kan uppstå.\n"
+"Rapportera dem på Discord via länken till höger."
+
+#: scenes/beat/editor.gd:48 scenes/beat/editor.tscn:517
+msgid "Name"
+msgstr "Namn"
+
+#: scenes/beat/editor.tscn:1045
+msgid "New"
+msgstr "Ny"
+
+#: scenes/beat/editor.tscn:793
+msgid "New Tempo (BPM)"
+msgstr "Nytt tempo (BPM)"
+
+#: scenes/beat/editor.tscn:444
+msgid "No"
+msgstr "Nej"
+
+#: scenes/beat/rhythmgame.tscn:701
+msgid "No Fail"
+msgstr "Ingen förlust"
+
+#: scenes/game/lessons.gd:116
+msgid "Now, press the [wave]P[/wave] key.[pulse] _[/pulse]"
+msgstr "Tryck nu på [wave]P[/wave].[pulse] _[/pulse]"
+
+msgid "Numbers"
+msgstr "Tal (engelska)"
+
+#: scenes/beat/editor.gd:84 scenes/beat/editor.tscn:1486
+msgid "Offset"
+msgstr "Tidsförskjutning"
+
+#: scenes/game/fish_cascade.tscn:319 scenes/game/phrase_typing.tscn:373
+msgid "Oh No!"
+msgstr "Åh nej!"
+
+#: scenes/game/lessons.gd:129
+msgid "Ok. Let's get into it.[pulse] _[/pulse]"
+msgstr "Nu kör vi![pulse] _[/pulse]"
+
+#: scenes/game/lessons.gd:125
+msgid "Once more, press the [wave]T[/wave] key.[pulse] _[/pulse]"
+msgstr "En gång till! Tryck på [wave]T[/wave].[pulse] _[/pulse]"
+
+#: scenes/beat/editor.tscn:1054
+msgid "Open"
+msgstr "Öppna"
+
+#: scenes/beat/editor.tscn:111
+msgid "Open a File"
+msgstr "Öppna en fil"
+
+#: scenes/beat/rhythmgame.gd:51 scenes/beat/rhythmgame.tscn:425
+#: scenes/menus/options/options.tscn:16 scenes/menus/pause/pause.gd:11
+#: scenes/menus/pause/pause.tscn:71 scenes/menus/select_mode/select_mode.gd:17
+#: scenes/menus/select_mode/select_mode.tscn:410
+msgid "Options"
+msgstr "Inställningar"
+
+#: scenes/menus/select_mode/select_mode.tscn:416
+msgid "Options\n"
+msgstr "Inställningar\n"
+
+#: scenes/menus/start_menu/intro.tscn:108
+msgid "Original Game By"
+msgstr "Originalspelet skapades av"
+
+#: scenes/menus/options/options.tscn:199
+msgid "Other"
+msgstr "Övrigt"
+
+#: scenes/beat/editor.tscn:613
+msgid "Overall Difficulty"
+msgstr "Grundsvårighet"
+
+#: scenes/game/phrase_typing.tscn:297
+msgid "Penguin Set"
+msgstr "Ordlista"
+
+#: scenes/game/phrase_typing.gd:186
+#: scenes/menus/select_mode/select_mode.gd:405
+msgid "PenguinType Mode"
+msgstr "PenguinType-läge"
+
+msgid "Penguins"
+msgstr "Pingviner (engelska)"
+
+msgid "Penguintype 100"
+msgstr "PenguinType 100 (engelska)"
+
+msgid "Penguintype 10k"
+msgstr "PenguinType 10k (engelska)"
+
+msgid "Penguintype 1k"
+msgstr "PenguinType 1k (engelska)"
+
+#: scenes/beat/score_screen.gd:17 scenes/beat/score_screen.tscn:262
+msgid "Perfect"
+msgstr "Perfekt"
+
+#: scenes/beat/score_screen.gd:76
+msgid "Perfect Combo"
+msgstr "Perfekt kombo"
+
+#: scenes/beat/beat.gd:814
+msgid "Perfect!"
+msgstr "Perfekt!"
+
+#: scenes/game/phrase_typing.gd:131
+#: scenes/menus/select_mode/select_mode.tscn:406
+msgid "Phrase Typing"
+msgstr "Skriv meningar"
+
+msgid "Plants"
+msgstr "Växter (engelska)"
+
+#: scenes/beat/rhythmgame.tscn:420 scenes/game/fish_cascade.tscn:186
+#: scenes/game/phrase_typing.tscn:276
+#: scenes/menus/select_mode/select_mode.tscn:257 scenes/objects/ui/pop.tscn:5
+msgid "Pop"
+msgstr "Popp"
+
+#: scenes/menus/loading/loading.gd:23
+msgid "Prefer Upscroll? There's a mod for that!"
+msgstr "Vill du att noterna rullar uppåt? Det finns en inställning för det!"
+
+#: scenes/beat/beat.gd:216 scenes/beat/editor.gd:194
+#: scenes/beat/rhythmgame.gd:494
+msgid "Proper Rhythm"
+msgstr "Hitta takten"
+
+#: scenes/menus/select_mode/select_mode.tscn:385
+msgid "Proper Rhythm\n"
+msgstr "Hitta takten\n"
+
+#: scenes/beat/editor.tscn:378 scenes/menus/pause/pause.tscn:97
+#: scenes/menus/select_mode/select_mode.gd:437
+#: scenes/menus/select_mode/select_mode.tscn:422
+msgid "Quit"
+msgstr "Avsluta"
+
+#: scenes/beat/editor.tscn:1142 scenes/menus/select_mode/select_mode.tscn:428
+msgid "Quit\n"
+msgstr "Avsluta\n"
+
+msgid "Quit to Desktop"
+msgstr "Avsluta spelet"
+
+#: scenes/menus/pause/pause.tscn:102
+msgid "Quit to Desktop\n"
+msgstr "Avsluta spelet\n"
+
+#: scenes/beat/score_screen.gd:38 scenes/beat/score_screen.tscn:404
+msgid "Ranking"
+msgstr "Betyg"
+
+#: scenes/beat/editor.gd:225
+msgid "Ready!"
+msgstr "Redo!"
+
+#: scenes/menus/start_menu/intro.tscn:85
+msgid "Real Tux Typists Use a Keyboard"
+msgstr "Med Tux skriver du på tangentbord!"
+
+#: scenes/menus/start_menu/intro.tscn:123
+msgid "Recreated by Bubblicity Games"
+msgstr "Nyversion av Bubblicity Games"
+
+#: scenes/beat/editor.tscn:1239
+msgid "Redo"
+msgstr "Gör om"
+
+#: scenes/menus/options/options.tscn:126
+msgid "Refresh Rate"
+msgstr "Bildfrekvens"
+
+#: scenes/beat/beat.tscn:643 scenes/game/comet_zap.tscn:293
+#: scenes/game/fish_cascade.tscn:339 scenes/game/phrase_typing.tscn:393
+#: scenes/menus/pause/pause.tscn:62
+msgid "Restart"
+msgstr "Börja om"
+
+#: scenes/beat/beat.tscn:647 scenes/game/comet_zap.tscn:297
+#: scenes/game/fish_cascade.tscn:343 scenes/game/phrase_typing.tscn:397
+#: scenes/menus/pause/pause.tscn:67
+msgid "Restart\n"
+msgstr "Börja om\n"
+
+#: scenes/menus/pause/pause.tscn:59
+msgid "Resume"
+msgstr "Fortsätt"
+
+#: scenes/beat/score_screen.tscn:461
+msgid "Return To Menu"
+msgstr "Tillbaka till menyn"
+
+#: scenes/beat/editor.tscn:1340
+msgid "Rich Presence"
+msgstr "Aktivitet på Discord"
+
+msgid "Riley's Easy"
+msgstr "Rileys lätta nivå"
+
+#: scenes/menus/select_mode/select_mode.tscn:490
+msgid "Riley's Easy\n"
+msgstr "Rileys lätta nivå\n"
+
+#: scenes/game/lessons.gd:37 scenes/menus/select_mode/select_mode.tscn:396
+msgid "Sandbox"
+msgstr "Fritt skrivande"
+
+#: scenes/beat/editor.tscn:554
+msgid "Save"
+msgstr "Spara"
+
+#: scenes/beat/editor.tscn:1115
+msgid "Save Beatmap"
+msgstr "Spara rytmbanan"
+
+#: scenes/beat/editor.gd:833
+msgid "Saved beatmap to: %s"
+msgstr "Rytmbanan sparades i %s"
+
+#: scenes/beat/beat.gd:69 scenes/beat/beat.tscn:408
+#: scenes/beat/score_screen.gd:12 scenes/beat/score_screen.tscn:239
+msgid "Score"
+msgstr "Poäng"
+
+#: scenes/beat/beat.tscn:655
+msgid "Select Beatmap\n"
+msgstr "Välj rytmbana\n"
+
+#: scenes/beat/editor.tscn:877 scenes/menus/select_mode/select_mode.gd:159
+msgid "Select Difficulty"
+msgstr "Välj svårighetsgrad"
+
+#: scenes/game/comet_zap.tscn:305 scenes/game/fish_cascade.tscn:351
+#: scenes/game/phrase_typing.tscn:405
+msgid "Select Gamemode"
+msgstr "Välj spelläge"
+
+#: scenes/menus/select_mode/select_mode.gd:412
+msgid "Select Phrase"
+msgstr "Välj skrivövning"
+
+#: scenes/menus/select_mode/select_mode.gd:93
+msgid "Select Word Set"
+msgstr "Välj ordlista"
+
+#: scenes/beat/rhythmgame.tscn:383
+msgid "Selected Word Set"
+msgstr "Vald ordlista"
+
+#: scenes/beat/editor.tscn:1188
+msgid "Set Kiai Point"
+msgstr "Ange kiai-punkt"
+
+#: scenes/beat/editor.tscn:1179
+msgid "Set Preview Point"
+msgstr "Ange start för förhandslyssning"
+
+#: scenes/beat/editor.gd:34 scenes/beat/editor.tscn:1303
+msgid "Settings"
+msgstr "Inställningar"
+
+msgid "Shapes"
+msgstr "Former (engelska)"
+
+#: scenes/beat/editor.tscn:1197
+msgid "Shift Notes Left"
+msgstr "Flytta noterna åt vänster"
+
+#: scenes/beat/editor.tscn:1206
+msgid "Shift Notes Right"
+msgstr "Flytta noterna åt höger"
+
+msgid "Show FPS"
+msgstr "Visa bildfrekvens"
+
+#: scenes/menus/options/options.tscn:153
+msgid "Show FPS\n"
+msgstr "Visa bildfrekvens\n"
+
+#: scenes/beat/rhythmgame.tscn:736
+msgid "Showcase Mode"
+msgstr "Uppvisningsläge"
+
+#: scenes/beat/beat.tscn:244
+msgid ""
+"Skip\n"
+">>>"
+msgstr ""
+"Hoppa över\n"
+">>>"
+
+#: scenes/beat/score_screen.tscn:228
+msgid "Song Title"
+msgstr "Låttitel"
+
+#: scenes/beat/editor.gd:85 scenes/beat/editor.tscn:1527
+msgid "Speed"
+msgstr "Hastighet"
+
+#: scenes/menus/loading/loading.gd:13
+msgid "Speed and skill will of course come with practice."
+msgstr "Ju mer du övar, desto snabbare och säkrare skriver du."
+
+#: scenes/menus/loading/loading.gd:18
+msgid "Start slow, and build your way up."
+msgstr "Börja långsamt och öka takten efter hand."
+
+#: scenes/menus/select_mode/select_mode.tscn:613
+#: scenes/menus/start_menu/title.tscn:129
+msgid "Start!"
+msgstr "Starta!"
+
+#: scenes/beat/rhythmgame.tscn:643
+msgid "Start!\n"
+msgstr "Starta!\n"
+
+msgid "Swedish Alphabet"
+msgstr "Svenska alfabetet"
+
+#: scenes/game/phrase_typing.tscn:315
+msgid "Swedish Everyday Words"
+msgstr "Svenska vardagsord"
+
+msgid "Swedish Long Words"
+msgstr "Långa svenska ord"
+
+msgid "Swedish Sentences"
+msgstr "Svenska meningar"
+
+msgid "Swedish Short Words"
+msgstr "Korta svenska ord"
+
+#: scenes/beat/editor.tscn:1421
+msgid "Tap BPM"
+msgstr "Tryck i takt"
+
+msgid "Tech"
+msgstr "Teknik (engelska)"
+
+#: scenes/beat/editor.tscn:1106
+msgid "Test Beatmap"
+msgstr "Testa rytmbanan"
+
+#: scenes/menus/loading/loading.gd:19
+msgid ""
+"The key is to emphasize precision over raw speed. Speed comes with practice."
+msgstr "Sikta på att träffa rätt tangent. Farten kommer när du övar."
+
+#: scenes/beat/editor.tscn:956
+msgid "This will erase all placed notes!"
+msgstr "Alla noter du har placerat ut tas bort!"
+
+#: scenes/game/lessons.tscn:710 scenes/game/phrase_typing.tscn:211
+msgid "Time"
+msgstr "Tid"
+
+#: scenes/game/phrase_typing.tscn:216
+msgid "Time\n"
+msgstr "Tid\n"
+
+#: scenes/beat/editor.tscn:1292
+msgid "Time Info"
+msgstr "Tidsinformation"
+
+#: scenes/beat/editor.tscn:1300
+msgid "Timing Panel"
+msgstr "Tempoinställningar"
+
+#: scenes/menus/start_menu/title.gd:8
+msgid "Title Screen"
+msgstr "Titelskärmen"
+
+msgid "Trees"
+msgstr "Träd (engelska)"
+
+#: scenes/menus/loading/loading.gd:15
+msgid "Try not to look at the keyboard!"
+msgstr "Försök att skriva utan att titta på tangenterna!"
+
+#: scenes/beat/rhythmgame.tscn:422 scenes/game/phrase_typing.tscn:278
+msgid "Typewriter"
+msgstr "Skrivmaskin"
+
+#: scenes/game/comet_zap.gd:93 scenes/game/fish_cascade.gd:86
+#: scenes/game/lessons.gd:34 scenes/game/phrase_typing.gd:128
+msgid "Typing..."
+msgstr "Skriver…"
+
+#: scenes/beat/editor.tscn:1229
+msgid "Undo"
+msgstr "Ångra"
+
+#: scenes/menus/options/options.tscn:146
+msgid "Unlimited"
+msgstr "Obegränsad"
+
+#: scenes/beat/rhythmgame.gd:69 scenes/beat/rhythmgame.tscn:722
+msgid "Upscroll"
+msgstr "Rulla uppåt"
+
+#: scenes/menus/loading/loading.gd:16
+msgid "Use the ridges on the F and J keys to return to the homerow keys."
+msgstr ""
+"Känn efter upphöjningarna på F och J så hittar fingrarna tillbaka till "
+"mittraden."
+
+#: scenes/beat/editor.tscn:1254
+msgid "View\n"
+msgstr "Visa\n"
+
+#: scenes/menus/options/config.gd:31 scenes/menus/options/options.gd:164
+#: scenes/menus/options/options.tscn:59
+msgid "Volume"
+msgstr "Volym"
+
+#: scenes/menus/options/config.gd:34 scenes/menus/options/options.gd:95
+#: scenes/menus/options/options.tscn:160
+msgid "Vsync"
+msgstr "Vertikal synkronisering"
+
+#: scenes/game/phrase_typing.gd:266
+msgid "WPM: %d"
+msgstr "Ord/min: %d"
+
+#: scenes/game/phrase_typing.tscn:171
+msgid "WPM: 0"
+msgstr "Ord/min: 0"
+
+#: scenes/menus/loading/loading.gd:24
+msgid "Want more charts? You can import .osz files in the editor too!"
+msgstr "Vill du ha fler rytmbanor? Du kan importera .osz-filer i redigeraren!"
+
+#: scenes/game/comet_zap.gd:308
+msgid "Wave: %d"
+msgstr "Våg: %d"
+
+#: scenes/game/comet_zap.tscn:212
+msgid "Wave: 1"
+msgstr "Våg: 1"
+
+#: scenes/menus/select_mode/select_mode.gd:440
+msgid "Web Not Supported"
+msgstr "Ej tillgängligt på webben"
+
+#: scenes/menus/loading/loading.gd:7
+msgid "Wiggle your fingers and jam the keys!"
+msgstr "Spreta med fingrarna och sätt fart på tangenterna!"
+
+#: scenes/menus/options/options.tscn:116
+msgid "Windowed"
+msgstr "Fönsterläge"
+
+#: scenes/menus/options/options.tscn:77
+msgid "Windowed Resolution"
+msgstr "Upplösning i fönsterläge"
+
+#: scenes/menus/loading/loading.gd:17
+msgid ""
+"With practice you'll find that it is easier than you have ever thought "
+"possible."
+msgstr "Med övning går det lättare än du tror."
+
+#: scenes/game/phrase_typing.gd:36 scenes/game/phrase_typing.tscn:176
+msgid "Words"
+msgstr "Ord"
+
+msgid "Words 1"
+msgstr "Korta ord (engelska)"
+
+msgid "Words 2"
+msgstr "Medellånga ord (engelska)"
+
+msgid "Words 3"
+msgstr "Långa ord (engelska)"
+
+#: scenes/game/phrase_typing.gd:264
+msgid "Words: %d"
+msgstr "Ord: %d"
+
+#: scenes/game/phrase_typing.tscn:182
+msgid "Words: 0"
+msgstr "Ord: 0"
+
+#: scenes/beat/editor.tscn:435
+msgid "Yes"
+msgstr "Ja"
+
+#: scenes/menus/loading/loading.gd:9
+msgid ""
+"You should be sitting up straight, but without stiffness, and should feel "
+"comfortable."
+msgstr "Sitt bekvämt med rak rygg och avslappnade axlar."
+
+#: scenes/beat/editor.tscn:1272
+msgid "Zoom In\n"
+msgstr "Zooma in\n"
+
+#: scenes/beat/editor.tscn:1282
+msgid "Zoom Out\n"
+msgstr "Zooma ut\n"
+
+#: scenes/menus/loading/loading.gd:32
+msgid "[wave][color=yellow]Tip:[/color] %s"
+msgstr "[wave][color=yellow]Tips:[/color] %s"
+
+#: scenes/menus/loading/loading.tscn:144
+msgid "[wave][color=yellow]Tip:[/color] Wiggle your fingers and jam the keys!"
+msgstr ""
+"[wave][color=yellow]Tips:[/color] Spreta med fingrarna och sätt fart på "
+"tangenterna!"
+
+#: scenes/game/phrase_typing.gd:12 scenes/game/phrase_typing.tscn:309
+#: scenes/objects/ui/word_select_button.gd:81
+msgid "penguintype100"
+msgstr "PenguinType 100 (engelska)"
+
+#: scenes/game/phrase_typing.gd:12 scenes/game/phrase_typing.tscn:313
+msgid "penguintype10k"
+msgstr "PenguinType 10k (engelska)"
+
+#: scenes/game/phrase_typing.gd:12 scenes/game/phrase_typing.tscn:311
+msgid "penguintype1k"
+msgstr "PenguinType 1k (engelska)"
+
+#: scenes/menus/select_mode/select_mode.tscn:519
+msgid "siembra's Expert"
+msgstr "siembras expertnivå"
+
+#: scenes/beat/rhythmgame.gd:491
+msgid "♫ Choosing a Song ♫"
+msgstr "♫ Väljer en låt ♫"
+
+#: scenes/beat/editor.gd:191
+msgid "♫ Editing a Chart ♫"
+msgstr "♫ Redigerar en rytmbana ♫"

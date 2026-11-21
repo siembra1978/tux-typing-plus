@@ -5,7 +5,7 @@ extends Node
 func _ready():
 	#Discord RPC
 	DiscordRPC.app_id = 1485290726349602897
-	DiscordRPC.details = "Hello World!"
+	DiscordRPC.details = tr("Hello World!")
 	DiscordRPC.large_image = "icon"
 	DiscordRPC.large_image_text = "Tux Typing+"
 

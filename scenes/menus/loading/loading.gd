@@ -29,7 +29,7 @@ var tips = [
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-	tip_label.text = "[wave][color=yellow]Tip:[/color] " + tips.pick_random()
+	tip_label.text = tr("[wave][color=yellow]Tip:[/color] %s") % tr(tips.pick_random())
 	var animations = Array($Control/sprite.sprite_frames.get_animation_names()).pick_random()
 	$Control/sprite.play(animations)
 	ResourceLoader.load_threaded_request(Config.next_scene)
